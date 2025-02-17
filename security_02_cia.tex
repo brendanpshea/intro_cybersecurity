@@ -1,0 +1,999 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\title{Information Security Fundamentals}
+\subtitle{Understanding How We Protect Digital Information}
+\author{Prepared by Security Team}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to CIA: The Foundation of Security}
+    \begin{block}{What is Information Security?}
+        Just like we protect valuable things in the physical world with locks and safes, we need ways to protect our digital information.
+    \end{block}
+    \begin{itemize}
+        \item Information security protects everything from your personal photos to your banking information from people who shouldn't have access to it.
+        \item The \textbf{CIA triad} is like a three-part checklist that helps us make sure our information is properly protected.
+        \item Every time you use a password, encryption, or verify a website's security, you're using CIA principles.
+        \item We'll explore how these principles work together to keep our digital world safe.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Confidentiality: Keeping Secrets Safe}
+    \begin{itemize}
+        \item \textbf{Confidentiality} is about keeping secrets secret - making sure only the right people can see sensitive information.
+        \item Think about how we protect private information:
+            \begin{itemize}
+                \item \textbf{Passwords}: Like having a key to your digital house
+                \item \textbf{Encryption}: Like putting a message in a special code
+                \item \textbf{Access controls}: Like having an ID card to enter restricted areas
+                \item \textbf{Private mode browsing}: Like leaving no footprints behind
+            \end{itemize}
+        \item When you send a private message, confidentiality ensures only the intended recipient can read it.
+        \item Banks use confidentiality to protect your account information from unauthorized viewers.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Integrity: Keeping Information Trustworthy}
+    \begin{block}{Why Integrity Matters}
+        Imagine if someone could change your grades or bank balance without permission - integrity prevents this!
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Integrity} means making sure information hasn't been tampered with or accidentally changed.
+        \item When you download a file, your computer checks if it downloaded correctly and completely.
+        \item Digital signatures are like a wax seal on a letter - they show if something has been changed.
+        \item Social media platforms use integrity checks to ensure your posts aren't altered by others.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Availability: Making Sure Information is There When You Need It}
+    \begin{alertblock}{Availability Impact}
+        Even brief system outages can have severe consequences - from lost sales to life-threatening situations
+    \end{alertblock}
+    
+    \textbf{Availability} ensures systems work when legitimate users need them:
+    \begin{itemize}
+        \item Systems must respond quickly and reliably
+        \item Backup systems provide redundancy when primary systems fail
+        \item Load balancing prevents system overload
+        \item Disaster recovery plans ensure business continuity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Putting CIA Together: Real World Examples}
+    Here's how CIA principles protect common services:
+    \begin{itemize}
+        \item \textbf{Mobile Banking}:
+          \begin{itemize}
+            \item Confidentiality: Encryption of transactions
+            \item Integrity: Transaction verification codes
+            \item Availability: Multiple server locations
+          \end{itemize}
+        \item \textbf{Email Services}:
+          \begin{itemize}
+            \item Confidentiality: Message encryption
+            \item Integrity: Digital signatures
+            \item Availability: Redundant storage
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Non-repudiation: Taking Responsibility}
+    \textbf{Non-repudiation} prevents users from denying their actions on a system.
+    \begin{itemize}
+        \item Key components of non-repudiation:
+          \begin{itemize}
+            \item Digital signatures on documents
+            \item Secure timestamp services
+            \item Audit log maintenance
+            \item Access tracking systems
+          \end{itemize}
+        \item Common applications:
+          \begin{itemize}
+            \item Email communication records
+            \item Financial transaction logs
+            \item Document modification history
+            \item System access records
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to AAA: Authentication, Authorization, and Accounting}
+    \begin{block}{The Three Steps of Access Control}
+        Think of AAA like a secure building: checking ID (Authentication), determining where you can go (Authorization), and keeping records (Accounting)
+    \end{block}
+    
+    \textbf{AAA} provides a framework for controlling system access:
+    \begin{itemize}
+        \item Authentication verifies identity claims
+        \item Authorization determines access rights
+        \item Accounting tracks user actions
+        \item Together they create:
+          \begin{itemize}
+            \item Complete access control
+            \item Audit capabilities
+            \item Security compliance
+            \item Incident investigation tools
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authentication: Proving Who You Are}
+    \begin{block}{Authentication Factors}
+        Something you know, something you have, something you are
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Authentication} is how you prove you are who you say you are in the digital world.
+        \item Passwords and PINs are like digital keys that only you should know.
+        \item Two-factor authentication is like needing both a key and an ID to enter.
+        \item Using multiple factors makes it much harder for someone to pretend to be you.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authenticating People: Methods We Use}
+    \begin{itemize}
+        \item Common ways people prove their identity:
+            \begin{itemize}
+                \item \textbf{Knowledge-based}: 
+                    \begin{itemize}
+                        \item Passwords you remember
+                        \item Security questions
+                        \item PIN numbers
+                    \end{itemize}
+                \item \textbf{Possession-based}:
+                    \begin{itemize}
+                        \item Phone for SMS codes
+                        \item Security keys
+                        \item ID cards
+                    \end{itemize}
+                \item \textbf{Biometric}:
+                    \begin{itemize}
+                        \item Fingerprint scans
+                        \item Face recognition
+                        \item Voice patterns
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authenticating Systems: Machine Identity}
+    \begin{itemize}
+        \item \textbf{Machine authentication} ensures computers and devices can trust each other.
+        \item When you visit a website, your browser checks its digital certificate - like checking a store's business license.
+        \item Secure websites use HTTPS to prove they are legitimate, showing a padlock icon in your browser.
+        \item Digital certificates are like ID cards for websites and servers, issued by trusted authorities.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authentication in Action: Real-World Examples}
+    \begin{block}{Common Authentication Scenarios}
+        Let's look at how authentication protects you every day
+    \end{block}
+    \begin{itemize}
+        \item When you unlock your phone with a fingerprint, you're using biometric authentication.
+        \item School computers might require both your student ID and password to log in.
+        \item Online banking often uses multiple steps: password, security questions, and text message codes.
+        \item Gaming consoles authenticate both you and your games to prevent unauthorized access.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authorization: Determining What You Can Do}
+    \begin{block}{Authentication vs. Authorization}
+        Authentication proves who you are, authorization determines what you're allowed to do
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Authorization} is like having different access cards for different areas of a building.
+        \item Just because you can log into a system doesn't mean you can access everything in it.
+        \item Your student ID might let you into the library but not the teacher's lounge.
+        \item Different permission levels help protect sensitive information and resources.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authorization Models: Different Ways to Control Access}
+    \begin{itemize}
+        \item Common authorization models include:
+            \begin{itemize}
+                \item \textbf{Role-Based Access Control (RBAC)}:
+                    \begin{itemize}
+                        \item Like how students, teachers, and administrators have different permissions
+                        \item Access based on your role, not who you are
+                        \item Easier to manage for large organizations
+                    \end{itemize}
+                \item \textbf{Discretionary Access Control (DAC)}:
+                    \begin{itemize}
+                        \item Like when you choose who can see your social media posts
+                        \item Owner decides who gets access
+                        \item Common in personal computing
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Access Control Lists (ACLs)}
+    \begin{itemize}
+        \item \textbf{Access Control Lists} are like guest lists that specify exactly who can do what.
+        \item They work similarly to file permissions on your computer, controlling who can read, write, or modify.
+        \item In social media, your friends list acts like an ACL for your private posts.
+        \item ACLs can be very specific - like allowing someone to view a document but not edit it.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Principle of Least Privilege}
+    \begin{block}{A Fundamental Security Rule}
+        Give users only the access they need to do their job - nothing more!
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Least privilege} is like giving a housesitter only the front door key, not keys to everything.
+        \item This principle helps prevent accidental changes and limits what attackers can do if they break in.
+        \item Apps on your phone ask permission only for what they need - they shouldn't get more access than necessary.
+        \item Even administrators should use regular accounts for daily tasks, using admin access only when needed.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Accounting: Keeping Track of What Happens}
+    \begin{itemize}
+        \item \textbf{Accounting} in security means creating detailed records of who did what and when.
+        \item System logs track important events like failed login attempts, file changes, and permission changes.
+        \item This information helps investigate security incidents and prove what happened - like a security camera's footage.
+        \item Logs must be protected from tampering and backed up regularly to maintain their integrity.
+        \item Good accounting practices help organizations comply with legal requirements and industry standards.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Security Logs: What We Track}
+    \begin{itemize}
+        \item Important events we need to monitor:
+            \begin{itemize}
+                \item \textbf{Authentication Events}:
+                    \begin{itemize}
+                        \item Successful and failed login attempts
+                        \item Password changes
+                        \item Account lockouts
+                    \end{itemize}
+                \item \textbf{System Events}:
+                    \begin{itemize}
+                        \item File access and modifications
+                        \item Software installations
+                        \item System reboots
+                    \end{itemize}
+                \item \textbf{Security Events}:
+                    \begin{itemize}
+                        \item Firewall alerts
+                        \item Antivirus detections
+                        \item Permission changes
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Gap Analysis: Finding Security Weaknesses}
+    \begin{block}{What is a Security Gap?}
+        A security gap is the difference between where your security is and where it needs to be
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Gap analysis} helps identify weaknesses in security systems, like finding holes in a fence.
+        \item Organizations compare their current security measures against industry best practices and requirements.
+        \item Regular assessments help catch problems before they can be exploited by attackers.
+        \item Gap analysis leads to concrete recommendations for improving security.
+        \item Think of it like a security health check-up that shows what needs improvement.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conducting a Basic Gap Analysis}
+    \begin{itemize}
+        \item Steps in performing a basic gap analysis:
+            \begin{itemize}
+                \item \textbf{Assessment}:
+                    \begin{itemize}
+                        \item Document current security measures
+                        \item Review existing policies
+                        \item Test security controls
+                    \end{itemize}
+                \item \textbf{Comparison}:
+                    \begin{itemize}
+                        \item Check against security standards
+                        \item Review industry best practices
+                        \item Consider legal requirements
+                    \end{itemize}
+                \item \textbf{Planning}:
+                    \begin{itemize}
+                        \item Prioritize identified gaps
+                        \item Develop improvement plans
+                        \item Set realistic timelines
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Zero Trust: A Modern Security Approach}
+    \begin{block}{Trust Nothing, Verify Everything}
+        Traditional security trusted everything inside the network - Zero Trust trusts nothing by default
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Zero Trust} is like a security guard who checks everyone's ID, even if they work there.
+        \item Traditional security was like a castle with strong walls but trust once inside.
+        \item Modern networks need security everywhere because there is no clear "inside" anymore.
+        \item Every access request is treated as potentially dangerous and must be verified.
+        \item Working from home and cloud computing make Zero Trust especially important.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Traditional vs. Zero Trust Security}
+    \begin{table}
+        \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+            \hline
+            \textbf{Traditional Security} & \textbf{Zero Trust} \\
+            \hline
+            Trust inside network & Trust nothing by default \\
+            \hline
+            Verify once at entry & Verify every request \\
+            \hline
+            Like castle walls & Like security checkpoints everywhere \\
+            \hline
+            Focus on perimeter & Security throughout system \\
+            \hline
+            Location-based trust & Identity-based trust \\
+            \hline
+            Static access rules & Dynamic access decisions \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Components of Zero Trust: Control Plane}
+
+    \begin{block}{Understanding the Control Plane}
+        The \textbf{Control Plane} is the brain of Zero Trust, making smart decisions about who gets access. 
+    \end{block}
+
+    \begin{itemize}
+        \item Key elements that manage Zero Trust security:
+            \begin{itemize}
+                \item \textbf{Adaptive Identity}:
+                    \begin{itemize}
+                        \item Continuously evaluates user behavior
+                        \item Adjusts access based on risk
+                        \item Considers context like location and device
+                    \end{itemize}
+                \item \textbf{Policy Engine}:
+                    \begin{itemize}
+                        \item Makes real-time access decisions
+                        \item Applies security rules consistently
+                        \item Updates policies automatically
+                    \end{itemize}
+            \end{itemize}
+        \item The control plane acts like a smart security system that's always watching and adjusting.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Zero Trust in Action}
+    Even with the right password, you might be denied access if:
+    \begin{itemize}
+        \item Your location suddenly changes (like logging in from another country).
+        \item You're trying to access resources at unusual times.
+        \item Your behavior patterns don't match your normal activity.
+        \item The device you're using isn't recognized or secure.
+        \item The system detects potential security risks in real-time.
+        \item This dynamic approach helps catch potential security breaches early.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Policy-Driven Access Control}
+    \begin{block}{Automated Security Decisions}
+        Policies are like a rulebook that automatically determines who gets access to what
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Policy-driven access} means using clear rules to make security decisions automatically.
+        \item These policies consider multiple factors like user role, device security, and risk level.
+        \item Rules can change automatically based on security threats or unusual activity.
+        \item Think of it like a smart doorman who knows all the building's rules and applies them consistently.
+        \item Policies must be detailed enough to be secure but flexible enough to allow legitimate work.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Policy Administrator}
+    \begin{itemize}
+        \item Components of policy administration:
+            \begin{itemize}
+                \item \textbf{Policy Creation}:
+                    \begin{itemize}
+                        \item Writing clear security rules
+                        \item Defining access conditions
+                        \item Setting up authentication requirements
+                    \end{itemize}
+                \item \textbf{Policy Management}:
+                    \begin{itemize}
+                        \item Updating rules as needed
+                        \item Monitoring policy effectiveness
+                        \item Responding to security incidents
+                    \end{itemize}
+                \item \textbf{Policy Enforcement}:
+                    \begin{itemize}
+                        \item Ensuring rules are followed
+                        \item Logging policy violations
+                        \item Taking action on violations
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Understanding the Data Plane}
+
+    \begin{block}{The Data Plane}
+        The \textbf{Data Plane} is where the real security checks happen, like a security checkpoint at an airport. It implements the rules set by the Control Plane.
+    \end{block}
+
+    \begin{itemize}
+        \item Every time you try to access something, the Data Plane:
+            \begin{itemize}
+                \item Checks your identity and permissions
+                \item Verifies your device's security status
+                \item Ensures the connection is secure
+                \item Monitors for suspicious behavior
+            \end{itemize}
+        \item This happens continuously, not just when you first connect.
+        \item Even a brief security issue can cause access to be revoked immediately.
+        \item The Data Plane works with the Control Plane to keep systems secure.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Threat Scope Reduction}
+    \begin{block}{Making the Target Smaller}
+        The less attackers can see or access, the harder it is for them to cause harm
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Threat scope reduction} is like keeping valuables in separate safes rather than one big vault.
+        \item Systems are divided into smaller, isolated segments to limit potential damage.
+        \item Users can only see and access what they absolutely need for their work.
+        \item Even if attackers break in somewhere, they can't easily reach other parts of the system.
+        \item Regular access reviews help remove unnecessary permissions that could be exploited.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Understanding Implicit Trust Zones}
+    \begin{block}{What is an Implicit Trust Zone?}
+        Areas where traditional security assumes everything is safe - a dangerous assumption!
+    \end{block}
+    \begin{itemize}
+        \item An \textbf{implicit trust zone} is like assuming everyone in a school building is supposed to be there.
+        \item Traditional networks trusted everything inside the company network.
+        \item This old approach is risky because:
+            \begin{itemize}
+                \item One breach gives access to everything
+                \item Insider threats go unnoticed
+                \item Compromised devices spread problems
+            \end{itemize}
+        \item Zero Trust eliminates these assumed-safe zones entirely.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problems with Implicit Trust}
+    \begin{itemize}
+        \item Real-world examples of implicit trust problems:
+            \begin{itemize}
+                \item \textbf{Building Security}:
+                    \begin{itemize}
+                        \item Tailgating through doors
+                        \item Borrowed access cards
+                        \item Unauthorized visitors
+                    \end{itemize}
+                \item \textbf{Network Security}:
+                    \begin{itemize}
+                        \item Infected company laptops
+                        \item Compromised user accounts
+                        \item Malicious insiders
+                    \end{itemize}
+                \item \textbf{Application Security}:
+                    \begin{itemize}
+                        \item Stolen login credentials
+                        \item Session hijacking
+                        \item Excessive permissions
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Subject and System Interactions}
+    \begin{itemize}
+        \item In Zero Trust, every interaction between users (\textbf{subjects}) and resources (\textbf{systems}) must be verified.
+        \item Examples of subject/system interactions:
+        \item Opening a document requires checking:
+            \begin{itemize}
+                \item User identity and permissions
+                \item Device security status
+                \item File sensitivity level
+                \item Location and time of access
+            \end{itemize}
+        \item These checks happen automatically and continuously.
+        \item Even small changes in any factor can trigger a security response.
+        \item The system maintains detailed logs of all interactions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Policy Enforcement Point (PEP)}
+    \begin{block}{The Security Checkpoint}
+        Like a guard checking IDs, the PEP verifies every request before allowing access
+    \end{block}
+    \begin{itemize}
+        \item The \textbf{Policy Enforcement Point} acts as the security guard of the Zero Trust system.
+        \item Every request must pass through the PEP, with no exceptions.
+        \item The PEP communicates with the Policy Engine to make access decisions.
+        \item It can immediately block access if security requirements aren't met.
+        \item Modern PEPs are smart enough to consider context and adapt to changing conditions.
+        \item They maintain detailed records of all access attempts, approved or denied.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Introduction to Physical Security}
+    \begin{alertblock}{Critical Reminder}
+        Physical security failures can completely bypass even the strongest digital protections
+    \end{alertblock}
+    \begin{itemize}
+        \item \textbf{Physical security} protects tangible assets and critical infrastructure
+        \item Protection requires multiple elements:
+          \begin{itemize}
+            \item Deterrence measures
+            \item Access control systems
+            \item Detection mechanisms
+            \item Response procedures
+          \end{itemize}
+        \item Every measure needs:
+          \begin{itemize}
+            \item Regular testing
+            \item Backup systems
+            \item Maintenance plans
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layers of Physical Security}
+    \begin{itemize}
+        \item Security works in distinct layers:
+          \begin{itemize}
+            \item \textbf{Perimeter Security}:
+              \begin{itemize}
+                \item Fences and walls
+                \item Bollards and barriers
+                \item Security lighting
+                \item Surveillance systems
+              \end{itemize}
+            \item \textbf{Building Security}:
+              \begin{itemize}
+                \item Access control systems
+                \item Security personnel
+                \item Hardened entrances
+                \item Emergency systems
+              \end{itemize}
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Perimeter Protection: Bollards and Barriers}
+    \begin{itemize}
+        \item \textbf{Bollards} protect against vehicle-based threats
+        \item Types of bollards include:
+          \begin{itemize}
+            \item Fixed permanent posts
+            \item Retractable systems
+            \item Removable barriers
+            \item Decorative options
+          \end{itemize}
+        \item Implementation considerations:
+          \begin{itemize}
+            \item Proper spacing requirements
+            \item Impact resistance ratings
+            \item Emergency access needs
+            \item Aesthetic integration
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Access Control Vestibules}
+    \begin{block}{Security Vestibule Purpose}
+        Creates a secure buffer zone where credentials can be verified before granting entry
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Access control vestibules} prevent unauthorized entry
+        \item Required components:
+          \begin{itemize}
+            \item Two interlocked doors
+            \item Authentication systems
+            \item Surveillance cameras
+            \item Emergency overrides
+          \end{itemize}
+        \item Security features:
+          \begin{itemize}
+            \item Anti-tailgating measures
+            \item Contraband detection
+            \item Physical isolation
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fencing and Physical Barriers}
+    \begin{itemize}
+        \item Types of security fencing:
+            \begin{itemize}
+                \item \textbf{Chain-link}:
+                    \begin{itemize}
+                        \item Basic perimeter marking
+                        \item Can add barbed wire
+                        \item Cost-effective solution
+                    \end{itemize}
+                \item \textbf{Anti-climb}:
+                    \begin{itemize}
+                        \item Mesh design prevents footholds
+                        \item Higher security rating
+                        \item Often used for sensitive areas
+                    \end{itemize}
+                \item \textbf{Crash-rated}:
+                    \begin{itemize}
+                        \item Stops vehicle attacks
+                        \item Reinforced construction
+                        \item Used at critical facilities
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Video Surveillance Systems}
+    \begin{block}{Modern CCTV: More Than Just Cameras}
+        Today's systems use AI to detect suspicious behavior automatically
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Video surveillance} combines cameras, storage, and intelligent monitoring.
+        \item Modern systems can detect unusual activities like:
+        \item People in restricted areas or at unusual times.
+        \item Objects left behind or removed.
+        \item Suspicious behavior patterns.
+        \item Facial recognition can track known threats.
+        \item Systems maintain searchable archives for investigations.
+        \item Integration with access control provides better security.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Security Guards and Human Elements}
+    \begin{itemize}
+        \item \textbf{Security personnel} provide crucial functions that technology cannot:
+        \item Make complex decisions in unusual situations.
+        \item Respond to emergencies with appropriate judgment.
+        \item Interact with visitors and employees professionally.
+        \item Notice subtle behavioral cues that machines might miss.
+        \item Key responsibilities include:
+            \begin{itemize}
+                \item Access control enforcement
+                \item Patrol and monitoring
+                \item Emergency response
+                \item Visitor management
+                \item Incident reporting
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Access Badges and Credentials}
+    \begin{table}
+        \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+            \hline
+            \textbf{Badge Type} & \textbf{Security Features} \\
+            \hline
+            Basic ID & Photo, name, expiration date \\
+            \hline
+            Magnetic Stripe & Encoded data, swipe access \\
+            \hline
+            Proximity & Contactless, encrypted, harder to clone \\
+            \hline
+            Smart Card & Multiple credentials, high encryption \\
+            \hline
+            Multi-factor & Combined with PIN or biometrics \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{itemize}
+        \item Badges should be visibly worn at all times.
+        \item Lost badges must be reported immediately.
+        \item Regular audits ensure only active badges work.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Security Lighting Fundamentals}
+    \begin{alertblock}{Essential Consideration}
+        Security lighting must be on emergency power - darkness creates vulnerability
+    \end{alertblock}
+    
+    \textbf{Security lighting} serves multiple critical purposes:
+    \begin{itemize}
+        \item Deters criminal activity by increasing visibility
+        \item Enables effective camera surveillance at night
+        \item Supports security personnel in monitoring
+        \item Creates safe paths for emergency evacuation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Security Lighting}
+    Common security lighting approaches:
+    \begin{itemize}
+        \item \textbf{Continuous Lighting}:
+          \begin{itemize}
+            \item Constant illumination
+            \item Most common method
+            \item Higher energy usage
+            \item Best for high-security areas
+          \end{itemize}
+        \item \textbf{Standby Lighting}:
+          \begin{itemize}
+            \item Motion-activated operation
+            \item Energy efficient design
+            \item Psychological deterrent
+            \item Good for low-traffic areas
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Security Sensors}
+    \textbf{Security sensors} act as the nervous system of physical security, detecting various types of threats.
+    \begin{itemize}
+        \item Key deployment factors:
+          \begin{itemize}
+            \item Environmental conditions
+            \item Coverage requirements
+            \item False alarm rates
+            \item Integration capabilities
+          \end{itemize}
+        \item Performance considerations:
+          \begin{itemize}
+            \item Detection accuracy
+            \item Response time
+            \item Maintenance needs
+            \item Failure modes
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Security Sensors}
+    \begin{table}
+        \begin{tabular}{|p{0.25\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|}
+            \hline
+            \textbf{Sensor Type} & \textbf{Detection Method} & \textbf{Best Use Case} \\
+            \hline
+            Infrared & Heat detection & Indoor motion detection \\
+            \hline
+            Pressure & Weight/force changes & Secure entry points \\
+            \hline
+            Microwave & Movement detection & Large open areas \\
+            \hline
+            Ultrasonic & High-frequency sound & Small enclosed spaces \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    Implementation guidelines:
+    \begin{itemize}
+        \item Combine multiple sensor types for reliability
+        \item Test regularly under various conditions
+        \item Maintain proper calibration schedules
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Infrared Sensor Technology}
+    \begin{block}{How Infrared Sensors Work}
+        These sensors detect heat signatures from people, animals, and objects
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Passive Infrared (PIR)} sensors detect changes in heat patterns:
+            \begin{itemize}
+                \item Monitor temperature differences
+                \item Identify movement through detection zones
+                \item Work well in complete darkness
+                \item Can be fooled by rapid temperature changes
+            \end{itemize}
+        \item Modern PIR sensors include:
+        \item Advanced signal processing to reduce false alarms.
+        \item Pet-immune variations for home security.
+        \item Integration with video systems for verification.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pressure and Contact Sensors}
+    \begin{itemize}
+        \item \textbf{Pressure sensors} detect physical force or weight changes:
+        \item Common applications include:
+            \begin{itemize}
+                \item Floor mats near secure entries
+                \item Fence and wall monitoring
+                \item Underground intrusion detection
+                \item Vehicle detection systems
+            \end{itemize}
+        \item Advanced features now include:
+        \item Weight range discrimination for different threats.
+        \item Pattern recognition for normal versus suspicious activity.
+        \item Integration with access control systems.
+        \item Weatherproof designs for outdoor use.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wave-Based Detection Systems}
+    \begin{itemize}
+        \item Two main types of wave-based sensors:
+            \begin{itemize}
+                \item \textbf{Microwave}:
+                    \begin{itemize}
+                        \item Uses radio waves
+                        \item Covers large areas
+                        \item Penetrates thin walls
+                        \item Good for outdoor use
+                    \end{itemize}
+                \item \textbf{Ultrasonic}:
+                    \begin{itemize}
+                        \item Uses high-frequency sound
+                        \item Best for enclosed spaces
+                        \item Doesn't penetrate walls
+                        \item Very sensitive to movement
+                    \end{itemize}
+            \end{itemize}
+        \item Both types can work through darkness, smoke, or fog.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Deception Technology}
+    \begin{block}{A New Approach to Security}
+        Instead of just defending, deception technology tricks attackers into revealing themselves
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Deception technology} creates traps and decoys to catch attackers:
+        \item Looks like legitimate systems but monitors for unauthorized access.
+        \item Provides early warning of potential attacks.
+        \item Wastes attacker time and resources.
+        \item Helps gather information about attack methods.
+        \item Can be both physical and digital deceptions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Understanding Honeypots}
+    \begin{alertblock}{Security Note}
+        While honeypots are powerful tools, they must be carefully isolated from production systems to prevent them from becoming a security risk.
+    \end{alertblock}
+    \begin{itemize}
+        \item \textbf{Honeypots} are decoy systems designed to attract potential attackers
+        \item Types of honeypots include:
+          \begin{itemize}
+            \item High-interaction: Full system emulation
+            \item Medium-interaction: Service emulation
+            \item Low-interaction: Port monitoring only
+          \end{itemize}
+        \item Common implementation targets:
+          \begin{itemize}
+            \item Web servers and applications
+            \item Database systems
+            \item IoT device simulations
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Honeynets: Networks of Deception}
+    \begin{itemize}
+        \item A \textbf{honeynet} combines multiple honeypots in a network
+        \item Standard components include:
+          \begin{itemize}
+            \item Fake web servers and services
+            \item Simulated databases
+            \item Decoy file shares
+            \item Mock user accounts
+          \end{itemize}
+        \item Key benefits:
+          \begin{itemize}
+            \item Early attack detection
+            \item Threat pattern analysis
+            \item Attacker technique study
+            \item Automated response testing
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Honeyfiles and Document Tracking}
+    \begin{table}
+        \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+            \hline
+            \textbf{Honeyfile Type} & \textbf{Purpose} \\
+            \hline
+            Password Lists & Detect credential theft attempts \\
+            \hline
+            Fake Documents & Track unauthorized access \\
+            \hline
+            Decoy Spreadsheets & Monitor data exfiltration \\
+            \hline
+            Configuration Files & Identify system probing \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{itemize}
+        \item \textbf{Honeyfiles} are decoy documents that alert when accessed
+        \item Deployment strategies include:
+          \begin{itemize}
+            \item Strategic placement in shared drives
+            \item Integration with DLP systems
+            \item Automated alert mechanisms
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Honeytokens: Digital Breadcrumbs}
+    \begin{itemize}
+        \item \textbf{Honeytokens} are pieces of fake data designed to detect theft
+        \item Common implementations:
+          \begin{itemize}
+            \item Fake login credentials
+            \item Invalid credit card numbers
+            \item Decoy API keys
+            \item Bogus email addresses
+          \end{itemize}
+        \item Detection capabilities:
+          \begin{itemize}
+            \item Data breach tracking
+            \item Insider threat identification
+            \item Exfiltration monitoring
+            \item Attack attribution
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\end{document}
