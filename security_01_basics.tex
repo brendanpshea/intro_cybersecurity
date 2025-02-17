@@ -1,0 +1,1104 @@
+\documentclass{beamer}
+
+% Basic packages
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+% Theme setup
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Footer setup
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+
+% Title information
+\title{Introduction to Security Controls}
+\subtitle{Understanding the Foundations of Cybersecurity}
+\author{Your Instructor's Name}
+\institute{High School Cybersecurity Course}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Course Overview: Security Controls}
+    
+    \begin{itemize}
+        \item In this lecture, we will explore the fundamental concepts of \textbf{security controls} in cybersecurity.
+        
+        \item We will examine four major \textbf{categories} of controls: Technical, Managerial, Operational, and Physical.
+        
+        \item You will learn about six different \textbf{types} of controls: Preventive, Deterrent, Detective, Corrective, Compensating, and Directive.
+        
+        \item We will analyze real-world examples of how these controls work together to create effective security systems.
+    \end{itemize}
+    
+    \begin{block}{Learning Objectives}
+        By the end of this lecture, you will understand how to identify, classify, and evaluate different security controls.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What is a Security Control?}
+    
+    \begin{itemize}
+        \item A \textbf{security control} is any measure designed to protect our systems, data, and resources from threats.
+        
+        \item Security controls work like the different security features in your home, such as locks, alarms, and security cameras.
+        
+        \item These measures can be physical objects, technical solutions, or rules and procedures that people follow.
+        
+        \item The goal of security controls is to \textbf{reduce risk} by protecting against threats, detecting problems, and helping us respond to security incidents.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Point}
+        Security controls are the building blocks of a strong security program!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why Do We Need Security Controls?}
+    
+    \begin{itemize}
+        \item Organizations need to protect valuable \textbf{assets}, which include data, systems, and physical resources from unauthorized access or damage.
+        
+        \item Security controls help manage and reduce \textbf{risks}, which are potential threats that could harm our systems or expose sensitive information.
+        
+        \item Many organizations must follow specific \textbf{compliance requirements} that mandate certain security measures to protect user privacy and data.
+        
+        \item Without proper security controls, organizations are vulnerable to various attacks that could result in financial losses, reputation damage, or legal consequences.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Overview of Security Control Categories}
+    
+    \begin{itemize}
+        \item Security controls can be divided into four main \textbf{categories}, each serving different aspects of an organization's security needs.
+        
+        \item \textbf{Technical controls} use technology to protect systems and data, such as firewalls and encryption.
+        
+        \item \textbf{Managerial controls} focus on security decisions and oversight, including policies and risk assessments.
+        
+        \item \textbf{Operational controls} and \textbf{physical controls} involve day-to-day procedures and tangible security measures.
+    \end{itemize}
+    
+    \begin{exampleblock}{Real World Example}
+        A school's security system uses all four categories working together:
+        \begin{itemize}
+            \item Technical: Computer passwords
+            \item Managerial: Security policies
+            \item Operational: Security training
+            \item Physical: Door locks
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Technical Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Technical controls} are security measures that are implemented and executed by computer systems and software.
+        
+        \item These controls form the technological foundation of modern cybersecurity practices.
+        
+        \item Technical controls operate with minimal human intervention once properly configured.
+        
+        \item They provide consistent and automated protection against many common security threats.
+    \end{itemize}
+    
+    \begin{block}{Key Characteristics}
+        Automated, technology-based, and system-enforced protections
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Technical Controls: Common Examples}
+    
+    \begin{itemize}
+        \item \textbf{Authentication systems} verify user identities through passwords, biometrics, or security tokens.
+        
+        \item \textbf{Encryption} protects data by converting it into a format that can only be read with the correct key.
+        
+        \item \textbf{Firewalls} monitor and control incoming and outgoing network traffic based on security rules.
+        
+        \item \textbf{Antivirus software} detects, prevents, and removes malicious software from computer systems.
+    \end{itemize}
+    
+    \begin{alertblock}{Critical Point}
+        Technical controls must be regularly updated to remain effective against new threats!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Technical Controls: Implementation}
+    
+    \begin{itemize}
+        \item Technical controls should be implemented in \textbf{layers} to provide defense in depth against various threats.
+        
+        \item Each technical control must be properly \textbf{configured} to match the organization's security requirements.
+        
+        \item Regular \textbf{maintenance} and updates are essential to ensure controls remain effective over time.
+        
+        \item Organizations should maintain \textbf{documentation} of all technical controls and their configurations.
+    \end{itemize}
+    
+    \begin{exampleblock}{Implementation Example}
+        A laptop's security might include:
+        \begin{itemize}
+            \item Login password
+            \item Disk encryption
+            \item Firewall
+            \item Antivirus
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Technical Controls: Advantages and Limitations}
+    
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \textbf{Advantages}
+        \begin{itemize}
+            \item Consistent operation
+            \item Automated responses
+            \item Scalable protection
+            \item Measurable effectiveness
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Limitations}
+        \begin{itemize}
+            \item Initial setup costs
+            \item Regular updates needed
+            \item Technical expertise required
+            \item Can be circumvented
+        \end{itemize}
+    \end{columns}
+    
+    \begin{block}{Balance}
+        Technical controls must be balanced with other control types for effective security.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Managerial Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Managerial controls} are administrative measures that guide the implementation of security practices.
+        
+        \item These controls focus on managing risks and making decisions about security strategies.
+        
+        \item Managerial controls establish the framework for all other security controls within an organization.
+        
+        \item They require active involvement from leadership to ensure effective implementation.
+    \end{itemize}
+    
+    \begin{block}{Essential Role}
+        Managerial controls provide direction and oversight for the entire security program.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Managerial Controls: Key Components}
+    
+    \begin{itemize}
+        \item \textbf{Security policies} establish the rules and guidelines that govern how an organization protects its assets.
+        
+        \item \textbf{Risk assessments} help identify potential threats and vulnerabilities to organizational resources.
+        
+        \item \textbf{Compliance programs} ensure the organization meets all relevant legal and regulatory requirements.
+        
+        \item \textbf{Resource allocation} determines how to distribute security resources effectively.
+    \end{itemize}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south east] at (current page.south east) {
+            \begin{tabular}{|l|}
+                \hline
+                Policy Development \\
+                Risk Management \\
+                Resource Planning \\
+                \hline
+            \end{tabular}
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Managerial Controls: Documentation}
+    
+    \begin{itemize}
+        \item Every organization should maintain comprehensive \textbf{security documentation} that outlines all policies and procedures.
+        
+        \item Documentation must be regularly \textbf{reviewed and updated} to reflect changes in the threat landscape.
+        
+        \item Security policies should clearly define \textbf{roles and responsibilities} for all members of the organization.
+        
+        \item Written procedures must provide clear guidance for implementing security measures.
+    \end{itemize}
+    
+    \begin{alertblock}{Documentation Requirements}
+        All security policies must be:
+        \begin{itemize}
+            \item Clear and understandable
+            \item Regularly updated
+            \item Easily accessible
+            \item Formally approved
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Managerial Controls: Decision Making}
+    
+    \begin{itemize}
+        \item Effective security management requires balancing \textbf{security needs} with business operations and resources.
+        
+        \item Managers must evaluate the \textbf{cost-effectiveness} of different security measures before implementation.
+        
+        \item Security decisions should be based on thorough \textbf{risk analysis} rather than reactive responses to incidents.
+        
+        \item Organizations need clear procedures for \textbf{escalating} security issues to appropriate decision-makers.
+    \end{itemize}
+    
+    \begin{exampleblock}{Decision Framework}
+        When evaluating new security measures, consider:
+        \begin{itemize}
+            \item Risk level
+            \item Implementation cost
+            \item Operational impact
+            \item Resource requirements
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Operational Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Operational controls} are the security procedures and tasks performed by people rather than automated systems.
+        
+        \item These controls focus on day-to-day activities that maintain and protect organizational security.
+        
+        \item Operational controls require consistent human execution and oversight to be effective.
+        
+        \item They bridge the gap between managerial policies and technical implementations.
+    \end{itemize}
+    
+    \begin{block}{Key Characteristic}
+        Operational controls depend on people following established procedures correctly and consistently.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Operational Controls: Security Awareness}
+    
+    \begin{itemize}
+        \item \textbf{Security awareness training} educates employees about their role in maintaining organizational security.
+        
+        \item Regular training sessions ensure staff understand current threats and appropriate security responses.
+        
+        \item Employees must learn to recognize and report potential \textbf{security incidents} promptly.
+        
+        \item Training programs should include practical exercises and real-world examples.
+    \end{itemize}
+    
+    \begin{exampleblock}{Training Topics}
+        Essential security awareness areas include:
+        \begin{itemize}
+            \item Password management
+            \item Email security
+            \item Social engineering
+            \item Incident reporting
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Operational Controls: Daily Procedures}
+    
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \textbf{Regular Tasks}
+        \begin{itemize}
+            \item System monitoring
+            \item Backup verification
+            \item Log reviews
+            \item Security updates
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Periodic Tasks}
+        \begin{itemize}
+            \item Security audits
+            \item Access reviews
+            \item Policy updates
+            \item Disaster drills
+        \end{itemize}
+    \end{columns}
+    
+    \begin{alertblock}{Critical Point}
+        Consistent execution of operational procedures is essential for maintaining security.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Operational Controls: Incident Response}
+    
+    \begin{itemize}
+        \item Organizations must maintain detailed \textbf{incident response procedures} for handling security breaches.
+        
+        \item Staff should be trained to recognize and properly report potential security incidents.
+        
+        \item \textbf{Response teams} need clear procedures for investigating and containing security threats.
+        
+        \item Regular practice drills help ensure effective response during actual security incidents.
+    \end{itemize}
+    
+    \begin{block}{Incident Response Steps}
+        \begin{enumerate}
+            \item Identification
+            \item Containment
+            \item Eradication
+            \item Recovery
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Physical controls} are tangible security measures that protect facilities, equipment, and resources.
+        
+        \item These controls create barriers between protected assets and potential threats.
+        
+        \item Physical controls often work in conjunction with technical and operational controls.
+        
+        \item They form the first line of defense against unauthorized physical access.
+    \end{itemize}
+    
+    \begin{alertblock}{Remember}
+        The strongest technical controls can be defeated by weak physical security!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical Controls: Access Control}
+    
+    \begin{itemize}
+        \item \textbf{Access control systems} manage and monitor entry to protected areas within a facility.
+        
+        \item Organizations must establish clear procedures for issuing and revoking physical access credentials.
+        
+        \item Different areas may require different levels of \textbf{access restriction} based on security needs.
+        
+        \item Physical access controls should maintain detailed logs of all entry and exit activities.
+    \end{itemize}
+    
+    \begin{exampleblock}{Common Access Controls}
+        \begin{itemize}
+            \item ID badges
+            \item Key cards
+            \item Biometric scanners
+            \item Security guards
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical Controls: Environmental Protection}
+    
+    \begin{itemize}
+        \item Physical controls must protect against both human threats and \textbf{environmental hazards}.
+        
+        \item Critical systems require protection from fire, water damage, and power fluctuations.
+        
+        \item Environmental monitoring systems should track temperature, humidity, and other relevant conditions.
+        
+        \item Backup power systems must maintain essential security controls during power outages.
+    \end{itemize}
+    
+    \begin{block}{Environmental Systems}
+        \begin{tabular}{ll}
+            Fire Suppression & Temperature Control \\
+            Water Detection & Humidity Monitoring \\
+            Power Backup & Emergency Lighting \\
+        \end{tabular}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical Controls: Security Zones}
+    
+    \begin{itemize}
+        \item Organizations should implement \textbf{layered security zones} with increasing protection levels.
+        
+        \item Each security zone must have clearly defined boundaries and access requirements.
+        
+        \item Sensitive areas require multiple physical controls working together for adequate protection.
+        
+        \item Regular security assessments should verify the effectiveness of zone protections.
+    \end{itemize}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south] at (current page.south) {
+            \begin{tikzpicture}
+                \draw[fill=red!10] (0,0) circle (1cm);
+                \draw[fill=yellow!10] (0,0) circle (.75cm);
+                \draw[fill=green!10] (0,0) circle (.5cm);
+                \node at (0,0) {Core};
+                \node at (0,.5) {Restricted};
+                \node at (0,1) {Controlled};
+            \end{tikzpicture}
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Security Controls}
+    
+    \begin{itemize}
+        \item Security controls can be classified into six \textbf{functional types} based on their purpose.
+        
+        \item Each type of control serves a specific role in the overall security strategy.
+        
+        \item Organizations typically need multiple types of controls working together.
+        
+        \item The effectiveness of controls depends on choosing the right type for each security need.
+    \end{itemize}
+    
+    \begin{block}{Control Types}
+        \begin{enumerate}
+            \item Preventive
+            \item Deterrent
+            \item Detective
+            \item Corrective
+            \item Compensating
+            \item Directive
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preventive Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Preventive controls} are designed to stop security incidents before they occur.
+        
+        \item These controls create barriers that block unauthorized actions and access attempts.
+        
+        \item Preventive controls are the first line of defense in a security strategy.
+        
+        \item They work by eliminating vulnerabilities or blocking threat vectors.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        It is generally more effective to prevent security incidents than to detect and respond to them after they occur.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preventive Controls: Implementation}
+    
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \textbf{Technical Prevention}
+        \begin{itemize}
+            \item Access controls
+            \item Input validation
+            \item Encryption
+            \item Firewalls
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Physical Prevention}
+        \begin{itemize}
+            \item Door locks
+            \item Security gates
+            \item Cable locks
+            \item Security cameras
+        \end{itemize}
+    \end{columns}
+    
+    \begin{exampleblock}{Administrative Prevention}
+        \begin{itemize}
+            \item Security policies
+            \item Access procedures
+            \item Security training
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preventive Controls: Effectiveness}
+    
+    \begin{itemize}
+        \item The effectiveness of preventive controls depends on proper \textbf{configuration} and maintenance.
+        
+        \item Organizations must regularly test and validate their preventive controls.
+        
+        \item Even strong preventive controls can be circumvented if not properly supported by other control types.
+        
+        \item Cost-benefit analysis should guide investments in preventive controls.
+    \end{itemize}
+    
+    \begin{block}{Measuring Effectiveness}
+        \begin{itemize}
+            \item Number of blocked attempts
+            \item Reduction in incidents
+            \item System uptime
+            \item Compliance rates
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deterrent Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Deterrent controls} are designed to discourage potential attackers from attempting security violations.
+        
+        \item These controls work by making the target appear more difficult or risky to attack.
+        
+        \item Deterrent controls often have both psychological and practical effects on potential threats.
+        
+        \item They complement preventive controls by reducing the likelihood of attack attempts.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        Effective deterrents make potential attackers decide that the risk isn't worth the potential reward.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deterrent Controls: Implementation}
+    
+    \begin{itemize}
+        \item Deterrent controls must be visible enough to influence potential attacker behavior.
+        
+        \item Organizations should implement deterrents across physical, technical, and administrative domains.
+        
+        \item The strength of deterrent controls often depends on the perceived consequences of violation.
+        
+        \item Regular assessment ensures deterrents remain credible and effective.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Technical} & \textbf{Physical} & \textbf{Administrative} \\
+            \hline
+            Warning banners & Warning signs & Security policies \\
+            Login monitors & Visible cameras & Legal notices \\
+            Access logs & Security lighting & Ethics training \\
+            Failed attempt limits & Guard patrols & Disciplinary procedures \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deterrent Controls: Psychological Aspects}
+    
+    \begin{itemize}
+        \item \textbf{Psychological deterrence} works by affecting the risk-reward calculations of potential attackers.
+        
+        \item Clear communication of security measures increases their deterrent value.
+        
+        \item The visibility of security controls often matters more than their actual strength.
+        
+        \item Organizations must maintain the credibility of their deterrent measures.
+    \end{itemize}
+    
+    \begin{exampleblock}{Effective Deterrence Examples}
+        \begin{itemize}
+            \item Prominent security cameras
+            \item Published security policies
+            \item Visible security personnel
+            \item Clear consequence statements
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deterrent Controls: Limitations}
+    
+    \begin{itemize}
+        \item Deterrent controls do not physically prevent security violations from occurring.
+        
+        \item The effectiveness of deterrents varies based on the attacker's motivation and risk tolerance.
+        
+        \item Over-reliance on deterrents can create a false sense of security.
+        
+        \item Organizations need to balance deterrence with actual protective measures.
+    \end{itemize}
+    
+    \begin{block}{Common Limitations}
+        \begin{itemize}
+            \item May not affect determined attackers
+            \item Requires perception of credible consequences
+            \item Effectiveness hard to measure
+            \item Cannot stand alone
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Detective Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Detective controls} are designed to identify and record security violations or attempts.
+        
+        \item These controls work by monitoring systems, networks, and physical spaces for suspicious activity.
+        
+        \item Detective controls are essential for identifying when preventive controls have failed.
+        
+        \item They provide valuable information for incident response and security improvement.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        You can't respond to security incidents if you don't know they're happening!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Detective Controls: Types and Examples}
+    
+    \begin{itemize}
+        \item Detective controls must operate continuously to maintain security awareness.
+        
+        \item Different types of detective controls monitor different aspects of security.
+        
+        \item Most detective controls generate logs or alerts for security analysis.
+        
+        \item Real-time detection allows for faster incident response.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Control Type} & \textbf{Examples} \\
+            \hline
+            System Monitoring & Log files, Audit trails \\
+            Network Monitoring & IDS, Traffic analysis \\
+            Physical Monitoring & Motion sensors, Cameras \\
+            Access Monitoring & Login tracking, Badge readers \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Detective Controls: Monitoring Process}
+    
+    \begin{itemize}
+        \item \textbf{Security monitoring} requires a systematic approach to data collection and analysis.
+        
+        \item Organizations must establish baselines to identify abnormal activity effectively.
+        
+        \item Detective controls should generate appropriate alerts for different security events.
+        
+        \item Regular review of detection data helps identify security trends and patterns.
+    \end{itemize}
+    
+    \begin{block}{Monitoring Steps}
+        \begin{enumerate}
+            \item Data Collection
+            \item Analysis
+            \item Alert Generation
+            \item Investigation
+            \item Response
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Detective Controls: Effective Implementation}
+    
+    \begin{itemize}
+        \item Organizations must carefully configure detective controls to minimize false alarms.
+        
+        \item \textbf{Alert thresholds} should balance security awareness with operational efficiency.
+        
+        \item Detective controls require regular maintenance and tuning to remain effective.
+        
+        \item Staff must be trained to properly interpret and respond to detection alerts.
+    \end{itemize}
+    
+    \begin{exampleblock}{Configuration Considerations}
+        \begin{itemize}
+            \item Logging level settings
+            \item Alert sensitivity
+            \item Storage requirements
+            \item Response procedures
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Corrective Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Corrective controls} are measures designed to fix problems after a security incident occurs.
+        
+        \item These controls help restore systems and data to their normal operational state.
+        
+        \item Corrective controls often work in conjunction with detective controls.
+        
+        \item They are essential for maintaining business continuity after security breaches.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        Even with strong prevention, organizations must be prepared to correct security incidents quickly.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Corrective Controls: Common Types}
+    
+    \begin{itemize}
+        \item Organizations need different types of corrective controls for various security scenarios.
+        
+        \item Each type of corrective control addresses specific aspects of incident recovery.
+        
+        \item The effectiveness of correction often depends on how quickly controls can be activated.
+        
+        \item Regular testing helps ensure corrective controls will work when needed.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Control Type} & \textbf{Purpose} \\
+            \hline
+            Backup Systems & Restore lost or corrupted data \\
+            Antivirus Tools & Remove malware infections \\
+            Patch Management & Fix security vulnerabilities \\
+            System Recovery & Restore system functionality \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Corrective Controls: Implementation Steps}
+    
+    \begin{itemize}
+        \item Organizations must develop clear procedures for implementing corrective controls.
+        
+        \item \textbf{Recovery priorities} should be established before incidents occur.
+        
+        \item Staff need proper training to execute corrective measures effectively.
+        
+        \item Regular testing and updates ensure corrective controls remain viable.
+    \end{itemize}
+    
+    \begin{block}{Recovery Process}
+        \begin{enumerate}
+            \item Incident Assessment
+            \item Control Selection
+            \item Implementation
+            \item Verification
+            \item Documentation
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Corrective Controls: Success Factors}
+    
+    \begin{itemize}
+        \item The success of corrective controls depends on proper preparation and quick response.
+        
+        \item Organizations must maintain updated documentation of all corrective procedures.
+        
+        \item Regular testing helps identify and address potential recovery issues.
+        
+        \item Staff must understand their roles in the correction process.
+    \end{itemize}
+    
+    \begin{exampleblock}{Critical Success Factors}
+        \begin{itemize}
+            \item Current recovery plans
+            \item Tested procedures
+            \item Available resources
+            \item Trained personnel
+            \item Clear responsibilities
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compensating Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Compensating controls} are alternative security measures used when primary controls are not feasible.
+        
+        \item These controls provide similar levels of protection through different means.
+        
+        \item Organizations implement compensating controls due to technical, operational, or cost limitations.
+        
+        \item The effectiveness must be equivalent to or greater than the original control.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        Compensating controls must provide protection that is as strong as the original control they replace.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compensating Controls: Use Cases}
+    
+    \begin{itemize}
+        \item Organizations need compensating controls when primary controls cannot be implemented.
+        
+        \item Each use case requires careful evaluation of security equivalence.
+        
+        \item The choice of compensating controls must be justified and documented.
+        
+        \item Regular assessment ensures continued effectiveness of alternative measures.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Primary Control} & \textbf{Compensating Control} \\
+            \hline
+            Biometric access & Multi-factor authentication \\
+            Full disk encryption & File-level encryption \\
+            Network segmentation & Enhanced monitoring \\
+            Physical security & Video surveillance \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compensating Controls: Implementation}
+    
+    \begin{itemize}
+        \item Implementation of compensating controls requires careful planning and documentation.
+        
+        \item Organizations must demonstrate that alternative controls meet security requirements.
+        
+        \item \textbf{Risk assessment} is essential when evaluating compensating controls.
+        
+        \item Regular reviews ensure compensating controls remain appropriate and effective.
+    \end{itemize}
+    
+    \begin{block}{Implementation Steps}
+        \begin{enumerate}
+            \item Identify limitations
+            \item Assess alternatives
+            \item Document justification
+            \item Implement control
+            \item Verify effectiveness
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compensating Controls: Evaluation Criteria}
+    
+    \begin{itemize}
+        \item Organizations must evaluate compensating controls against specific criteria.
+        
+        \item The evaluation process should consider both security effectiveness and operational impact.
+        
+        \item Documentation must demonstrate how compensating controls meet security objectives.
+        
+        \item Regular assessment helps identify when compensating controls need adjustment.
+    \end{itemize}
+    
+    \begin{exampleblock}{Evaluation Factors}
+        \begin{itemize}
+            \item Security strength
+            \item Implementation cost
+            \item Operational impact
+            \item Maintenance requirements
+            \item Compliance alignment
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+\begin{frame}
+    \frametitle{Directive Controls: Introduction}
+    
+    \begin{itemize}
+        \item \textbf{Directive controls} are measures that guide and direct people's behavior regarding security.
+        
+        \item These controls establish the requirements for proper security practices and procedures.
+        
+        \item Directive controls form the foundation for security awareness and compliance.
+        
+        \item They help create a strong security culture within the organization.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Principle}
+        Directive controls establish what people should do, rather than technically enforcing or preventing actions.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Directive Controls: Components}
+    
+    \begin{itemize}
+        \item Organizations need various types of directive controls to guide different aspects of security.
+        
+        \item Each component addresses specific security behaviors and requirements.
+        
+        \item Directive controls must be clear, accessible, and regularly updated.
+        
+        \item Staff need proper training to understand and follow directive controls.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Component} & \textbf{Purpose} \\
+            \hline
+            Security Policies & Define requirements \\
+            Usage Guidelines & Direct daily activities \\
+            Security Procedures & Guide specific tasks \\
+            Standards & Set minimum expectations \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Directive Controls: Implementation}
+    
+    \begin{itemize}
+        \item Effective implementation of directive controls requires clear communication and training.
+        
+        \item Organizations must ensure all staff understand their security responsibilities.
+        
+        \item \textbf{Regular updates} keep directive controls aligned with current security needs.
+        
+        \item Compliance monitoring helps ensure directive controls are being followed.
+    \end{itemize}
+    
+    \begin{block}{Key Elements}
+        \begin{enumerate}
+            \item Clear documentation
+            \item Staff training
+            \item Regular updates
+            \item Compliance tracking
+            \item Performance feedback
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Review: Control Types Working Together}
+    
+    \begin{itemize}
+        \item Different types of controls must work together to create effective security.
+        
+        \item Each control type serves a specific purpose in the overall security strategy.
+        
+        \item Organizations need a balanced mix of all control types.
+        
+        \item Regular assessment helps optimize the combination of controls.
+    \end{itemize}
+    
+    \begin{exampleblock}{Control Type Integration}
+        \begin{itemize}
+            \item Preventive blocks threats
+            \item Deterrent discourages attempts
+            \item Detective identifies incidents
+            \item Corrective fixes problems
+            \item Compensating provides alternatives
+            \item Directive guides behavior
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Summary: Security Control Categories}
+    
+    \begin{itemize}
+        \item \textbf{Technical Controls} provide automated protection through technology solutions.
+        
+        \item \textbf{Managerial Controls} guide security through policies and risk management.
+        
+        \item \textbf{Operational Controls} involve day-to-day procedures performed by people.
+        
+        \item \textbf{Physical Controls} protect tangible assets and facilities.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Takeaway}
+        Effective security requires all categories working together in a coordinated approach.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Summary: Security Control Types}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Control Type} & \textbf{Primary Purpose} \\
+            \hline
+            Preventive & Stop incidents before they occur \\
+            Deterrent & Discourage potential attacks \\
+            Detective & Identify security violations \\
+            Corrective & Fix problems after detection \\
+            Compensating & Provide alternative protection \\
+            Directive & Guide security behavior \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Review Questions}
+    
+    \begin{block}{Class Discussion}
+        Consider these questions about security controls:
+        
+        \begin{enumerate}
+            \item How do technical and physical controls work together to protect assets?
+            
+            \item Why might an organization need to implement compensating controls?
+            
+            \item What role do directive controls play in maintaining security?
+            
+            \item How can detective controls support corrective controls?
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Practical Exercise}
+    
+    \begin{exampleblock}{School Security Analysis}
+        Analyze our school's security controls:
+        \begin{itemize}
+            \item Identify examples of each control category
+            \item Determine which control types are being used
+            \item Suggest potential improvements
+            \item Consider how controls work together
+        \end{itemize}
+    \end{exampleblock}
+    
+    \begin{block}{Group Activity}
+        Form small groups and create a security control plan for protecting:
+        \begin{itemize}
+            \item A computer lab
+            \item Student data
+            \item Physical access to the building
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\end{document}
