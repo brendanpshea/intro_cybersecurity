@@ -1,0 +1,832 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+% Custom colors and styles
+\definecolor{alertblock}{RGB}{255, 232, 229}
+\definecolor{exampleblock}{RGB}{229, 255, 229}
+\definecolor{definitionblock}{RGB}{229, 229, 255}
+
+% Custom block styles
+\title{Cryptographic Solutions in Cybersecurity}
+\author{Your Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Foundations of Information Security: Why We Need Cryptography}
+    
+    \begin{itemize}
+        \item \textbf{Information security} forms the cornerstone of modern digital infrastructure, protecting data from unauthorized access, modification, and disclosure.
+        
+        \item The exponential growth in cyber threats has made robust \textbf{cryptographic solutions} essential for safeguarding sensitive information across networks and systems.
+        
+        \item Organizations face an average of 1,168 cyberattacks per week, making strong encryption the primary defense against data breaches and unauthorized access.
+        
+        \item Modern cryptography provides the foundation for secure communications, digital transactions, and data protection in both personal and enterprise environments.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Core Principles: Confidentiality, Integrity, and Authenticity}
+    
+    \begin{block}{The CIA Triad in Information Security}
+        \begin{itemize}
+            \item \textbf{Confidentiality:} Ensuring that information is accessible only to those authorized to have access.
+            
+            \item \textbf{Integrity:} Maintaining and assuring the accuracy and completeness of data.
+            
+            \item \textbf{Authenticity:} Verifying that users are who they claim to be and that data originates from its claimed source.
+        \end{itemize}
+    \end{block}
+    
+    \begin{itemize}
+        \item Each principle requires specific cryptographic mechanisms to ensure comprehensive security.
+        
+        \item These core principles work together to create a robust security framework.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Symmetric vs Asymmetric Encryption: A Basic Overview}
+    
+    \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+    \hline
+    \textbf{Symmetric Encryption} & \textbf{Asymmetric Encryption} \\
+    \hline
+    Single key for encryption and decryption & Separate public and private keys \\
+    \hline
+    Faster processing & More complex calculations \\
+    \hline
+    Better for large data volumes & Better for key exchange and digital signatures \\
+    \hline 
+    Examples: AES, DES & Examples: RSA, ECC \\
+    \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Understanding these two fundamental approaches is crucial for implementing effective cryptographic solutions.
+        
+        \item Each type serves different security needs and use cases in modern systems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deep Dive: Symmetric Encryption Algorithms}
+    
+    \begin{block}{What is Symmetric Encryption?}
+        A single key is used for both encryption and decryption - like a physical key that both locks and unlocks a door.
+    \end{block}
+    
+    \begin{itemize}
+        \item The most widely used symmetric algorithm is \textbf{AES (Advanced Encryption Standard)}, which acts like a sophisticated scrambling machine for your data.
+        
+        \item \textbf{Speed and efficiency} make symmetric encryption perfect for encrypting large amounts of data, like files or disk drives.
+        
+        \item The main challenge is securely sharing the key - both sender and receiver need the exact same key to communicate.
+        
+        \item Common uses include securing stored files, encrypting hard drives, and protecting data within applications.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deep Dive: Asymmetric Encryption and RSA}
+    
+    \begin{block}{What is Asymmetric Encryption?}
+        Uses two different but mathematically related keys: a public key for encryption and a private key for decryption - like a mailbox where anyone can put mail in, but only you have the key to retrieve it.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{RSA} is the most common asymmetric algorithm, named after its creators (Rivest, Shamir, and Adleman).
+        
+        \item While slower than symmetric encryption, asymmetric encryption solves the key sharing problem - you can freely share your public key.
+        
+        \item Perfect for securing email, digital signatures, and establishing secure connections to websites.
+        
+        \item The private key must be kept absolutely secret, while the public key can be shared with anyone.
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Key Exchange: How Do We Share Keys Securely?}
+    
+    \begin{itemize}
+        \item The \textbf{key exchange problem}: How do we securely share symmetric keys over an insecure network?
+        
+        \item Modern systems use a \textbf{hybrid approach}:
+            \begin{itemize}
+                \item Use asymmetric encryption to securely share a symmetric key
+                \item Then use that symmetric key for faster data encryption
+            \end{itemize}
+        
+        \item This is exactly what happens when you connect to secure websites (HTTPS).
+        
+        \item Think of it like using a secure courier (asymmetric) to deliver a house key (symmetric) that will be used for future visits.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Understanding Key Length: Why Size Matters}
+    
+    \begin{alertblock}{Key Length Basics}
+        The longer the key, the harder it is to break the encryption through brute force attempts.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item For \textbf{AES symmetric encryption}, we typically use 128-bit or 256-bit keys. A 128-bit key has more possible combinations than there are atoms in the universe!
+        
+        \item For \textbf{RSA asymmetric encryption}, we need much longer keys (2048 bits or more) to achieve the same level of security.
+        
+        \item Longer keys provide more security but require more computing power to use.
+        
+        \item Always use standard key lengths - trying to create custom lengths often leads to vulnerabilities.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{The Role of Public Key Infrastructure (PKI)}
+    
+    \begin{block}{What is PKI?}
+        A framework that manages digital certificates and public-key encryption, like a digital version of the passport system.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{PKI} provides the foundation for secure internet communications, ensuring that we can trust websites and digital identities.
+        
+        \item When you see the padlock in your browser, you're seeing PKI in action - it verifies that you're connected to the real website.
+        
+        \item PKI helps solve three crucial problems: proving identity, securing communications, and ensuring messages haven't been tampered with.
+        
+        \item Think of it as a digital notary system that validates the authenticity of public keys and their owners.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Public and Private Keys: The Two Pillars of PKI}
+    
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \textbf{Public Key}
+            \begin{itemize}
+                \item Freely shared
+                \item Used to encrypt
+                \item Like your email address
+                \item Published in directories
+            \end{itemize}
+        
+        \column{.48\textwidth}
+            \textbf{Private Key}
+            \begin{itemize}
+                \item Kept secret
+                \item Used to decrypt
+                \item Like your password
+                \item Never shared
+            \end{itemize}
+    \end{columns}
+    
+    \begin{itemize}
+        \item These keys work together like a special lock and key set - what one locks, only the other can unlock.
+        \item Your private key is the most sensitive part of your digital identity - protect it like you would your house key!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Escrow: Planning for Emergencies}
+    
+    \begin{alertblock}{Why Key Escrow Matters}
+        What happens if someone with crucial encrypted data leaves the company or is unavailable? Key escrow provides a safety net.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Key escrow} is like giving a spare house key to a trusted friend - it provides emergency access to encrypted data when needed.
+        
+        \item Organizations use key escrow to ensure they can recover encrypted business data even if an employee is unavailable or leaves.
+        
+        \item The escrow system must be highly secure and require multiple approvals for key recovery - like a bank vault with multiple keys.
+        
+        \item While convenient for businesses, key escrow in personal communications is controversial due to privacy concerns.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Digital Signatures: The Electronic Notary}
+    
+    \begin{block}{How Digital Signatures Work}
+        A digital signature uses your private key to create a unique mark that proves you created or approved a document - like a handwritten signature but much more secure.
+    \end{block}
+    
+    \begin{itemize}
+        \item Digital signatures provide three key benefits:
+            \begin{itemize}
+                \item \textbf{Authentication}: Proves who signed
+                \item \textbf{Non-repudiation}: Can't deny signing
+                \item \textbf{Integrity}: Shows if document changed
+            \end{itemize}
+        
+        \item When you digitally sign a document, you're creating a unique mathematical seal that only your private key could have created. It also uses a hash function to ensure the document hasn't changed.
+        
+        \item Anyone with your public key can verify your signature, but nobody can forge it without your private key.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hashing: Creating Digital Fingerprints}
+    
+    \begin{block}{What is a Hash?}
+        A hash function creates a fixed-size "fingerprint" of any data - no matter how large the input, the hash is always the same length.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Important properties} of good hash functions:
+            \begin{itemize}
+                \item Same input always creates same hash
+                \item Changing even one bit creates a completely different hash
+                \item Can't reverse the process to get original data
+            \end{itemize}
+        
+        \item Common uses include \textbf{password storage} and \textbf{file integrity checking}.
+        
+        \item Think of it like a paper shredder that always produces the same pattern for identical documents.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Salting: Making Password Hashes Unique}
+    
+    \begin{alertblock}{Why We Need Salting}
+        Without salting, identical passwords create identical hashes, making them vulnerable to rainbow table attacks.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item A \textbf{salt} is a random value added to each password before hashing, making each hash unique even for identical passwords.
+        
+        \item Think of it like adding a unique spice to each dish - even if you start with the same ingredients, each result tastes different.
+        
+        \item Salts are stored alongside the hash and don't need to be secret - their power comes from being unique for each password.
+        
+        \item Modern systems always use salting for password storage - it's a crucial security practice.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Stretching: Strengthening Password Security}
+    
+    \begin{block}{What is Key Stretching?}
+        A technique that makes passwords harder to crack by intentionally making the hashing process slower and more complex.
+    \end{block}
+    
+    \begin{itemize}
+        \item Key stretching is like doing multiple rounds of encryption - it makes weak passwords stronger by increasing the computational work needed.
+        
+        \item Common algorithms like \textbf{PBKDF2} or \textbf{bcrypt} automatically perform thousands of hash iterations.
+        
+        \item The extra time (milliseconds) is barely noticeable to users but makes brute-force attacks thousands of times harder.
+        
+        \item This helps protect against attackers using powerful computers to guess passwords.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Full-Disk Encryption: Protecting All Your Data}
+    
+    \begin{columns}[t]
+        \column{.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Full-disk encryption (FDE)} protects all data on your drive, including:
+                    \begin{itemize}
+                        \item Operating system files
+                        \item Program files
+                        \item Personal documents
+                        \item Temporary files
+                    \end{itemize}
+                
+                \item Works automatically in the background once set up.
+                
+                \item Essential for protecting lost or stolen devices.
+            \end{itemize}
+        
+        \column{.4\textwidth}
+            \begin{alertblock}{Examples}
+                \begin{itemize}
+                    \item BitLocker (Windows)
+                    \item FileVault (Mac)
+                    \item LUKS (Linux)
+                \end{itemize}
+            \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Partition and Volume Encryption: Targeted Protection}
+    
+    \begin{block}{Key Terms}
+        \textbf{Partition Encryption:} Encryption of specific sections of a storage device.
+        \textbf{Volume Encryption:} Encryption of logical storage units that may span multiple partitions.
+    \end{block}
+    
+    \begin{itemize}
+        \item Partition encryption allows organizations to maintain different security levels on the same device, like separating classified and unclassified data.
+        
+        \item Encrypted volumes can span multiple physical drives, useful for large secure storage systems.
+        
+        \item Both methods require careful key management - losing the encryption key means permanently losing access to the data.
+        
+        \item These methods provide more flexibility than full-disk encryption but require more active management by users and administrators.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{File-Level Encryption: Protecting Individual Files}
+    
+    \begin{itemize}
+        \item \textbf{File-level encryption} protects individual files with their own encryption keys, regardless of where they are stored or moved.
+        
+        \item Each encrypted file can have unique access controls, allowing precise control over who can decrypt and access the data.
+        
+        \item Common applications include protecting sensitive email attachments, financial documents, and personal records.
+        
+        \item The encryption follows the file everywhere - when copied, backed up, or transferred to different storage devices.
+        
+        \item Users must actively choose which files to encrypt, increasing the risk that sensitive files might be left unprotected.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Database Encryption: Protecting Structured Data}
+    
+    \begin{itemize}
+        \item \textbf{Transparent Data Encryption (TDE)} automatically encrypts and decrypts an entire database without changing the applications that use it.
+        
+        \item \textbf{Column-level encryption} protects specific sensitive fields like credit card numbers or social security numbers while leaving other data accessible.
+        
+        \item Database encryption must balance security with the need to search and process data efficiently.
+        
+        \item Encryption keys must be carefully protected - if lost, the entire database becomes inaccessible.
+    \end{itemize}
+    
+    \begin{alertblock}{Security Note}
+        Most database breaches occur when applications access the database, not from the stored encrypted data being compromised.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Transport Layer Security (TLS)}
+    
+    \begin{itemize}
+        \item \textbf{TLS} creates an encrypted tunnel for data traveling across networks, protecting it from eavesdropping and tampering.
+        
+        \item When you see "https://" in your browser, you're using TLS to create a secure connection with the website.
+        
+        \item TLS uses a combination of technologies:
+            \begin{itemize}
+                \item Certificates to verify website identity
+                \item Session keys for encrypted communication
+                \item Message authentication codes for integrity
+            \end{itemize}
+        
+        \item Most modern websites require TLS to protect user privacy and prevent data theft during transmission.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hardware Security: Trusted Platform Module (TPM)}
+    
+    \begin{block}{What is a TPM?}
+        A \textbf{Trusted Platform Module} is a specialized chip on your computer's motherboard that provides hardware-based security functions.
+    \end{block}
+    
+    \begin{itemize}
+        \item TPMs securely store sensitive information like encryption keys, passwords, and digital certificates away from software-based attacks.
+        
+        \item The chip provides a unique device identifier that helps ensure the computer hasn't been tampered with.
+        
+        \item Modern Windows features like BitLocker rely on TPM to store encryption keys securely.
+        
+        \item TPMs can detect and report unauthorized changes to your system's hardware or boot sequence.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hardware Security Modules (HSM)}
+    
+    \begin{itemize}
+        \item A \textbf{Hardware Security Module} is a physical computing device that safeguards and manages digital keys for strong authentication and provides cryptographic operations.
+        
+        \item HSMs perform critical functions:
+            \begin{itemize}
+                \item Key generation and storage
+                \item Digital signing
+                \item Encryption/decryption
+                \item Random number generation
+            \end{itemize}
+        
+        \item Banks use HSMs to protect transactions and PINs for credit cards.
+        
+        \item Unlike TPMs, HSMs are separate devices that can be upgraded or replaced as needed.
+        
+        \item They provide physical security through tamper-resistant and tamper-evident features.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Management Systems}
+    
+    \begin{itemize}
+        \item A \textbf{Key Management System (KMS)} is a centralized platform for generating, distributing, storing, rotating, and revoking cryptographic keys and certificates.
+        
+        \item Large organizations might manage thousands of keys:
+            \begin{itemize}
+                \item Encryption keys for different systems
+                \item Digital certificates for websites
+                \item Authentication keys for users
+                \item Backup keys for recovery
+            \end{itemize}
+        
+        \item Proper key management prevents common problems like expired certificates or compromised keys.
+        
+        \item Most cloud providers offer KMS services to help manage keys securely.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Secure Enclaves: Protected Execution}
+    
+    \begin{alertblock}{Security Note}
+        Even if a computer is compromised, a secure enclave keeps its operations and data protected.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item A \textbf{Secure Enclave} is a protected region of a processor that runs code and stores data in complete isolation from the rest of the system.
+        
+        \item Applications can use secure enclaves to process sensitive data like biometric information or encryption keys.
+        
+        \item Examples include Intel's SGX technology and Apple's Secure Enclave in iPhones.
+        
+        \item Secure enclaves provide protection even if the operating system becomes compromised.
+        
+        \item They're particularly important for cloud computing where you don't control the physical hardware.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Obfuscation: Hiding Sensitive Information}
+    
+    \begin{itemize}
+        \item \textbf{Data obfuscation} refers to deliberately making data difficult to understand while maintaining its business utility.
+        
+        \item Unlike encryption, obfuscated data can often still be processed or analyzed without being converted back to its original form.
+        
+        \item Common uses include protecting test environments, training systems, and data shared with third parties.
+        
+        \item Obfuscation complements encryption - it's an additional layer of defense, not a replacement for strong encryption.
+        
+        \item The goal is to protect sensitive data while keeping systems functional.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Steganography: Hidden Messages}
+    
+    \begin{block}{What is Steganography?}
+        \textbf{Steganography} is the practice of concealing information within seemingly ordinary files or messages, like hiding text inside an image.
+    \end{block}
+    
+    \begin{itemize}
+        \item Unlike encryption, which makes data unreadable, steganography hides the very existence of the data.
+        
+        \item Common techniques include:
+            \begin{itemize}
+                \item Hiding text in image pixels
+                \item Embedding data in unused file headers
+                \item Concealing messages in network protocols
+            \end{itemize}
+        
+        \item While useful for watermarking and privacy, steganography can also be misused for malicious purposes.
+        
+        \item Modern detection tools can often identify when steganography has been used.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Tokenization: Protecting Sensitive Values}
+
+    \begin{columns}[t]
+        \column{.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Tokenization} replaces sensitive data with non-sensitive placeholders (tokens) that maintain the data's format and usefulness.
+                
+                \item Tokens have no mathematical relationship to the original data - they're random substitutes from a token vault.
+                
+                \item Commonly used to protect:
+                    \begin{itemize}
+                        \item Credit card numbers
+                        \item Social Security numbers
+                        \item Health records
+                    \end{itemize}
+                
+                \item Only authorized systems can convert tokens back to original values.
+            \end{itemize}
+            
+        \column{.4\textwidth}
+            \begin{alertblock}{Example}
+                Card: 4532-9678-1234-5678
+                Token: 8901-6789-8901-6789
+                
+                SSN: 123-45-6789
+                Token: 999-88-7777
+            \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Masking: Protecting Production Data}
+    
+    \begin{itemize}
+        \item \textbf{Data masking} modifies sensitive information while maintaining its format and characteristics for testing and development.
+        
+        \item Unlike tokenization, masked data cannot be reversed to reveal the original values.
+        
+        \item Common masking techniques include:
+            \begin{itemize}
+                \item Character substitution
+                \item Shuffling
+                \item Averaging
+                \item Range banding
+            \end{itemize}
+        
+        \item Essential for creating safe test environments that use realistic but non-sensitive data.
+        
+        \item Helps organizations comply with data privacy regulations while maintaining functional development systems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Blockchain Technology: Basics}
+    
+    \begin{block}{What is Blockchain?}
+        A \textbf{blockchain} is a distributed digital ledger that stores data in "blocks" that are cryptographically linked together to prevent tampering.
+    \end{block}
+    
+    \begin{itemize}
+        \item Each block contains transaction data, a timestamp, and a cryptographic hash of the previous block.
+        
+        \item If someone tries to alter a past block, all subsequent blocks would show invalid hashes.
+        
+        \item The ledger is distributed across many computers, making it very difficult to manipulate.
+        
+        \item While cryptocurrencies are the most known use, blockchain can secure any type of transaction record.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open Public Ledgers: Transparency and Trust}
+    
+    \begin{itemize}
+        \item An \textbf{open public ledger} allows anyone to view all transactions and verify the system's integrity.
+        
+        \item Every transaction is permanently recorded and cannot be altered without detection.
+        
+        \item The system maintains trust through:
+            \begin{itemize}
+                \item Cryptographic verification
+                \item Distributed consensus
+                \item Public visibility
+            \end{itemize}
+        
+        \item Organizations use public ledgers to demonstrate transparency in their operations.
+        
+        \item The technology helps prevent fraud by making transactions publicly verifiable.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Digital Certificates: The Foundation of Trust}
+    
+    \begin{itemize}
+        \item A \textbf{digital certificate} is like a digital passport that proves the identity of a website, software, or person.
+        
+        \item Certificates contain crucial information:
+            \begin{itemize}
+                \item The owner's public key
+                \item The owner's identity
+                \item The certificate's expiration date
+                \item The issuing authority's digital signature
+            \end{itemize}
+        
+        \item Your browser uses certificates to verify websites are legitimate.
+        
+        \item Certificates form the basis of secure HTTPS connections on the internet.
+        
+        \item Without certificates, secure online commerce would be impossible.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Certificate Authorities: Trust Providers}
+    
+    \begin{columns}[t]
+        \column{.6\textwidth}
+            \begin{itemize}
+                \item A \textbf{Certificate Authority (CA)} is a trusted organization that issues digital certificates.
+                
+                \item CAs verify the identity of certificate requestors before issuing certificates.
+                
+                \item Major browsers and operating systems come with a pre-installed list of trusted CAs.
+                
+                \item If a CA is compromised, all certificates it issued become suspect.
+            \end{itemize}
+            
+        \column{.4\textwidth}
+            \begin{alertblock}{Well-Known CAs}
+                \begin{itemize}
+                    \item DigiCert
+                    \item Let's Encrypt
+                    \item Sectigo
+                    \item GlobalSign
+                \end{itemize}
+            \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Certificate Lifecycle Management}
+    
+    \begin{itemize}
+        \item \textbf{Certificate Revocation Lists (CRLs)} are published lists of certificates that are no longer valid before their expiration date.
+        
+        \item \textbf{Online Certificate Status Protocol (OCSP)} provides real-time verification of a certificate's validity.
+        
+        \item Certificates might be revoked because:
+            \begin{itemize}
+                \item The private key was compromised
+                \item The organization changed names
+                \item The CA's security was breached
+            \end{itemize}
+        
+        \item Modern browsers use OCSP to check certificate validity every time you visit a secure website.
+        
+        \item Organizations must actively monitor their certificates to prevent unexpected expirations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Digital Certificates}
+    
+    \begin{columns}[t]
+        \column{.5\textwidth}
+            \textbf{Self-Signed Certificates}
+            \begin{itemize}
+                \item Created by the user
+                \item No third-party verification
+                \item Used in testing
+                \item Free but untrusted
+            \end{itemize}
+        
+        \column{.5\textwidth}
+            \textbf{Third-Party Certificates}
+            \begin{itemize}
+                \item Issued by trusted CAs
+                \item Identity verified
+                \item Widely accepted
+                \item Cost money
+            \end{itemize}
+    \end{columns}
+    
+    \begin{itemize}
+        \item Choose based on your security needs and audience trust requirements.
+        \item Production systems should always use third-party certificates.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Root of Trust}
+    
+    \begin{block}{Understanding the Trust Chain}
+        The \textbf{Root of Trust} is the foundation of the digital certificate system - a set of trusted CAs whose certificates come pre-installed in browsers and operating systems.
+    \end{block}
+    
+    \begin{itemize}
+        \item Trust flows down from root CAs through intermediate CAs to end-user certificates.
+        
+        \item Root certificates are extremely valuable and kept in secure, offline storage.
+        
+        \item Compromise of a root certificate would break trust in thousands of websites.
+        
+        \item Your computer typically has about 50-100 trusted root certificates installed.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Certificate Signing Requests (CSR) and Wildcard Certificates}
+    
+    \begin{itemize}
+        \item A \textbf{Certificate Signing Request (CSR)} is a message sent to a CA to request a digital certificate.
+        
+        \item CSRs contain important information:
+            \begin{itemize}
+                \item Organization details
+                \item Domain name(s)
+                \item Public key
+                \item Contact information
+            \end{itemize}
+        
+        \item A \textbf{Wildcard Certificate} secures multiple subdomains with a single certificate (e.g., *.example.com covers all subdomains).
+        
+        \item While convenient, wildcard certificates increase risk - if compromised, all subdomains are affected.
+        
+        \item Most organizations use a mix of standard and wildcard certificates based on security needs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Concepts Review}
+    
+    \begin{block}{Core Security Components}
+        \begin{itemize}
+            \item \textbf{Confidentiality:} Encryption (symmetric/asymmetric)
+            \item \textbf{Integrity:} Hashing and digital signatures
+            \item \textbf{Authentication:} Certificates and PKI
+            \item \textbf{Access Control:} Key management and distribution
+        \end{itemize}
+    \end{block}
+    
+    \begin{itemize}
+        \item Understanding these fundamentals helps you evaluate any security solution.
+        \item Each component plays a vital role in overall system security.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Real-World Applications}
+    
+    \textbf{Everyday Encryption Examples:}
+    \begin{itemize}
+        \item Secure websites using HTTPS and TLS
+        \item Encrypted messaging in WhatsApp and Signal
+        \item Password protection through hashing and salting
+        \item Laptop protection with BitLocker or FileVault
+    \end{itemize}
+    
+    \textbf{Business Security Examples:}
+    \begin{itemize}
+        \item Credit card processing with tokenization
+        \item Contract signing with digital signatures
+        \item Customer data protection in encrypted databases
+        \item Website security through certificate management
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussion Questions}
+    
+    \textbf{Security Trade-offs:}
+    \begin{itemize}
+        \item Compare the benefits and risks of file-level versus full-disk encryption
+        \item Explain the importance of HTTPS for online shopping security
+        \item Discuss the impact of a compromised Certificate Authority
+        \item Analyze why we need both symmetric and asymmetric encryption
+        \item Evaluate how blockchain changes digital trust models
+    \end{itemize}
+    
+    \textbf{Think About:}
+    \begin{itemize}
+        \item Security versus usability
+        \item Cost versus protection level
+        \item Complexity versus maintainability
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Practical Scenarios}
+    
+    \textbf{Healthcare Records Security:}
+    \begin{itemize}
+        \item How would you protect patient data?
+        \item What encryption methods are appropriate?
+        \item How do you manage access control?
+    \end{itemize}
+    
+    \textbf{E-commerce Security:}
+    \begin{itemize}
+        \item What measures protect customer payment data?
+        \item How do you secure the transaction process?
+        \item What role do certificates play?
+    \end{itemize}
+    
+    Consider both security requirements and practical limitations in your solutions.
+\end{frame}
+
+\end{document}
