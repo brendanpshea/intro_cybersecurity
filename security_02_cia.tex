@@ -371,11 +371,25 @@
     \end{table}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Zero Trust in Action}
+    Even with the right password, you might be denied access if:
+    \begin{itemize}
+        \item Your location suddenly changes (like logging in from another country).
+        \item You're trying to access resources at unusual times.
+        \item Your behavior patterns don't match your normal activity.
+        \item The device you're using isn't recognized or secure.
+        \item The system detects potential security risks in real-time.
+        \item This dynamic approach helps catch potential security breaches early.
+    \end{itemize}
+\end{frame}
+
 \begin{frame}
     \frametitle{Components of Zero Trust: Control Plane}
 
     \begin{block}{Understanding the Control Plane}
-        The \textbf{Control Plane} is the brain of Zero Trust, making smart decisions about who gets access. 
+        The \textbf{Control Plane} is defined as the part of the Zero Trust system that makes decisions about who gets access to what.
     \end{block}
 
     \begin{itemize}
@@ -399,20 +413,23 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Zero Trust in Action}
-    Even with the right password, you might be denied access if:
+    \frametitle{Control Plane: Threat Scope Reduction}
+    \begin{block}{Making the Target Smaller}
+        The less attackers can see or access, the harder it is for them to cause harm
+    \end{block}
     \begin{itemize}
-        \item Your location suddenly changes (like logging in from another country).
-        \item You're trying to access resources at unusual times.
-        \item Your behavior patterns don't match your normal activity.
-        \item The device you're using isn't recognized or secure.
-        \item The system detects potential security risks in real-time.
-        \item This dynamic approach helps catch potential security breaches early.
+        \item \textbf{Threat scope reduction} is like keeping valuables in separate safes rather than one big vault.
+        \item Systems are divided into smaller, isolated segments to limit potential damage.
+        \item Users can only see and access what they absolutely need for their work.
+        \item Even if attackers break in somewhere, they can't easily reach other parts of the system.
+        \item Regular access reviews help remove unnecessary permissions that could be exploited.
     \end{itemize}
 \end{frame}
 
+
+
 \begin{frame}
-    \frametitle{Policy-Driven Access Control}
+    \frametitle{Control Plane: Policy-Driven Access Control}
     \begin{block}{Automated Security Decisions}
         Policies are like a rulebook that automatically determines who gets access to what
     \end{block}
@@ -426,7 +443,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{The Policy Administrator}
+    \frametitle{Control Plane: The Policy Administrator}
     \begin{itemize}
         \item Components of policy administration:
             \begin{itemize}
@@ -456,7 +473,7 @@
     \frametitle{Understanding the Data Plane}
 
     \begin{block}{The Data Plane}
-        The \textbf{Data Plane} is where the real security checks happen, like a security checkpoint at an airport. It implements the rules set by the Control Plane.
+        The \textbf{Data Plane} is defined as the part of the Zero Trust system that actually enforces security policies and controls access.
     \end{block}
 
     \begin{itemize}
@@ -474,21 +491,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Threat Scope Reduction}
-    \begin{block}{Making the Target Smaller}
-        The less attackers can see or access, the harder it is for them to cause harm
-    \end{block}
-    \begin{itemize}
-        \item \textbf{Threat scope reduction} is like keeping valuables in separate safes rather than one big vault.
-        \item Systems are divided into smaller, isolated segments to limit potential damage.
-        \item Users can only see and access what they absolutely need for their work.
-        \item Even if attackers break in somewhere, they can't easily reach other parts of the system.
-        \item Regular access reviews help remove unnecessary permissions that could be exploited.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Understanding Implicit Trust Zones}
+    \frametitle{Data Plane: Implicit Trust Zones}
     \begin{block}{What is an Implicit Trust Zone?}
         Areas where traditional security assumes everything is safe - a dangerous assumption!
     \end{block}
@@ -506,34 +509,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Problems with Implicit Trust}
-    \begin{itemize}
-        \item Real-world examples of implicit trust problems:
-            \begin{itemize}
-                \item \textbf{Building Security}:
-                    \begin{itemize}
-                        \item Tailgating through doors
-                        \item Borrowed access cards
-                        \item Unauthorized visitors
-                    \end{itemize}
-                \item \textbf{Network Security}:
-                    \begin{itemize}
-                        \item Infected company laptops
-                        \item Compromised user accounts
-                        \item Malicious insiders
-                    \end{itemize}
-                \item \textbf{Application Security}:
-                    \begin{itemize}
-                        \item Stolen login credentials
-                        \item Session hijacking
-                        \item Excessive permissions
-                    \end{itemize}
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Subject and System Interactions}
+    \frametitle{Data Plane: Subject and System Interactions}
     \begin{itemize}
         \item In Zero Trust, every interaction between users (\textbf{subjects}) and resources (\textbf{systems}) must be verified.
         \item Examples of subject/system interactions:
@@ -551,7 +527,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Policy Enforcement Point (PEP)}
+    \frametitle{Data Plane: Policy Enforcement Point (PEP)}
     \begin{block}{The Security Checkpoint}
         Like a guard checking IDs, the PEP verifies every request before allowing access
     \end{block}
@@ -564,6 +540,7 @@
         \item They maintain detailed records of all access attempts, approved or denied.
     \end{itemize}
 \end{frame}
+
 \begin{frame}
     \frametitle{Introduction to Physical Security}
     \begin{alertblock}{Critical Reminder}

@@ -1,0 +1,512 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+
+\title{Change Management in Cybersecurity}
+\author{Cybersecurity Fundamentals}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Change Management Matters in Cybersecurity}
+\begin{itemize}
+    \item \textbf{Change management} is the systematic approach to handling all changes made to a system or IT infrastructure. It ensures changes are implemented securely and efficiently.
+    
+    \item Security breaches often occur during system changes when proper protocols aren't followed. Over 80\% of security incidents can be traced back to poorly managed changes.
+    
+    \item Uncontrolled changes can create vulnerabilities, disrupt business operations, and compromise data integrity.
+    
+    \item Effective change management helps maintain system stability while implementing necessary security updates and improvements.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Protecting Your Systems Through Smart Changes}
+\begin{alertblock}{Key Principle}
+Changes should enhance security without compromising system stability
+\end{alertblock}
+\begin{itemize}
+    \item Every change to your system creates a potential security risk. Smart changes minimize these risks through careful planning and execution.
+    
+    \item \textbf{Risk assessment} must be performed before implementing any change to identify potential security vulnerabilities.
+    
+    \item Changes should follow the principle of \textbf{least privilege} - implementing only what is necessary to achieve the desired outcome.
+    
+    \item Successful change management requires balancing security requirements with operational needs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Business Side of Security Changes}
+\begin{itemize}
+    \item Security changes affect multiple aspects of business operations. Understanding these impacts is crucial for successful implementation.
+    
+    \item \textbf{Business continuity} must be maintained throughout the change process. This includes planning for potential disruptions and having contingency plans.
+    
+    \item Changes need to align with business objectives while maintaining required security standards and compliance requirements.
+    
+    \item The \textbf{total cost of ownership (TCO)} for security changes includes implementation, training, maintenance, and potential business impact costs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Who Needs to Approve Security Changes?}
+    \begin{columns}[t]
+    \column{0.5\textwidth}
+    \textbf{Required Approvers:}
+    \begin{itemize}
+        \item IT Security Team
+        \item System Owners
+        \item Department Managers
+        \item Executive Sponsor
+    \end{itemize}
+    \column{0.5\textwidth}
+    \textbf{Approval Steps:}
+    \begin{itemize}
+        \item Initial Review
+        \item Technical Assessment
+        \item Risk Evaluation
+        \item Final Authorization
+    \end{itemize}
+    \end{columns}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Key Players: Security Stakeholders}
+    \begin{itemize}
+        \item \textbf{Primary stakeholders} include system users, IT staff, and security teams who interact with the system daily.
+        
+        \item \textbf{Secondary stakeholders} encompass compliance officers, auditors, and business unit managers who oversee system usage.
+        
+        \item Each stakeholder group has unique security concerns and requirements that must be addressed during changes.
+        
+        \item Effective communication between stakeholders is essential for successful security implementation.
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Who Owns What? Understanding Ownership}
+    \begin{block}{Definition}
+    \textbf{System ownership} refers to the responsibility and accountability for a system's security, maintenance, and operation.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Technical owners} are responsible for implementing and maintaining security controls.
+        
+        \item \textbf{Business owners} make decisions about system access, functionality, and risk acceptance.
+        
+        \item Ownership includes responsibility for approving changes and ensuring security compliance.
+        
+        \item Clear ownership definitions prevent confusion during security incidents and change implementation.
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Measuring the Impact of Security Changes}
+    \begin{itemize}
+        \item \textbf{Impact analysis} evaluates how security changes affect system functionality, user access, and business processes.
+        
+        \item Changes must be categorized by their potential impact level: Low, Medium, or High risk to operations.
+        
+        \item Consider both immediate effects and long-term consequences of security modifications.
+    \end{itemize}
+    \begin{table}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{Impact Level} & \textbf{Response Time} & \textbf{Approval Needed} \\
+    \midrule
+    Low & 24-48 hours & Team Lead \\
+    Medium & 1 week & Department Head \\
+    High & 2+ weeks & Executive Team \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Testing Before Deploying: Best Practices}
+        \begin{itemize}
+            \item \textbf{Test results} provide concrete evidence that security changes work as intended and don't introduce new vulnerabilities.
+            
+            \item Every security change must undergo multiple testing phases: unit testing, integration testing, and user acceptance testing.
+            
+            \item Document all test outcomes, including unexpected behaviors or failures, to improve future change implementations.
+            
+            \item \textbf{Testing environments} should mirror production settings as closely as possible to ensure accurate results.
+        \end{itemize}
+        \end{frame}
+        
+        \begin{frame}
+        \frametitle{When Things Go Wrong: Backout Plans}
+        \begin{exampleblock}{Example Backout Scenario}
+        During a firewall update, new rules accidentally block legitimate traffic. The backout plan allows immediate restoration of previous rules while maintaining security.
+        \end{exampleblock}
+        \begin{itemize}
+            \item A \textbf{backout plan} is your emergency exit strategy when security changes cause unexpected problems.
+            
+            \item Every change must include detailed steps for reversing modifications if necessary.
+            
+            \item Backout procedures should be tested before implementing major changes.
+            
+            \item Time requirements for reverting changes must be clearly documented and communicated.
+        \end{itemize}
+        \end{frame}
+        
+        \begin{frame}
+        \frametitle{Planning Your Maintenance Window}
+        \begin{itemize}
+            \item A \textbf{maintenance window} is a scheduled period when systems can be safely modified with minimal impact on operations.
+        \end{itemize}
+        \begin{table}
+        \begin{tabular}{lll}
+        \toprule
+        \textbf{Change Type} & \textbf{Typical Window} & \textbf{Notice Required} \\
+        \midrule
+        Minor Patches & 2-4 hours & 48 hours \\
+        Major Updates & 4-8 hours & 1 week \\
+        System Upgrades & 8+ hours & 2 weeks \\
+        \bottomrule
+        \end{tabular}
+        \end{table}
+        \begin{itemize}
+            \item Schedule windows during periods of lowest system usage to minimize disruption.
+            
+            \item Always include buffer time for unexpected complications and thorough testing.
+        \end{itemize}
+        \end{frame}
+        
+        \begin{frame}
+        \frametitle{Standard Operating Procedure: Your Security Playbook}
+        \begin{block}{Definition}
+        A \textbf{Standard Operating Procedure (SOP)} is a documented process that describes the steps required to complete a security task consistently and securely.
+        \end{block}
+        \begin{enumerate}
+            \item SOPs must include detailed steps for implementing common security changes.
+            
+            \item Procedures should be written clearly enough for any qualified team member to follow.
+            
+            \item Regular reviews and updates of SOPs ensure they remain relevant and effective.
+            
+            \item Documentation should include both technical steps and required approvals.
+        \end{enumerate}
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{Technical Changes: The Building Blocks}
+            \begin{alertblock}{Critical Reminder}
+            All technical changes must be documented, tested, and approved before implementation.
+            \end{alertblock}
+            \begin{itemize}
+                \item \textbf{Technical changes} form the foundation of security improvements but require careful management to prevent system disruption.
+                
+                \item Each technical modification must be evaluated for potential security implications and system dependencies.
+                
+                \item Changes should follow the principle of \textbf{least privilege} and be implemented incrementally when possible.
+                
+                \item Document all technical specifications, including configuration changes and script modifications.
+            \end{itemize}
+            \end{frame}
+            
+            \begin{frame}
+            \frametitle{Allow Lists vs. Deny Lists}
+            \begin{columns}[t]
+            \column{0.5\textwidth}
+            \textbf{Allow Lists:}
+            \begin{itemize}
+                \item Explicitly permit specific actions
+                \item Default stance: deny all
+                \item More restrictive approach
+                \item Better security control
+            \end{itemize}
+            \column{0.5\textwidth}
+            \textbf{Deny Lists:}
+            \begin{itemize}
+                \item Explicitly block specific actions
+                \item Default stance: allow all
+                \item More permissive approach
+                \item Easier to maintain
+            \end{itemize}
+            \end{columns}
+            \end{frame}
+            
+            \begin{frame}
+            \frametitle{Setting Boundaries: Restricted Activities}
+            \begin{itemize}
+                \item \textbf{Restricted activities} are actions that require special authorization or monitoring due to their potential security impact.
+                
+                \item Security policies must clearly define which activities are restricted and who can authorize them.
+                
+                \item Implementation of restrictions should be automated where possible to ensure consistent enforcement.
+                
+                \item Regular audits of restricted activities help identify potential security policy violations or needed policy updates.
+            \end{itemize}
+            \begin{block}{Common Restricted Activities}
+            \begin{itemize}
+                \item Administrative access to critical systems
+                \item Database schema modifications
+                \item Firewall rule changes
+                \item Remote access to secure networks
+            \end{itemize}
+            \end{block}
+            \end{frame}
+            
+            \begin{frame}
+            \frametitle{Managing System Downtime}
+            \begin{table}
+            \begin{tabular}{lll}
+            \toprule
+            \textbf{System Type} & \textbf{Max Downtime} & \textbf{Recovery Time} \\
+            \midrule
+            Critical & 15 minutes & \textless 5 minutes \\
+            Important & 1 hour & \textless 30 minutes \\
+            Non-critical & 4 hours & \textless 2 hours \\
+            \bottomrule
+            \end{tabular}
+            \end{table}
+            \begin{itemize}
+                \item \textbf{Downtime} must be carefully planned and communicated to minimize impact on business operations.
+                
+                \item Different systems have different tolerance levels for downtime based on their criticality.
+                
+                \item Always include buffer time in downtime estimates to account for unexpected complications.
+                
+                \item Maintain clear communication channels during downtime periods for status updates and emergency escalation.
+            \end{itemize}
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{Service and Application Restarts}
+                \begin{block}{Key Concept}
+                A \textbf{restart procedure} is a documented set of steps for safely stopping and starting services while maintaining security controls.
+                \end{block}
+                \begin{itemize}
+                    \item Services and applications must be restarted in a specific order to maintain security dependencies.
+                    
+                    \item Always verify security controls are active after restarts before allowing user access.
+                    
+                    \item Maintain logs of all restart activities for security auditing and troubleshooting.
+                    
+                    \item Include verification steps to ensure all security features are functioning properly post-restart.
+                \end{itemize}
+                \end{frame}
+                
+                \begin{frame}
+                \frametitle{Legacy Systems: Managing Old Technology}
+                \begin{itemize}
+                    \item \textbf{Legacy applications} are older systems that may lack modern security features but remain critical to operations.
+                    
+                    \item Security changes must be carefully tested on legacy systems to prevent unexpected failures.
+                    
+                    \item Implementation of compensating controls may be necessary to protect legacy systems.
+                \end{itemize}
+                \begin{alertblock}{Warning}
+                Legacy systems often require additional security measures to compensate for outdated security features. Never assume legacy systems meet current security standards without verification.
+                \end{alertblock}
+                \end{frame}
+                
+                \begin{frame}
+                \frametitle{Understanding System Dependencies}
+                \begin{itemize}
+                    \item A \textbf{system dependency} is a relationship between two systems where one relies on the other for functionality or security.
+                    \item \textbf{Direct dependencies} are immediate relationships, while \textbf{indirect dependencies} are secondary relationships that may not be immediately apparent.
+                \end{itemize}
+                \begin{columns}[t]
+                \column{0.5\textwidth}
+                
+                \textbf{Direct Dependencies:}
+                \begin{itemize}
+                    \item Authentication services
+                    \item Database connections
+                    \item Network services
+                    \item Security controls
+                \end{itemize}
+                \column{0.5\textwidth}
+                \textbf{Indirect Dependencies:}
+                \begin{itemize}
+                    \item Backup systems
+                    \item Monitoring tools
+                    \item Logging services
+                    \item Audit systems
+                \end{itemize}
+                \end{columns}
+                
+                \end{frame}
+                
+                \begin{frame}
+                \frametitle{Documentation: Why It Matters}
+                \begin{itemize}
+                    \item \textbf{Documentation} provides a clear record of all security changes, configurations, and decisions.
+                    
+                    \item Well-maintained documentation helps track security modifications and troubleshoot issues.
+                    
+                    \item Documentation serves as evidence for security audits and compliance requirements.
+                    
+                    \item Proper documentation enables knowledge transfer and consistent security implementation across teams.
+                \end{itemize}
+                \begin{exampleblock}{Documentation Best Practice}
+                Create and maintain a centralized repository for all security-related documentation, including change logs, configuration details, and approval records.
+                \end{exampleblock}
+                \end{frame}
+
+                \begin{frame}
+                    \frametitle{Keeping Your Network Diagrams Current}
+                    \begin{block}{Definition}
+                    \textbf{Network diagrams} are visual representations of system infrastructure that must be updated with every security change.
+                    \end{block}
+                    \begin{itemize}
+                        \item Network diagrams should include all security controls, access points, and system boundaries.
+                        
+                        \item Updates must reflect both physical and logical security changes to the infrastructure.
+                        
+                        \item Maintain separate versions for different security classification levels when necessary.
+                        
+                        \item Regular review of network diagrams helps identify potential security gaps or unauthorized changes.
+                    \end{itemize}
+                    \end{frame}
+                    
+                    \begin{frame}
+                    \frametitle{Updating Security Policies and Procedures}
+                    \begin{itemize}
+                        \item \textbf{Security policies} must evolve to address new threats and changes in system infrastructure.
+                        
+                        \item Policy updates require careful review and approval from security stakeholders.
+                        
+                        \item Changes to procedures must align with overall security policy guidelines.
+                    \end{itemize}
+                    \begin{table}
+                    \begin{tabular}{lll}
+                    \toprule
+                    \textbf{Document Type} & \textbf{Review Frequency} & \textbf{Approver} \\
+                    \midrule
+                    Policies & Annual & Executive Team \\
+                    Procedures & Quarterly & Security Lead \\
+                    Guidelines & Semi-annual & Department Head \\
+                    \bottomrule
+                    \end{tabular}
+                    \end{table}
+                    \end{frame}
+                    
+                    \begin{frame}
+                    \frametitle{Version Control Basics}
+                    \textbf{Version control} ensures all team members work with current, approved security configurations. Track all changes systematically to maintain security compliance.
+                    \begin{columns}[t]
+                    \column{0.5\textwidth}
+                    \textbf{What to Track:}
+                    \begin{itemize}
+                        \item Configuration files
+                        \item Security scripts
+                        \item System documentation
+                        \item Policy documents
+                    \end{itemize}
+                    \column{0.5\textwidth}
+                    \textbf{How to Track:}
+                    \begin{itemize}
+                        \item Version numbers
+                        \item Change descriptions
+                        \item Author information
+                        \item Timestamps
+                    \end{itemize}
+                    \end{columns}
+                    
+                    \end{frame}
+                    
+                    \begin{frame}
+                    \frametitle{Putting It All Together: Change Management Success}
+                    \begin{alertblock}{Critical Success Factors}
+                    Effective security change management requires planning, documentation, testing, and consistent communication.
+                    \end{alertblock}
+                    \begin{itemize}
+                        \item Remember that change management is a continuous process of improvement and adaptation.
+                        
+                        \item Security changes must balance risk mitigation with operational needs.
+                        
+                        \item Documentation and version control provide the foundation for sustainable security practices.
+                        
+                        \item Regular reviews and updates keep your security posture strong and current.
+                    \end{itemize}
+                    \end{frame}
+
+                    \begin{frame}
+                        \frametitle{Key Takeaways: The Pillars of Change Management}
+                        \begin{columns}[t]
+                        \column{0.5\textwidth}
+                        \textbf{Process Elements:}
+                        \begin{itemize}
+                            \item Approval workflows
+                            \item Documentation
+                            \item Testing procedures
+                            \item Backout plans
+                        \end{itemize}
+                        \column{0.5\textwidth}
+                        \textbf{Technical Elements:}
+                        \begin{itemize}
+                            \item System dependencies
+                            \item Security controls
+                            \item Version control
+                            \item Monitoring
+                        \end{itemize}
+                        \end{columns}
+                        \end{frame}
+                        
+                        \begin{frame}
+                        \frametitle{Real-World Applications}
+                        \begin{block}{Case Study Scenario}
+                        Your school is implementing a new student information system. Consider all the change management elements that should be addressed.
+                        \end{block}
+                        \begin{itemize}
+                            \item What stakeholders need to be involved in the approval process?
+                            
+                            \item How would you handle the transition from the old system?
+                            
+                            \item What security considerations are most important?
+                            
+                            \item How would you document and test the changes?
+                        \end{itemize}
+                        \end{frame}
+                        
+                        \begin{frame}
+                        \frametitle{Discussion Questions}
+                        \begin{itemize}
+                            \item Why is it important to have a backout plan even for small changes? Provide an example of when you might need one.
+                            
+                            \item How does proper change management help prevent security incidents? Can you think of a real-world example?
+                            
+                            \item What challenges might arise when implementing changes in systems with legacy applications?
+                            
+                            \item How would you balance the need for quick security updates with proper change management procedures?
+                        \end{itemize}
+                        \end{frame}
+                        
+                        \begin{frame}
+                        \frametitle{Group Activity: Change Management Simulation}
+                        \begin{alertblock}{Scenario}
+                        Your team needs to implement a critical security patch across multiple systems.
+                        \end{alertblock}
+                        \begin{enumerate}
+                            \item Break into groups of 3-4 students
+                            
+                            \item Each group develops a change management plan including:
+                            \begin{itemize}
+                                \item Timeline and maintenance window
+                                \item Required approvals
+                                \item Testing procedures
+                                \item Backout strategy
+                            \end{itemize}
+                            
+                            \item Groups present their plans and discuss different approaches
+                            
+                            \item Class evaluates each plan's strengths and potential risks
+                        \end{enumerate}
+                        \end{frame}
+                        
+                        \end{document}
+
+\end{document}
