@@ -35,3 +35,40 @@
 | Compensating Control | Alternative security measures implemented when primary controls cannot be employed due to legitimate business or technical constraints. |
 | Patch | A piece of software designed to update a computer program or system to fix security vulnerabilities and other bugs. |
 | Directive Control | Measures that direct, confine, or control actions by specifying proper procedures and behaviors to achieve security objectives. |
+
+## Lecture 2: Fundamental Concepts
+
+
+| Term | Definition |
+|------|------------|
+| CIA Triad | The three fundamental principles of information security: Confidentiality (protecting data from unauthorized access), Integrity (ensuring data accuracy and reliability), and Availability (ensuring systems and data are accessible when needed) |
+| Non-repudiation | A security property that prevents a user or entity from denying that they performed a specific action, typically achieved through digital signatures and audit trails |
+| AAA Framework | A security framework encompassing Authentication, Authorization, and Accounting to manage digital resource access and maintain system security |
+| Authentication | The process of verifying the identity of a user, system, or entity, typically through credentials like passwords or biometrics |
+| Authorization | The process of determining what resources or actions a verified identity can access or perform within a system |
+| Accounting | The tracking and logging of user activities, system events, and resource usage for security auditing and compliance purposes |
+| Multi-Factor Authentication (MFA) | A security system requiring two or more independent verification methods from different categories: something you know, something you have, or something you are |
+| Role-based Access Control (RBAC) | A security model where access permissions are assigned to roles, and users are granted access by being assigned to appropriate roles |
+| Discretionary Access Control (DAC) | An access control method where the owner of a resource determines who can access it and what privileges they have |
+| Access Control Lists (ACL) | A set of rules specifying which users or system processes are granted access to specific objects, along with the level of access permitted |
+| Least Privilege | A security principle requiring users and processes to have only the minimum permissions necessary to perform their authorized tasks |
+| Log | A record of events, transactions, or activities that occur within a system or network, used for monitoring and analysis |
+| Gap Analysis | A method of assessing the difference between current security measures and desired security posture, identifying areas needing improvement |
+| Zero Trust Architecture (ZTA) | A security framework that assumes no user or system should be trusted by default, requiring continuous verification regardless of location or network connection |
+| Control Plane (ZTA) | The component in Zero Trust Architecture responsible for making and enforcing access decisions based on policy, managing authentication, and orchestrating security controls |
+| Data Plane (ZTA) | The network component that forwards data between systems after access decisions are made, implementing the control plane's security policies |
+| Adaptive Identity | A dynamic approach to identity verification that adjusts authentication requirements based on contextual factors like location, device, and behavior patterns |
+| Policy Engine | The decision-making component that evaluates access requests against security policies, considering factors like user identity, device status, and risk level |
+| Implicit Trust Zone | A network segment where devices are automatically trusted without continuous verification, often considered a security weakness in modern architectures |
+| Policy Enforcement Point | The security component that implements and enforces access decisions made by the policy engine, controlling data flow between resources |
+| Bollards | Physical security barriers, typically posts or columns, designed to prevent vehicle access while allowing pedestrian traffic |
+| Access Control Vestibules | Enclosed spaces with two or more doors where only one door can be opened at a time, creating a secure buffer zone for controlled entry |
+| Fences | Physical barriers used to define property boundaries, deter unauthorized access, and channel traffic through designated entry points |
+| Infrared Sensor | A detection device that monitors changes in infrared radiation patterns to detect movement or presence of objects and people |
+| Pressure Sensor | A device that detects and measures force or weight changes, often used in security systems to monitor footsteps or vehicle presence |
+| Microwave Sensor | A motion detection device that emits microwave radiation and monitors changes in the reflected patterns to detect movement |
+| Ultrasonic Sensor | A device that uses high-frequency sound waves to detect presence and movement by measuring the time taken for sound to reflect off objects |
+| Honeypot | A security resource that appears valuable but is isolated and monitored, designed to attract and detect potential attackers |
+| Honeynet | A network of honeypots working together to simulate a larger network infrastructure, providing more comprehensive threat intelligence |
+| Honeyfile | A fake document or file designed to appear valuable, planted to detect unauthorized access or data theft attempts |
+| Honey Token | A unique, trackable piece of data (like a database entry or email address) planted to detect and trace unauthorized access or data breaches |

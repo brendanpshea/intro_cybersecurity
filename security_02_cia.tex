@@ -6,9 +6,9 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
-\title{Information Security Fundamentals}
+\title{Fundamental Concepts of Information Security}
 \subtitle{Understanding How We Protect Digital Information}
-\author{Prepared by Security Team}
+\author{Brendan Shea, PhD}
 \date{\today}
 
 \begin{document}
@@ -143,15 +143,19 @@
     \begin{itemize}
         \item \textbf{Authentication} is how you prove you are who you say you are in the digital world.
         \item Passwords and PINs are like digital keys that only you should know.
-        \item Two-factor authentication is like needing both a key and an ID to enter.
-        \item Using multiple factors makes it much harder for someone to pretend to be you.
+        \item \textbf{Multi-factor authentication} requires that you provide more than one type of proof. For example:
+          \begin{itemize}
+            \item Something you know (password or pin)
+            \item Something you have (phone or Smartcard)
+            \item Something you are (fingerprint or face)
+          \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Authenticating People: Methods We Use}
     \begin{itemize}
-        \item Common ways people prove their identity:
+        \item Common ways people prove their identity. MFA uses a combination of these:
             \begin{itemize}
                 \item \textbf{Knowledge-based}: 
                     \begin{itemize}
@@ -216,13 +220,13 @@
     \begin{itemize}
         \item Common authorization models include:
             \begin{itemize}
-                \item \textbf{Role-Based Access Control (RBAC)}:
+                \item \textbf{Role-Based Access Control (RBAC)} assigns permissions based on job roles:
                     \begin{itemize}
                         \item Like how students, teachers, and administrators have different permissions
                         \item Access based on your role, not who you are
                         \item Easier to manage for large organizations
                     \end{itemize}
-                \item \textbf{Discretionary Access Control (DAC)}:
+                \item \textbf{Discretionary Access Control (DAC)} assigns permissions based on the information owner's decisions:
                     \begin{itemize}
                         \item Like when you choose who can see your social media posts
                         \item Owner decides who gets access
