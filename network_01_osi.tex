@@ -1,0 +1,630 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Introduction to Computer Networks}
+\subtitle{Understanding Networks \& The OSI Model}
+\author{Your Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{What is a Computer Network? Understanding the Basics}
+    
+    \begin{itemize}
+        \item A \textbf{computer network} is a collection of interconnected devices that can communicate and share resources with each other.
+        
+        \item Networks enable the sharing of resources such as files, printers, and internet connections between connected devices.
+        
+        \item \begin{alertblock}{Key Concept}
+            Networks operate using standardized \textbf{protocols}, which are sets of rules that govern how devices communicate.
+        \end{alertblock}
+        
+        \item Modern networks range from simple home setups connecting a few devices to complex enterprise systems connecting thousands of computers.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Networks in Our Daily Lives: From Home to Enterprise}
+    
+    \begin{block}{Common Network Applications}
+        \begin{itemize}
+            \item Home Networks:
+            \begin{itemize}
+                \item Wi-Fi connections for smartphones, laptops, and smart devices
+                \item Shared printers and media servers
+                \item Smart home automation systems
+            \end{itemize}
+            
+            \item Enterprise Networks:
+            \begin{itemize}
+                \item Shared database access and file storage
+                \item Email and communication systems
+                \item Customer management systems
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    Every time you browse the internet, stream videos, or send messages, you're utilizing multiple computer networks.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Networks: LAN, WAN, MAN, and PAN}
+    
+    \begin{itemize}
+        \item A \textbf{Local Area Network (LAN)} connects devices within a limited area like a home, school, or office building.
+        
+        \item A \textbf{Wide Area Network (WAN)} spans a large geographic area, with the Internet being the largest example.
+        
+        \item A \textbf{Metropolitan Area Network (MAN)} covers a city or large campus, bridging the gap between LANs and WANs.
+        
+        \item A \textbf{Personal Area Network (PAN)} connects devices within a very short range, such as Bluetooth connections between your phone and headphones.
+        
+        \begin{table}
+            \begin{tabular}{|l|l|}
+                \hline
+                Network Type & Typical Range \\
+                \hline
+                PAN & 1-10 meters \\
+                LAN & Up to 1 kilometer \\
+                MAN & Up to 50 kilometers \\
+                WAN & Worldwide \\
+                \hline
+            \end{tabular}
+        \end{table}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Topologies: Star, Bus, Ring, and Mesh}
+    
+    \begin{itemize}
+        \item A \textbf{network topology} defines the physical or logical arrangement of devices and connections in a network.
+        
+        \item The \textbf{star topology} connects all devices to a central hub or switch, making it easy to manage but vulnerable to central point failure.
+        
+        \item The \textbf{bus topology} connects all devices to a single central cable, creating a simple but outdated design that was common in early Ethernet networks.
+        
+        \begin{block}{Advanced Topologies}
+            \item The \textbf{mesh topology} connects devices with multiple paths, providing redundancy and fault tolerance.
+            
+            \item The \textbf{ring topology} connects each device to exactly two other devices, forming a circular path for data transmission.
+        \end{block}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Client-Server vs Peer-to-Peer Networks}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Client-Server Network:}
+            \begin{itemize}
+                \item Dedicated servers provide resources and services to client computers.
+                
+                \item Examples include email servers, web servers, and file servers.
+                
+                \item Offers centralized control and better security but requires more maintenance.
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Peer-to-Peer Network:}
+            \begin{itemize}
+                \item Each computer can act as both client and server, sharing resources directly.
+                
+                \item Examples include BitTorrent file sharing and early versions of Napster.
+                
+                \item Provides simpler setup but less security and harder to manage at scale.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to the OSI Model: Why It Matters}
+    
+    \begin{alertblock}{Definition}
+        The \textbf{OSI (Open Systems Interconnection) Model} is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven distinct layers.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item The OSI model helps network professionals understand, troubleshoot, and communicate about network operations.
+        
+        \item Each layer in the model performs specific functions and provides services to the layer above it.
+        
+        \item Understanding the OSI model is crucial for effective network design, maintenance, and troubleshooting.
+        
+        \item The model creates a common language for network professionals across different platforms and technologies.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The OSI Model: A Seven-Layer Journey}
+    
+    \begin{block}{Layer Structure (Bottom to Top)}
+        \begin{enumerate}
+            \item \textbf{Physical Layer:} Handles raw bit transmission
+            \item \textbf{Data Link Layer:} Provides node-to-node delivery
+            \item \textbf{Network Layer:} Manages addressing and routing
+            \item \textbf{Transport Layer:} Ensures end-to-end delivery
+            \item \textbf{Session Layer:} Manages connections between applications
+            \item \textbf{Presentation Layer:} Formats and encrypts data
+            \item \textbf{Application Layer:} Provides network services to applications
+        \end{enumerate}
+    \end{block}
+    
+    \begin{alertblock}{Key Concept}
+        Data flows down the layers when sending and up the layers when receiving, with each layer adding or removing its own control information.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 1 - Physical Layer: The Foundation}
+    
+    \begin{block}{Physical Layer Responsibilities}
+        \begin{itemize}
+            \item The \textbf{Physical Layer} is responsible for transmitting raw bits over a physical medium like copper wire, fiber optic cable, or radio waves.
+            
+            \item This layer defines physical characteristics such as voltage levels, timing of voltage changes, physical data rates, and maximum transmission distances.
+            
+            \item It specifies the shape and layout of pins in network interfaces, as well as the functions of each pin.
+            
+            \item The Physical Layer converts digital bits into signals that can be transmitted over the network media.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical Layer Components: Cables, Hubs, and Signals}
+    
+    \begin{columns}[t]
+        \begin{column}{0.6\textwidth}
+            \textbf{Common Physical Media:}
+            \begin{itemize}
+                \item \textbf{Twisted Pair Cable:} Used in Ethernet networks, comes in shielded (STP) and unshielded (UTP) varieties.
+                
+                \item \textbf{Fiber Optic Cable:} Uses light for transmission, offering high speeds and immunity to electromagnetic interference.
+                
+                \item \textbf{Wireless Media:} Uses radio frequencies to transmit data through the air.
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{Key Devices}
+                \begin{itemize}
+                    \item Hubs
+                    \item Repeaters
+                    \item Network adapters
+                    \item Cable connectors
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 2 - Data Link Layer: Bridging the Gap}
+    
+    \begin{itemize}
+        \item The \textbf{Data Link Layer} provides reliable point-to-point delivery of data frames between directly connected nodes.
+        
+        \item This layer detects and possibly corrects errors that may occur in the Physical Layer.
+        
+        \begin{block}{Primary Functions}
+            \begin{itemize}
+                \item \textbf{Framing:} Organizes bits from Physical Layer into manageable data units called frames.
+                
+                \item \textbf{Physical Addressing:} Adds MAC addresses to identify source and destination devices.
+                
+                \item \textbf{Error Control:} Detects and retransmits corrupted or lost frames.
+                
+                \item \textbf{Flow Control:} Prevents overwhelming slower receiving devices.
+            \end{itemize}
+        \end{block}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MAC Addresses and Ethernet: Data Link Essentials}
+    
+    \begin{alertblock}{What is a MAC Address?}
+        A \textbf{Media Access Control (MAC) address} is a unique 48-bit identifier assigned to network interfaces for communications at the Data Link Layer.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item MAC addresses are written as six pairs of hexadecimal digits (e.g., 00:1A:2B:3C:4D:5E).
+        
+        \item Every network interface card (NIC) has a unique MAC address burned into it during manufacturing.
+        
+        \item \textbf{Ethernet} is the most common Data Link Layer protocol, providing rules for:
+        \begin{itemize}
+            \item Cable types and connections
+            \item Data packet format
+            \item Protocol for sharing cable capacity
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 3 - Network Layer: Finding the Path}
+    
+    \begin{alertblock}{Network Layer Purpose}
+        The \textbf{Network Layer} is responsible for packet forwarding and routing between different networks, enabling data to travel across multiple networks to reach its final destination.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item This layer handles logical addressing (IP addresses) and determines the best path for data to travel.
+        
+        \item \textbf{Routers} operate at the Network Layer, making decisions about how to forward packets based on logical addresses.
+        
+        \item The Network Layer must handle congestion and ensure quality of service (QoS) for different types of data.
+        
+        \item It manages the connection of heterogeneous networks, allowing different types of networks to communicate.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{IP Addressing and Routing: Network Layer Deep Dive}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{IPv4 Addressing:}
+            \begin{itemize}
+                \item 32-bit addresses written in four octets (e.g., 192.168.1.1)
+                \item Divided into network and host portions
+                \item Supports about 4.3 billion unique addresses
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{IPv6 Addressing:}
+            \begin{itemize}
+                \item 128-bit addresses written in hexadecimal
+                \item Provides vastly more unique addresses
+                \item Designed to replace IPv4 as addresses run out
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Routing Concepts}
+        \begin{itemize}
+            \item Routers maintain routing tables to determine the best path for packets
+            \item Path selection can be static (manually configured) or dynamic (automatically updated)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 4 - Transport Layer: End-to-End Communication}
+    
+    \begin{itemize}
+        \item The \textbf{Transport Layer} ensures complete data transfer by providing:
+        \begin{itemize}
+            \item End-to-end error recovery
+            \item Flow control
+            \item Segmentation of data
+        \end{itemize}
+        
+        \item This layer can establish multiple connections for different applications on the same device.
+        
+        \item It provides either connection-oriented (\textbf{TCP}) or connectionless (\textbf{UDP}) communication.
+        
+        \begin{alertblock}{Key Concept}
+            The Transport Layer is the first layer to provide end-to-end communication between source and destination hosts.
+        \end{alertblock}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{TCP vs UDP: Understanding Transport Protocols}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Transmission Control Protocol (TCP):}
+            \begin{itemize}
+                \item Provides reliable, ordered delivery of data
+                \item Establishes connections before sending data
+                \item Includes error checking and recovery
+                \item Used for email, web browsing, file transfer
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{User Datagram Protocol (UDP):}
+            \begin{itemize}
+                \item Offers fast, connectionless delivery
+                \item No guarantee of delivery or ordering
+                \item Lower overhead than TCP
+                \item Used for streaming, gaming, DNS queries
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{When to Use Each}
+        Choose TCP when reliability is crucial, and UDP when speed is more important than guaranteed delivery.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 5 - Session Layer: Managing Connections}
+    
+    \begin{alertblock}{Primary Role}
+        The \textbf{Session Layer} establishes, manages, and terminates connections (sessions) between applications on different devices.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item This layer handles the organization of communication through features like dialog control and synchronization.
+        
+        \item It provides three different modes of communication:
+        \begin{itemize}
+            \item \textbf{Simplex:} One-way communication
+            \item \textbf{Half-duplex:} Two-way communication, one direction at a time
+            \item \textbf{Full-duplex:} Simultaneous two-way communication
+        \end{itemize}
+        
+        \item The Session Layer can establish checkpoints for long data transfers, enabling recovery from failures without starting over.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 6 - Presentation Layer: Data Translation}
+    
+    \begin{itemize}
+        \item The \textbf{Presentation Layer} ensures that data is readable by the receiving system through:
+        \begin{itemize}
+            \item Character code translation (e.g., ASCII to EBCDIC)
+            \item Data compression to reduce size
+            \item Data encryption for security
+            \item Data formatting for different systems
+        \end{itemize}
+        
+        \begin{alertblock}{Important Note}
+            This layer acts as the "translator" of the network, converting data between different formats while maintaining its meaning.
+        \end{alertblock}
+        
+        \item Common data formats handled include JPEG, MIDI, MPEG, and ASCII.
+        
+        \item The Presentation Layer enables different systems to communicate regardless of their internal data representations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Encryption and Data Formats in the Presentation Layer}
+    
+    \begin{block}{Data Security Functions}
+        \begin{itemize}
+            \item \textbf{Encryption Protocols:}
+            \begin{itemize}
+                \item SSL/TLS for secure web browsing
+                \item SSH for secure remote access
+                \item PGP for secure email communication
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{itemize}
+        \item The Presentation Layer handles data compression using various algorithms:
+        \begin{itemize}
+            \item Lossless compression for critical data
+            \item Lossy compression for multimedia content
+        \end{itemize}
+        
+        \item Common data format conversions include:
+        \begin{itemize}
+            \item Text encodings (ASCII, Unicode, UTF-8)
+            \item Image formats (JPEG, PNG, GIF)
+            \item Audio/Video formats (MP3, MP4, AVI)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Layer 7 - Application Layer: User Interface}
+    
+    \begin{alertblock}{Definition}
+        The \textbf{Application Layer} is the topmost layer of the OSI model, providing network services directly to end-user applications.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item This layer enables users and applications to access network services through:
+        \begin{itemize}
+            \item Network resource identification and synchronization
+            \item Partner identification and quality of service
+            \item User authentication and privacy considerations
+        \end{itemize}
+        
+        \item The Application Layer handles user interface and support for services like email, file transfer, and web browsing.
+        
+        \item It determines resource availability and synchronizes communication between applications.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Common Application Layer Protocols: HTTP, FTP, SMTP}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Web and File Transfer:}
+            \begin{itemize}
+                \item \textbf{HTTP/HTTPS:} Web browsing and secure transactions
+                \item \textbf{FTP:} File Transfer Protocol for uploading and downloading files 
+                \item \textbf{DNS:} Domain Name System for translating domain names
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Email and Communication:}
+            \begin{itemize}
+                \item \textbf{SMTP:} Sending email messages
+                \item \textbf{POP3/IMAP:} Receiving email messages
+                \item \textbf{DHCP:} Automatic IP address assignment
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Protocol Functions}
+        Each protocol provides specific services:
+        \begin{itemize}
+            \item Data formatting and encoding
+            \item Session management
+            \item Error reporting
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Flow Through the OSI Layers: The Big Picture}
+    
+    \begin{block}{Data Encapsulation (Sending)}
+        \begin{enumerate}
+            \item Application Layer creates user data
+            \item Presentation Layer formats and encrypts
+            \item Session Layer adds session control
+            \item Transport Layer segments data and adds port numbers
+            \item Network Layer adds IP addresses
+            \item Data Link Layer adds MAC addresses
+            \item Physical Layer converts to bits for transmission
+        \end{enumerate}
+    \end{block}
+    
+    \begin{alertblock}{Key Concept}
+        Each layer adds its own header information to the data, a process called encapsulation. The receiving device reverses this process through de-encapsulation.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Encapsulation and De-encapsulation in OSI Model}
+    
+    \begin{itemize}
+        \item \textbf{Protocol Data Units (PDUs)} have different names at each layer:
+        \begin{itemize}
+            \item Application Layer: Data
+            \item Transport Layer: Segments
+            \item Network Layer: Packets
+            \item Data Link Layer: Frames
+            \item Physical Layer: Bits
+        \end{itemize}
+        
+        \item Each layer adds control information:
+        \begin{itemize}
+            \item Headers added at the beginning
+            \item Trailers added at the end (in some layers)
+            \item Original data remains unchanged
+        \end{itemize}
+        
+        \begin{alertblock}{Important Note}
+            The receiving device removes headers in reverse order, ensuring data integrity throughout the process.
+        \end{alertblock}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Practical Example: Web Browsing Through OSI Layers}
+    
+    \begin{block}{When you type www.example.com in your browser:}
+        \begin{enumerate}
+            \item \textbf{Application Layer:} HTTP request is generated
+            \item \textbf{Presentation Layer:} Data is formatted and possibly encrypted (HTTPS)
+            \item \textbf{Session Layer:} TCP session is established
+            \item \textbf{Transport Layer:} Data is segmented, TCP ports assigned
+            \item \textbf{Network Layer:} IP addresses added after DNS lookup
+            \item \textbf{Data Link Layer:} Frame created with MAC addresses
+            \item \textbf{Physical Layer:} Converted to bits and transmitted
+        \end{enumerate}
+    \end{block}
+    
+    \begin{alertblock}{Think About}
+        How would this process differ for streaming video vs. sending an email?
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Troubleshooting Scenario: Network Problems}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Symptom:} Cannot access website
+            \begin{itemize}
+                \item \textbf{Physical Layer:} Check cables connected?
+                \item \textbf{Data Link:} Network adapter working?
+                \item \textbf{Network:} IP address valid?
+                \item \textbf{Transport:} Ports blocked?
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Common Tools:}
+            \begin{itemize}
+                \item ping (Network Layer)
+                \item ipconfig (Network Layer)
+                \item tracert (Network Layer)
+                \item nslookup (Application Layer)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Discussion}
+        What layer would you check first if a specific application fails but others work?
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Review: Key Concepts and Their Relationships}
+    
+    \begin{itemize}
+        \item \textbf{Data Flow Understanding:}
+        \begin{itemize}
+            \item How does encapsulation protect data integrity?
+            \item Why do we need different PDUs at different layers?
+            \item How do upper layers depend on lower layers?
+        \end{itemize}
+        
+        \item \textbf{Protocol Relationships:}
+        \begin{itemize}
+            \item How do TCP and IP work together?
+            \item Why do we need both MAC and IP addresses?
+            \item How do application protocols use transport protocols?
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Critical Thinking}
+        Consider how changes in one layer might affect the others. For example, what happens when upgrading from IPv4 to IPv6?
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussion Questions and Activities}
+    
+    \begin{block}{Group Discussion Topics}
+        \begin{itemize}
+            \item Compare and contrast different network topologies for a small business network.
+            
+            \item Explain how video conferencing applications use different layers of the OSI model.
+            
+            \item Analyze the security implications of using different protocols at each layer.
+            
+            \item Design a basic network setup for a home office, considering all OSI layers.
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Hands-On Activities}
+        \begin{itemize}
+            \item Use Wireshark to capture and analyze network traffic through OSI layers.
+            \item Configure a basic home network and identify components at each layer.
+            \item Practice using common networking tools and relate them to OSI layers.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,855 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Cloud Computing and Connectivity}
+\subtitle{Understanding Modern Cloud Infrastructure}
+\author{Your Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Cloud Computing: The Big Picture}
+    
+    \begin{alertblock}{What is Cloud Computing?}
+        Cloud computing is like having access to a vast pool of computing resources (servers, storage, networks) over the internet, paying only for what you use - similar to how we use electricity from the power grid.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Key characteristics of cloud computing:
+        \begin{itemize}
+            \item On-demand self-service access to resources
+            \item Broad network accessibility from anywhere
+            \item Resource pooling among multiple users
+            \item Rapid elasticity to scale up or down
+        \end{itemize}
+        
+        \item Common cloud services include:
+        \begin{itemize}
+            \item Email and file storage
+            \item Web hosting and applications
+            \item Database services
+            \item Analytics and AI platforms
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Computing: Transforming IT Infrastructure}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Traditional IT} & \textbf{Cloud Computing} \\
+        \hline
+        Buy hardware upfront & Pay as you go \\
+        \hline
+        Fixed capacity & Flexible scaling \\
+        \hline
+        Long deployment time & Quick provisioning \\
+        \hline
+        High maintenance & Managed services \\
+        \hline
+        Limited accessibility & Access from anywhere \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Benefits of cloud transformation:
+        \begin{itemize}
+            \item Reduced capital expenses
+            \item Improved agility and flexibility
+            \item Enhanced global reach
+            \item Simplified management
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Functions Virtualization: Beyond Physical Hardware}
+    
+    \begin{block}{Understanding NFV}
+        \textbf{Network Functions Virtualization (NFV)} transforms traditional network appliances into software that runs on standard servers, similar to how your smartphone can replace multiple physical devices.
+    \end{block}
+    
+    \begin{itemize}
+        \item Common virtualized network functions:
+        \begin{itemize}
+            \item Virtual routers and switches
+            \item Virtual firewalls and security appliances
+            \item Virtual load balancers
+            \item Virtual WAN optimizers
+        \end{itemize}
+        
+        \item Key advantages of NFV:
+        \begin{itemize}
+            \item Reduced hardware costs
+            \item Faster deployment of new services
+            \item Simplified network management
+            \item Greater flexibility and scalability
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{NFV Use Cases and Benefits}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Use Case} & \textbf{Example Application} \\
+        \hline
+        Service Providers & Virtual customer premise equipment (vCPE) \\
+        \hline
+        Enterprise Networks & Virtual firewalls and security services \\
+        \hline
+        Data Centers & Virtual load balancers and switches \\
+        \hline
+        Mobile Networks & Virtual mobile core networks \\
+        \hline
+        Cloud Services & Virtual network services \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Implementation benefits:
+        \begin{itemize}
+            \item Quick service deployment
+            \item Reduced operational costs
+            \item Flexible resource allocation
+            \item Simplified testing and updates
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Virtual Private Cloud: Your Own Space in the Cloud}
+    
+    \begin{alertblock}{What is a VPC?}
+        A \textbf{Virtual Private Cloud (VPC)} is like having your own private section of a cloud provider's network, similar to having a private floor in a large office building.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Key VPC features:
+        \begin{itemize}
+            \item Isolated network environment
+            \item Custom IP address ranges
+            \item Control over network design
+            \item Private and public subnets
+        \end{itemize}
+        
+        \item Security benefits:
+        \begin{itemize}
+            \item Network isolation
+            \item Access control rules
+            \item Traffic monitoring
+            \item Resource protection
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{VPC Architecture and Components}
+    
+    \begin{block}{Building Blocks of a VPC}
+        Think of a VPC like designing a secure office building, where each floor (subnet) has its own purpose and security measures.
+    \end{block}
+    
+    \begin{itemize}
+        \item Essential VPC components:
+        \begin{itemize}
+            \item Subnets for different workloads
+            \item Route tables for traffic direction
+            \item Network ACLs for security
+            \item Internet and NAT gateways
+        \end{itemize}
+        
+        \item Network design considerations:
+        \begin{itemize}
+            \item IP address planning
+            \item Availability zone distribution
+            \item Connection requirements
+            \item Security layer implementation
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Securing Cloud Networks: Basic Principles}
+    
+    \begin{itemize}
+        \item \textbf{Defense in Depth Strategy:}
+        \begin{itemize}
+            \item Multiple security layers
+            \item Redundant protection mechanisms
+            \item Comprehensive monitoring
+            \item Regular security updates
+        \end{itemize}
+        
+        \item \textbf{Security Implementation:}
+        \begin{itemize}
+            \item Network isolation
+            \item Access controls
+            \item Encryption methods
+            \item Security groups
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Key Security Principle}
+        Always follow the principle of least privilege: give users and resources only the minimum access they need to function.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Security Groups: Controlling Access}
+    
+    \begin{alertblock}{What are Security Groups?}
+        \textbf{Network Security Groups} act like virtual bouncers for your cloud resources, controlling which traffic can enter and leave based on specific rules - similar to how a bouncer checks guest lists at a club.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Key characteristics:
+        \begin{itemize}
+            \item Instance-level firewall protection
+            \item Stateful packet filtering
+            \item Allow rules only (implicit deny)
+            \item Applied to individual resources
+        \end{itemize}
+        
+        \item Common security group rules:
+        \begin{itemize}
+            \item Web server access (ports 80/443)
+            \item Remote management (SSH/RDP)
+            \item Database connections
+            \item Application-specific ports
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Security Lists: Rules and Policies}
+    
+    \begin{tabular}{|p{0.25\textwidth}|p{0.35\textwidth}|p{0.3\textwidth}|}
+        \hline
+        \textbf{Rule Type} & \textbf{Common Use} & \textbf{Example} \\
+        \hline
+        Inbound Rules & Control incoming traffic & Allow HTTPS (443) \\
+        \hline
+        Outbound Rules & Manage outgoing traffic & Allow DNS (53) \\
+        \hline
+        ICMP Rules & Network troubleshooting & Allow ping \\
+        \hline
+        Custom Rules & Application-specific & Allow 8080-8090 \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Rules are processed in order:
+        \begin{itemize}
+            \item Most specific first
+            \item Default deny last
+            \item Regular review needed
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Gateway Fundamentals}
+    
+    \begin{block}{Understanding Cloud Gateways}
+        Cloud gateways are like the doors and windows of your cloud environment - they control how traffic enters and exits your virtual private cloud.
+    \end{block}
+    
+    \begin{itemize}
+        \item Types of cloud gateways:
+        \begin{itemize}
+            \item \textbf{Internet Gateway:} Direct internet access
+            \item \textbf{NAT Gateway:} Private resource internet access
+            \item \textbf{VPN Gateway:} Secure remote access
+            \item \textbf{Transit Gateway:} Inter-VPC communication
+        \end{itemize}
+        
+        \item Gateway selection depends on:
+        \begin{itemize}
+            \item Security requirements
+            \item Access patterns
+            \item Cost considerations
+            \item Performance needs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Internet Gateway and NAT Gateway}
+    
+    \begin{itemize}
+        \item \textbf{Internet Gateway:}
+        \begin{itemize}
+            \item Enables two-way internet communication
+            \item Supports public IP addresses
+            \item Required for public-facing resources
+            \item Highly available by design
+        \end{itemize}
+        
+        \item \textbf{NAT Gateway:}
+        \begin{itemize}
+            \item Allows private resources to access internet
+            \item Maintains private IP addresses
+            \item Provides outbound-only access
+            \item Managed service with automatic scaling
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Security Best Practice}
+        Use NAT Gateways for resources that need internet access but should remain private, such as application servers updating their software.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Connectivity: Understanding Your Options}
+    
+    \begin{block}{Connecting to the Cloud}
+        Just as there are many ways to travel between cities (air, road, rail), there are different ways to connect to cloud resources, each with its own benefits and trade-offs.
+    \end{block}
+    
+    \begin{itemize}
+        \item Common connectivity options:
+        \begin{itemize}
+            \item \textbf{Internet Connection:} Standard public internet
+            \item \textbf{VPN:} Encrypted tunnel over internet
+            \item \textbf{Direct Connect:} Private dedicated connection
+            \item \textbf{Transit Gateway:} Hub for multiple connections
+        \end{itemize}
+        
+        \item Selection factors:
+        \begin{itemize}
+            \item Security requirements
+            \item Bandwidth needs
+            \item Cost constraints
+            \item Performance demands
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{VPN Solutions for Cloud Access}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{VPN Type} & \textbf{Best Used For} \\
+        \hline
+        Site-to-Site VPN & Connecting office to cloud resources \\
+        \hline
+        Client VPN & Individual remote user access \\
+        \hline
+        SSL VPN & Browser-based secure access \\
+        \hline
+        IPSec VPN & Highly secure network connection \\
+        \hline
+        Hybrid VPN & Combined with Direct Connect \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Key VPN considerations:
+        \begin{itemize}
+            \item Encryption standards
+            \item Authentication methods
+            \item Bandwidth limitations
+            \item Failover options
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Direct Connect: Dedicated Cloud Connections}
+    
+    \begin{alertblock}{What is Direct Connect?}
+        \textbf{Direct Connect} provides a dedicated private connection to the cloud, similar to having your own private highway between your office and the cloud data center.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Key benefits:
+        \begin{itemize}
+            \item Consistent network performance
+            \item Reduced data transfer costs
+            \item Enhanced security
+            \item Lower latency
+        \end{itemize}
+        
+        \item Common use cases:
+        \begin{itemize}
+            \item Large data transfers
+            \item Real-time applications
+            \item Regulatory compliance
+            \item Business-critical workloads
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Choosing the Right Connection}
+    
+    \begin{itemize}
+        \item \textbf{For Small Businesses:}
+        \begin{itemize}
+            \item Internet connectivity with VPN
+            \item Client VPN for remote workers
+            \item Basic security requirements
+            \item Cost-effective solutions
+        \end{itemize}
+        
+        \item \textbf{For Enterprise Organizations:}
+        \begin{itemize}
+            \item Direct Connect primary link
+            \item VPN backup connection
+            \item High availability design
+            \item Multiple connection points
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Decision Factors}
+        Consider these key aspects when selecting connectivity:
+        \begin{itemize}
+            \item Budget constraints
+            \item Performance requirements
+            \item Security needs
+            \item Geographic distribution
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Deployment Models Overview}
+    
+    \begin{alertblock}{Understanding Deployment Models}
+        Cloud deployment models are like choosing between different types of real estate: public spaces (public cloud), private property (private cloud), or a mix of both (hybrid cloud).
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Key factors in choosing a deployment model:
+        \begin{itemize}
+            \item Data security requirements
+            \item Regulatory compliance needs
+            \item Cost considerations
+            \item Performance requirements
+        \end{itemize}
+        
+        \item Common deployment considerations:
+        \begin{itemize}
+            \item Resource control level
+            \item Management responsibility
+            \item Scalability needs
+            \item Geographic distribution
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Public Cloud: Shared Infrastructure}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Characteristic} & \textbf{Benefit} \\
+        \hline
+        Pay-as-you-go & Only pay for resources used \\
+        \hline
+        Rapid elasticity & Scale up or down quickly \\
+        \hline
+        Managed services & Provider handles maintenance \\
+        \hline
+        Global presence & Deploy worldwide easily \\
+        \hline
+        Shared infrastructure & Cost-effective solution \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Popular public cloud providers:
+        \begin{itemize}
+            \item Amazon Web Services (AWS)
+            \item Microsoft Azure
+            \item Google Cloud Platform
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Private Cloud: Dedicated Resources}
+    
+    \begin{block}{What is Private Cloud?}
+        A private cloud is like having your own data center with cloud-like features: self-service, automation, and scalability, but with complete control over the infrastructure.
+    \end{block}
+    
+    \begin{itemize}
+        \item Key characteristics:
+        \begin{itemize}
+            \item Dedicated infrastructure
+            \item Complete control
+            \item Enhanced security
+            \item Customizable architecture
+        \end{itemize}
+        
+        \item Best suited for:
+        \begin{itemize}
+            \item Organizations with strict compliance requirements
+            \item High-security environments
+            \item Consistent workload environments
+            \item Specialized computing needs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hybrid Cloud: Best of Both Worlds}
+    
+    \begin{itemize}
+        \item \textbf{Hybrid Benefits:}
+        \begin{itemize}
+            \item Keep sensitive data on-premises
+            \item Burst to public cloud when needed
+            \item Balance security and scalability
+            \item Optimize costs across platforms
+        \end{itemize}
+        
+        \item \textbf{Common Use Cases:}
+        \begin{itemize}
+            \item Disaster recovery
+            \item Development and testing
+            \item Seasonal workload handling
+            \item Data processing workflows
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Key Consideration}
+        Successful hybrid cloud implementation requires careful planning of data movement, security, and network connectivity between environments.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Understanding Cloud Service Models}
+    
+    \begin{alertblock}{Cloud Service Models}
+        Cloud service models are like different levels of pizza delivery service: ready-to-eat pizza (SaaS), prepared ingredients to cook (PaaS), or just kitchen access (IaaS).
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Three main service models:
+        \begin{itemize}
+            \item \textbf{SaaS:} Ready-to-use applications
+            \item \textbf{PaaS:} Development platforms
+            \item \textbf{IaaS:} Raw computing resources
+        \end{itemize}
+        
+        \item Key differences:
+        \begin{itemize}
+            \item Level of control
+            \item Management responsibility
+            \item Technical expertise needed
+            \item Cost structure
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Software as a Service (SaaS)}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Common SaaS} & \textbf{Use Case} \\
+        \hline
+        Microsoft 365 & Office productivity \\
+        \hline
+        Salesforce & Customer relationship management \\
+        \hline
+        Dropbox & File storage and sharing \\
+        \hline
+        Zoom & Video conferencing \\
+        \hline
+        Slack & Team communication \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Benefits of SaaS:
+        \begin{itemize}
+            \item No installation required
+            \item Automatic updates
+            \item Accessible from anywhere
+            \item Predictable subscription costs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Infrastructure as a Service (IaaS)}
+    
+    \begin{block}{What is IaaS?}
+        IaaS provides the building blocks of cloud IT - like getting access to a fully equipped kitchen where you bring your own recipes and ingredients.
+    \end{block}
+    
+    \begin{itemize}
+        \item Core IaaS components:
+        \begin{itemize}
+            \item Virtual machines
+            \item Storage systems
+            \item Network infrastructure
+            \item Security features
+        \end{itemize}
+        
+        \item Common use cases:
+        \begin{itemize}
+            \item Website hosting
+            \item Development environments
+            \item Backup and recovery
+            \item High-performance computing
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Platform as a Service (PaaS)}
+    
+    \begin{itemize}
+        \item \textbf{PaaS Offerings Include:}
+        \begin{itemize}
+            \item Development frameworks
+            \item Database management
+            \item Application hosting
+            \item Development tools
+        \end{itemize}
+        
+        \item \textbf{Ideal For:}
+        \begin{itemize}
+            \item Application developers
+            \item DevOps teams
+            \item Rapid deployment
+            \item Testing environments
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Developer Focus}
+        PaaS lets developers focus on writing code without worrying about infrastructure management - like cooking in a kitchen where all tools and basic ingredients are provided and maintained for you.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Scalability in Cloud Computing}
+    
+    \begin{alertblock}{What is Scalability?}
+        \textbf{Scalability} is like having a rubber band that can stretch to accommodate growth - it's the ability to handle increased workload by adding resources to the system.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Two types of scaling:
+        \begin{itemize}
+            \item \textbf{Vertical Scaling:} Adding more power (like upgrading to a bigger engine)
+            \item \textbf{Horizontal Scaling:} Adding more instances (like adding more vehicles)
+        \end{itemize}
+        
+        \item Scaling considerations:
+        \begin{itemize}
+            \item Performance requirements
+            \item Cost implications
+            \item Application design
+            \item Database scaling
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Implementing Cloud Elasticity}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Elasticity Feature} & \textbf{Business Benefit} \\
+        \hline
+        Auto-scaling & Automatic resource adjustment \\
+        \hline
+        Load balancing & Even distribution of traffic \\
+        \hline
+        Usage monitoring & Cost optimization \\
+        \hline
+        Performance metrics & Quality maintenance \\
+        \hline
+        Resource scheduling & Planned scaling \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Elasticity differs from scalability:
+        \begin{itemize}
+            \item Handles both growth AND reduction
+            \item Responds automatically to demand
+            \item Optimizes resource usage
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Multitenancy: Sharing Cloud Resources}
+    
+    \begin{block}{Understanding Multitenancy}
+        Multitenancy is like an apartment building where multiple tenants share the same infrastructure but maintain private spaces - each tenant's data and applications are isolated despite sharing physical resources.
+    \end{block}
+    
+    \begin{itemize}
+        \item Key aspects of multitenancy:
+        \begin{itemize}
+            \item Resource sharing
+            \item Data isolation
+            \item Security boundaries
+            \item Performance management
+        \end{itemize}
+        
+        \item Security considerations:
+        \begin{itemize}
+            \item Access control
+            \item Data separation
+            \item Network isolation
+            \item Compliance requirements
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Architecture Best Practices}
+    
+    \begin{itemize}
+        \item \textbf{Design Principles:}
+        \begin{itemize}
+            \item Build for failure
+            \item Automate everything possible
+            \item Use managed services when available
+            \item Monitor and optimize continuously
+        \end{itemize}
+        
+        \item \textbf{Implementation Guidelines:}
+        \begin{itemize}
+            \item Start small and scale as needed
+            \item Implement security at every layer
+            \item Plan for disaster recovery
+            \item Consider cost optimization
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Key Takeaway}
+        Successful cloud architecture requires balancing scalability, security, and cost while maintaining application performance and reliability.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Concepts Review}
+    
+    \begin{block}{Cloud Computing Framework}
+        Understanding how different components work together to create a complete cloud solution:
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Infrastructure Components:}
+        \begin{itemize}
+            \item Network Functions Virtualization (NFV)
+            \item Virtual Private Clouds (VPC)
+            \item Security Groups and Gateways
+            \item Connectivity Options
+        \end{itemize}
+        
+        \item \textbf{Service and Deployment Models:}
+        \begin{itemize}
+            \item Public, Private, and Hybrid Clouds
+            \item SaaS, PaaS, and IaaS Options
+            \item Scaling and Elasticity
+            \item Multitenancy Considerations
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Real-World Scenarios}
+    
+    \begin{alertblock}{Case Studies for Discussion}
+        How would you approach these common business scenarios?
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Startup Company:}
+        \begin{itemize}
+            \item Limited budget
+            \item Rapid growth potential
+            \item Need for quick deployment
+            \item Which cloud model and services would you recommend?
+        \end{itemize}
+        
+        \item \textbf{Healthcare Provider:}
+        \begin{itemize}
+            \item Strict data privacy requirements
+            \item Need for reliable access
+            \item Multiple office locations
+            \item How would you design their cloud infrastructure?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Critical Decision Points}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Decision Area} & \textbf{Key Considerations} \\
+        \hline
+        Service Model & Control level, expertise needed, budget \\
+        \hline
+        Deployment Type & Security, scalability, compliance \\
+        \hline
+        Connectivity & Performance, reliability, cost \\
+        \hline
+        Security & Access control, data protection, monitoring \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Questions to consider:
+        \begin{itemize}
+            \item What are your core requirements?
+            \item What resources are available?
+            \item What are your growth projections?
+            \item What are your compliance needs?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussion Topics and Exercises}
+    
+    \begin{itemize}
+        \item \textbf{Group Activities:}
+        \begin{itemize}
+            \item Design a cloud migration strategy
+            \item Create a security framework
+            \item Plan for disaster recovery
+            \item Develop a cost optimization plan
+        \end{itemize}
+        
+        \item \textbf{Discussion Questions:}
+        \begin{itemize}
+            \item When is hybrid cloud the best option?
+            \item How do you balance security and accessibility?
+            \item What drives the choice between IaaS and PaaS?
+            \item How do you measure cloud ROI?
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Practical Exercise}
+        Break into teams and design a complete cloud solution for a given business scenario, considering all aspects covered in this course.
+    \end{block}
+\end{frame}
+
+\end{document}

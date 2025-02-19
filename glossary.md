@@ -94,3 +94,40 @@ Legacy Application | An outdated or obsolete system that continues to be used du
 Direct Dependency | A component, service, or resource that a system immediately requires to function properly
 Indirect Dependency | A secondary or tertiary requirement that, while not immediately connected, can still affect system functionality through its relationship with direct dependencies
 Version Control | A system for tracking and managing changes to software code, documents, or other collections of information, enabling collaboration and maintaining history
+
+## Lecture 4: Crytography
+
+Term | Definition
+-----|------------
+Symmetric Encryption | A method where the same key is used for both encryption and decryption of data, requiring secure key distribution between parties.
+Asymmetric Encryption | Uses mathematically related key pairs - one public and one private - allowing data to be encrypted with one key and decrypted with its counterpart.
+Advanced Encryption Standard (AES) | A widely-adopted block cipher algorithm that processes data in 128-bit blocks using 128, 192, or 256-bit keys, selected by NIST as a federal standard.
+RSA | A public-key cryptosystem based on the mathematical difficulty of factoring large composite numbers, commonly used for secure data transmission.
+Public Key Infrastructure | A framework of policies, hardware, software, and procedures managing digital certificates and public-key encryption to enable secure electronic transfer of information.
+Key Escrow | A security measure where cryptographic keys are stored with a trusted third party, allowing authorized access to encrypted data if the original keys are lost or in specific legal situations.
+Digital Signature | A mathematical scheme using asymmetric cryptography to verify the authenticity and integrity of digital messages or documents.
+Hash Function | A one-way mathematical algorithm that transforms input data of arbitrary size into a fixed-size output string, making it computationally infeasible to reverse.
+Salt (hash) | Random data added to an input before hashing to create unique outputs even for identical inputs, preventing rainbow table attacks and enhancing password security.
+Key Stretching | A technique to increase security by repeatedly processing a cryptographic key or password to create a longer, more secure derived key.
+Full-disk Encryption (FDE) | A security method that automatically converts all data on a storage device into ciphertext, protecting against unauthorized physical access.
+Partition Encryption | Protection applied to specific sections of a storage device, allowing separate security policies for different data areas.
+Volume Encryption | Secures a complete logical drive or storage container, including file system metadata and free space.
+File-level Encryption | Protects individual files or folders while leaving system files and non-sensitive data unencrypted, offering granular control over data security.
+Transparent Data Encryption (TDE) | Database security feature performing automatic encryption/decryption of data and log files at the storage level without application changes.
+Transport Layer Security (TLS) | A cryptographic protocol providing end-to-end security for data transmitted over networks, including authentication, integrity, and confidentiality mechanisms.
+Trusted Platform Module (TPM) | A dedicated microprocessor designed to secure hardware through integrated cryptographic keys, protecting against tampering and unauthorized access.
+Hardware Security Module (HMS) | Physical computing device managing digital keys and performing encryption operations in a secure, tamper-resistant environment.
+Key Management System (KMS) | Integrated framework for generating, distributing, storing, rotating, and revoking cryptographic keys throughout their lifecycle.
+Secure Enclave | An isolated, dedicated hardware component providing secure storage and processing of sensitive data, isolated from the main processor.
+Data Obfuscation | The practice of deliberately making information unclear or difficult to understand while maintaining its utility, deterring unauthorized access.
+Steganography | Technique of concealing information within other non-secret data or carriers, such as embedding messages in images or audio files.
+Tokenization | Process of substituting sensitive data elements with non-sensitive equivalents (tokens) that maintain business utility without compromising security.
+Data Masking | Technique creating a structurally similar but inauthentic version of data for purposes such as testing and development.
+Blockchain | Distributed, immutable ledger technology recording transactions across a network of computers using cryptographic principles.
+Open Public Ledger | Transparent, distributed database accessible to all participants, recording transactions in a verifiable and permanent way.
+Digital Certificate | Electronic credential verifying the identity of entities in digital communications, containing public key and identity information.
+Certificate Authority | Trusted entity issuing and managing digital certificates, validating the identity of certificate holders.
+Certificate Revocation Lists (CRLs) | Regularly updated lists of digital certificates that have been revoked before their scheduled expiration date.
+Online Certificate Status Protocol (OCSP) | Real-time method for checking digital certificate validity status, providing an alternative to CRLs.
+Root of Trust | Foundation of security infrastructure providing inherently trusted hardware and software components verified during system startup.
+Certificate Signing Request (CSR) | Message sent to a Certificate Authority containing information required to generate a digital certificate.

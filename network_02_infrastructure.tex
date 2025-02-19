@@ -1,0 +1,934 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Understanding Network Building Blocks}
+\subtitle{A Beginner's Guide to Network Components}
+\author{Your Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{What Makes Up a Network?}
+    
+    \begin{alertblock}{Think of a Network Like a City}
+        Just as a city needs roads, traffic lights, and postal services to function, a computer network needs various components to operate effectively.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Networks have three main types of components:
+        \begin{itemize}
+            \item \textbf{Network Appliances:} The physical or virtual "machines" that make networks work (like routers, switches, and firewalls).
+            
+            \item \textbf{Network Applications:} Special software that provides services over the network (like content delivery systems).
+            
+            \item \textbf{Network Functions:} Important features that help the network operate safely and efficiently (like traffic management).
+        \end{itemize}
+        
+        \item When you connect to WiFi at a coffee shop, you're using:
+        \begin{itemize}
+            \item A wireless access point (appliance)
+            \item Web browsers and apps (applications)
+            \item Security features to protect your data (functions)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Physical vs Virtual Network Devices: What's the Difference?}
+    
+    \begin{block}{Understanding Through Examples}
+        Think about the difference between a physical calculator and a calculator app on your phone - network devices can be either physical or virtual too!
+    \end{block}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Physical Network Devices:}
+            \begin{itemize}
+                \item Actual hardware you can touch and see
+                \item Like your home WiFi router
+                \item Has its own power supply
+                \item Dedicated to one specific task
+                \item Can't be easily changed once built
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Virtual Network Devices:}
+            \begin{itemize}
+                \item Software that acts like hardware
+                \item Like having multiple calculators on one phone
+                \item Runs on a computer
+                \item Can do multiple tasks
+                \item Easy to update and modify
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why Are Virtual Network Devices Important?}
+    
+    \begin{block}{The Power of Virtual Devices}
+        Imagine turning one powerful computer into many different network devices, just like how your smartphone can be a calculator, compass, and camera all at once!
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Advantages of Virtual Devices:}
+        \begin{itemize}
+            \item Save money by using one computer to do many jobs
+            \item Easily create new network devices when needed
+            \item Quickly fix problems by restarting the software
+            \item Make backup copies of entire network systems
+        \end{itemize}
+        
+        \item \textbf{Trade-offs to Consider:}
+        \begin{itemize}
+            \item Need experienced IT staff to manage them
+            \item Might run slightly slower than physical devices
+            \item Depend on the main computer working properly
+        \end{itemize}
+        
+        \item Many modern networks use both physical and virtual devices together to get the best of both worlds!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Routers: The Internet Traffic Directors}
+    
+    \begin{alertblock}{What is a Router?}
+        A \textbf{router} is like a traffic cop for the internet, directing data between different networks and helping information find the best path to its destination.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Every time you access a website, routers help your data travel across multiple networks:
+        \begin{itemize}
+            \item From your home network to your ISP
+            \item Through various internet service providers
+            \item Across countries and continents
+            \item Finally to the destination server
+        \end{itemize}
+        
+        \item Routers make decisions based on \textbf{IP addresses}, which are like the street addresses of the internet.
+        
+        \item They maintain special maps called \textbf{routing tables} to keep track of possible paths through the network.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Router Architecture and Key Features}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Component} & \textbf{Purpose} \\
+        \hline
+        CPU & Processes routing decisions and manages device \\
+        \hline
+        RAM & Stores routing tables and device configuration \\
+        \hline
+        Flash Memory & Holds the router's operating system \\
+        \hline
+        Network Interfaces & Connect to different networks \\
+        \hline
+        Console Port & Allows direct management access \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Each component plays a crucial role in:
+        \begin{itemize}
+            \item Processing incoming data packets
+            \item Making routing decisions
+            \item Forwarding packets to their destination
+            \item Maintaining network connectivity
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Switches: Building Local Networks}
+    
+    \begin{block}{Understanding Switches}
+        If routers are like traffic cops directing cars between different cities, \textbf{switches} are like the local street system within a city, connecting all the buildings (devices) in your local network.
+    \end{block}
+    
+    \begin{itemize}
+        \item Switches learn which devices are connected to each port by remembering their \textbf{MAC addresses}.
+        
+        \item Unlike basic hubs that send data to everyone, switches are intelligent:
+        \begin{itemize}
+            \item They send data only to the intended recipient
+            \item This increases network efficiency
+            \item Provides better security
+            \item Reduces unnecessary network traffic
+        \end{itemize}
+        
+        \item Most modern offices use switches to create their internal networks.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Switches: Layer 2 vs Layer 3}
+    
+    \begin{itemize}
+        \item Switches come in different types based on their capabilities:
+        \begin{itemize}
+            \item \textbf{Layer 2 Switches:} Basic network switching
+            \item \textbf{Layer 3 Switches:} Combine switching and routing
+            \item \textbf{PoE Switches:} Can power devices like phones and cameras
+        \end{itemize}
+        
+        \item The choice depends on your network needs:
+        \begin{itemize}
+            \item Size of your network
+            \item Types of devices you're connecting
+            \item Performance requirements
+            \item Budget constraints
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{When to Use Layer 3 Switches}
+        Layer 3 switches are ideal when you need routing capabilities within a large local network, such as a corporate office with multiple departments or a university campus.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Firewalls: Protecting Network Boundaries}
+    
+    \begin{block}{What is a Firewall?}
+        A \textbf{firewall} acts like a security guard for your network, checking all incoming and outgoing traffic to protect against unauthorized access and cyber threats.
+    \end{block}
+    
+    \begin{itemize}
+        \item Firewalls make decisions based on security rules:
+        \begin{itemize}
+            \item Which applications can access the network
+            \item Which websites users can visit
+            \item What types of data can enter or leave
+            \item Which devices can connect
+        \end{itemize}
+        
+        \item Every modern network needs firewall protection:
+        \begin{itemize}
+            \item Home networks use simple firewall software
+            \item Businesses use advanced firewall appliances
+            \item Cloud networks use virtual firewalls
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Next-Generation Firewalls and Their Features}
+    
+    \begin{tabular}{|p{0.25\textwidth}|p{0.65\textwidth}|}
+        \hline
+        \textbf{Feature} & \textbf{Description} \\
+        \hline
+        Deep Packet Inspection & Examines the content of network traffic in detail \\
+        \hline
+        Application Control & Controls access based on specific applications \\
+        \hline
+        User Identity Management & Applies rules based on user identity \\
+        \hline
+        Threat Prevention & Blocks known malware and cyber attacks \\
+        \hline
+        SSL Inspection & Examines encrypted traffic for threats \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Modern firewalls go beyond simple packet filtering to provide comprehensive security.
+        \item They can identify and block sophisticated cyber attacks.
+        \item Many include built-in VPN capabilities for secure remote access.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{IDS/IPS: Monitoring and Protecting Networks}
+    
+    \begin{alertblock}{Key Difference}
+        While an \textbf{Intrusion Detection System (IDS)} alerts you about suspicious activity (like a security camera), an \textbf{Intrusion Prevention System (IPS)} actively blocks threats (like a security guard).
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item These systems protect networks by:
+        \begin{itemize}
+            \item Monitoring network traffic patterns
+            \item Comparing activity against known threat signatures
+            \item Detecting unusual behavior
+            \item Logging security events
+        \end{itemize}
+        
+        \item Common detection methods include:
+        \begin{itemize}
+            \item Signature-based detection
+            \item Anomaly-based detection
+            \item Protocol analysis
+            \item Behavioral monitoring
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{IDS/IPS Deployment and Management}
+    
+    \begin{itemize}
+        \item Common deployment locations:
+        \begin{itemize}
+            \item At network perimeter
+            \item Between security zones
+            \item In front of critical servers
+            \item Near sensitive data storage
+        \end{itemize}
+        
+        \item Best practices for management:
+        \begin{itemize}
+            \item Regular signature updates
+            \item Fine-tuning of alert thresholds
+            \item Monitoring of false positives
+            \item Integration with security tools
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Real-World Example}
+        A university might place IDS sensors throughout its network to monitor:
+        \begin{itemize}
+            \item Student dormitory traffic
+            \item Research lab connections
+            \item Administrative systems
+            \item Public wifi access
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Load Balancers: Distributing Network Traffic}
+    
+    \begin{alertblock}{What is Load Balancing?}
+        A \textbf{load balancer} works like a restaurant host, directing customers (network requests) to different servers to ensure no single server becomes overwhelmed and all requests are handled efficiently.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Load balancers help maintain website and application availability:
+        \begin{itemize}
+            \item Distribute incoming traffic across multiple servers
+            \item Monitor server health and availability
+            \item Remove failed servers from the rotation
+            \item Add new servers as needed
+        \end{itemize}
+        
+        \item Common uses include:
+        \begin{itemize}
+            \item Website hosting
+            \item Email services
+            \item Application servers
+            \item Database clusters
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Load Balancing Methods and Algorithms}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Method} & \textbf{How It Works} \\
+        \hline
+        Round Robin & Distributes requests equally in circular order \\
+        \hline
+        Least Connection & Sends to server with fewest active connections \\
+        \hline
+        Response Time & Chooses server with fastest response time \\
+        \hline
+        IP Hash & Uses client's IP to assign to specific server \\
+        \hline
+        Weighted & Assigns based on server capacity ratings \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Each method has specific use cases:
+        \begin{itemize}
+            \item Round Robin for equally powerful servers
+            \item Least Connection for varying request lengths
+            \item IP Hash for consistent user experience
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proxy Servers: Intermediaries in Action}
+    
+    \begin{block}{Understanding Proxy Servers}
+        A \textbf{proxy server} acts like a middleman between your device and the internet, similar to having a personal assistant who makes requests on your behalf while protecting your privacy.
+    \end{block}
+    
+    \begin{itemize}
+        \item Main benefits of using proxy servers:
+        \begin{itemize}
+            \item Privacy: Hide user's real IP address
+            \item Security: Filter malicious content
+            \item Caching: Store frequent content locally
+            \item Access Control: Enforce usage policies
+        \end{itemize}
+        
+        \item Types of proxy servers:
+        \begin{itemize}
+            \item Forward proxies (client protection)
+            \item Reverse proxies (server protection)
+            \item Transparent proxies (network control)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proxy Server Applications and Use Cases}
+    
+    \begin{itemize}
+        \item \textbf{Common Business Applications:}
+        \begin{itemize}
+            \item Content filtering for appropriate use
+            \item Bandwidth management
+            \item Security enhancement
+            \item Performance optimization
+        \end{itemize}
+        
+        \item \textbf{Personal Use Cases:}
+        \begin{itemize}
+            \item Accessing geo-restricted content
+            \item Protecting personal privacy
+            \item Bypassing network restrictions
+            \item Improving browsing speed
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Security Note}
+        While proxies can enhance privacy, it's important to use trusted proxy services as malicious proxies can intercept sensitive information.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Storage Solutions: Introduction}
+    
+    \begin{alertblock}{What is Network Storage?}
+        Network storage allows multiple users and devices to access shared data storage over a network, similar to having a digital library that everyone in your organization can access simultaneously.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Two main types of network storage:
+        \begin{itemize}
+            \item \textbf{Network-Attached Storage (NAS):} 
+                Directly connects to your network for file sharing
+            
+            \item \textbf{Storage Area Network (SAN):} 
+                Creates a separate network dedicated to storage
+        \end{itemize}
+        
+        \item Common uses include:
+        \begin{itemize}
+            \item File sharing and collaboration
+            \item Data backup and recovery
+            \item Media streaming and storage
+            \item Database hosting
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{NAS Systems: Simplified File Storage}
+    
+    \begin{tabular}{|p{0.25\textwidth}|p{0.65\textwidth}|}
+        \hline
+        \textbf{Feature} & \textbf{Benefit} \\
+        \hline
+        File Sharing & Multiple users can access files simultaneously \\
+        \hline
+        Easy Setup & Connects directly to existing network \\
+        \hline
+        RAID Support & Protects against drive failures \\
+        \hline
+        Remote Access & Access files from anywhere with internet \\
+        \hline
+        Automatic Backup & Keeps data safe without manual intervention \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Perfect for small to medium businesses
+        \item Works like a private cloud storage system
+        \item Simpler and less expensive than SAN
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{SAN Architecture: Enterprise Storage Networks}
+    
+    \begin{block}{Understanding SAN}
+        A Storage Area Network is like having a separate high-speed highway just for moving data between servers and storage devices, completely separate from regular network traffic.
+    \end{block}
+    
+    \begin{itemize}
+        \item Key components of a SAN:
+        \begin{itemize}
+            \item Storage arrays (groups of disk drives)
+            \item Dedicated SAN switches
+            \item Host bus adapters (HBAs)
+            \item Management software
+        \end{itemize}
+        
+        \item Benefits over NAS:
+        \begin{itemize}
+            \item Higher performance
+            \item Better scalability
+            \item Block-level storage access
+            \item Advanced data management
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Choosing Between NAS and SAN}
+    
+    \begin{itemize}
+        \item Consider these factors when choosing:
+        \begin{itemize}
+            \item Size of your organization
+            \item Performance requirements
+            \item Budget constraints
+            \item Technical expertise available
+        \end{itemize}
+        
+        \item Common scenarios:
+        \begin{itemize}
+            \item Small office: Basic NAS
+            \item Creative studio: Advanced NAS
+            \item Large enterprise: SAN
+            \item Data center: Multiple SANs
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Key Consideration}
+        Start with NAS if you're mainly sharing files, but consider SAN if you need high-performance database or virtual machine storage.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wireless Networks: Core Components}
+    
+    \begin{block}{What Makes Wireless Work?}
+        Wireless networks are like invisible bridges connecting our devices to the internet, using radio waves instead of physical cables to transmit data through the air.
+    \end{block}
+    
+    \begin{itemize}
+        \item Essential components of a wireless network:
+        \begin{itemize}
+            \item \textbf{Access Points (APs):} Broadcast wireless signals
+            \item \textbf{Wireless Controllers:} Manage multiple APs
+            \item \textbf{Antennas:} Shape and direct wireless coverage
+            \item \textbf{Client Devices:} Phones, laptops, tablets
+        \end{itemize}
+        
+        \item Modern wireless networks support:
+        \begin{itemize}
+            \item Multiple frequency bands (2.4 GHz, 5 GHz)
+            \item Different WiFi standards (802.11ac, WiFi 6)
+            \item Various security protocols (WPA3)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Access Points: Connecting Wireless Devices}
+    
+    \begin{tabular}{|p{0.25\textwidth}|p{0.65\textwidth}|}
+        \hline
+        \textbf{AP Type} & \textbf{Best Used For} \\
+        \hline
+        Indoor AP & Office spaces and homes \\
+        \hline
+        Outdoor AP & Parks and campus grounds \\
+        \hline
+        Industrial AP & Warehouses and factories \\
+        \hline
+        Mesh AP & Large areas needing coverage \\
+        \hline
+        Enterprise AP & High-density environments \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Key features to consider:
+        \begin{itemize}
+            \item Coverage range and capacity
+            \item Power over Ethernet support
+            \item Management capabilities
+            \item Security features
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wireless Controllers: Managing Access Points}
+    
+    \begin{alertblock}{Central Management}
+        A wireless controller acts like an orchestra conductor, coordinating multiple access points to create a seamless wireless experience across your entire facility.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Controllers handle critical tasks:
+        \begin{itemize}
+            \item Automatic AP configuration
+            \item Channel and power management
+            \item Load balancing between APs
+            \item Roaming between access points
+        \end{itemize}
+        
+        \item Benefits of centralized management:
+        \begin{itemize}
+            \item Consistent security policies
+            \item Simplified troubleshooting
+            \item Automatic updates
+            \item Performance optimization
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Planning Wireless Coverage}
+    
+    \begin{itemize}
+        \item Essential planning considerations:
+        \begin{itemize}
+            \item Building layout and materials
+            \item Expected number of users
+            \item Types of applications
+            \item Security requirements
+        \end{itemize}
+        
+        \item Common deployment challenges:
+        \begin{itemize}
+            \item Signal interference
+            \item Coverage dead zones
+            \item Capacity planning
+            \item Roaming transitions
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Best Practices}
+        Start with a wireless site survey to:
+        \begin{itemize}
+            \item Map coverage areas
+            \item Identify interference sources
+            \item Determine optimal AP placement
+            \item Plan for future expansion
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Content Delivery Networks: Global Content Distribution}
+    
+    \begin{alertblock}{What is a CDN?}
+        A \textbf{Content Delivery Network (CDN)} works like a global system of local libraries, storing copies of popular content closer to users to provide faster access and reduce load on the original server.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item CDNs improve content delivery by:
+        \begin{itemize}
+            \item Reducing distance between users and content
+            \item Distributing server load across locations
+            \item Protecting against traffic spikes
+            \item Improving website load times
+        \end{itemize}
+        
+        \item Common CDN use cases:
+        \begin{itemize}
+            \item Streaming services (Netflix, YouTube)
+            \item Social media platforms
+            \item News websites
+            \item Online gaming
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CDN Architecture and Components}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Component} & \textbf{Purpose} \\
+        \hline
+        Edge Servers & Store cached content close to users \\
+        \hline
+        Load Balancers & Direct users to nearest server \\
+        \hline
+        Origin Servers & Host original content \\
+        \hline
+        Analytics Systems & Monitor performance and usage \\
+        \hline
+        Security Services & Protect against attacks \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Each component works together to:
+        \begin{itemize}
+            \item Ensure fast content delivery
+            \item Maintain data consistency
+            \item Provide reliability
+            \item Track performance
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Virtual Private Networks (VPN): Secure Connections}
+    
+    \begin{block}{Understanding VPNs}
+        A \textbf{Virtual Private Network} creates a secure, encrypted tunnel through the public internet, like having your own private road that only you can use, even when traveling on public highways.
+    \end{block}
+    
+    \begin{itemize}
+        \item VPNs provide essential security features:
+        \begin{itemize}
+            \item Data encryption
+            \item IP address masking
+            \item Geographic location privacy
+            \item Secure remote access
+        \end{itemize}
+        
+        \item Common VPN applications:
+        \begin{itemize}
+            \item Remote work access
+            \item Secure public WiFi use
+            \item Private internet browsing
+            \item Connecting branch offices
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Quality of Service (QoS) and Traffic Management}
+    
+    \begin{itemize}
+        \item QoS helps prioritize network traffic:
+        \begin{itemize}
+            \item Voice and video calls
+            \item Critical business applications
+            \item Email and file transfers
+            \item General web browsing
+        \end{itemize}
+        
+        \item Traffic management techniques:
+        \begin{itemize}
+            \item Bandwidth allocation
+            \item Traffic shaping
+            \item Packet prioritization
+            \item Congestion management
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Why QoS Matters}
+        Just as emergency vehicles get priority on roads, QoS ensures critical network traffic gets priority over less important data, maintaining quality for essential services like voice and video.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time to Live (TTL): Managing Packet Lifespans}
+    
+    \begin{alertblock}{What is TTL?}
+        \textbf{Time to Live (TTL)} is like an expiration date for network packets, preventing them from circulating endlessly in the network if they can't reach their destination.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item TTL serves several important purposes:
+        \begin{itemize}
+            \item Prevents infinite routing loops
+            \item Limits packet lifetime in the network
+            \item Helps troubleshoot network issues
+            \item Controls cache duration for DNS records
+        \end{itemize}
+        
+        \item Each router decreases the TTL value by 1:
+        \begin{itemize}
+            \item Packet is discarded when TTL reaches 0
+            \item Sender is notified of packet expiration
+            \item Helps trace packet path through network
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Common TTL Values and Their Uses}
+    
+    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+        \hline
+        \textbf{Application} & \textbf{Typical TTL Value} \\
+        \hline
+        Windows Systems & 128 hops \\
+        \hline
+        Unix/Linux Systems & 64 hops \\
+        \hline
+        DNS Records & 300-86400 seconds \\
+        \hline
+        Router Advertisements & 1800 seconds \\
+        \hline
+        Web Cache & 3600-86400 seconds \\
+        \hline
+    \end{tabular}
+    
+    \begin{itemize}
+        \item Values can be adjusted based on:
+        \begin{itemize}
+            \item Network size and complexity
+            \item Security requirements
+            \item Performance needs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Putting It All Together: Network Design Principles}
+    
+    \begin{block}{Design Fundamentals}
+        Good network design is like city planning - it requires careful consideration of current needs, future growth, and efficient resource use.
+    \end{block}
+    
+    \begin{itemize}
+        \item Key design considerations:
+        \begin{itemize}
+            \item Scalability for future growth
+            \item Redundancy for reliability
+            \item Security at all layers
+            \item Performance optimization
+        \end{itemize}
+        
+        \item Component integration:
+        \begin{itemize}
+            \item Proper placement of security devices
+            \item Efficient traffic flow paths
+            \item Management access methods
+            \item Monitoring systems
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Real-World Network Scenarios}
+    
+    \begin{itemize}
+        \item \textbf{Small Business Setup:}
+        \begin{itemize}
+            \item Router with built-in firewall
+            \item Simple switch for local network
+            \item Wireless access point
+            \item NAS for file sharing
+        \end{itemize}
+        
+        \item \textbf{Enterprise Configuration:}
+        \begin{itemize}
+            \item Multiple routers for redundancy
+            \item Next-gen firewalls
+            \item SAN for critical data
+            \item Load balancers for applications
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{alertblock}{Implementation Tips}
+        Start with basic requirements and add complexity only as needed - every network component should serve a specific purpose in your overall design.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Concepts Review}
+    
+    \begin{block}{Core Network Infrastructure Components}
+        Each component serves a specific purpose in creating a secure, efficient network:
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Traffic Management:}
+        \begin{itemize}
+            \item Routers direct traffic between networks
+            \item Switches connect local devices
+            \item Load balancers distribute workload
+        \end{itemize}
+        
+        \item \textbf{Security Components:}
+        \begin{itemize}
+            \item Firewalls protect network boundaries
+            \item IDS/IPS monitor and prevent threats
+            \item VPNs ensure secure remote access
+        \end{itemize}
+        
+        \item \textbf{Storage and Delivery:}
+        \begin{itemize}
+            \item NAS/SAN provide network storage
+            \item CDNs optimize content delivery
+            \item Proxy servers enhance security and performance
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Critical Thinking Questions}
+    
+    \begin{alertblock}{Network Design Scenarios}
+        Consider these real-world situations and think about component selection and integration.
+    \end{alertblock}
+    
+    \begin{enumerate}
+        \item A small medical clinic needs to set up a network that:
+        \begin{itemize}
+            \item Protects patient data
+            \item Allows secure remote access
+            \item Provides reliable file storage
+            \item Which components would you choose and why?
+        \end{itemize}
+        
+        \item A growing e-commerce company needs to:
+        \begin{itemize}
+            \item Handle increasing website traffic
+            \item Ensure fast content delivery
+            \item Protect customer data
+            \item How would you design their infrastructure?
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussion Topics}
+    
+    \begin{itemize}
+        \item \textbf{Security vs. Performance:}
+        \begin{itemize}
+            \item How do security measures impact network performance?
+            \item When should performance take priority over security?
+            \item How can we optimize both?
+        \end{itemize}
+        
+        \item \textbf{Physical vs Virtual:}
+        \begin{itemize}
+            \item What criteria determine whether to use physical or virtual appliances?
+            \item How does virtualization change network management?
+            \item What are the cost implications?
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Group Activities}
+        Break into teams and design networks for different scenarios, then present and defend your choices to the class.
+    \end{block}
+\end{frame}
+
+
+\end{document}
