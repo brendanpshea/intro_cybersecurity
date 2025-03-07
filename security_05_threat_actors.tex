@@ -1,0 +1,521 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\title{Cybersecurity Threat Actors: Compare and Contrast}
+\subtitle{A Comprehensive Overview}
+\author{Brendan Shea, PhD}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%%%% SLIDE 1 %%%%
+\begin{frame}
+    \frametitle{Understanding the Cyber Threat Landscape: An Overview}
+    
+    \begin{itemize}
+        \item Cybersecurity threats have evolved significantly in complexity and impact over the past decades.
+        \item \textbf{Threat actors} are individuals or groups who have the potential to cause harm to information systems and networks.
+        \item The global cost of cybercrime is projected to reach \$10.5 trillion annually by 2025, highlighting the importance of understanding threats.
+        \item Modern cybersecurity requires identifying not just attack methods, but the actors behind them and their motivations.
+        \item This knowledge enables organizations to build more effective, targeted defense strategies.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 2 %%%%
+\begin{frame}
+    \frametitle{Why Study Threat Actors? The Importance of Know Your Enemy}
+    
+    \begin{alertblock}{Security Principle}
+        Understanding who might attack you and why is fundamental to effective defense.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Different threat actors employ different tactics, techniques, and procedures (TTPs).
+        \item Knowing potential attackers helps prioritize defenses against the most likely threats.
+        \item \textbf{Threat intelligence} involves gathering and analyzing information about threat actors to improve security posture.
+        \item Defenses against nation-state actors differ significantly from those targeting opportunistic criminals.
+        \item Early identification of threat actor signatures can dramatically reduce incident response time.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 3 %%%%
+\begin{frame}
+    \frametitle{The Evolution of Cyber Threats: Past, Present, and Future}
+    
+    \begin{itemize}
+        \item The 1980s-1990s: Early hackers were primarily motivated by curiosity and technical challenge.
+        \item The 2000s: Rise of financially motivated cybercrime and the formation of underground economies.
+        \item The 2010s: Emergence of state-sponsored cyber operations and sophisticated persistent threats.
+        \item Current landscape: Blurred lines between threat actor categories with shared tools and techniques.
+        \item Future trends point toward more automated attacks, AI-powered threats, and increased targeting of emerging technologies.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 4 %%%%
+\begin{frame}
+    \frametitle{Nation-State Actors: Government-Sponsored Cyber Operations}
+    
+    \begin{block}{Key Characteristics}
+        Nation-state actors typically have extensive resources, sophisticated capabilities, and strategic objectives aligned with national interests.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Nation-state actors} are government-sponsored groups that conduct cyber operations to further national interests.
+        \item These actors typically maintain the most sophisticated and persistent attack capabilities.
+        \item Primary motivations include espionage, critical infrastructure sabotage, and military advantage.
+        \item Examples include APT28 (Russia), APT1 (China), Equation Group (attributed to NSA), and Lazarus Group (North Korea).
+        \item Nation-state attacks often feature custom malware, zero-day exploits, and multi-year campaign timeframes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Case Study: Stuxnet and Nation-State Capabilities}
+    
+    \begin{block}{Background}
+        Discovered in 2010, Stuxnet targeted Iranian nuclear centrifuges at the Natanz uranium enrichment facility.
+    \end{block}
+    
+    \begin{itemize}
+        \item Stuxnet demonstrated unprecedented sophistication, using four zero-day vulnerabilities and stolen digital certificates.
+        \item The malware was specifically designed to target Siemens industrial control systems used in uranium enrichment.
+        \item It represented the first known case of malware designed to cause physical damage to critical infrastructure.
+        \item Attribution points to a joint US-Israeli operation codenamed "Olympic Games."
+        \item This case illustrates how nation-state actors can combine intelligence resources, technical expertise, and strategic patience.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 5 %%%%
+\begin{frame}
+    \frametitle{Script Kiddies and Unskilled Attackers: Low Sophistication, High Impact}
+    
+    \begin{itemize}
+        \item \textbf{Script kiddies} are inexperienced attackers who use existing tools and exploits without understanding the underlying technology.
+        \item Despite low sophistication, these actors can cause significant damage due to the availability of automated attack tools.
+        \item Motivations typically include curiosity, desire for notoriety, or simple mischief rather than financial gain.
+        \item These attackers often target vulnerable systems indiscriminately rather than focusing on specific organizations.
+        \item The democratization of hacking tools has significantly increased the number of unskilled threat actors.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 6 %%%%
+\begin{frame}
+    \frametitle{Hacktivists: When Digital Activism Meets Cyber Capabilities}
+    
+    \begin{alertblock}{Notable Example}
+        The Anonymous collective has conducted operations against organizations they perceive as corrupt, including governments, corporations, and religious institutions.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Hacktivism} refers to hacking for politically or socially motivated purposes rather than financial gain.
+        \item Hacktivist operations typically seek to bring attention to causes through website defacement, DDoS attacks, or data leaks.
+        \item These actors often operate in loose collectives rather than rigid hierarchical structures.
+        \item Their technical sophistication varies widely, from basic DDoS attacks to complex data exfiltration.
+        \item Hacktivists frequently announce their campaigns publicly to maximize awareness of their cause.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 7 %%%%
+\begin{frame}
+    \frametitle{The Insider Threat: Dangers from Within}
+    
+    \begin{itemize}
+        \item \textbf{Insider threats} come from individuals with legitimate access to an organization's systems and data.
+        \item These actors can be current or former employees, contractors, or business partners with authorized access.
+        \item Insider attacks are particularly dangerous because they bypass many perimeter security controls.
+        \item Motivations include financial gain, revenge for perceived wrongs, ideological disagreements, or coercion by outside actors.
+        \item Studies suggest insider threats are responsible for approximately 22\% of security incidents but tend to be the most costly.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 8 %%%%
+\begin{frame}
+    \frametitle{Organized Crime in Cyberspace: Digital Profit Centers}
+    
+    \begin{block}{Business Model}
+        Cybercriminal groups have evolved sophisticated business models including Ransomware-as-a-Service (RaaS), which allows affiliates to deploy attacks while sharing profits with the malware developers.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Cyber criminal organizations} operate like businesses, with hierarchical structures and specialized roles.
+        \item Primary motivation is financial gain through ransomware, banking trojans, credential theft, and fraud.
+        \item These groups maintain advanced technical capabilities and often recruit skilled developers and security experts.
+        \item Modern cybercrime groups have developed sophisticated supply chains and partnerships in the criminal underground.
+        \item Examples include groups like FIN7, Carbanak, and various ransomware gangs like REvil and DarkSide.
+    \end{itemize}
+\end{frame}
+
+%%%% CASE STUDY 2: CYBERCRIMINAL GROUPS %%%%
+\begin{frame}
+    \frametitle{Case Study: Conti Ransomware Group Operations}
+    
+    \begin{alertblock}{Impact}
+        The Conti ransomware group extorted over \$180 million from victims in 2021 alone, targeting healthcare, government, and critical infrastructure.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Conti operated a sophisticated business model with specialized teams for initial access, ransomware deployment, and negotiations.
+        \item The group maintained a detailed wiki, help desk, and salary structure mimicking legitimate software companies.
+        \item In 2022, an insider leaked Conti's internal communications and source code following geopolitical disagreements.
+        \item The group leveraged "double extortion" tactics, both encrypting data and threatening to publish stolen information.
+        \item This case demonstrates the professionalization and business-like operation of modern cybercriminal enterprises.
+    \end{itemize}
+\end{frame}
+
+
+%%%% SLIDE 9 %%%%
+\begin{frame}
+    \frametitle{Shadow IT: The Accidental Threat Actor}
+    
+    \begin{itemize}
+        \item \textbf{Shadow IT} refers to information technology systems deployed by departments without explicit organizational approval.
+        \item These unofficial systems often lack proper security oversight, creating vulnerabilities in the organization's security posture.
+        \item Unlike malicious threat actors, shadow IT practitioners typically have legitimate business objectives but create risk inadvertently.
+        \item Common examples include cloud services, productivity apps, and communication tools deployed without IT department knowledge.
+        \item Studies suggest that 40\% of IT spending occurs outside the IT department in large enterprises.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 10 %%%%
+\begin{frame}
+    \frametitle{Internal vs. External Threats: Comparing Access and Impact}
+    
+    \begin{alertblock}{Security Challenge}
+        Organizations must balance protection against external attackers while maintaining appropriate monitoring for insider threats without creating a culture of distrust.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Internal threats} originate from within the organization's security perimeter and exploit legitimate access.
+        \item \textbf{External threats} come from outside the organization and must first breach perimeter defenses.
+        \item Internal actors often have deeper knowledge of organizational systems and where valuable data resides.
+        \item External actors typically have more resources and can target multiple organizations simultaneously.
+        \item Detection methods differ significantly: external threats often leave evidence of intrusion while internal threats may appear as normal activity.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 11 %%%%
+\begin{frame}
+    \frametitle{Following the Money: How Resource Levels Shape Attack Capabilities}
+    
+    \begin{itemize}
+        \item Threat actor resources directly correlate with their attack sophistication, persistence, and scale.
+        \item \textbf{Low-resource actors} typically rely on publicly available tools and target vulnerable systems opportunistically.
+        \item \textbf{Medium-resource actors} can develop custom tools and sustain operations over weeks or months.
+        \item \textbf{High-resource actors} (like nation-states) can develop zero-day exploits, maintain persistent access for years, and target hardened systems.
+        \item Resource considerations include not just financial capital but human expertise, infrastructure, and time availability.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 12 %%%%
+\begin{frame}
+    \frametitle{Sophistication Spectrum: From Basic Scripts to Advanced Persistent Threats}
+    
+    \begin{block}{APT Definition}
+        An \textbf{Advanced Persistent Threat (APT)} is a sophisticated, multi-phase attack campaign conducted by well-resourced actors who maintain long-term, stealthy presence in targeted systems.
+    \end{block}
+    
+    \begin{itemize}
+        \item Technical sophistication exists on a spectrum from basic automated tools to complex custom frameworks.
+        \item Low sophistication: pre-packaged exploits, phishing kits, and DDoS-for-hire services.
+        \item Medium sophistication: customized malware, social engineering, and lateral movement techniques.
+        \item High sophistication: zero-day exploitation, advanced evasion, supply chain compromises, and hardware implants.
+        \item Sophistication level influences detection difficulty, attack attribution, and required defensive measures.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 13 %%%%
+\begin{frame}
+    \frametitle{Tools of the Trade: Comparing Threat Actor Arsenals}
+    
+    \begin{itemize}
+        \item Different threat actors employ distinctive toolsets that reflect their resources, objectives, and technical capabilities.
+        \item Script kiddies primarily use publicly available exploits, automated scanners, and pre-packaged malware kits.
+        \item Cybercriminal groups leverage commodity malware, phishing frameworks, and increasingly, legitimate system administration tools.
+        \item Hacktivists favor DDoS tools, web defacement scripts, and data exfiltration utilities to maximize public impact.
+        \item APT groups utilize custom implants, fileless malware, specialized backdoors, and sophisticated command-and-control infrastructure.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 14 %%%%
+\begin{frame}
+    \frametitle{Data Theft: Who Wants Your Information and Why}
+    
+    \begin{alertblock}{Data Classification}
+        Understanding what data different actors target helps organizations implement appropriate protections based on data classification and value.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Data exfiltration} involves the unauthorized transfer of data from an organization to an external location.
+        \item Nation-states target intellectual property, defense information, and strategic intelligence to gain competitive advantages.
+        \item Criminal groups focus on personally identifiable information (PII), payment data, and healthcare records that can be monetized.
+        \item Hacktivists seek sensitive communications, controversial internal documents, and evidence of perceived wrongdoing.
+        \item Insider threats often target specific high-value data based on their knowledge of where it resides and its market value.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 15 %%%%
+\begin{frame}
+    \frametitle{Cyber Espionage: The Digital Spy Game}
+    
+    \begin{itemize}
+        \item \textbf{Cyber espionage} is the act of obtaining secrets and confidential information without permission using cyber capabilities.
+        \item Primary practitioners include nation-states and their proxies, though corporate espionage by competitors also occurs.
+        \item Espionage operations prioritize stealth and long-term persistence over immediate impact or monetization.
+        \item Key targets include government agencies, defense contractors, critical infrastructure, and companies with valuable intellectual property.
+        \item Sophisticated espionage campaigns may persist for years before discovery, with attackers adapting tactics to avoid detection.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 16 %%%%
+\begin{frame}
+    \frametitle{Breaking Things: Actors Focused on Service Disruption}
+    
+    \begin{block}{Impact Assessment}
+        Service disruptions can cost organizations between \$300,000 and \$1 million per hour depending on the industry and systems affected.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Service disruption} attacks aim to prevent legitimate users from accessing systems, applications, or data.
+        \item Common techniques include Distributed Denial of Service (DDoS), ransomware deployment, and critical system sabotage.
+        \item Hacktivists use disruption to bring attention to causes, while nation-states may target critical infrastructure for strategic advantage.
+        \item Criminal groups increasingly use disruption as leverage for extortion rather than as a goal itself.
+        \item The rise of Internet of Things (IoT) has created new opportunities for massive disruption attacks.
+    \end{itemize}
+\end{frame}
+
+%%%% CASE STUDY 5: SUPPLY CHAIN ATTACKS %%%%
+\begin{frame}
+    \frametitle{Case Study: SolarWinds and Supply Chain Vulnerabilities}
+    
+    \begin{alertblock}{Scope}
+        The attack affected approximately 18,000 organizations, including multiple US government agencies and Fortune 500 companies.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item In 2020, threat actors compromised SolarWinds' build system to inject malicious code into the Orion network monitoring product.
+        \item The operation demonstrated extraordinary patience, with attackers maintaining access for months before activating backdoors.
+        \item The US government attributed the attack to Russia's Foreign Intelligence Service (SVR).
+        \item Victims included the US Treasury, Justice Department, and numerous technology companies.
+        \item This case demonstrates how attacking trusted vendors can provide access to thousands of organizations simultaneously.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 17 %%%%
+\begin{frame}
+    \frametitle{Extortion Economics: Ransomware and Digital Blackmail}
+    
+    \begin{itemize}
+        \item \textbf{Digital extortion} involves threatening to harm or expose victims unless financial demands are met.
+        \item Ransomware encrypts critical data and demands payment for decryption keys, with average demands exceeding \$200,000 in 2023.
+        \item Double extortion attacks both encrypt data and threaten to publish stolen information if ransom isn't paid.
+        \item Primarily conducted by criminal organizations, though some nation-states use similar tactics for financial gain.
+        \item Organizations with time-sensitive operations (healthcare, manufacturing) or regulatory obligations are particularly vulnerable to extortion.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 18 %%%%
+\begin{frame}
+    \frametitle{Show Me the Money: Financial Motivations in Cyberattacks}
+    
+    \begin{alertblock}{Evolution of Monetization}
+        Cybercriminal business models have evolved from direct theft to sophisticated schemes including ransomware-as-a-service, cryptojacking, and business email compromise.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Financial gain} remains the primary motivation for most cybercriminal activity globally.
+        \item Methods include direct theft (banking trojans), ransomware, cryptocurrency mining, payment fraud, and business email compromise.
+        \item Criminal groups operate increasingly specialized marketplaces selling access, tools, and stolen data.
+        \item The average cost of a data breach reached \$4.35 million in 2022, creating strong financial incentives for attackers.
+        \item Financially motivated actors typically follow return-on-investment principles, targeting the easiest victims with adequate payouts.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 19 %%%%
+\begin{frame}
+    \frametitle{Hacktivism and Ideology: When Beliefs Drive Cyber Operations}
+    
+    \begin{itemize}
+        \item \textbf{Philosophical and political beliefs} motivate hacktivists and ideologically-driven threat actors.
+        \item These actors view their activities as activism or civil disobedience rather than criminal behavior.
+        \item Common targets include government agencies, corporations perceived as unethical, and organizations with opposing ideological views.
+        \item Operations typically aim to expose perceived wrongdoing, embarrass targets, or disrupt operations to draw attention to causes.
+        \item Unlike financial actors, ideological attackers may persist despite minimal practical success, driven by conviction rather than profit.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 20 %%%%
+\begin{frame}
+    \frametitle{Ethics and "White Hat" Operations: Beneficial Breaches?}
+    
+    \begin{block}{Ethical Hacking Definition}
+        \textbf{Ethical hacking} involves authorized attempts to gain unauthorized access to systems, applications, or data by simulating the actions of malicious attackers.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Ethical motivations} in hacking include improving security, identifying vulnerabilities before malicious actors, and protecting users.
+        \item Security researchers discover and responsibly disclose vulnerabilities through coordinated vulnerability disclosure programs.
+        \item Penetration testers and red teams conduct authorized attacks to identify weaknesses in organizational defenses.
+        \item Bug bounty programs provide financial incentives for ethical hackers to identify and report security issues.
+        \item The line between ethical and unethical behavior can blur when disclosures are made without coordination or authorization.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 21 %%%%
+\begin{frame}
+    \frametitle{Digital Revenge: When Personal Grudges Go Online}
+    
+    \begin{itemize}
+        \item \textbf{Revenge} motivates attacks by individuals with personal grievances against organizations or individuals.
+        \item Disgruntled former employees represent a significant threat due to their insider knowledge and potentially retained access.
+        \item Revenge-motivated attackers often focus on causing embarrassment, reputational damage, or operational disruption.
+        \item These actors may accept greater personal risk than financially motivated attackers due to emotional investment.
+        \item Attacks frequently include public disclosure of sensitive information, sabotage of systems, or defacement of public-facing resources.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 22 %%%%
+\begin{frame}
+    \frametitle{Chaos Agents: Disruption for Disruption's Sake}
+    
+    \begin{alertblock}{Detection Challenge}
+        Actors motivated purely by chaos often exhibit unpredictable patterns that make their behavior difficult to model and detect through conventional means.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Some threat actors are motivated primarily by \textbf{disruption and chaos} rather than financial gain or ideological goals.
+        \item These individuals or groups derive satisfaction from causing disorder, confusion, and system failures.
+        \item Their targets tend to be opportunistic rather than strategic, based on vulnerability and potential for visible impact.
+        \item Techniques range from simple website defacements to complex attacks designed to trigger cascading failures.
+        \item Historical examples include early hacker groups like Cult of the Dead Cow and certain Anonymous operations.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 23 %%%%
+\begin{frame}
+    \frametitle{Cyberwarfare: When Nations Clash in Digital Space}
+    
+    \begin{itemize}
+        \item \textbf{Cyberwarfare} involves state-sponsored offensive operations aimed at damaging another nation's capabilities or infrastructure.
+        \item Unlike espionage, warfare operations prioritize impact over stealth and may target critical civilian infrastructure.
+        \item Modern military conflicts now routinely include cyber operations alongside traditional kinetic warfare.
+        \item Notable examples include Stuxnet (targeting Iranian nuclear facilities), attacks on Ukrainian power grid, and election interference operations.
+        \item The absence of clear international norms and attribution challenges make cyberwarfare particularly destabilizing in international relations.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 24 %%%%
+\begin{frame}
+    \frametitle{Case Studies: Notable Attacks and Their Perpetrators}
+    
+    \begin{block}{Learning from History}
+        Analyzing past attacks provides valuable insights into threat actor TTPs, motivations, and the effectiveness of various defensive measures.
+    \end{block}
+    
+    \begin{itemize}
+        \item The 2020 SolarWinds supply chain attack demonstrated the sophisticated capabilities of nation-state actors (attributed to Russia).
+        \item WannaCry ransomware in 2017 showed how criminal groups leverage stolen nation-state tools (attributed to North Korea).
+        \item The 2014 Sony Pictures hack illustrated politically motivated destruction by state-sponsored actors (attributed to North Korea).
+        \item The 2017 Equifax breach demonstrated how criminal organizations target and monetize massive personal data collections.
+        \item Operation Aurora in 2009 revealed early advanced persistent threat tactics targeting intellectual property (attributed to China).
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 25 %%%%
+\begin{frame}
+    \frametitle{Attribution Challenges: Why Identifying Threat Actors Is Difficult}
+    
+    \begin{itemize}
+        \item \textbf{Attribution} is the process of determining who is responsible for a cyberattack, often with limited and ambiguous evidence.
+        \item Sophisticated actors use false flags and borrowed techniques to mislead investigators about their identity.
+        \item Technical evidence (IP addresses, malware code, infrastructure) can be easily manipulated or obfuscated.
+        \item Attribution requires combining technical forensics with intelligence about known actor behaviors, capabilities, and motivations.
+        \item Even high-confidence attributions rarely meet the standard of proof that would be required in legal proceedings.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 26 %%%%
+\begin{frame}
+    \frametitle{Threat Intelligence: Practical Applications}
+    
+    \begin{alertblock}{Intelligence Lifecycle}
+        Effective threat intelligence follows a cycle of planning, collection, processing, analysis, dissemination, and feedback to continuously improve defenses.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Threat intelligence} transforms raw data about threats into actionable information for security decision-making.
+        \item Strategic intelligence helps executives understand risks and allocate resources appropriately.
+        \item Tactical intelligence enables security teams to proactively hunt for threats based on known actor behaviors.
+        \item Operational intelligence provides context for incident responders during active breaches.
+        \item Intelligence sharing occurs through formal organizations (ISACs), commercial services, and informal professional networks.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 27 %%%%
+\begin{frame}
+    \frametitle{Defense Strategies: Tailoring Security to Specific Threat Actors}
+    
+    \begin{itemize}
+        \item Understanding threat actors enables organizations to implement \textbf{threat-informed defense} rather than generic security controls.
+        \item Defenses against nation-states require emphasis on critical data segregation, insider threat monitoring, and advanced detection capabilities.
+        \item Protections against criminal groups focus on ransomware resilience, phishing defenses, and financial transaction safeguards.
+        \item Mitigating insider threats requires privileged access management, behavior analytics, and data loss prevention tools.
+        \item The MITRE ATT\&CK framework maps common techniques to threat actors, enabling targeted defensive measures.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 28 %%%%
+\begin{frame}
+    \frametitle{The Changing Landscape: Emerging Threat Actors and Motivations}
+    
+    \begin{block}{Future Trends}
+        The democratization of advanced attack capabilities through AI, automated exploitation tools, and attack services will continue to lower barriers to entry for sophisticated attacks.
+    \end{block}
+    
+    \begin{itemize}
+        \item The line between threat actor categories continues to blur as nation-states leverage criminal proxies and criminal groups adopt nation-state techniques.
+        \item \textbf{Artificial intelligence} is emerging both as a tool for attackers and a new category of potential threat actor if improperly secured.
+        \item The growth of IoT and operational technology (OT) networks creates new attack surfaces and potential threat actors.
+        \item Attacks against cloud service providers, managed service providers, and supply chains demonstrate a shift toward targeting trusted intermediaries.
+        \item Future motivations may include manipulating markets, influencing public opinion, and weaponizing information in addition to traditional objectives.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 29 %%%%
+\begin{frame}
+    \frametitle{Putting It All Together: Comprehensive Threat Modeling}
+    
+    \begin{itemize}
+        \item \textbf{Threat modeling} is a structured approach to identifying potential threats, likely attack vectors, and appropriate mitigations.
+        \item Effective models incorporate knowledge of relevant threat actors, their capabilities, and their likely motivations.
+        \item The process begins with identifying valuable assets and mapping potential exposure to different threat actors.
+        \item Organizations should prioritize defenses against the threat actors most likely to target their particular industry and data types.
+        \item Regular reassessment is critical as both organizational assets and threat actor landscapes evolve.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 30 %%%%
+\begin{frame}
+    \frametitle{Beyond Technology: The Human Element in Cybersecurity}
+    
+    \begin{alertblock}{Final Thought}
+        Understanding the human motivations, behaviors, and limitations of both threat actors and defenders is ultimately more important than any technological solution.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Technology alone cannot address the full spectrum of cybersecurity challenges posed by diverse threat actors.
+        \item Effective security culture and awareness are essential components of defense against all threat actor types.
+        \item Human psychology drives both attacker motivations and defender behaviors, making it central to cybersecurity strategy.
+        \item Building resiliency requires addressing people, processes, and technology as an integrated system.
+        \item The future of cybersecurity lies in understanding the motivations and methods of threat actors while anticipating how these will evolve.
+    \end{itemize}
+\end{frame}
+
+\end{document}
