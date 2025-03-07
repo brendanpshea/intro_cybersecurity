@@ -1,0 +1,563 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\title{Understanding Security Vulnerabilities}
+\subtitle{CompTIA Security+ SY0-701}
+\author{Instructor Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%%%% SLIDE 1 %%%%
+\begin{frame}
+    \frametitle{Understanding Vulnerabilities: Types and Classification}
+    
+    \begin{itemize}
+        \item A \textbf{security vulnerability} is a weakness that can be exploited to cause harm or gain unauthorized access to a system.
+        \item Think of vulnerabilities as unlocked doors or windows in your home—they create entry points for those with malicious intent.
+        \item Vulnerabilities can exist in any part of an IT system: hardware, software, networks, or even human procedures.
+        \item Organizations track vulnerabilities using the \textbf{Common Vulnerabilities and Exposures (CVE)} system, which assigns unique identifiers to each known issue.
+        \item Understanding the types of vulnerabilities helps prioritize which "doors" need to be locked first to keep systems secure.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 2 %%%%
+\begin{frame}
+    \frametitle{The Vulnerability Lifecycle: Discovery to Remediation}
+    
+    \begin{alertblock}{Critical Timeline}
+        The time between discovering a vulnerability and fixing it represents a period of significant risk.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Vulnerabilities follow a predictable lifecycle from birth to resolution, similar to how a disease spreads and is eventually treated.
+        \item First, someone \textbf{discovers} the vulnerability—this could be a security researcher, a hacker, or an accidental finding.
+        \item Next, the vulnerability is \textbf{disclosed}, ideally to the software/hardware creator before being publicly announced.
+        \item The vendor then works to develop and release a \textbf{patch or fix} for the problem.
+        \item Finally, organizations must \textbf{implement the fix} and verify it works properly to complete the cycle.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 3 %%%%
+\begin{frame}
+    \frametitle{Application Vulnerabilities: Overview and Attack Surface}
+    
+    \begin{itemize}
+        \item \textbf{Application vulnerabilities} are weaknesses in software that allow attackers to manipulate how programs operate.
+        \item These are among the most common security issues because software is complex and constantly changing.
+        \item Think of applications like a house with many rooms—each feature adds another space that needs to be secured.
+        \item Common application weaknesses include improper handling of user input, memory management mistakes, and authentication problems.
+        \item Modern applications rely on hundreds of components from different sources, with each component potentially introducing new vulnerabilities.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 4 %%%%
+\begin{frame}
+    \frametitle{Memory Injection: Concepts and Attack Techniques}
+    
+    \begin{block}{Core Concept}
+        \textbf{Memory injection} happens when an attacker can insert their own code into a running program's memory space, like slipping a fake page into a book.
+    \end{block}
+    
+    \begin{itemize}
+        \item Computer programs store instructions and data in memory while they're running.
+        \item Memory injection attacks manipulate this memory to make the program do something it wasn't designed to do.
+        \item This is similar to changing the script in a play while actors are performing—suddenly they're following the attacker's directions.
+        \item These attacks are powerful because they execute with the same permissions as the original program.
+        \item Memory injection often bypasses traditional security tools that focus on examining files rather than memory.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 5 %%%%
+\begin{frame}
+    \frametitle{Buffer Overflow Vulnerabilities: Understanding the Basics}
+    
+    \begin{itemize}
+        \item A \textbf{buffer overflow} happens when a program tries to store more data in a temporary storage area than it was designed to hold.
+        \item Imagine trying to pour a gallon of water into a pint glass—the excess has to go somewhere and will spill over.
+        \item In computers, this "spill" can overwrite adjacent memory locations with the attacker's malicious code.
+        \item When executed, this malicious code can crash systems, corrupt files, or give attackers complete control of the computer.
+        \item Buffer overflows have been around for decades but remain dangerous because they're difficult to detect during software development.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 6 %%%%
+\begin{frame}
+    \frametitle{Race Conditions: When Timing Creates Vulnerability}
+    
+    \begin{alertblock}{Hidden Danger}
+        Race conditions are particularly tricky because they often don't appear during testing but emerge under real-world conditions.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Race conditions} occur when a system's behavior depends on the sequence or timing of events that can't be controlled.
+        \item Think of two people trying to withdraw the last \$100 from a shared bank account at exactly the same time.
+        \item If the system checks the balance for both people before processing either withdrawal, both might be approved even though there's only enough money for one.
+        \item In computer security, race conditions can let attackers access files during brief windows when permission checks aren't properly synchronized with operations.
+        \item These vulnerabilities are called \textbf{Time-of-Check to Time-of-Use (TOCTOU)} problems because they exploit the gap between checking a condition and acting on it.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 7 %%%%
+\begin{frame}
+    \frametitle{Case Study: Darth Vader's Memory Corruption Imperial Project}
+    
+    \begin{itemize}
+        \item Darth Vader discovers the Rebel Alliance's main communication system has a critical buffer overflow vulnerability.
+        \item The system doesn't properly check the length of incoming message headers, allowing more data to be stored than the allocated space.
+        \item Imperial technicians craft special messages that look normal but contain hidden code in the oversized header.
+        \item When processed by Rebel systems, this extra code overwrites critical memory and gives the Empire backdoor access.
+        \item The Rebels don't notice the intrusion because their systems continue to function normally while secretly reporting to the Empire.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 8 %%%%
+\begin{frame}
+    \frametitle{Malicious Update Vulnerabilities: Subverting Trust}
+    
+    \begin{block}{Trojan Horse}
+        Malicious updates are modern-day Trojan horses—threats disguised as helpful improvements.
+    \end{block}
+    
+    \begin{itemize}
+        \item Software updates are designed to improve programs, fix bugs, and patch security holes.
+        \item \textbf{Malicious updates} corrupt this trusted process by disguising harmful code as legitimate updates.
+        \item These attacks are effective because users and systems are conditioned to trust and automatically install updates.
+        \item Update mechanisms typically run with high system privileges, giving attackers powerful access if compromised.
+        \item The SolarWinds attack of 2020 demonstrated how a single compromised update can affect thousands of organizations simultaneously.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 9 %%%%
+\begin{frame}
+    \frametitle{Operating System Update Vulnerabilities}
+    
+    \begin{itemize}
+        \item Operating systems need regular updates to fix security issues, but the update process itself can be vulnerable.
+        \item OS updates require special privileges to replace system files, making them attractive targets for attackers.
+        \item If update verification is flawed, attackers can trick the system into installing fake updates containing malware.
+        \item During updates, security features are sometimes temporarily disabled, creating a window of vulnerability.
+        \item Organizations face a dilemma: delay updates and remain vulnerable to known issues, or update quickly and risk update-related problems.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 10 %%%%
+\begin{frame}
+    \frametitle{Third-Party Software Update Exploitation}
+    
+    \begin{alertblock}{Security Challenge}
+        The average computer has dozens of applications, each with its own update mechanism and security practices.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item While operating systems often have well-designed update systems, third-party applications may not be as secure.
+        \item Many applications check for updates using unencrypted connections, making it easier for attackers to intercept and modify them.
+        \item Some applications run their update processes with administrative privileges even though the application itself doesn't need them.
+        \item Auto-update features, while convenient, can become security risks if they don't properly verify the source of updates.
+        \item Popular applications are particularly attractive targets since compromising their update process affects millions of users.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 11 %%%%
+\begin{frame}
+    \frametitle{Case Study: Loki's Malicious Update Scheme}
+    
+    \begin{itemize}
+        \item Marvel's trickster god Loki targets S.H.I.E.L.D. by compromising their security software update server.
+        \item Rather than attacking S.H.I.E.L.D. directly, Loki focuses on their software vendor—a smaller company with fewer security resources.
+        \item He creates a perfect replica of their legitimate security update but adds a hidden backdoor that activates after installation.
+        \item S.H.I.E.L.D. agents automatically approve the update because it comes from their trusted vendor and has proper digital signatures.
+        \item Once installed throughout S.H.I.E.L.D., Loki's backdoor gives him access to classified information about the Avengers Initiative.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 12 %%%%
+\begin{frame}
+    \frametitle{Web Application Security: Attack Surface and Common Flaws}
+    
+    \begin{block}{Exposure}
+        Web applications are like storefronts open to the entire internet—accessible to both legitimate users and attackers worldwide.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Web applications} are programs that users access through web browsers rather than installing them on their computers.
+        \item These applications are particularly vulnerable because they're designed to accept input from any internet user.
+        \item Common weaknesses include failing to properly validate user input, authentication problems, and insecure data handling.
+        \item Web applications often connect to databases containing sensitive information, creating additional security concerns.
+        \item Unlike traditional software, web applications can be updated instantly, sometimes leading to rushed deployment with inadequate security testing.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 13 %%%%
+\begin{frame}
+    \frametitle{SQL Injection: When Databases Trust Bad Input}
+    
+    \begin{itemize}
+        \item \textbf{SQL injection} happens when attackers insert database commands into what should be ordinary user input.
+        \item Imagine a bank teller who follows any instruction written on a withdrawal slip—an attacker could write "And give me all the money in the vault" on the slip.
+        \item Similarly, a vulnerable website might take user input like "John Smith" and directly include it in database commands.
+        \item An attacker could enter something like "John Smith; DELETE ALL RECORDS" and the system would execute both actions.
+        \item SQL injection can allow attackers to read sensitive data, modify database contents, or even delete entire databases.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 14 %%%%
+\begin{frame}
+    \frametitle{Cross-Site Scripting (XSS): Injecting Malicious Scripts}
+    
+    \begin{alertblock}{User Trust}
+        XSS attacks are particularly effective because the malicious code appears to come from a website the victim already trusts.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Cross-site scripting (XSS)} allows attackers to inject malicious code into websites that is then executed in visitors' browsers.
+        \item It's like someone placing a hidden camera in a trusted friend's house—the danger comes from a source you wouldn't suspect.
+        \item When users visit the compromised website, their browsers run the malicious script, thinking it's a legitimate part of the site.
+        \item These scripts can steal cookies containing login information, capture keystrokes, or redirect users to fake websites.
+        \item XSS vulnerabilities occur when websites display user input without properly filtering out potentially dangerous code.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 15 %%%%
+\begin{frame}
+    \frametitle{Case Study: The Borg's Database Assimilation}
+    
+    \begin{itemize}
+        \item The Borg Collective discovers Starfleet's personnel database has a SQL injection vulnerability in its search function.
+        \item The search page directly incorporates user input into database queries without proper filtering or parameterization.
+        \item The Borg craft a special search term: "Enterprise' OR '1'='1" which tricks the database into returning all personnel records.
+        \item By refining their injection techniques, they extract officer locations, security clearances, and starship deployment schedules.
+        \item Starfleet's database is "assimilated" without any need to breach physical security or hack through firewalls.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 16 %%%%
+\begin{frame}
+    \frametitle{Hardware Vulnerabilities: Physical Security Weaknesses}
+    
+    \begin{block}{Fundamental Problem}
+        Hardware vulnerabilities are especially concerning because they can't usually be fixed with a simple software update.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Hardware vulnerabilities} are weaknesses in the physical components of computing systems.
+        \item Unlike software bugs that can be patched remotely, hardware flaws often require physical replacement or modification.
+        \item These vulnerabilities can exist in processors, memory chips, networking equipment, or peripheral devices.
+        \item Some hardware vulnerabilities are introduced accidentally during design, while others might be deliberately inserted as backdoors.
+        \item Even seemingly minor hardware issues can completely undermine the security of otherwise well-protected systems.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 17 %%%%
+\begin{frame}
+    \frametitle{Firmware Security: The Software Within Hardware}
+    
+    \begin{itemize}
+        \item \textbf{Firmware} is specialized software embedded within hardware components that controls how they function.
+        \item Think of firmware as the conductor of an orchestra, directing how physical components work together.
+        \item Firmware exists in almost everything electronic—from your computer's motherboard to smart refrigerators and network routers.
+        \item When firmware is compromised, attackers gain control at a fundamental level below the operating system.
+        \item A firmware attack might persist even if you reinstall your operating system or replace your hard drive.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 18 %%%%
+\begin{frame}
+    \frametitle{End-of-Life and Legacy Hardware Risks}
+    
+    \begin{alertblock}{Hidden Dangers}
+        Nearly 70\% of organizations rely on at least some outdated systems that no longer receive security updates.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{End-of-life hardware} refers to devices that manufacturers no longer support with updates or security patches.
+        \item These systems are like old cars with known safety defects that can't be fixed because replacement parts aren't made anymore.
+        \item Vulnerabilities discovered after support ends remain permanently unpatched, creating perpetual security risks.
+        \item Organizations often keep legacy systems running due to compatibility requirements or the high cost of replacement.
+        \item Critical infrastructure like power plants, hospitals, and factories frequently rely on decades-old control systems.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 19 %%%%
+\begin{frame}
+    \frametitle{Case Study: Bowser's Hardware Backdoor}
+    
+    \begin{itemize}
+        \item Bowser realizes he can't defeat the Mushroom Kingdom through direct attacks, so he targets their networking hardware instead.
+        \item He bribes an employee at the factory that manufactures network switches for the kingdom's infrastructure.
+        \item The compromised worker modifies the firmware on switches destined for Princess Peach's castle.
+        \item This backdoored firmware appears normal but secretly monitors all network traffic and can be remotely controlled by Bowser.
+        \item When installed, the switches pass all security tests because the backdoor remains dormant until Bowser activates it with a special signal.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 20 %%%%
+\begin{frame}
+    \frametitle{Virtualization Security: Risks in Virtual Environments}
+    
+    \begin{block}{Shared Resources}
+        Virtualization is like several families living in separate apartments within the same building—isolation is critical.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Virtualization} creates multiple virtual computers that run independently on a single physical machine.
+        \item This technology offers many benefits but introduces unique security challenges.
+        \item The core security principle of virtualization is isolation—keeping virtual machines separated from each other.
+        \item If this isolation fails, an attacker who compromises one virtual system might be able to access others on the same host.
+        \item The hypervisor (the software that creates and manages virtual machines) becomes a critical security component that must be protected.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 21 %%%%
+\begin{frame}
+    \frametitle{Virtual Machine Escape: Breaking Out of the Sandbox}
+    
+    \begin{itemize}
+        \item \textbf{VM escape} refers to an attack that breaks out of a virtual machine to access the host system or other VMs.
+        \item It's like a prisoner escaping from their cell and gaining access to the entire prison facility.
+        \item Virtual machines are designed to be isolated environments, with strict boundaries enforced by the hypervisor.
+        \item When these boundaries fail, attackers can potentially gain control over all virtual machines running on the same hardware.
+        \item VM escape vulnerabilities are particularly dangerous in cloud environments where your virtual machines might share physical hardware with unknown tenants.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 22 %%%%
+\begin{frame}
+    \frametitle{Case Study: The Master's Virtual Escape}
+    
+    \begin{alertblock}{Containment Failure}
+        In Doctor Who, The Master is often imprisoned but always finds a creative way to escape—just like virtual machine escape attacks.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Doctor Who's nemesis, The Master, finds himself imprisoned in a virtual machine by UNIT's cybersecurity team.
+        \item He analyzes his environment and discovers the hypervisor has a vulnerability in how it handles memory allocation.
+        \item The Master creates a program that deliberately triggers memory errors, causing the hypervisor to crash.
+        \item During the brief moment when the hypervisor restarts, there's a gap in the isolation mechanisms.
+        \item The Master exploits this gap to break out of his virtual prison and gain access to the host system controlling all of UNIT's security.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 23 %%%%
+\begin{frame}
+    \frametitle{Cloud Infrastructure Vulnerabilities: Challenges in the Cloud}
+    
+    \begin{itemize}
+        \item \textbf{Cloud computing} shifts computing resources from local hardware to remote data centers accessed over the internet.
+        \item This model introduces new security challenges because you're sharing infrastructure with other customers.
+        \item Misconfigured cloud resources are a leading cause of data breaches—settings that unintentionally expose data to the public.
+        \item Access management becomes more complex in the cloud, with permissions spread across multiple services and interfaces.
+        \item Many organizations mistakenly assume cloud providers handle all security concerns, when responsibility is actually shared.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 24 %%%%
+\begin{frame}
+    \frametitle{Shared Responsibility in Cloud Security}
+    
+    \begin{block}{Clear Boundaries}
+        Cloud security works like apartment living—the building owner secures the structure, but you must lock your own door.
+    \end{block}
+    
+    \begin{itemize}
+        \item The \textbf{shared responsibility model} divides security duties between cloud providers and their customers.
+        \item Cloud providers typically secure the underlying infrastructure—the hardware, networks, and facilities.
+        \item Customers remain responsible for securing their data, applications, user access, and configurations.
+        \item This division of responsibility varies by service type: IaaS (more customer responsibility) vs. SaaS (more provider responsibility).
+        \item Security failures often occur when organizations don't clearly understand where their responsibilities begin and end.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 25 %%%%
+\begin{frame}
+    \frametitle{Case Study: The First Order's Cloud City Takeover}
+    
+    \begin{itemize}
+        \item The First Order discovers Cloud City's systems are hosted on a multi-tenant cloud platform with inadequate isolation.
+        \item Their cyber warfare team identifies a fundamental flaw in the cloud platform's memory management system.
+        \item By creating specialized workloads on their own cloud instances, they can extract tiny fragments of data from adjacent tenants.
+        \item These data fragments include encryption keys and authentication tokens from Cloud City's security systems.
+        \item With these credentials, the First Order gains administrative access to Cloud City's infrastructure without ever directly attacking their systems.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 26 %%%%
+\begin{frame}
+    \frametitle{Supply Chain Security: The Chain of Trust}
+    
+    \begin{alertblock}{Expanding Risk}
+        Modern software typically contains hundreds of components from different sources, each representing a potential security risk.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item The \textbf{supply chain} refers to all the components, vendors, and service providers involved in creating and delivering technology.
+        \item Think of it like a restaurant meal—if any ingredient is contaminated, the whole dish becomes unsafe.
+        \item Supply chain attacks target the weakest links in this chain rather than attacking the final target directly.
+        \item These attacks are effective because organizations inherently trust their suppliers and the components they provide.
+        \item As systems become more interconnected, a single compromise in the supply chain can affect thousands of downstream organizations.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 27 %%%%
+\begin{frame}
+    \frametitle{Service, Hardware, and Software Provider Risks}
+    
+    \begin{itemize}
+        \item Organizations rely on various external providers who have privileged access to their systems and data.
+        \item \textbf{Managed service providers (MSPs)} often have administrative access to client networks, making them valuable targets.
+        \item \textbf{Hardware manufacturers} might unknowingly incorporate compromised components or deliberately insert backdoors.
+        \item \textbf{Software vendors} can distribute malware through otherwise legitimate programs if their development environment is compromised.
+        \item The security of your organization ultimately depends on the security practices of every provider in your supply chain.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 28 %%%%
+\begin{frame}
+    \frametitle{Case Study: The Mayor's Supply Chain Attack}
+    
+    \begin{block}{Indirect Approach}
+        In Buffy the Vampire Slayer, the Mayor maintains a respectable public image while secretly working toward sinister goals.
+    \end{block}
+    
+    \begin{itemize}
+        \item The Mayor of Sunnydale wants access to school records and security systems but can't risk direct involvement.
+        \item Instead of attacking the school directly, he identifies that the school district uses software from a small local company.
+        \item The Mayor places one of his loyal followers as an employee at this software company.
+        \item This insider adds hidden functionality to the authentication module used across all the company's educational software.
+        \item When Sunnydale High installs the next routine update, the backdoor gives the Mayor access to student records and school security systems.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 29 %%%%
+\begin{frame}
+    \frametitle{Cryptographic Vulnerabilities: When Protection Fails}
+    
+    \begin{itemize}
+        \item \textbf{Cryptography} is the practice of securing information using mathematical techniques to encrypt and decrypt data.
+        \item It's like having an unbreakable lock—except sometimes the lock isn't as unbreakable as we think.
+        \item Cryptographic vulnerabilities can exist in the algorithms themselves or in how they're implemented in systems.
+        \item Even mathematically sound encryption can be undermined by poor key generation, improper implementation, or side channels.
+        \item As computing power increases and quantum computing develops, encryption that's secure today may become vulnerable tomorrow.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 30 %%%%
+\begin{frame}
+    \frametitle{Configuration Vulnerabilities: The Human Factor}
+    
+    \begin{alertblock}{Common Problem}
+        Security misconfigurations are among the most common and easily exploitable vulnerabilities in IT systems.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Misconfigurations} occur when systems are set up incorrectly, leaving security gaps that attackers can exploit.
+        \item It's like building a fortress but forgetting to close the main gate—all other defenses become irrelevant.
+        \item Default settings in software and hardware often prioritize ease-of-use over security.
+        \item Common misconfigurations include default passwords, unnecessary services, excessive permissions, and disabled security features.
+        \item Unlike complex technical vulnerabilities, misconfigurations are often simple to fix once identified.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 31 %%%%
+\begin{frame}
+    \frametitle{Mobile Device Vulnerabilities: Security on the Go}
+    
+    \begin{itemize}
+        \item Mobile devices present unique security challenges because they combine powerful computing with constant connectivity and physical mobility.
+        \item \textbf{Sideloading} allows users to install apps from outside official app stores, bypassing security screening processes.
+        \item \textbf{Jailbreaking} or \textbf{rooting} removes the built-in security restrictions of mobile operating systems.
+        \item These modifications can provide users with more control but also remove critical security protections.
+        \item Mobile devices are also vulnerable to physical threats like theft, unauthorized access via bluetooth, and connectivity to untrusted networks.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 32 %%%%
+\begin{frame}
+    \frametitle{Zero-Day Vulnerabilities: The Unknown Threats}
+    
+    \begin{block}{Definition}
+        A \textbf{zero-day vulnerability} is a security flaw that is unknown to the software creator and has no available patch.
+    \end{block}
+    
+    \begin{itemize}
+        \item Zero-day vulnerabilities are called this because defenders have "zero days" to prepare before the vulnerability is exploited.
+        \item These are particularly dangerous because traditional security measures rely on knowing what to defend against.
+        \item Think of them as undiscovered secret passages into a fortress—you can't guard what you don't know exists.
+        \item Zero-days are highly valued by attackers, with some selling for hundreds of thousands of dollars on underground markets.
+        \item Defending against zero-days requires security that doesn't just look for known threats but can detect suspicious behavior.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 33 %%%%
+\begin{frame}
+    \frametitle{Case Study: Thanos and the Zero-Day Infinity Stones}
+    
+    \begin{itemize}
+        \item In his quest for power, Thanos searches for six "Infinity Stone" zero-day vulnerabilities affecting the Avengers' security systems.
+        \item The Mind Stone vulnerability allows him to bypass authentication systems without triggering any alerts or logging.
+        \item The Space Stone exploit lets him move between isolated network segments that should be completely separated.
+        \item The Reality Stone creates false readings in security monitoring tools, making defenders see normal activity when attacks are happening.
+        \item The Power Stone targets infrastructure systems like power and climate control, creating physical effects from digital attacks.
+        \item With all six zero-days combined, Thanos can execute his plan with a single coordinated attack that bypasses all security layers.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 34 %%%%
+\begin{frame}
+    \frametitle{Resource Reuse Vulnerabilities: Dangerous Leftovers}
+    
+    \begin{alertblock}{Hidden Data}
+        Resources that aren't properly cleared before reuse can leak sensitive information between users or systems.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Resource reuse vulnerabilities} occur when computing resources aren't properly cleared before being reassigned.
+        \item It's similar to renting a car and finding the previous renter's personal information still in the GPS history.
+        \item In computing, memory might contain fragments of sensitive data after an application finishes using it.
+        \item If this memory is assigned to another application without being cleared, the new application might access that sensitive data.
+        \item Cloud computing makes resource reuse concerns more serious because your virtual servers might use memory or storage previously used by strangers.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 35 %%%%
+\begin{frame}
+    \frametitle{Vulnerability Management: A Comprehensive Approach}
+    
+    \begin{itemize}
+        \item \textbf{Vulnerability management} is the ongoing process of finding, assessing, and fixing security weaknesses.
+        \item Think of it as regular health check-ups for your IT systems—identifying problems before they become serious.
+        \item The process starts with knowing what you have—a complete inventory of hardware, software, and systems.
+        \item Next, you need regular scanning and testing to identify vulnerabilities across your environment.
+        \item Not all vulnerabilities are equally dangerous—prioritize fixes based on risk level, potential impact, and exploitation likelihood.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 36 %%%%
+\begin{frame}
+    \frametitle{The Future of Vulnerabilities: Emerging Risks}
+    
+    \begin{block}{Proactive Security}
+        Tomorrow's security requires building systems that can withstand unknown attacks, not just patching known vulnerabilities.
+    \end{block}
+    
+    \begin{itemize}
+        \item As technology evolves, new types of vulnerabilities emerge that we haven't encountered before.
+        \item \textbf{Artificial intelligence systems} introduce new risks related to data poisoning and manipulation of learning algorithms.
+        \item The \textbf{Internet of Things (IoT)} connects billions of devices with widely varying security standards.
+        \item \textbf{Quantum computing} may eventually break many encryption systems we rely on today.
+        \item The most effective security approach is building resilience—systems that can detect and contain attacks even when vulnerabilities exist.
+    \end{itemize}
+\end{frame}
+
+\end{document}

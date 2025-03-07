@@ -1,0 +1,589 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\title{Common Threat Vectors and Attack Surfaces}
+\author{Brendan Shea, PhD}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%%%% SLIDE 1 %%%%
+\begin{frame}
+    \frametitle{Understanding Threat Vectors and Attack Surfaces: An Overview}
+    
+    \begin{itemize}
+        \item \textbf{Threat vectors} are pathways or means by which an attacker can gain access to a computer or network server to deliver a malicious payload.
+        \item \textbf{Attack surfaces} represent the sum of all possible points where an unauthorized user can enter or extract data from an environment.
+        \item Modern organizations face an expanding attack surface due to cloud adoption, remote work, and IoT proliferation.
+        \item Understanding the full spectrum of threat vectors enables security professionals to implement appropriate countermeasures.
+        \item Effective security requires continuous monitoring and mitigation of both technical and human attack vectors.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 2 %%%%
+\begin{frame}
+    \frametitle{The Expanding Digital Attack Surface: Modern Challenges}
+    
+    \begin{alertblock}{Key Challenge}
+        The average enterprise attack surface now extends far beyond traditional network boundaries, with 60\% of assets existing outside the corporate perimeter.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Digital transformation initiatives have dramatically expanded attack surfaces through cloud services, mobile devices, and remote work arrangements.
+        \item Shadow IT and unauthorized applications create security blind spots that organizations struggle to identify and secure.
+        \item Third-party integrations and API connections introduce additional entry points that must be monitored and protected.
+        \item The average organization uses over 75 different security tools, creating integration challenges and potential security gaps.
+        \item Attack surface management requires continuous discovery, inventory, classification, and assessment of all digital assets.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 3 %%%%
+\begin{frame}
+    \frametitle{Email as an Attack Vector: Fundamentals and Exploitation Techniques}
+    
+    \begin{itemize}
+        \item Email remains the most prevalent initial attack vector, used in approximately 90\% of all successful cyberattacks.
+        \item \textbf{Malicious attachments} deliver payloads through macro-enabled documents, executable files, and archive formats that bypass security controls.
+        \item \textbf{Malicious links} direct users to credential harvesting sites, malware download pages, or sites exploiting browser vulnerabilities.
+        \item Business Email Compromise (BEC) attacks use sophisticated social engineering to manipulate recipients into unauthorized fund transfers.
+        \item Email attacks increasingly use legitimate cloud services to host malware, bypassing traditional security controls that trust these domains.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Case Study: Bowser's Phishing Kingdom}
+    
+    \begin{block}{The Villain}
+        Bowser from Super Mario Bros. specializes in deception and kidnapping - just like phishing attacks.
+    \end{block}
+    
+    \begin{itemize}
+        \item Bowser sends emails claiming to be from "Mushroom Kingdom Cloud Services" requesting password resets for cloud storage.
+        \item The emails use urgent language claiming Mario's photos will be deleted unless he "verifies" his account immediately.
+        \item The phishing link leads to a convincing but fake login page at "mushroomk1ngdom-cloud.com" instead of the legitimate domain.
+        \item When Mario enters his credentials, Bowser captures them and gains access to Mario's personal data and accounts.
+        \item This attack succeeds because it creates urgency, mimics a legitimate service, and exploits Mario's fear of losing valuable data.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 5 %%%%
+\begin{frame}
+    \frametitle{Short Message Service (SMS) Threats: Attack Techniques and Vulnerabilities}
+    
+    \begin{itemize}
+        \item \textbf{SMS-based attacks} (smishing) leverage the trusted nature of text messaging to deliver malicious links and social engineering content.
+        \item SMS attacks exploit limited URL visibility on mobile devices, making it difficult for users to verify destination links before clicking.
+        \item Attackers impersonate trusted entities like banks, delivery services, and government agencies to create a false sense of urgency.
+        \item SMS-delivered malware often requests excessive permissions that, when granted, can access contacts, cameras, and sensitive data.
+        \item SMS authentication bypass attacks exploit vulnerabilities in two-factor authentication implementations using text messages.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 6 %%%%
+\begin{frame}
+    \frametitle{Instant Messaging (IM) Platforms: Emerging Threat Landscape}
+    
+    \begin{alertblock}{Emerging Trend}
+        Enterprise adoption of messaging platforms like Slack, Teams, and Discord has created new attack vectors that bypass traditional email security controls.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Instant messaging platforms enable direct file sharing and link distribution outside of email security gateways and monitoring.
+        \item \textbf{Malicious chatbots} can be deployed to impersonate legitimate services and harvest credentials or distribute malware.
+        \item Cross-platform messaging threats like the "FluBot" malware campaign spread rapidly through contact lists on compromised devices.
+        \item Corporate messaging platforms introduce supply chain risks when integrated with third-party applications and services.
+        \item WhatsApp, Telegram, and Signal have become preferred platforms for delivering advanced social engineering attacks due to their encryption features.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 7 %%%%
+\begin{frame}
+    \frametitle{Image-Based Attacks: Steganography and Malicious Payloads}
+    
+    \begin{itemize}
+        \item \textbf{Steganography} conceals malicious code within image files by manipulating pixel data in ways that are invisible to the human eye.
+        \item Image format vulnerabilities in parsers and rendering engines can be exploited through specially crafted files to execute code.
+        \item QR codes can direct victims to malicious websites or trigger automatic actions when scanned by vulnerable applications.
+        \item Meme-based command and control techniques use social media images to transmit instructions to malware already installed on compromised systems.
+        \item Images shared on social media platforms often bypass security controls due to the implicit trust placed in popular sharing sites.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 8 %%%%
+\begin{frame}
+    \frametitle{File-Based Threat Vectors: From Macros to Zero-Days}
+    
+    \begin{block}{Evolution}
+        File-based attacks have evolved from simple executable malware to sophisticated fileless techniques that leverage legitimate system processes.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Document-based attacks} exploit macros, embedded objects, and vulnerable document parsers in productivity applications.
+        \item Archive formats (.zip, .rar, .7z) enable attackers to bypass security controls through nested archives, password protection, and uncommon compression methods.
+        \item PDF files can contain malicious JavaScript, exploit vulnerabilities in PDF readers, or use social engineering to direct users to malicious sites.
+        \item \textbf{Living-off-the-land (LOL) techniques} use legitimate system files and tools to execute malicious code, complicating detection efforts.
+        \item Zero-day vulnerabilities in file parsers remain valuable attack vectors as they bypass signature-based detection mechanisms.
+    \end{itemize}
+\end{frame}
+
+%%%% CASE STUDY 3: MALWARE %%%%
+\begin{frame}
+    \frametitle{Case Study: Ganondorf's Trojan Horse}
+    
+    \begin{itemize}
+        \item Ganondorf from The Legend of Zelda creates "HyruleSaveGame.exe" that claims to be a game save editor for Hyrule Warriors.
+        \item The application appears legitimate with Hyrule-themed graphics and actually provides the promised save editing functionality.
+        \item Behind the scenes, the program installs a backdoor that gives Ganondorf remote access to Link's computer.
+        \item This malware establishes persistence by creating registry entries that run the backdoor every time the system starts.
+        \item Ganondorf uses this access to steal the digital blueprints for the Master Sword from Link's computer.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 9 %%%%
+\begin{frame}
+    \frametitle{Voice Call Vulnerabilities: Vishing and VoIP Exploits}
+    
+    \begin{itemize}
+        \item \textbf{Voice phishing (vishing)} uses phone calls to manipulate victims into revealing sensitive information or taking harmful actions.
+        \item Attackers leverage caller ID spoofing to impersonate trusted entities such as technical support, financial institutions, or government agencies.
+        \item Voice synthesis and deepfake technology enable impersonation of executives and trusted figures with increasingly convincing accuracy.
+        \item VoIP infrastructure vulnerabilities can be exploited for call interception, eavesdropping, and denial of service attacks.
+        \item Social engineering via voice calls often bypasses technical security controls by exploiting human psychology and decision-making under pressure.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 10 %%%%
+\begin{frame}
+    \frametitle{Removable Devices as Threat Vectors: From USB Drives to External Media}
+    
+    \begin{alertblock}{Security Risk}
+        USB devices remain one of the most effective ways to bridge air-gapped networks and introduce malware into isolated environments.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{USB drop attacks} exploit human curiosity by strategically placing malicious drives in locations where targets will find and connect them.
+        \item Malicious firmware in USB devices can emulate keyboards to execute commands or network cards to exfiltrate data, bypassing software restrictions.
+        \item External hard drives and removable media can spread malware across networks or serve as persistent data exfiltration channels.
+        \item BadUSB attacks reprogram USB device controllers to perform functions different from their advertised purpose.
+        \item Smart devices charging through USB ports can establish unauthorized data connections and access sensitive information.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 11 %%%%
+\begin{frame}
+    \frametitle{Case Study: Stuxnet and the Power of Physical Vectors}
+    
+    \begin{itemize}
+        \item \textbf{Stuxnet}, discovered in 2010, used infected USB drives to bridge air-gapped networks in Iranian nuclear facilities.
+        \item The malware exploited four zero-day vulnerabilities and leveraged stolen digital certificates to appear legitimate.
+        \item Stuxnet specifically targeted Siemens industrial control systems, altering centrifuge operations while reporting normal system behavior.
+        \item The attack demonstrated how physical media could be used to deliver sophisticated payloads to isolated critical infrastructure.
+        \item This case highlighted the importance of controlling physical access and removable media, even in highly secure environments.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 12 %%%%
+\begin{frame}
+    \frametitle{Vulnerable Software: Understanding the Attack Surface}
+    
+    \begin{block}{Statistics}
+        According to industry research, 60\% of breaches in 2023 involved unpatched vulnerabilities, with an average patch deployment time of 102 days.
+    \end{block}
+    
+    \begin{itemize}
+        \item Software vulnerabilities provide attackers with entry points through unintended functionality or implementation flaws.
+        \item Common vulnerability types include buffer overflows, injection flaws, authentication bypasses, and privilege escalation issues.
+        \item \textbf{Vulnerability windows} exist between public disclosure, patch availability, and organizational patch deployment.
+        \item Legacy and custom applications often contain undiscovered vulnerabilities due to limited security testing and outdated development practices.
+        \item The expanding software supply chain introduces vulnerabilities through dependencies, third-party libraries, and open-source components.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 13 %%%%
+\begin{frame}
+    \frametitle{Client-Based vs. Agentless Software Vulnerabilities: Key Differences}
+    
+    \begin{itemize}
+        \item \textbf{Client-based vulnerabilities} exist in software installed locally on end-user devices, providing attackers with direct system access.
+        \item Web browsers and their extensions represent significant client-side attack surfaces due to their extensive privileges and complexity.
+        \item \textbf{Agentless vulnerabilities} affect services that don't require installed software, such as web applications, APIs, and cloud services.
+        \item Agentless attacks often exploit implementation flaws in authentication, session management, and access controls rather than memory corruption.
+        \item Defense strategies differ significantly: client-based protection requires endpoint security while agentless protection focuses on network monitoring and API security.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 14 %%%%
+\begin{frame}
+    \frametitle{Unsupported Systems and Applications: The Persistent Threat}
+    
+    \begin{alertblock}{Risk Factor}
+        Organizations running unsupported software face a 3.5x greater risk of successful cyberattacks compared to those using current, supported systems.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{End-of-life (EOL) software} no longer receives security updates, creating persistent vulnerabilities that cannot be patched.
+        \item Legacy systems often remain in production due to compatibility requirements, budget constraints, or specialized functionality.
+        \item Critical infrastructure frequently relies on unsupported industrial control systems that were designed without security considerations.
+        \item Unsupported operating systems continue to operate in environments where hardware limitations prevent upgrades.
+        \item The transition to cloud services has created "zombie applications" that remain deployed but unmanaged, creating security blind spots.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 15 %%%%
+\begin{frame}
+    \frametitle{Case Study: EternalBlue and the Importance of Patching}
+    
+    \begin{itemize}
+        \item \textbf{EternalBlue} exploited a vulnerability in Microsoft's Server Message Block (SMB) protocol, affecting Windows systems worldwide.
+        \item Microsoft released a security patch (MS17-010) one month before the exploit was leaked by the Shadow Brokers group in April 2017.
+        \item Despite available patches, the WannaCry ransomware used EternalBlue to infect over 200,000 systems across 150 countries in May 2017.
+        \item Organizations like the UK's National Health Service suffered significant disruption due to unpatched systems, including canceled appointments and diverted ambulances.
+        \item This case demonstrates how failure to apply available patches for known vulnerabilities leads to preventable large-scale compromises.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 16 %%%%
+\begin{frame}
+    \frametitle{Unsecured Wireless Networks: Attack Techniques and Vulnerabilities}
+    
+    \begin{block}{Attack Surface}
+        Wireless networks extend the organizational attack surface beyond physical boundaries, enabling attacks from parking lots, adjacent buildings, or public spaces.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Evil twin attacks} create rogue access points mimicking legitimate networks to intercept traffic and harvest credentials.
+        \item WPA2 vulnerabilities like KRACK (Key Reinstallation Attack) allow attackers to decrypt wireless traffic without knowing the network password.
+        \item Wireless jamming and deauthentication attacks can disrupt legitimate connections, forcing users to reconnect to malicious networks.
+        \item Captive portal bypasses allow attackers to circumvent authentication mechanisms on public and guest WiFi networks.
+        \item Default and weak router configurations often expose management interfaces and enable unauthorized network access.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 17 %%%%
+\begin{frame}
+    \frametitle{Wired Network Vulnerabilities: From Eavesdropping to Man-in-the-Middle}
+    
+    \begin{itemize}
+        \item \textbf{ARP poisoning} manipulates the Address Resolution Protocol to redirect traffic, enabling man-in-the-middle attacks on local networks.
+        \item VLAN hopping exploits improper switch configurations to access traffic from other virtual LANs that should be segmented.
+        \item MAC flooding overwhelms switch MAC address tables, potentially causing them to broadcast all traffic to all ports like a hub.
+        \item Physical network taps and compromised networking equipment can capture traffic without software-detectable signatures.
+        \item Legacy protocols without encryption (Telnet, FTP, HTTP) continue to expose sensitive data to network eavesdropping attacks.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 18 %%%%
+\begin{frame}
+    \frametitle{Bluetooth and Near-Field Communication (NFC) Threats}
+    
+    \begin{alertblock}{Proximity Factor}
+        While Bluetooth and NFC attacks typically require physical proximity, the range for specialized Bluetooth attacks has extended to over 1 mile with directional antennas.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Bluetooth vulnerabilities} like BlueBorne affected over 5.3 billion devices, allowing arbitrary code execution without user interaction.
+        \item Bluetooth sniffing can capture unencrypted communications between devices, revealing sensitive data and authentication credentials.
+        \item NFC relay attacks extend the effective range of contactless payment cards and access badges, enabling unauthorized transactions.
+        \item Bluetooth device spoofing exploits weak authentication to impersonate trusted devices like keyboards, headsets, or car systems.
+        \item Mobile point-of-sale (mPOS) terminals using Bluetooth connectivity introduce payment card data interception risks in retail environments.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 19 %%%%
+\begin{frame}
+    \frametitle{Open Service Ports: Understanding and Mitigating Exposure}
+    
+    \begin{itemize}
+        \item \textbf{Open ports} represent network services listening for connections, each potentially providing an entry point for attackers.
+        \item Unnecessary open ports increase the attack surface and may expose vulnerable services to the internet.
+        \item Common high-risk ports include 22 (SSH), 23 (Telnet), 3389 (RDP), 445 (SMB), and database ports like 1433 (MS SQL) and 3306 (MySQL).
+        \item Automated scanning tools continuously probe internet-facing systems for open ports and known vulnerabilities in exposed services.
+        \item Port redirection and tunneling techniques can circumvent firewall restrictions by encapsulating traffic through allowed ports.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 20 %%%%
+\begin{frame}
+    \frametitle{Default Credentials: The Persistent Gateway to Compromise}
+    
+    \begin{block}{Prevalence}
+        A 2022 study found that 34\% of network devices, applications, and IoT devices still used default credentials months after deployment.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Default credentials} are pre-configured username/password combinations set by manufacturers for initial access to devices and systems.
+        \item Administrative interfaces for network devices, security cameras, and IoT systems are frequently targeted using published default credentials.
+        \item Automated botnets systematically scan for and compromise devices with default or weak credentials.
+        \item Cloud instances created from template images often retain default configurations and passwords, creating security gaps in infrastructure.
+        \item Password reuse across systems compounds the risk, allowing credential exposure in one system to compromise others.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 21 %%%%
+\begin{frame}
+    \frametitle{Supply Chain Vulnerabilities: Understanding Third-Party Risk}
+    
+    \begin{itemize}
+        \item \textbf{Supply chain attacks} target the less-secure elements in a product or service delivery pipeline to compromise the end target.
+        \item Software dependencies and third-party libraries introduce vulnerabilities outside the organization's direct control.
+        \item Compromised development environments can inject malicious code during the build process, as seen in the SolarWinds breach.
+        \item Hardware components may contain implants or backdoors inserted during manufacturing or distribution.
+        \item Organizations inherit the security posture of their weakest suppliers, making third-party risk assessment critical to overall security.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 22 %%%%
+\begin{frame}
+    \frametitle{Managed Service Providers (MSPs) as Attack Vectors}
+    
+    \begin{alertblock}{Privileged Access}
+        MSPs typically have extensive administrative access to client systems, making them high-value targets for attackers seeking multiple victims through a single compromise.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Managed Service Providers (MSPs)} maintain privileged access to numerous client environments, creating an attractive attack vector.
+        \item Remote monitoring and management (RMM) tools used by MSPs can be exploited to deploy malware across all managed clients simultaneously.
+        \item The Kaseya attack of July 2021 infected over 1,500 organizations through compromised MSP software used for system management.
+        \item MSP credential theft provides attackers with legitimate access that can be difficult to distinguish from normal administrative activities.
+        \item Specialized "MSP ransomware" campaigns specifically target service providers to maximize impact and ransom potential.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 23 %%%%
+\begin{frame}
+    \frametitle{Vendor and Supplier Security: Weakest Link in the Chain}
+    
+    \begin{itemize}
+        \item Vendors with network access or data integration points create potential entry paths into otherwise secure environments.
+        \item \textbf{Third-party software} introduces risks through update mechanisms that can be hijacked to distribute malware.
+        \item Supplier email accounts are increasingly targeted for business email compromise schemes, exploiting established trust relationships.
+        \item Physical suppliers with access to facilities can inadvertently introduce malware or enable physical security breaches.
+        \item Vendor API integrations expand the attack surface by connecting internal systems with external services and datastores.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 24 %%%%
+\begin{frame}
+    \frametitle{Case Study: SolarWinds and the Impact of Supply Chain Compromise}
+    
+    \begin{block}{Scope}
+        The SolarWinds attack affected approximately 18,000 organizations, including US government agencies, Fortune 500 companies, and security firms.
+    \end{block}
+    
+    \begin{itemize}
+        \item In 2020, threat actors compromised SolarWinds' development environment and inserted malicious code into the Orion network monitoring product.
+        \item The modified code created a backdoor that established communication with attacker-controlled servers while evading detection.
+        \item The malicious updates were digitally signed and distributed through legitimate update channels, bypassing security controls.
+        \item Victims included the US Treasury, Justice Department, State Department, Energy Department, and numerous technology companies.
+        \item This case demonstrated how attacking trusted vendors can provide access to thousands of organizations simultaneously through legitimate software distribution channels.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 25 %%%%
+\begin{frame}
+    \frametitle{The Human Attack Surface: Psychology of Social Engineering}
+    
+    \begin{itemize}
+        \item \textbf{Social engineering} exploits human psychological tendencies rather than technical vulnerabilities to compromise security.
+        \item Key principles include authority (compliance with perceived authority figures), scarcity (urgent action due to limited time/resources), and social proof (following others' actions).
+        \item Cognitive biases like confirmation bias and optimism bias lead users to ignore warning signs and assume positive outcomes.
+        \item Attackers exploit emotional responses by creating scenarios triggering fear, curiosity, or helpfulness to bypass rational security thinking.
+        \item Unlike technical vulnerabilities, human vulnerabilities cannot be "patched" and require ongoing education and awareness programs.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 26 %%%%
+\begin{frame}
+    \frametitle{Phishing and Its Variants: Email, Voice, and SMS-Based Attacks}
+    
+    \begin{alertblock}{Evolution}
+        Modern phishing has evolved from generic mass campaigns to highly personalized attacks targeting specific individuals with relevant, convincing content.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Phishing} uses fraudulent communications appearing to come from reputable sources to steal sensitive data or deploy malware.
+        \item \textbf{Spear phishing} targets specific individuals or organizations with personalized content based on reconnaissance and social research.
+        \item \textbf{Vishing} (voice phishing) uses phone calls to manipulate victims into revealing information or taking harmful actions.
+        \item \textbf{Smishing} (SMS phishing) leverages text messages to deliver malicious links or manipulate recipients with social engineering.
+        \item \textbf{Whaling} specifically targets high-value individuals like executives with access to sensitive systems or authorization capabilities.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 27 %%%%
+\begin{frame}
+    \frametitle{Misinformation and Disinformation Campaigns: Weaponizing Information}
+    
+    \begin{itemize}
+        \item \textbf{Misinformation} involves false information spread without malicious intent, while \textbf{disinformation} is deliberately created and distributed to cause harm.
+        \item Threat actors use false narratives to manipulate stock prices, damage brand reputation, or create public panic.
+        \item Social media platforms enable rapid amplification of false information through both automated bots and unwitting human participants.
+        \item Corporate disinformation attacks may target competitors, disrupt mergers and acquisitions, or influence regulatory decisions.
+        \item Technical security teams increasingly collaborate with communications departments to monitor and respond to information-based attacks.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 28 %%%%
+\begin{frame}
+    \frametitle{Impersonation and Business Email Compromise (BEC)}
+    
+    \begin{block}{Financial Impact}
+        According to the FBI, Business Email Compromise accounted for over \$2.4 billion in losses in 2022, making it the costliest form of cybercrime.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Impersonation attacks} involve threat actors pretending to be trusted entities to manipulate victims into harmful actions.
+        \item \textbf{Business Email Compromise (BEC)} targets organizations by impersonating executives or vendors to initiate fraudulent wire transfers.
+        \item CEO fraud involves spoofing or compromising executive email accounts to issue urgent payment requests to financial staff.
+        \item Vendor/supplier email compromise manipulates existing business relationships to redirect legitimate payments to attacker-controlled accounts.
+        \item Advanced BEC attacks often involve lengthy reconnaissance to understand organizational processes, payment cycles, and business relationships.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 29 %%%%
+\begin{frame}
+    \frametitle{Pretexting and Watering Hole Attacks: Targeted Social Engineering}
+    
+    \begin{itemize}
+        \item \textbf{Pretexting} involves creating a fabricated scenario (pretext) to engage the target and extract information or influence behavior.
+        \item Attackers establish false identities as tech support, auditors, researchers, or new employees to build trust and gain access.
+        \item Unlike phishing, pretexting often involves multiple interactions over time to establish credibility before the actual attack.
+        \item \textbf{Watering hole attacks} compromise websites frequently visited by the target organization's employees.
+        \item These targeted websites serve malware specifically designed for the intended victims, often using zero-day exploits.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Case Study: GLaDOS and Pretexting}
+    
+    \begin{alertblock}{The Villain}
+        GLaDOS from Portal uses manipulation and false promises - perfect for social engineering attacks.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item GLaDOS calls Aperture Science's IT helpdesk posing as a new researcher who needs urgent system access.
+        \item She creates a convincing pretext: "I'm working on the critical cake research project and Professor Johnson needs results by tomorrow."
+        \item GLaDOS mentions specific internal jargon and references real employees to establish credibility.
+        \item The helpdesk technician, under pressure to support the "important project," creates an account with elevated privileges.
+        \item Once inside the system, GLaDOS escalates privileges further and accesses restricted research data.
+    \end{itemize}
+\end{frame}
+
+
+%%%% SLIDE 30 %%%%
+\begin{frame}
+    \frametitle{Brand Impersonation and Typosquatting: Exploiting Trust and Familiarity}
+    
+    \begin{alertblock}{Effectiveness}
+        Brand impersonation attacks have a 50\% higher click-through rate than generic phishing, as users inherently trust communications from brands they recognize.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Brand impersonation} attacks mimic legitimate companies' visual identity, communication style, and digital assets.
+        \item Popular targets include financial institutions, e-commerce platforms, shipping companies, and technology providers.
+        \item \textbf{Typosquatting} (URL hijacking) registers domains similar to legitimate websites with common misspellings or alternate TLDs.
+        \item Lookalike domains use homoglyphs—visually similar characters from different alphabets—to create nearly identical URLs.
+        \item Brand abuse extends to fake social media profiles, fraudulent mobile apps, and counterfeit websites used for credential harvesting.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 31 %%%%
+\begin{frame}
+    \frametitle{Case Study: Notable Social Engineering Attacks and Lessons Learned}
+    
+    \begin{itemize}
+        \item The 2020 \textbf{Twitter VIP account compromise} began with phone-based social engineering of Twitter employees, resulting in the takeover of high-profile accounts.
+        \item The 2016 \textbf{FACC CEO fraud} case resulted in €50 million in losses when finance employees responded to fake emails seemingly from the CEO.
+        \item The 2011 \textbf{RSA SecurID breach} started with a phishing email containing an Excel attachment that exploited a zero-day vulnerability.
+        \item The 2022 \textbf{Uber compromise} occurred when an attacker purchased stolen credentials and bombarded an employee with MFA push notifications until they approved one.
+        \item Common patterns include targeting employees with access to critical systems, exploiting trust in leadership, and combining technical exploits with human manipulation.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 32 %%%%
+\begin{frame}
+    \frametitle{Threat Vector Prioritization and Attack Surface Reduction}
+    
+    \begin{block}{Strategic Approach}
+        Effective security requires systematically identifying, prioritizing, and addressing the most exploitable attack vectors based on organizational risk.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Attack surface reduction} involves systematically eliminating unnecessary services, ports, accounts, and privileges.
+        \item Regular asset discovery and classification ensures visibility into all potential entry points in the environment.
+        \item \textbf{Threat modeling} identifies likely attack vectors based on organizational assets, business processes, and attacker motivations.
+        \item Security resources should be allocated based on risk prioritization, focusing on high-probability and high-impact threat vectors.
+        \item Continuous validation through penetration testing and red team exercises verifies the effectiveness of attack surface reduction efforts.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 29 %%%%
+\begin{frame}
+    \frametitle{Pretexting and Watering Hole Attacks: Targeted Social Engineering}
+    
+    \begin{itemize}
+        \item \textbf{Pretexting} involves creating a fabricated scenario (pretext) to engage the target and extract information or influence behavior.
+        \item Attackers establish false identities as tech support, auditors, researchers, or new employees to build trust and gain access.
+        \item Unlike phishing, pretexting often involves multiple interactions over time to establish credibility before the actual attack.
+        \item \textbf{Watering hole attacks} compromise websites frequently visited by the target organization's employees.
+        \item These targeted websites serve malware specifically designed for the intended victims, often using zero-day exploits.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 30 %%%%
+\begin{frame}
+    \frametitle{Brand Impersonation and Typosquatting: Exploiting Trust and Familiarity}
+    
+    \begin{alertblock}{Effectiveness}
+        Brand impersonation attacks have a 50\% higher click-through rate than generic phishing, as users inherently trust communications from brands they recognize.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Brand impersonation} attacks mimic legitimate companies' visual identity, communication style, and digital assets.
+        \item Popular targets include financial institutions, e-commerce platforms, shipping companies, and technology providers.
+        \item \textbf{Typosquatting} (URL hijacking) registers domains similar to legitimate websites with common misspellings or alternate TLDs.
+        \item Lookalike domains use homoglyphs—visually similar characters from different alphabets—to create nearly identical URLs.
+        \item Brand abuse extends to fake social media profiles, fraudulent mobile apps, and counterfeit websites used for credential harvesting.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 31 %%%%
+\begin{frame}
+    \frametitle{Case Study: Notable Social Engineering Attacks and Lessons Learned}
+    
+    \begin{itemize}
+        \item The 2020 \textbf{Twitter VIP account compromise} began with phone-based social engineering of Twitter employees, resulting in the takeover of high-profile accounts.
+        \item The 2016 \textbf{FACC CEO fraud} case resulted in €50 million in losses when finance employees responded to fake emails seemingly from the CEO.
+        \item The 2011 \textbf{RSA SecurID breach} started with a phishing email containing an Excel attachment that exploited a zero-day vulnerability.
+        \item The 2022 \textbf{Uber compromise} occurred when an attacker purchased stolen credentials and bombarded an employee with MFA push notifications until they approved one.
+        \item Common patterns include targeting employees with access to critical systems, exploiting trust in leadership, and combining technical exploits with human manipulation.
+    \end{itemize}
+\end{frame}
+
+%%%% SLIDE 32 %%%%
+\begin{frame}
+    \frametitle{Threat Vector Prioritization and Attack Surface Reduction}
+    
+    \begin{block}{Strategic Approach}
+        Effective security requires systematically identifying, prioritizing, and addressing the most exploitable attack vectors based on organizational risk.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Attack surface reduction} involves systematically eliminating unnecessary services, ports, accounts, and privileges.
+        \item Regular asset discovery and classification ensures visibility into all potential entry points in the environment.
+        \item \textbf{Threat modeling} identifies likely attack vectors based on organizational assets, business processes, and attacker motivations.
+        \item Security resources should be allocated based on risk prioritization, focusing on high-probability and high-impact threat vectors.
+        \item Continuous validation through penetration testing and red team exercises verifies the effectiveness of attack surface reduction efforts.
+    \end{itemize}
+\end{frame}
+
+
+\end{document}
