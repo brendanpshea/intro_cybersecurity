@@ -1,0 +1,891 @@
+\documentclass{beamer}
+\usetheme{Copenhagen}
+\usecolortheme{dolphin}
+\useinnertheme{circles}
+
+% Packages
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Custom colors
+\definecolor{mygreen}{RGB}{0,150,0}
+\definecolor{myred}{RGB}{150,0,0}
+\definecolor{myblue}{RGB}{0,0,150}
+
+% Title information
+\title{Understanding and Analyzing Malicious Activity}
+\subtitle{A High School Introduction to Cybersecurity Threats}
+\author{Cybersecurity Fundamentals}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Slide 1
+\begin{frame}
+    \frametitle{Understanding Cybersecurity Threats: An Introduction}
+    
+    \begin{itemize}
+        \item Cybersecurity threats are intentional actions designed to compromise digital systems and information.
+        \item \textbf{Malicious activity} refers to any action intended to harm, disrupt, or gain unauthorized access to computer systems.
+        \item Almost 80\% of organizations experienced at least one successful cyber attack in the past year.
+        \item Understanding different types of threats is the first step in effective defense.
+        \item This presentation covers the major categories of cybersecurity threats and how to identify them.
+    \end{itemize}
+\end{frame}
+
+% Slide 2
+\begin{frame}
+    \frametitle{The Importance of Recognizing Malicious Activity}
+    
+    \begin{alertblock}{Why Detection Matters}
+        Early detection of threats can significantly reduce damage and recovery costs.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item The average data breach costs organizations over \$4 million in damages and recovery.
+        \item \textbf{Threat indicators} are observable evidence that an attack may be in progress.
+        \item Most successful attacks show warning signs before major damage occurs:
+            \begin{itemize}
+                \item Unusual network traffic patterns
+                \item Unexpected system behavior
+                \item Anomalous login activities
+                \item Suspicious file modifications
+            \end{itemize}
+        \item Building a "security mindset" helps protect both organizations and individuals.
+    \end{itemize}
+\end{frame}
+
+% Slide 3
+\begin{frame}
+    \frametitle{Key Threat Categories in the Digital World}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{l|l}
+            \textbf{Category} & \textbf{Examples} \\
+            \hline
+            Malware & Ransomware, Trojans, Viruses \\
+            Physical & Brute force, RFID cloning \\
+            Network & DDoS, DNS attacks, Wireless \\
+            Application & Injection, Buffer overflow \\
+            Cryptographic & Downgrade, Collision attacks \\
+        \end{tabular}
+    \end{table}
+    
+    \begin{itemize}
+        \item Each category exploits different vulnerabilities within digital systems.
+        \item Attackers often combine multiple attack vectors for maximum impact.
+        \item Defenses must address all categories to be effective.
+    \end{itemize}
+    
+    \begin{example}
+        In 2017, the WannaCry ransomware attack affected over 200,000 computers across 150 countries, showing how quickly digital threats can spread globally.
+    \end{example}
+\end{frame}
+
+% Slide 4
+\begin{frame}
+    \frametitle{Basic Concepts in Threat Identification}
+    
+    \begin{block}{The Security Triad}
+        \textbf{Confidentiality}, \textbf{Integrity}, and \textbf{Availability} form the core principles of information security.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Threat actors} are individuals or groups who initiate attacks:
+            \begin{itemize}
+                \item Nation-states
+                \item Cybercriminals
+                \item Hacktivists
+                \item Insiders
+            \end{itemize}
+        \item \textbf{Attack vectors} are pathways used to gain unauthorized access.
+        \item \textbf{Vulnerabilities} are weaknesses that can be exploited.
+        \item \textbf{Indicators of compromise (IoCs)} are evidence that an attack has occurred.
+    \end{itemize}
+\end{frame}
+% Slide 5
+\begin{frame}
+    \frametitle{Ransomware: When Your Data Is Held Hostage}
+    
+    \begin{itemize}
+        \item \textbf{Ransomware} is malicious software that encrypts victim's files and demands payment for the decryption key.
+        \item Common infection vectors include:
+            \begin{itemize}
+                \item Phishing emails with malicious attachments
+                \item Drive-by downloads from compromised websites
+                \item Exploiting unpatched security vulnerabilities
+            \end{itemize}
+        \item Modern ransomware employs strong encryption that makes recovery without the key virtually impossible.
+        \item Attackers typically demand payment in cryptocurrency to maintain anonymity.
+    \end{itemize}
+    
+    \begin{alertblock}{Prevention Focus}
+        Regular backups stored offline are one of the best defenses against ransomware attacks.
+    \end{alertblock}
+\end{frame}
+
+% Slide 6
+\begin{frame}
+    \frametitle{Trojans: Deceptive Packages with Hidden Dangers}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{l|l}
+            \textbf{Trojan Type} & \textbf{Primary Function} \\
+            \hline
+            Banking & Steal financial credentials \\
+            RAT & Remote Access/Control \\
+            Downloader & Install additional malware \\
+            Backdoor & Create persistent access \\
+            Spyware & Monitor user activity \\
+        \end{tabular}
+    \end{table}
+    
+    \begin{itemize}
+        \item \textbf{Trojan horses} are malware disguised as legitimate software to trick users into installation.
+        \item Unlike viruses, Trojans do not self-replicate but rely on user deception.
+        \item They're often distributed through social engineering tactics that exploit trust.
+    \end{itemize}
+    
+    \begin{example}
+        Michael Scott downloaded what he thought was a free screen saver, but it was actually a Trojan that gave hackers access to Dunder Mifflin's customer database.
+    \end{example}
+\end{frame}
+
+% Slide 7
+\begin{frame}
+    \frametitle{Worms: Self-Replicating Digital Threats}
+    
+    \begin{block}{Key Characteristic}
+        The defining feature of worms is their ability to spread automatically without user interaction.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Computer worms} are standalone malware that replicate and spread across networks without requiring host files.
+        \item Worms exploit network vulnerabilities to propagate rather than attaching to programs.
+        \item Impact of worm infections:
+            \begin{itemize}
+                \item Network bandwidth consumption
+                \item System resource depletion
+                \item Service disruption
+                \item Delivery of secondary payloads
+            \end{itemize}
+        \item The rapid spread makes worms particularly dangerous for large organizations.
+    \end{itemize}
+\end{frame}
+
+% Slide 8
+\begin{frame}
+    \frametitle{Spyware: When Someone Is Watching}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Spyware} is malicious software designed to gather information without the user's knowledge.
+                \item Common information targets:
+                    \begin{itemize}
+                        \item Browsing history
+                        \item Login credentials
+                        \item Financial details
+                        \item Personal messages
+                    \end{itemize}
+                \item Often remains hidden while monitoring activity.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{Warning Signs}
+                \begin{itemize}
+                    \item System slowdowns
+                    \item Unexpected pop-ups
+                    \item Browser changes
+                    \item Strange network activity
+                    \item Battery drain (mobile)
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 9
+\begin{frame}
+    \frametitle{Bloatware: Resource Drain and Hidden Risks}
+    
+    \begin{itemize}
+        \item \textbf{Bloatware} refers to unwanted software that consumes excessive system resources while providing limited value.
+        \item While not always malicious, bloatware can contain hidden components that compromise security.
+        \item Common sources of bloatware:
+            \begin{itemize}
+                \item Pre-installed on new devices
+                \item Bundled with other software downloads
+                \item Adware installations
+                \item Trial software that remains after expiration
+            \end{itemize}
+        \item Some bloatware collects user data for advertising purposes without clear disclosure.
+    \end{itemize}
+    
+    \begin{block}{Gray Area Threat}
+        Bloatware exists in a gray area between legitimate software and malware, making it challenging to classify and address.
+    \end{block}
+\end{frame}
+
+% Slide 10
+\begin{frame}
+    \frametitle{Viruses: How They Infect and Spread}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Computer viruses} are malicious programs that replicate by inserting copies into other programs.
+                \item Require a host file and user action to spread between systems.
+                \item Unlike worms, viruses need a "host" application and cannot propagate independently.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{table}
+                \centering
+                \small
+                \begin{tabular}{l|l}
+                    \textbf{Virus Type} & \textbf{Behavior} \\
+                    \hline
+                    Boot sector & Infects startup code \\
+                    File infector & Attaches to executables \\
+                    Macro & Uses document macros \\
+                    Polymorphic & Changes its code \\
+                \end{tabular}
+            \end{table}
+        \end{column}
+    \end{columns}
+    
+    \begin{example}
+        Leslie Knope opened an email attachment about a "Parks Award," accidentally releasing a virus that replaced all documents on the Parks Department server with pictures of raccoons.
+    \end{example}
+\end{frame}
+
+% Slide 11
+\begin{frame}
+    \frametitle{Keyloggers: Tracking Every Keystroke}
+    
+    \begin{alertblock}{Privacy Invasion}
+        Keyloggers can capture sensitive information including passwords, credit card numbers, and private communications.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Keyloggers} are surveillance tools that record keystrokes made by a computer user.
+        \item Implementation methods:
+            \begin{itemize}
+                \item Software applications
+                \item Browser extensions
+                \item Hardware devices (USB or keyboard adapters)
+                \item Firmware modifications
+            \end{itemize}
+        \item Malicious keyloggers are often installed through phishing, social engineering, or bundled with other malware.
+        \item Modern keyloggers may also capture screenshots, monitor clipboard content, and track browsing activity.
+    \end{itemize}
+\end{frame}
+
+% Slide 12
+\begin{frame}
+    \frametitle{Logic Bombs: Time-Triggered Attacks}
+    
+    \begin{itemize}
+        \item \textbf{Logic bombs} are malicious code segments programmed to execute when specific conditions are met.
+        \item Common trigger conditions:
+        
+        \begin{tabular}{l|l}
+            \textbf{Trigger Type} & \textbf{Example} \\
+            \hline
+            Temporal & Specific date/time \\
+            Logical & File presence/absence \\
+            Quantitative & Login count threshold \\
+            Environmental & Network connection status \\
+        \end{tabular}
+        
+        \item Often planted by insiders with programming access, making them difficult to detect.
+        \item Logic bombs can lie dormant for extended periods before activation.
+        \item Common payloads include data deletion, encryption, or creating backdoor access.
+    \end{itemize}
+    
+    \begin{block}{Detection Challenge}
+        Because logic bombs remain inactive until their trigger condition, they often evade traditional security scanning.
+    \end{block}
+\end{frame}
+
+% Slide 13
+\begin{frame}
+    \frametitle{Rootkits: Hidden Deep in Your System}
+    
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Rootkits} are collections of tools designed to gain and maintain unauthorized administrator-level access.
+                \item They operate at the lowest levels of the operating system, making detection extremely difficult.
+                \item Rootkits can modify system files and processes to hide their presence from security software.
+                \item They often create persistent backdoors that survive system reboots and software updates.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{table}
+                \centering
+                \small
+                \begin{tabular}{l|l}
+                    \textbf{Type} & \textbf{Target} \\
+                    \hline
+                    User-mode & Applications \\
+                    Kernel-mode & OS core \\
+                    Bootkit & Boot process \\
+                    Firmware & Hardware \\
+                \end{tabular}
+            \end{table}
+        \end{column}
+    \end{columns}
+    
+    \begin{alertblock}{Stealth Threat}
+        The primary danger of rootkits is their ability to remain undetected while enabling ongoing system compromise.
+    \end{alertblock}
+\end{frame}
+
+% Slide 14
+\begin{frame}
+    \frametitle{Brute Force Attacks: Breaking Down the Door}
+    
+    \begin{block}{What Is a Brute Force Attack?}
+        A systematic attempt to discover passwords or keys by trying all possible combinations until the correct one is found.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Brute force attacks} attempt to gain unauthorized access by systematically trying all possible combinations.
+        \item Common targets:
+            \begin{itemize}
+                \item Login credentials
+                \item Encryption keys
+                \item PIN codes
+                \item API keys
+            \end{itemize}
+        \item Success depends on computing power and the complexity of the target password or key.
+        \item Modern systems typically implement countermeasures like account lockouts and rate limiting.
+    \end{itemize}
+    
+    \begin{alertblock}{Time to Crack}
+        \small
+        A password with complexity of:
+        \begin{itemize}
+            \item 6 lowercase letters: Minutes to hours
+            \item 8 mixed case + numbers: Days to weeks
+            \item 12+ mixed case + symbols: Years to centuries
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+% Slide 15
+\begin{frame}
+    \frametitle{RFID Cloning: Digital Identity Theft}
+    
+    \begin{itemize}
+        \item \textbf{Radio-frequency identification (RFID)} technology uses electromagnetic fields to identify and track tags attached to objects.
+        \item \textbf{RFID cloning} involves copying data from a legitimate RFID tag to create an unauthorized duplicate.
+        \item Common targets:
+        
+        \begin{tabular}{l|l}
+            \textbf{Target} & \textbf{Use Case} \\
+            \hline
+            Access cards & Building entry \\
+            Credit cards & Contactless payment \\
+            Passport chips & Border control \\
+            Product tags & Inventory tracking \\
+        \end{tabular}
+        
+        \item Attackers can use specialized readers to capture RFID data from several feet away without physical contact.
+        \item Cloned tags can be used to gain unauthorized physical access or make fraudulent transactions.
+    \end{itemize}
+    
+    \begin{example}
+        Jim Halpert noticed his office access card worked even after he reported it lost. Security footage revealed Dwight had cloned Jim's RFID card to monitor his arrival and departure times.
+    \end{example}
+\end{frame}
+
+% Slide 16
+\begin{frame}
+    \frametitle{Environmental Attacks: Exploiting Physical Vulnerabilities}
+    
+    \begin{alertblock}{Physical Security Matters}
+        Even the strongest digital security can be compromised if physical access controls are inadequate.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Environmental attacks} exploit physical conditions and surroundings of computing systems.
+        \item Categories of environmental attacks:
+            \begin{itemize}
+                \item \textbf{Temperature manipulation}: Overheating or cooling systems to cause failures
+                \item \textbf{Power attacks}: Deliberate power surges, cutting power during critical operations
+                \item \textbf{Electromagnetic attacks}: Using EM radiation to interfere with or monitor devices
+                \item \textbf{Acoustic attacks}: Using sound to extract information from certain devices
+            \end{itemize}
+        \item Social engineering often accompanies these attacks to gain initial physical access.
+    \end{itemize}
+\end{frame}
+
+% Slide 17
+\begin{frame}
+    \frametitle{DDoS Attacks: Overwhelming the Target}
+    
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item \textbf{Distributed Denial of Service (DDoS)} attacks aim to make online services unavailable by overwhelming them with traffic.
+                \item Unlike regular DoS attacks, DDoS utilizes multiple compromised computer systems as attack sources.
+                \item These attacks can generate hundreds of gigabits per second of malicious traffic.
+                \item Common targets include websites, online services, and DNS providers.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \begin{table}
+                \centering
+                \small
+                \begin{tabular}{l|l}
+                    \textbf{Layer} & \textbf{Attack Type} \\
+                    \hline
+                    Network & ICMP Flood \\
+                    Transport & SYN Flood \\
+                    Session & SSL Abuse \\
+                    Application & HTTP Flood \\
+                \end{tabular}
+            \end{table}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+% Slide 18
+\begin{frame}
+    \frametitle{Amplified \& Reflected DDoS: Multiplying the Impact}
+    
+    \begin{alertblock}{Amplification Factor}
+        Some reflection techniques can multiply the attacker's traffic by factors of 50x or more.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Amplified DDoS attacks} exploit protocols that return larger responses than the initial request.
+        \item \textbf{Reflected attacks} bounce traffic off third-party servers to hide the attacker's identity.
+        \item Common protocols exploited:
+        
+        \begin{tabular}{l|c}
+            \textbf{Protocol} & \textbf{Amplification Factor} \\
+            \hline
+            DNS & 28-54x \\
+            NTP & 556-1,337x \\
+            SSDP & 30x \\
+            Memcached & 10,000-51,000x \\
+        \end{tabular}
+        
+        \item These attacks are particularly dangerous because they require minimal resources from the attacker.
+    \end{itemize}
+\end{frame}
+
+% Slide 19
+\begin{frame}
+    \frametitle{DNS Attacks: Compromising the Internet's Directory}
+    
+    \begin{itemize}
+        \item The \textbf{Domain Name System (DNS)} translates human-readable domain names into IP addresses.
+        \item Common DNS attack types:
+            \begin{itemize}
+                \item \textbf{DNS cache poisoning}: Inserts fraudulent records into DNS resolvers
+                \item \textbf{DNS tunneling}: Abuses DNS protocols to exfiltrate data
+                \item \textbf{DNS hijacking}: Modifies DNS settings to redirect users
+                \item \textbf{DNS amplification}: Uses DNS servers for DDoS attacks
+            \end{itemize}
+        \item These attacks can be difficult to detect because DNS traffic is typically trusted by network security systems.
+    \end{itemize}
+    
+    \begin{example}
+        Ron Swanson typed "www.parksandrec.gov" into his browser but was redirected to a fake government website that asked for his credentials. The IT department later discovered the office DNS settings had been hijacked.
+    \end{example}
+\end{frame}
+
+% Slide 20
+\begin{frame}
+    \frametitle{Wireless Network Vulnerabilities}
+    
+    \begin{block}{Convenience vs. Security}
+        The ease of access that makes wireless networks convenient also creates unique security challenges.
+    \end{block}
+    
+    \begin{itemize}
+        \item Common wireless attack vectors:
+    \end{itemize}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{l|l}
+            \textbf{Attack Type} & \textbf{Description} \\
+            \hline
+            Evil Twin & Rogue access points mimicking legitimate networks \\
+            WPA/WPA2 Cracking & Breaking wireless encryption using captured handshakes \\
+            Jamming & Using radio interference to disrupt communications \\
+            Wardriving & Scanning for vulnerable networks from a vehicle \\
+            Packet Sniffing & Capturing and analyzing unencrypted wireless traffic \\
+        \end{tabular}
+    \end{table}
+  
+\end{frame}
+
+% Slide 21
+\begin{frame}
+    \frametitle{On-Path Attacks: The Digital Eavesdropper}
+    
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{On-path attacks} (or \textbf{man in the middle}) occur when an attacker secretly relays and possibly alters communications between two parties.
+                \item The victims believe they are communicating directly with each other, unaware of the attacker in between.
+                \item These attacks can be used to intercept data, steal credentials, or manipulate transactions.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item Common vectors:
+                    \begin{itemize}
+                        \item ARP spoofing
+                        \item DNS spoofing
+                        \item Evil twin Wi-Fi
+                        \item SSL stripping
+                        \item BGP hijacking
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            Sender & Attacker & Receiver \\
+            \hline
+            Thinks they're & Intercepts & Thinks they're \\
+            sending to receiver & \& modifies & receiving from sender \\
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+% Slide 22
+\begin{frame}
+    \frametitle{Credential Replay: Using Stolen Authentication}
+    
+    \begin{itemize}
+        \item \textbf{Credential replay attacks} involve capturing authentication data and reusing it to gain unauthorized access.
+        \item These attacks don't require knowing the actual password, only the authentication tokens or hashes.
+        \item Common targets:
+            \begin{itemize}
+                \item Authentication cookies
+                \item Session tokens
+                \item Kerberos tickets
+                \item OAuth tokens
+                \item NTLM hashes
+            \end{itemize}
+        \item Attackers typically capture credentials using network sniffers, on-path attacks, or malware.
+    \end{itemize}
+    
+    \begin{block}{Modern Challenge}
+        Even with strong passwords, replay attacks can succeed if the authentication protocol itself doesn't prevent reuse.
+    \end{block}
+\end{frame}
+
+% Slide 23
+\begin{frame}
+    \frametitle{Malicious Code in Network Traffic}
+    
+    \begin{itemize}
+        \item Network traffic can be manipulated to deliver \textbf{malicious code} directly to target systems.
+        \item Delivery mechanisms:
+        
+        \begin{tabular}{l|l}
+            \textbf{Method} & \textbf{Description} \\
+            \hline
+            Code injection & Inserting code into legitimate web traffic \\
+            Malvertising & Malicious code embedded in online ads \\
+            Drive-by downloads & Silent downloads from compromised sites \\
+            Traffic manipulation & Altering packets in transit to add malicious code \\
+        \end{tabular}
+        
+        \item Network-level exploits may target vulnerabilities in how systems process network packets.
+        \item Content filtering and deep packet inspection can help identify and block malicious code in transit.
+    \end{itemize}
+    
+    \begin{example}
+        While using the office Wi-Fi, Pam Beesly noticed strange redirects when browsing. IT discovered malicious JavaScript was being injected into web pages as they passed through a compromised router.
+    \end{example}
+\end{frame}
+
+% Slide 24
+\begin{frame}
+    \frametitle{Injection Attacks: Exploiting Input Vulnerabilities}
+    
+    \begin{alertblock}{OWASP Top Threat}
+        Injection attacks consistently rank among the most dangerous web application security risks in the OWASP Top Ten.
+    \end{alertblock}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Injection attacks} occur when untrusted data is sent to an interpreter as part of a command or query.
+                \item Common injection types:
+                    \begin{itemize}
+                        \item SQL injection
+                        \item Command injection
+                        \item LDAP injection
+                        \item XSS (Cross-Site Scripting)
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{block}{SQL Injection Example}
+                Intended: \texttt{SELECT * FROM users WHERE username = 'input1' AND password = 'input2'} \newline
+                
+                Malicious input1:
+                \texttt{admin' --} \newline
+                
+                Resulting query:
+                \texttt{SELECT * FROM users WHERE username = 'admin'} \newline
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 25
+\begin{frame}
+    \frametitle{Buffer Overflows: When Memory Fails}
+    
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Buffer overflow} attacks occur when a program writes data beyond the allocated memory buffer.
+                \item These vulnerabilities arise from poor programming practices and inadequate input validation.
+                \item Successful exploitation can lead to:
+                    \begin{itemize}
+                        \item System crashes
+                        \item Data corruption
+                        \item Arbitrary code execution
+                        \item Privilege escalation
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{Protection Methods}
+                \begin{itemize}
+                    \item ASLR
+                    \item DEP/NX
+                    \item Stack canaries
+                    \item Bounds checking
+                    \item Safe libraries
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Low-Level Vulnerability}
+        Buffer overflows exploit how computers manage memory, making them particularly dangerous but also more difficult to execute.
+    \end{block}
+\end{frame}
+
+% Slide 26
+\begin{frame}
+    \frametitle{Replay Attacks on Applications}
+    
+    \begin{alertblock}{Not Just Network Traffic}
+        Application-level replay differs from network replay by targeting specific application functions rather than authentication alone.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Application replay attacks} involve capturing valid data transmissions and retransmitting them to trick an application.
+        \item Attack scenarios and targets:
+        
+        \begin{tabular}{l|l}
+            \textbf{Target} & \textbf{Attack Scenario} \\
+            \hline
+            Financial transactions & Duplicating money transfers \\
+            API requests & Replaying authorized API calls \\
+            Authentication sequences & Reusing login credentials \\
+            Session management & Hijacking user sessions \\
+        \end{tabular}
+        
+        \item Successful attacks can lead to transaction duplication, session hijacking, or privilege escalation.
+ 
+    \end{itemize}
+\end{frame}
+
+% Slide 27
+\begin{frame}
+    \frametitle{Privilege Escalation: Gaining Unauthorized Access}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Privilege escalation} involves gaining elevated access to resources that should be protected.
+                \item Two primary types:
+                    \begin{itemize}
+                        \item \textbf{Vertical}: Gaining higher permission levels
+                        \item \textbf{Horizontal}: Accessing resources of peers
+                    \end{itemize}
+                \item Attackers often chain multiple vulnerabilities to achieve full system compromise.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Common Vectors}
+                \begin{itemize}
+                    \item Misconfigured permissions
+                    \item Unpatched vulnerabilities
+                    \item Default credentials
+                    \item Application flaws
+                    \item Token manipulation
+                    \item Path traversal
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+% Slide 28
+\begin{frame}
+    \frametitle{Forgery Attacks: Digital Counterfeiting}
+    
+    \begin{block}{Types of Forgery}
+        Forgery attacks can target requests, responses, or the underlying identities used in digital systems.
+    \end{block}
+    
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \textbf{Attack Type} & \textbf{Description} \\
+        \hline
+        Cross-site request forgery (CSRF) & Tricks users into submitting unwanted requests \\
+        Server-side request forgery (SSRF) & Forces server to make unauthorized internal requests \\
+        Cookie forgery & Creates/modifies cookies to impersonate users \\
+        Email forgery & Manipulates email headers to fake message origins \\
+    \end{tabular}
+    
+\end{frame}
+
+% Slide 29
+\begin{frame}
+    \frametitle{Directory Traversal: Escaping the Sandbox}
+    
+    \begin{alertblock}{Also Known As}
+        Directory traversal is sometimes called the "dot-dot-slash" attack, referring to the "../" sequence used to navigate directories.
+    \end{alertblock}
+    
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Directory traversal} attacks exploit insufficient security validation to access files outside intended directories.
+                \item Attackers use path manipulation techniques like "../" sequences to navigate the file system.
+                \item Common targets include web servers, file upload functions, and content management systems.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Example Attack String}
+                \texttt{../../etc/passwd}\\
+                \texttt{..\\..\\windows\\system32\\}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+% Slide 30
+\begin{frame}
+    \frametitle{Downgrade \& Collision Attacks: Weakening Encryption}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Downgrade attacks} force systems to use weaker encryption protocols than they normally would.
+                \item These attacks exploit backward compatibility features to use deprecated, less secure algorithms.
+                \item Notable examples:
+                    \begin{itemize}
+                        \item POODLE (SSL 3.0)
+                        \item FREAK (Export-grade RSA)
+                        \item Logjam (Weak DH parameters)
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Collision attacks} identify different inputs that produce the same cryptographic hash value.
+                \item When successful, collision attacks can be used to:
+                    \begin{itemize}
+                        \item Forge digital signatures
+                        \item Bypass integrity checks
+                        \item Create malicious duplicates
+                        \item Break certificate validation
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Cryptographic Aging}
+        Encryption algorithms that were once considered secure can become vulnerable over time as computing power increases.
+    \end{block}
+\end{frame}
+
+% Slide 31
+\begin{frame}
+    \frametitle{Birthday Attacks: Probability in Cryptography}
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Birthday attacks} are named after the birthday paradox in probability theory.
+                \item The paradox shows that in a group of just 23 people, there's a 50\% chance two share a birthday.
+                \item Similarly, finding a collision in an n-bit hash function requires approximately $2^{n/2}$ attempts, not $2^n$.
+                \item This makes finding collisions much easier than would be intuitively expected.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{table}
+                \centering
+                \small
+                \begin{tabular}{l|c}
+                    \textbf{Hash Size} & \textbf{Security Level} \\
+                    \hline
+                    128-bit & $2^{64}$ operations \\
+                    160-bit & $2^{80}$ operations \\
+                    256-bit & $2^{128}$ operations \\
+                    512-bit & $2^{256}$ operations \\
+                \end{tabular}
+            \end{table}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Practical Implication}
+        Hash functions used for security applications must be significantly larger than might seem necessary to resist birthday attacks.
+    \end{block}
+\end{frame}
+
+% Slide 32
+\begin{frame}
+    \frametitle{Password Spraying: Casting a Wide Net}
+    
+    \begin{alertblock}{Why It Works}
+        Password spraying evades account lockout mechanisms by trying just a few common passwords against many accounts rather than many passwords against one account.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Password spraying} is a brute force technique that attempts a small number of commonly used passwords against many accounts.
+        \item Attack methodology:
+            \begin{enumerate}
+                \item Gather a list of valid usernames or email addresses
+                \item Select a small set of commonly used passwords
+                \item Try each password against all accounts before moving to the next password
+                \item Space attempts to avoid triggering lockout policies
+            \end{enumerate}
+        \item Surprisingly effective due to password reuse and predictable password patterns.
+        \item Mitigation requires strong password policies, MFA, and monitoring for multiple failed login attempts across different accounts.
+    \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,652 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+\useinnertheme{circles}
+
+% Required packages
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Title information
+\title{Enterprise Security Mitigation Techniques}
+\subtitle{A Comprehensive Guide to Protecting Your Infrastructure}
+\author{Presenter Name}
+\institute{Institution Name}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\frame{\titlepage}
+
+% Slide 1: "Securing the Enterprise: Why Mitigation Matters"
+\begin{frame}
+\frametitle{Securing the Enterprise: Why Mitigation Matters}
+
+\begin{block}{Security Mitigation}
+\textbf{Security mitigation} refers to measures taken to reduce the severity or impact of security threats.
+\end{block}
+
+\begin{itemize}
+\item Security threats to enterprises have increased by over 300\% in the past decade.
+\item A single data breach costs organizations an average of \$4.35 million globally.
+\item \textbf{Proactive mitigation} is significantly more cost-effective than reactive responses.
+\item Effective security requires multiple layers of protection working together.
+\item Regulatory compliance often mandates specific security controls and mitigation strategies.
+\end{itemize}
+\end{frame}
+
+% Slide 2: "The Security Landscape: Understanding Today's Threats"
+\begin{frame}
+\frametitle{The Security Landscape: Understanding Today's Threats}
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{External Threats:}
+\begin{itemize}
+\item Malware and ransomware
+\item Phishing attacks
+\item Zero-day exploits
+\item Supply chain attacks
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Internal Threats:}
+\begin{itemize}
+\item Unauthorized access
+\item Insider threats
+\item Misconfigured systems
+\item Human error
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+\begin{alertblock}{Why Enterprises Are Targeted}
+Enterprises are attractive targets because they have valuable data, larger attack surfaces, and often complex systems that can be difficult to secure completely.
+\end{alertblock}
+\end{frame}
+
+% Slide 3: "Defense in Depth: A Layered Approach to Security"
+\begin{frame}
+\frametitle{Defense in Depth: A Layered Approach to Security}
+
+\begin{itemize}
+\item \textbf{Defense in depth} is a security strategy that employs multiple layers of controls throughout the IT environment.
+\item No single security measure is 100\% effective against all possible attacks.
+\item Layered security requires attackers to overcome multiple barriers, increasing difficulty..
+\end{itemize}
+
+\begin{table}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Layer} & \textbf{Example Controls} \\
+\hline
+Network & Firewalls, IDS/IPS, Segmentation \\
+\hline
+Host & Endpoint protection, Hardening, Patching \\
+\hline
+Application & Allow lists, Input validation, Authentication \\
+\hline
+Data & Encryption, Access controls, Backups \\
+\hline
+\end{tabularx}
+\end{table}
+\end{frame}
+
+% Slide 4: "Network Segmentation: Creating Security Boundaries"
+\begin{frame}
+\frametitle{Network Segmentation: Creating Security Boundaries}
+
+\begin{block}{What is Network Segmentation?}
+\textbf{Network segmentation} is the practice of dividing a network into isolated subnetworks to improve security and performance.
+\end{block}
+
+\begin{itemize}
+\item Segmentation limits lateral movement of threats across the network.
+\item Sensitive systems and data can be isolated in secure network segments.
+\item Segmentation helps contain breaches when they occur, limiting potential damage.
+\item It supports compliance requirements by restricting access to regulated data.
+\item Modern segmentation includes both physical and logical boundaries.
+\end{itemize}
+\end{frame}
+
+% Slide 5: "Case Study: How Tony Stark's Segmentation Protected His Lab"
+\begin{frame}
+    \frametitle{Case Study: How Tony Stark's Segmentation Protected His Lab}
+    
+    \begin{exampleblock}{Iron Man's Network Security}
+    In the Marvel universe, Tony Stark implements extensive segmentation to protect his lab and sensitive Iron Man technology.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item Stark isolates his lab network completely from Stark Industries' corporate network.
+    \item He implements air-gapped systems for his most sensitive Iron Man suit designs.
+    \item If his corporate network is compromised, his personal lab remained secure.
+    \item Different security clearances exist for different areas of his technology.
+    \item IDS and other tools provide continuous monitoring of boundary crossing attempts.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \textit{Key lesson: Proper segmentation ensures that a breach in one area doesn't compromise everything.}
+    \end{frame}
+    
+    % Slide 6: "Implementing Effective Segmentation Strategies"
+    \begin{frame}
+    \frametitle{Implementing Effective Segmentation Strategies}
+    
+    \begin{itemize}
+    \item Begin with a thorough \textbf{asset inventory} to understand what needs protection.
+    \item Group systems based on function, data sensitivity, and compliance requirements.
+    \item Implement \textbf{network access controls} between segments using firewalls and ACLs.
+    \item Consider both north-south (external-internal) and east-west (internal) traffic flows.
+    \end{itemize}
+    
+    \begin{alertblock}{Modern Segmentation Approaches}
+    Beyond traditional VLANs, consider:
+    \begin{itemize}
+    \item \textbf{Micro-segmentation}: Security policies applied at the individual workload level
+    \item \textbf{Software-defined segmentation}: Dynamic, policy-based controls
+    \item \textbf{Zero Trust architecture}: "Never trust, always verify" approach to access
+    \end{itemize}
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 7: "Access Control Fundamentals: The Four W's (Who, What, When, Where)"
+    \begin{frame}
+    \frametitle{Access Control Fundamentals: The Four W's}
+    
+    \begin{block}{What is Access Control?}
+    \textbf{Access control} refers to security mechanisms that regulate who or what can view, use, or access a resource.
+    \end{block}
+    
+    \begin{itemize}
+    \item \textbf{Who} - Identity verification determines which users can access systems.
+    \item \textbf{What} - Authorization determines which resources users can access.
+    \item \textbf{When} - Time-based restrictions limit when access is permitted.
+    \item \textbf{Where} - Location-based controls determine from where users can connect.
+    \end{itemize}
+    
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Access Control Type} & \textbf{Examples} \\
+    \hline
+    Physical & Badge readers, biometrics \\
+    Technical & Passwords, MFA, certificates \\
+    Administrative & Policies, training, procedures \\
+    \hline
+    \end{tabular}
+    \end{frame}
+    
+    % Slide 8: "Access Control Lists (ACLs): Managing the Security Gate"
+    \begin{frame}
+    \frametitle{Access Control Lists (ACLs): Managing the Security Gate}
+    
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item An \textbf{Access Control List (ACL)} is a table that tells a system which access rights each user has.
+    \item ACLs can be implemented at various levels:
+        \begin{itemize}
+        \item Network ACLs - Control traffic flow
+        \item File system ACLs - Control file access
+        \item Application ACLs - Control feature access
+        \end{itemize}
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Simple Network ACL}
+    \small
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Source} & \textbf{Dest} & \textbf{Action} \\
+    \hline
+    10.1.1.0/24 & 10.2.2.0/24 & Allow \\
+    Any & 10.3.3.0/24 & Deny \\
+    10.1.1.5 & DB Server & Allow \\
+    \hline
+    \end{tabular}
+    \end{exampleblock}
+    \end{columns}
+    
+    \begin{alertblock}{ACL Best Practices}
+    Implement the principle of "deny by default, allow by exception" and review ACLs regularly.
+    \end{alertblock}
+    \end{frame}
+
+
+    % Slide 9: "Permissions Architecture: Building the Right Framework"
+\begin{frame}
+    \frametitle{Permissions Architecture: Building the Right Framework}
+    
+    \begin{block}{What are Permissions?}
+    \textbf{Permissions} are specific access rights assigned to users or groups that determine what actions they can perform on specific resources.
+    \end{block}
+    
+    \begin{itemize}
+    \item Permissions should be organized in a structured, hierarchical manner.
+    \item Common permission types include read, write, execute, modify, and full control.
+    \item Group-based permissions are easier to manage than individual user permissions.
+    \end{itemize}
+    
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Permission Model} & \textbf{Description} \\
+    \hline
+    Role-Based Access Control (RBAC) & Permissions based on job functions or roles \\
+    \hline
+    Attribute-Based Access Control (ABAC) & Dynamic permissions based on user/resource attributes \\
+    \hline
+    Mandatory Access Control (MAC) & System-enforced access based on sensitivity labels \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    \end{frame}
+    
+    % Slide 10: "Case Study: Hogwarts' Restricted Section - When Access Controls Fail"
+    \begin{frame}
+    \frametitle{Case Study: Hogwarts' Restricted Section - When Access Controls Fail}
+    
+    \begin{exampleblock}{Hogwarts Library Security}
+    In the Harry Potter series, the Restricted Section of the Hogwarts library contains dangerous knowledge that should only be accessible to advanced students with professor approval.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item Access control measure: Required signed permission note from a professor.
+    \item Authentication weakness: No verification system to confirm note authenticity.
+    \item Monitoring failure: No surveillance during overnight hours.
+    \item Physical control bypass: Harry's invisibility cloak allowed unauthorized access.
+    \item Result: Harry accessed dangerous knowledge about Horcruxes that should have been restricted.
+    \end{itemize}
+    
+    \end{frame}
+    
+    % Slide 11: "Application Allow Lists: Controlling What Runs in Your Environment"
+    \begin{frame}
+    \frametitle{Application Allow Lists: Controlling What Runs in Your Environment}
+    
+    \begin{block}{What is an Application Allow List?}
+    An \textbf{application allow list} (or whitelist) is a security approach that permits only approved applications to run while blocking all others by default.
+    \end{block}
+    
+    \begin{itemize}
+    \item Allow lists provide stronger protection than block lists (blacklists) of known malicious software.
+    \item They effectively prevent unauthorized and potentially malicious applications from executing.
+    \item Implementation can be based on file paths, cryptographic hashes, digital signatures, or publisher certificates.
+    \end{itemize}
+    
+    \begin{exampleblock}{Implementation Methods}
+    \begin{itemize}
+    \item Microsoft AppLocker /Windows Defender Application Control
+    \item SELinux policies
+    \item Third-party endpoint protection platforms
+    \end{itemize}
+    \end{exampleblock}
+    \end{frame}
+    
+    % Slide 12: "Implementing Application Control: From Policy to Practice"
+    \begin{frame}
+    \frametitle{Implementing Application Control: From Policy to Practice}
+    
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \textbf{Implementation Steps:}
+    \begin{enumerate}
+    \item Inventory all legitimate applications
+    \item Document business justification
+    \item Create initial allow lists
+    \item Test in audit mode
+    \item Deploy incrementally
+    \item Establish exception process
+    \end{enumerate}
+    
+    \column{0.5\textwidth}
+    \textbf{Challenges:}
+    \begin{itemize}
+    \item Balancing security with usability
+    \item Managing software updates
+    \item Handling legacy applications
+    \item Supporting developer needs
+    \item User resistance
+    \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{alertblock}{Best Practice}
+    Start with a pilot group before enterprise-wide deployment, and implement in stages to minimize business disruption.
+    \end{alertblock}
+    
+    \end{frame}
+
+% Slide 13: "Isolation Techniques: Containing Potential Threats"
+\begin{frame}
+    \frametitle{Isolation Techniques: Containing Potential Threats}
+    
+    \begin{block}{What is Security Isolation?}
+    \textbf{Isolation} is the practice of separating systems, applications, or processes from each other to prevent the spread of threats and minimize attack surfaces.
+    \end{block}
+        
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    \textbf{Isolation Method} & \textbf{Use Cases} \\
+    \hline
+    Virtual Machines & Development environments, testing malicious files \\
+    \hline
+    Containers & Application isolation, microservices architecture \\
+    \hline
+    Sandboxing & Browser security, analyzing suspicious files \\
+    \hline
+    Air Gapping & Critical infrastructure, classified systems \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    \end{frame}
+    
+    % Slide 14: "Case Study: The Martian's Mark Watney - Isolation as a Survival Strategy"
+    \begin{frame}
+    \frametitle{Case Study: The Martian's Mark Watney - Isolation as a Survival Strategy}
+    
+    \begin{exampleblock}{Security Through Isolation}
+    In "The Martian," astronaut Mark Watney's survival on Mars demonstrates how isolation can be both a challenge and a security strategy.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item Watney physically isolated critical systems (habitat, rover, communications) to prevent cascade failures.
+    \item He created redundant, isolated food production systems to ensure survival if one failed.
+    \item When breaching the airlock for modifications, he isolated sections to contain potential atmospheric loss.
+    \item His improvised communications system was isolated from critical life support to prevent interference.
+    \item NASA similarly isolated mission-critical systems from public-facing communications networks.
+    \end{itemize}
+    \end{frame}
+    
+    % Slide 15: "The Patching Imperative: Closing Security Gaps"
+    \begin{frame}
+    \frametitle{The Patching Imperative: Closing Security Gaps}
+    
+    \begin{block}{What is Patching?}
+    \textbf{Patching} is the process of applying updates to software and systems to fix known vulnerabilities and improve functionality.
+    \end{block}
+    
+    \begin{itemize}
+    \item Unpatched vulnerabilities are among the most common attack vectors for breaches.
+    \item Patches address security flaws, bugs, and performance issues in operating systems and applications.
+    \item Critical vulnerabilities should be patched as quickly as possible after testing.
+    \item Legacy and end-of-life systems pose particular patching challenges.
+    \item A formal patch management process is essential for maintaining security posture.
+    \end{itemize}
+    
+    \begin{alertblock}{Notable Examples}
+    The WannaCry ransomware attack of 2017 primarily affected organizations that had not applied a critical Microsoft patch released two months earlier.
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 16: "Building an Effective Patch Management Process"
+    \begin{frame}
+    \frametitle{Building an Effective Patch Management Process}
+    
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \textbf{Patch Management Steps:}
+    \begin{enumerate}
+    \item Inventory assets and dependencies
+    \item Monitor for new patches
+    \item Assess criticality and risk
+    \item Test compatibility
+    \item Deploy to production
+    \item Verify installation
+    \item Document actions
+    \end{enumerate}
+    
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Patching Prioritization Matrix}
+    \scriptsize
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Impact} & \textbf{High} & \textbf{Medium} & \textbf{Low} \\
+    \hline
+    \textbf{Critical} & 24h & 48h & 1 week \\
+    \hline
+    \textbf{High} & 72h & 1 week & 2 weeks \\
+    \hline
+    \textbf{Medium} & 1 week & 2 weeks & Monthly \\
+    \hline
+    \textbf{Low} & 2 weeks & Monthly & Quarterly \\
+    \hline
+    \end{tabular}
+    \normalsize
+    \end{exampleblock}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \begin{itemize}
+    \item Establish regular maintenance windows for routine patching activities.
+    \item Implement automated patch management tools to streamline the process.
+    \item Develop exception procedures for systems that cannot be immediately patched.
+    \item Regular reporting ensures visibility into patch compliance status.
+    \end{itemize}
+    \end{frame}
+
+
+    % Slide 17: "Encryption Fundamentals: Protecting Data in Transit and at Rest"
+\begin{frame}
+    \frametitle{Encryption Fundamentals: Protecting Data in Transit and at Rest}
+    
+    \begin{block}{What is Encryption?}
+    \textbf{Encryption} is the process of converting information into code to prevent unauthorized access, ensuring data confidentiality and integrity.
+    \end{block}
+    
+    \begin{itemize}
+    \item \textbf{Data at rest encryption} protects stored information on devices, servers, and databases.
+    \item \textbf{Data in transit encryption} secures information as it moves across networks.
+    \item \textbf{End-to-end encryption} ensures only the sender and recipient can access the unencrypted data.
+
+    \end{itemize}
+    
+    \begin{alertblock}{Types of Encryption}
+    \begin{itemize}
+    \item \textbf{Symmetric encryption}: Same key used to encrypt and decrypt
+    \item \textbf{Asymmetric encryption}: Public and private key pairs
+    \end{itemize}
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 18: "Encryption Implementation: Keys, Algorithms, and Best Practices"
+    \begin{frame}
+    \frametitle{Encryption Implementation: Keys, Algorithms, and Best Practices}
+    
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \textbf{Common Encryption Algorithms:}
+    \begin{itemize}
+    \item AES (Advanced Encryption Standard)
+    \item RSA (Rivest-Shamir-Adleman)
+    \item ECC (Elliptic Curve Cryptography)
+    \item TLS 1.3 (Transport Layer Security)
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \textbf{Key Management Best Practices:}
+    \begin{itemize}
+    \item Separate key storage from encrypted data
+    \item Implement key rotation schedule and backup keys regularly
+    \item Apply the principle of least privilege
+    \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{itemize}
+    \item Always use established, well-vetted encryption algorithms instead of creating custom solutions.
+    \item Consider data classification to determine appropriate encryption strength requirements.
+    \end{itemize}
+
+    \end{frame}
+    
+    % Slide 19: "Case Study: The Imitation Game - How Encryption Changed History"
+    \begin{frame}
+    \frametitle{Case Study: The Imitation Game - How Encryption Changed History}
+    
+    \begin{exampleblock}{The Enigma Machine}
+    In "The Imitation Game," Alan Turing and his team work to break Nazi Germany's Enigma encryption, highlighting the critical role of cryptography in security.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item The Germans believed Enigma encryption was unbreakable due to its complexity.
+    \item Enigma used a polyalphabetic substitution cipher with rotating mechanical rotors.
+    \item The encryption keys changed daily, creating an enormous number of possible configurations.
+    \item Turing's team created the "Bombe" machine to automate the decryption process.
+    \item Breaking Enigma encryption shortened WWII by an estimated 2-4 years and saved millions of lives.
+    \end{itemize}
+    
+    \end{frame}
+    
+    % Slide 20: "Security Monitoring: You Can't Protect What You Can't See"
+    \begin{frame}
+    \frametitle{Security Monitoring: You Can't Protect What You Can't See}
+    
+    \begin{block}{What is Security Monitoring?}
+    \textbf{Security monitoring} is the continuous collection and analysis of data from networks, systems, and applications to detect and respond to security events.
+    \end{block}
+
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Monitoring Type} & \textbf{Examples} \\
+    \hline
+    Network & Traffic analysis, IDS/IPS, NetFlow \\
+    \hline
+    System & Log files, performance metrics, file integrity \\
+    \hline
+    Application & Authentication events, transactions, errors \\
+    \hline
+    User & Access patterns, privilege usage, behavior analytics \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    \end{frame}
+
+% Slide 21: "Building an Effective Monitoring Strategy"
+\begin{frame}
+    \frametitle{Building an Effective Monitoring Strategy}
+    
+    \begin{columns}[t]
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Start with a clear understanding of what assets and data are most critical.
+    \item Implement \textbf{centralized log management} to aggregate data from multiple sources.
+    \item Establish baseline metrics for normal activity to more easily identify anomalies.
+    \item Develop clear escalation procedures for different types of security events.
+    \item Balance automated alerting with human analysis to reduce alert fatigue.
+    \end{itemize}
+    
+    \column{0.4\textwidth}
+    \begin{exampleblock}{Key Technologies}
+    \begin{itemize}
+    \item SIEM (Security Information and Event Management)
+    \item EDR (Endpoint Detection and Response)
+    \item NDR (Network Detection and Response)
+    \item UEBA (User and Entity Behavior Analytics)
+    \end{itemize}
+    \end{exampleblock}
+    \end{columns}
+    
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Building an Effective Monitoring Strategy (cont.)}
+        \begin{alertblock}{Monitoring Maturity Model}
+            \begin{enumerate}
+            \item \textbf{Basic}: Manual log review, minimal alerting
+            \item \textbf{Reactive}: Centralized logging, basic correlation
+            \item \textbf{Proactive}: Automated analysis, threat hunting
+            \item \textbf{Optimized}: AI/ML-enhanced, predictive capabilities
+            \end{enumerate}
+            \end{alertblock}
+
+    \begin{itemize}
+        \item Regularly review and update monitoring policies to adapt to new threats.
+        \item Conduct periodic security drills to test incident response effectiveness.
+        \item Engage in threat intelligence sharing with industry peers to stay informed.
+    \end{itemize}
+
+    \end{frame}
+    
+    % Slide 22: "The Principle of Least Privilege: Minimizing Attack Surface"
+    \begin{frame}
+    \frametitle{The Principle of Least Privilege: Minimizing Attack Surface}
+    
+    \begin{block}{What is Least Privilege?}
+    The \textbf{principle of least privilege} states that users, processes, and systems should only have access to the resources necessary to perform their authorized functions and nothing more.
+    \end{block}
+    
+    \begin{itemize}
+    \item Least privilege reduces the potential damage from both malicious attacks and accidental errors.
+    \item It limits lateral movement options for attackers who compromise user accounts.
+    \item The principle applies to all types of accounts: user, service, and administrator.
+    \item Temporary privilege elevation should be used for tasks requiring higher access levels.
+    \item Implementing least privilege requires ongoing management as roles and needs change.
+    \end{itemize}
+
+    \end{frame}
+    
+    % Slide 23: "Implementing Least Privilege Across the Enterprise"
+    \begin{frame}
+    \frametitle{Implementing Least Privilege Across the Enterprise}
+    
+    \begin{itemize}
+    \item Begin with a comprehensive audit of current user and system privileges.
+    \item Identify privilege gaps between what is assigned versus what is actually needed.
+    \item Create role-based access profiles aligned with job functions and responsibilities.
+    \item Implement \textbf{just-in-time} (JIT) access for administrative functions.
+    \item Establish regular privilege recertification processes to prevent privilege creep.
+    \end{itemize}
+\end{frame}
+
+
+    \begin{frame}
+    \frametitle{Implementing Least Privilege Across the Enterprise (cont.)}
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Implementation Area} & \textbf{Least Privilege Approach} \\
+    \hline
+    User Accounts & Standard user accounts with escalation tools \\
+    \hline
+    Administrative Access & Separate admin accounts, PAM solutions \\
+    \hline
+    Applications & Application control, containerization \\
+    \hline
+    Devices & Device restrictions, USB controls \\
+    \hline
+    Network & Micro-segmentation, zero trust architecture \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    
+    \begin{alertblock}{Warning}
+    Implementing least privilege requires careful planning to avoid disrupting business operations.
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 24: "Case Study: The Office's Michael Scott - What Happens with Too Much Access"
+    \begin{frame}
+    \frametitle{Case Study: The Office's Michael Scott - What Happens with Too Much Access}
+    
+    \begin{exampleblock}{Excessive Privileges}
+    In "The Office," Michael Scott often demonstrates the dangers of giving too much access to users who don't need it—and the chaos that can result.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item As regional manager, Michael had unrestricted access to all company systems and files.
+    \item He accidentally leaked confidential information about branch closures to employees.
+    \item He was able to access and modify the company's financial systems despite lacking expertise.
+    \item In "Email Surveillance," his unrestricted access to everyone's email created privacy issues.
+    \item His improper access to HR records resulted in numerous policy violations.
+    \end{itemize}
+    
+    \end{frame}
+    
+\end{document}
