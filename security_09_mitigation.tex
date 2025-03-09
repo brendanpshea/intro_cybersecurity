@@ -648,5 +648,306 @@ Data & Encryption, Access controls, Backups \\
     \end{itemize}
     
     \end{frame}
+
+    % Slide 25: "Configuration Enforcement: Maintaining Security Standards"
+\begin{frame}
+    \frametitle{Configuration Enforcement: Maintaining Security Standards}
     
+    \begin{block}{What is Configuration Enforcement?}
+    \textbf{Configuration enforcement} is the practice of establishing, implementing, and maintaining consistent security settings across all systems and applications in an environment.
+    \end{block}
+    
+    \begin{itemize}
+    \item Standardized configurations reduce attack surface and improve management efficiency.
+    \item Secure configuration baselines should be established for all system types.
+    \item Automated enforcement tools ensure configurations remain consistent over time.
+    \item Regular compliance checking identifies and remediates configuration drift.
+    \item Configuration management is a key requirement in many regulatory frameworks.
+    \end{itemize}
+    
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Configuration Enforcement: Maintaining Security Standards (cont.)}
+    \begin{exampleblock}{Common Security Misconfigurations}
+        \begin{itemize}
+        \item Default credentials left unchanged - easy for attackers to exploit
+        \item Unnecessary services and ports enabled - increases attack surface
+        \item Excessive user permissions - users with more access than needed
+        \item Missing encryption for sensitive data - data exposed in transit or at rest
+        \item Weak password  policies - easy for attackers to guess or crack
+        \item Lack of logging and monitoring - no visibility into system activity
+        \end{itemize}
+        \end{exampleblock}
+    \end{frame}
+    
+    % Slide 26: "Tools and Techniques for Configuration Management"
+    \begin{frame}
+    \frametitle{Tools and Techniques for Configuration Management}
+    
+    \begin{columns}[t]
+    \column{0.6\textwidth}
+    \textbf{Configuration Management Approaches:}
+    \begin{itemize}
+    \item \textbf{Manual configuration}: Direct system setup
+    \item \textbf{Templates and gold images}: Pre-configured system images
+    \item \textbf{Configuration as Code}: Infrastructure defined in code files
+    \item \textbf{Automated deployment}: Scripted system configuration
+    \end{itemize}
+    
+    \column{0.4\textwidth}
+    \textbf{Industry Frameworks:}
+    \begin{itemize}
+    \item CIS Benchmarks
+    \item NIST Security Baselines
+    \item DISA STIGs
+    \item Microsoft Security Baselines
+    \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{alertblock}{Best Practice}
+    Document exceptions to standard configurations with business justification, risk assessment, and compensating controls.
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 27: "Secure Decommissioning: The Forgotten Security Control"
+    \begin{frame}
+    \frametitle{Secure Decommissioning: The Forgotten Security Control}
+    
+    \begin{block}{What is Secure Decommissioning?}
+    \textbf{Secure decommissioning} refers to the process of properly retiring and disposing of IT assets while ensuring that sensitive data is protected and security risks are mitigated.
+    \end{block}
+    
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Asset Type} & \textbf{Decommissioning Approach} \\
+    \hline
+    Hard Drives & Secure erasure, degaussing, physical destruction \\
+    \hline
+    Mobile Devices & Factory reset, encryption key destruction \\
+    \hline
+    Virtual Systems & Snapshot deletion, storage wiping \\
+    \hline
+    Cloud Resources & Resource deletion, key rotation, access revocation \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    \end{frame}
+    
+    % Slide 28: "Case Study: Jurassic Park - When Systems Aren't Properly Decommissioned"
+    \begin{frame}
+    \frametitle{Case Study: Jurassic Park - When Systems Aren't Properly Decommissioned}
+    
+    \begin{exampleblock}{Decommissioning Failure}
+    In "Jurassic Park," Dennis Nedry's ability to compromise park systems highlights the dangers of improper system decommissioning and access management.
+    \end{exampleblock}
+    
+    \begin{itemize}
+    \item Nedry built backdoors into critical systems that persisted even after his planned departure.
+    \item Legacy code and systems weren't properly reviewed before being put into production.
+    \item His excessive access persisted across multiple critical systems without compartmentalization.
+    \item No system existed to detect unauthorized changes to security configurations.
+    \item The park lacked proper procedures for removing developer access after system completion.
+    \end{itemize}
+\end{frame}
+
+% Slide 29: "System Hardening: Building a Stronger Foundation"
+\begin{frame}
+    \frametitle{System Hardening: Building a Stronger Foundation}
+    
+    \begin{block}{What is System Hardening?}
+    \textbf{System hardening} is the process of securing a system by reducing its attack surface and eliminating potential vulnerabilities through configuration changes, removal of unnecessary components, and implementation of security controls.
+    \end{block}
+    
+    \begin{itemize}
+    \item Hardening addresses the fundamental security principle: reduce attack surface whenever possible.
+    \item Default configurations of systems and applications are typically optimized for usability, not security.
+    \item Hardening should be incorporated into the initial deployment process for all systems.
+    \item Different system types (servers, workstations, network devices) require different hardening approaches.
+    \item Regular hardening assessments help maintain security posture over time.
+    \end{itemize}
+    
+    \end{frame}
+    
+    % Slide 30: "Endpoint Protection: Your First Line of Defense"
+    \begin{frame}
+    \frametitle{Endpoint Protection: Your First Line of Defense}
+    
+    \begin{block}{What is Endpoint Protection?}
+    \textbf{Endpoint protection} refers to the deployment of security software and controls on end-user devices to protect against malware, unauthorized access, and data breaches.
+    \end{block}
+    
+    \begin{columns}[t]
+    \column{0.5\textwidth}
+    \textbf{Core Endpoint Protection Features:}
+    \begin{itemize}
+    \item Anti-malware protection
+    \item Personal firewall
+    \item Host intrusion prevention
+    \item Application control
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \textbf{Advanced Capabilities:}
+    \begin{itemize}
+    \item Behavioral analysis
+    \item Exploit prevention
+    \item Fileless attack detection
+    \item Data loss prevention
+    \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{itemize}
+    \item Modern endpoint protection platforms (EPP) use AI and machine learning to detect unknown threats.
+    \item Centralized management ensures consistent policy application across all endpoints.
+    \end{itemize}
+    
+\end{frame}
+    
+    % Slide 31: "Host-based Firewalls and HIPS: The Local Security Team"
+    \begin{frame}
+    \frametitle{Host-based Firewalls and HIPS: The Local Security Team}
+    
+    \begin{block}{What are Host-based Firewalls and HIPS?}
+    \textbf{Host-based firewalls} control network traffic to and from individual systems, while \textbf{Host-based Intrusion Prevention Systems (HIPS)} detect and block malicious activities on the system itself.
+    \end{block}
+    
+    \begin{table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Technology} & \textbf{Protection Capabilities} \\
+    \hline
+    Host Firewall & Blocks unauthorized network connections, limits listening ports, controls application network access \\
+    \hline
+    HIPS & Detects and blocks malicious activity, prevents exploitation of vulnerabilities, monitors system changes \\
+    \hline
+    Combined Solution & Provides comprehensive protection against both network-based and host-based attacks \\
+    \hline
+    \end{tabularx}
+    \end{table}
+    \end{frame}
+    
+    % Slide 33: "Default Credentials and Unnecessary Software: Easy Targets for Attackers"
+\begin{frame}
+    \frametitle{Default Credentials: Easy Targets for Attackers}
+
+    \begin{itemize}
+    \item Default credentials are publicly known and documented.
+    \item Automated scanners actively search for systems with unchanged defaults.
+    \item Attackers maintain databases of default credentials by vendor and product.
+    \item Even obscure devices often have their defaults published online.
+    \item Administrative interfaces are particularly vulnerable to default credential attacks.
+    \end{itemize}
+\end{frame}
+    
+\begin{frame}
+    \frametitle{Unnecessary Software: A Breeding Ground for Vulnerabilities}
+    \begin{itemize}
+    \item Each application increases potential attack surface.
+    \item Unused software often remains unpatched.
+    \item Legacy or forgotten applications may contain known vulnerabilities.
+    \item Software dependencies can introduce hidden risks.
+    \item Bloatware often includes unnecessary services and features.
+    \end{itemize}
+    
+    \begin{alertblock}{Remediation Steps}
+    \begin{itemize}
+    \item Document and change all default passwords during installation.
+    \item Implement an application inventory and removal process.
+    \item Use automated scanning tools to identify default credentials and unnecessary software.
+    \item Apply the principle of least functionality to all systems.
+    \end{itemize}
+    \end{alertblock}
+    \end{frame}
+    
+    % Slide 34: "Bringing It All Together: An Integrated Security Approach"
+    \begin{frame}
+    \frametitle{Bringing It All Together: An Integrated Security Approach}
+    
+    \begin{block}{Defense in Depth Revisited}
+    An effective security strategy integrates multiple mitigation techniques in complementary layers to create comprehensive protection.
+    \end{block}
+    
+    \begin{itemize}
+    \item No single security control is perfect—defense in depth compensates for individual control weaknesses.
+    \item Each mitigation technique addresses different aspects of the security challenge.
+    \item Controls should be implemented across people, processes, and technology dimensions.
+    \item The security strategy should align with business objectives and risk tolerance.
+    \item Regular review and adaptation are necessary as threats and business needs evolve.
+    \end{itemize}
+    
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Bringing It All Together: An Integrated Security Approach (cont.)}
+    Here are some key mitigation techniques categorized by security dimension:
+        \begin{table}
+            \begin{tabularx}{\textwidth}{|l|X|}
+            \hline
+            \textbf{Security Dimension} & \textbf{Key Mitigation Techniques} \\
+            \hline
+            Preventive & Segmentation, access control, isolation, application allow lists, least privilege \\
+            \hline
+            Detective & Monitoring, logging, intrusion detection, vulnerability scanning \\
+            \hline
+            Corrective & Patching, incident response, backup restoration, configuration enforcement \\
+            \hline
+            \end{tabularx}
+            \end{table}
+        
+    \end{frame}
+    
+    % Slide 35: "Measuring Security Effectiveness: Are Your Mitigations Working?"
+    \begin{frame}
+    \frametitle{Measuring Security Effectiveness: Are Your Mitigations Working?}
+    
+    \begin{block}{Why Measure Security Effectiveness?}
+    Without measurement, it's impossible to know if security investments are providing the expected protection or if adjustments are needed.
+    \end{block}
+    
+    \begin{columns}[t]
+    \column{0.5\textwidth}
+    \textbf{Quantitative Metrics:}
+    \begin{itemize}
+    \item Vulnerability remediation time
+    \item Patch compliance percentage
+    \item Security control coverage
+    \item Mean time to detect (MTTD)
+    \item Mean time to respond (MTTR)
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \textbf{Qualitative Assessments:}
+    \begin{itemize}
+    \item Penetration testing results
+    \item Red team exercises
+    \item Tabletop simulations
+    \item Security maturity assessments
+    \item Third-party security ratings
+    \end{itemize}
+    \end{columns}
+    
+    \end{frame}
+    
+    % Slide 36: "The Future of Enterprise Security: Adapting to Evolving Threats"
+    \begin{frame}
+    \frametitle{The Future of Enterprise Security: Adapting to Evolving Threats}
+    
+    \begin{block}{Security is a Journey, Not a Destination}
+    As technology evolves and threat landscapes change, security mitigation strategies must continuously adapt.
+    \end{block}
+    
+    \begin{itemize}
+    \item Traditional perimeter-based security is being replaced by identity-centric and data-centric approaches.
+    \item \textbf{Zero Trust architecture} is becoming the new security paradigm: "never trust, always verify."
+    \item Artificial intelligence and automation are increasingly critical for threat detection and response.
+    \item The expansion of cloud services, IoT, and remote work continues to transform the attack surface.
+    \item Security must be built into systems from the beginning, not added as an afterthought.
+    \end{itemize}
+    
+\end{frame}
+
 \end{document}
