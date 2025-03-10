@@ -1,0 +1,662 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\title{Resilience and Recovery in Security Architecture}
+\subtitle{Building Systems That Survive}
+\author{Brendan Shea}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Introduction: The Critical Role of Resilience in Modern Security Architecture}
+    \begin{itemize}
+        \item \textbf{Resilience} is the ability of a security system to maintain acceptable levels of service despite challenges.
+        \item Modern organizations face increasing threats from cyber attacks, natural disasters, and technical failures.
+        \item Security architecture must evolve beyond prevention to include robust recovery mechanisms.
+        \item The cost of downtime continues to rise, with enterprise organizations losing an average of \$300,000 per hour.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Question}
+        How do we design systems that not only resist attacks but can recover quickly when defenses fail?
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Defining Resilience: Beyond Just Bouncing Back}
+    \begin{itemize}
+        \item \textbf{Resilience} encompasses both resistance to disruption and ability to recover operations.
+        \item Traditional security focuses on preventing incidents, while resilience acknowledges incidents will occur.
+        \item A resilient system can adapt to changing threat landscapes and unforeseen challenges.
+        \item Resilience requires comprehensive planning across people, processes, and technology.
+    \end{itemize}
+    
+    \begin{block}{The Resilience Triad}
+        \begin{enumerate}
+            \item Resistance: Ability to withstand attacks
+            \item Recovery: Ability to restore function
+            \item Adaptation: Ability to evolve from incidents
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Recovery Imperative: Why Speed Matters}
+    \begin{itemize}
+        \item \textbf{Recovery Time Objective (RTO)} defines the maximum acceptable time to restore a system after failure.
+        \item \textbf{Recovery Point Objective (RPO)} specifies the maximum acceptable data loss measured in time.
+        \item Faster recovery minimizes operational impact and reduces potential data loss.
+        \item Different business functions have varying recovery requirements based on criticality.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{lcc}
+            \toprule
+            \textbf{System Type} & \textbf{Typical RTO} & \textbf{Typical RPO} \\
+            \midrule
+            Critical financial & Minutes & Seconds \\
+            Core business apps & Hours & 15 minutes \\
+            Support systems & 24 hours & 24 hours \\
+            \bottomrule
+        \end{tabular}
+        \caption{Example Recovery Requirements}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Business Impact: The Cost of Downtime}
+    \begin{itemize}
+        \item Downtime impacts extend beyond direct financial losses to reputation and customer trust.
+        \item Regulatory requirements increasingly mandate minimum recovery capabilities for critical sectors.
+        \item \textbf{Business Impact Analysis (BIA)} formally evaluates the potential effects of disruption.
+        \item Security resilience must align with business priorities and acceptable risk tolerance.
+    \end{itemize}
+    
+    \begin{exampleblock}{Example: Financial Sector Impact}
+        A major bank experienced a 48-hour outage in 2023 that resulted in:
+        \begin{itemize}
+            \item \$14 million in direct operational losses
+            \item 3.2\% drop in stock value
+            \item 12\% customer churn over the following quarter
+            \item Regulatory fine of \$5 million
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{High Availability Fundamentals: Eliminating Single Points of Failure}
+    \begin{itemize}
+        \item \textbf{High Availability (HA)} refers to systems designed to operate continuously without failure for a higher than normal period.
+        \item The industry measures availability as "nines" (99.9\%, 99.99\%, etc.), with each additional nine significantly reducing downtime.
+        \item HA requires elimination of \textbf{Single Points of Failure (SPOF)} through redundancy at all levels.
+        \item Achieving "five nines" (99.999\%) availability allows only 5.26 minutes of downtime per year.
+    \end{itemize}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{lcc}
+            \toprule
+            \textbf{Availability} & \textbf{Downtime/Year} & \textbf{Downtime/Month} \\
+            \midrule
+            99\% (2 nines) & 3.65 days & 7.31 hours \\
+            99.9\% (3 nines) & 8.77 hours & 43.83 minutes \\
+            99.99\% (4 nines) & 52.60 minutes & 4.38 minutes \\
+            99.999\% (5 nines) & 5.26 minutes & 26.30 seconds \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Load Balancing vs. Clustering: Choosing the Right Approach}
+    \begin{itemize}
+        \item \textbf{Load balancing} distributes workloads across multiple computing resources to optimize resource use.
+        \item \textbf{Clustering} groups servers to work as a single system with shared resources and synchronized state.
+        \item Load balancing focuses on performance and scaling, while clustering emphasizes fault tolerance.
+        \item Many resilient architectures implement both approaches for maximum availability.
+    \end{itemize}
+    
+    \begin{block}{Key Differences}
+        \begin{columns}
+            \column{0.48\textwidth}
+            \textbf{Load Balancing}
+            \begin{itemize}
+                \item Stateless distribution
+                \item Simple configuration
+                \item Cost-effective scaling
+                \item Performance-focused
+            \end{itemize}
+            
+            \column{0.48\textwidth}
+            \textbf{Clustering}
+            \begin{itemize}
+                \item Shared state
+                \item Complex configuration
+                \item Resource efficiency
+                \item Availability-focused
+            \end{itemize}
+        \end{columns}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Load Balancing: Distribution Strategies and Implementation}
+    \begin{itemize}
+        \item \textbf{Load balancers} act as traffic directors that distribute incoming network traffic across multiple servers.
+        \item Common algorithms include round-robin, least connections, least response time, and IP hash methods.
+        \item Load balancers can operate at different network layers (L4 for transport, L7 for application).
+        \item Modern implementations include hardware appliances, virtual appliances, and software-defined solutions.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Clustering: Fault Tolerance Through Redundancy}
+    \begin{itemize}
+        \item \textbf{Clustering} creates a group of servers that work together as a single logical system.
+        \item Clusters provide continuous service despite individual node failures through automatic failover.
+        \item State synchronization ensures consistent data across cluster nodes despite failures.
+        \item Common clustering types include active-active (all nodes processing) and active-passive (standby nodes).
+    \end{itemize}
+    
+    \begin{alertblock}{Common Clustering Challenges}
+        \begin{itemize}
+            \item Split-brain scenarios (communication failure between nodes)
+            \item Synchronization overhead impacting performance
+            \item Increased complexity in maintenance and troubleshooting
+            \item Higher licensing and infrastructure costs
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Site Considerations: Planning for Geographic Resilience}
+    \begin{itemize}
+        \item Geographic resilience protects against large-scale disasters affecting an entire facility.
+        \item \textbf{Disaster Recovery (DR) sites} provide alternative processing locations during primary site outages.
+        \item Site selection should consider natural disaster risks, power grid reliability, and network connectivity.
+    \end{itemize}
+    
+    \begin{block}{Risk Assessment Factors for Site Selection}
+        \small
+        \begin{itemize}
+            \item Distance from primary site (minimum 100 miles recommended)
+            \item Different power grids and network providers
+            \item Different natural disaster profiles
+            \item Access to skilled technical personnel
+            \item Regulatory requirements for data location
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Hot Sites: Immediate Recovery Capabilities}
+    \begin{itemize}
+        \item A \textbf{hot site} is a fully operational duplicate of the primary environment, ready for immediate use.
+        \item Hot sites maintain synchronized data, identical infrastructure, and current applications.
+        \item Recovery Time Objective (RTO) for hot sites is typically minutes to hours.
+        \item This approach offers the fastest recovery but requires the highest ongoing investment.
+    \end{itemize}
+    
+    \begin{exampleblock}{Hot Site Implementation}
+        Key components include:
+        \begin{itemize}
+            \item Continuous data replication (synchronous or near-synchronous)
+            \item Duplicate hardware and software licensing
+            \item Automated failover mechanisms
+            \item Regular testing and validation
+            \item Dedicated staff or guaranteed response contracts
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Warm Sites: The Middle-Ground Approach}
+    \begin{itemize}
+        \item A \textbf{warm site} contains preconfigured hardware and connections but requires some setup time.
+        \item Data is replicated periodically rather than continuously, creating some potential for data loss.
+        \item Recovery Time Objective (RTO) for warm sites typically ranges from hours to a day.
+        \item Warm sites balance recovery speed and cost for moderate criticality systems.
+    \end{itemize}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{lcc}
+            \toprule
+            \textbf{Feature} & \textbf{Hot Site} & \textbf{Warm Site} \\
+            \midrule
+            Hardware & Fully deployed & Partially deployed \\
+            Applications & Installed, configured & Installed, needs config \\
+            Data & Real-time sync & Periodic replication \\
+            Staffing & Fully/partially staffed & Minimal or on-call \\
+            Typical RTO & Minutes to hours & Hours to a day \\
+            Relative cost & \$\$\$\$ & \$\$\$ \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Cold Sites: Cost-Effective Disaster Recovery}
+    \begin{itemize}
+        \item A \textbf{cold site} provides basic infrastructure (space, power, cooling) but minimal IT equipment.
+        \item Hardware must be procured and installed, and systems must be built from backups during recovery.
+        \item Recovery Time Objective (RTO) for cold sites typically ranges from days to weeks.
+        \item This approach offers significant cost savings for non-critical systems with longer acceptable recovery times.
+    \end{itemize}
+    
+    \begin{block}{Cold Site Considerations}
+        When evaluating cold site strategies, organizations should:
+        \small
+        \begin{itemize}
+            \item Document detailed recovery procedures including hardware procurement
+            \item Maintain current system configurations and installation media
+            \item Pre-negotiate hardware delivery with vendors through DR contracts
+            \item Ensure backup restoration procedures are thoroughly tested
+            \item Consider critical dependencies that may affect recovery timeline
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Geographic Dispersion: Balancing Distance and Latency}
+    \begin{itemize}
+        \item \textbf{Geographic dispersion} distributes infrastructure across multiple physical locations to mitigate regional disasters.
+        \item Distance between sites should be sufficient to avoid common threats but close enough to manage latency for synchronous operations.
+        \item Industry best practices recommend minimum distances of 100-300 miles between primary and backup sites.
+        \item Connectivity requirements increase with geographic separation, requiring careful network planning.
+    \end{itemize}
+    
+    \begin{alertblock}{Latency Considerations}
+        \small
+        \begin{itemize}
+            \item Synchronous data replication typically requires round-trip latency under 10ms
+            \item Each 100 miles adds approximately 1ms one-way latency (speed of light limitation)
+            \item Applications sensitive to latency may require asynchronous replication for distant sites
+            \item Network quality and consistency are as important as raw distance
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Platform Diversity: Avoiding Common Mode Failures}
+    \begin{itemize}
+        \item \textbf{Platform diversity} involves using different hardware, software, or services to reduce vulnerability to common threats.
+        \item Homogeneous environments are vulnerable to single vulnerabilities affecting all systems simultaneously.
+        \item Diverse platforms reduce the risk of widespread failure from a single exploit or bug.
+        \item Balance diversity benefits against increased management complexity and expertise requirements.
+    \end{itemize}
+    
+    \begin{exampleblock}{Diversity Strategies}
+        \scriptsize
+        \begin{itemize}
+            \item Use different hypervisors (VMware, Hyper-V) across primary and backup environments
+            \item Deploy different database platforms for critical data stores (Oracle, SQL Server)
+            \item Implement different firewall vendors at network perimeters
+            \item Utilize different Linux distributions for web tiers
+            \item Deploy different backup software solutions for primary and secondary backups
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Multi-Cloud Systems: Leveraging Provider Independence}
+    \begin{itemize}
+        \item \textbf{Multi-cloud strategy} distributes workloads across multiple cloud service providers to avoid vendor lock-in.
+        \item Cloud provider outages affect entire regions, making multi-cloud essential for critical workloads.
+        \item Different providers offer varying strengths in performance, security, and specialized services.
+        \item Cloud-agnostic architectures enable workload portability and provider flexibility.
+    \end{itemize}
+    
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{p{3cm}p{7cm}}
+            \toprule
+            \textbf{Approach} & \textbf{Description} \\
+            \midrule
+            Active-active multi-cloud & Applications run simultaneously across providers with load balancing \\
+            Active-passive multi-cloud & Primary workloads on one provider with failover capability to another \\
+            Service-specific multi-cloud & Different services on different providers based on strengths \\
+            Application-divided multi-cloud & Different applications on different providers based on requirements \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Hybrid Cloud Architectures: Best of All Worlds}
+    \begin{itemize}
+        \item \textbf{Hybrid cloud} combines on-premises infrastructure with public and private cloud services.
+        \item Organizations can keep sensitive workloads on-premises while leveraging cloud for scaling and recovery.
+        \item Hybrid models provide "burst" capacity during peak demand or disaster recovery scenarios.
+        \item Data sovereignty requirements can be met while still benefiting from cloud elasticity.
+    \end{itemize}
+    
+    \begin{block}{Hybrid Cloud Benefits for Resilience}
+        \small
+        \begin{itemize}
+            \item Provides natural environment diversity (different technologies and locations)
+            \item Enables cost-effective DR without maintaining idle infrastructure
+            \item Creates recovery options for both cloud-to-premises and premises-to-cloud scenarios
+            \item Allows gradual migration path for legacy applications
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Continuity of Operations: Planning for the Inevitable}
+    \begin{itemize}
+        \item \textbf{Continuity of Operations Planning (COOP)} defines how an organization will continue critical functions during disruption.
+        \item COOP addresses both technical recovery and business processes, including human factors.
+        \item Effective plans identify critical functions, dependencies, and minimum acceptable service levels.
+        \item Regular reviews and updates are essential as technology and business needs evolve.
+    \end{itemize}
+    
+    \begin{exampleblock}{COOP Component Example: Critical Function Analysis}
+        \scriptsize
+        \begin{tabular}{p{3cm}p{2cm}p{4cm}}
+            \textbf{Function} & \textbf{Max Downtime} & \textbf{Dependencies} \\
+            \hline
+            Payment processing & 4 hours & Database, payment gateway, network \\
+            Customer service & 8 hours & CRM system, phones, knowledge base \\
+            Order fulfillment & 24 hours & Inventory system, shipping integration \\
+            HR operations & 48 hours & Employee database, payroll system \\
+        \end{tabular}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Capacity Planning: The Human Element}
+    \begin{itemize}
+        \item \textbf{Capacity planning} for personnel ensures sufficient skilled staff are available during incidents.
+        \item Technical recovery efforts require specific expertise that may be limited within the organization.
+        \item Cross-training staff on critical systems prevents single points of knowledge failure.
+        \item Consider physical access, remote work capabilities, and personal emergency factors.
+    \end{itemize}
+    
+    \begin{alertblock}{Staffing Considerations During Crisis}
+        During major incidents or regional disasters:
+        \small
+        \begin{itemize}
+            \item Staff may be personally affected and unavailable
+            \item Transportation disruptions may prevent physical access
+            \item Communication systems may be unreliable
+            \item Emotional stress impairs decision-making
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Technology Capacity: Scaling for Crisis}
+    \begin{itemize}
+        \item \textbf{Technology capacity planning} ensures systems can handle increased loads during recovery scenarios.
+        \item Recovery environments often face higher than normal demand from backlogged transactions.
+        \item Capacity requirements may change during different phases of an incident.
+        \item Elastic resources should be pre-configured for rapid deployment during incidents.
+    \end{itemize}
+    
+    \begin{block}{Capacity Planning Metrics}
+        Key metrics to monitor and plan for include:
+        \scriptsize
+        \begin{itemize}
+            \item CPU utilization (target below 70\% sustained)
+            \item Memory usage (target below 80\% allocation)
+            \item Storage I/O operations (monitor queue depth and latency)
+            \item Network throughput (consider bandwidth requirements during recovery)
+            \item License availability for additional instances
+            \item API rate limits and service quotas in cloud environments
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Infrastructure Planning: Building for Resilience}
+    \begin{itemize}
+        \item \textbf{Infrastructure resilience} requires redundancy at all architectural layers: power, cooling, network, and computing.
+        \item Critical infrastructure should follow N+1 (minimum) or N+2 (recommended) redundancy models.
+        \item Network design should eliminate single points of failure through redundant connections and diverse providers.
+        \item Data center selection should evaluate risk factors including natural disasters, power reliability, and physical security.
+    \end{itemize}
+    
+    \begin{block}{Infrastructure Redundancy Levels}
+        \scriptsize
+        \begin{description}
+            \item[N] Base requirement with no redundancy
+            \item[N+1] Single redundant component for each critical component
+            \item[2N] Fully redundant and independent systems
+            \item[2N+1] Fully redundant systems with additional backup components
+            \item[3N] Triple redundancy for mission-critical applications
+        \end{description}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testing: Why Untested Recovery Plans Always Fail}
+    \begin{itemize}
+        \item \textbf{Recovery testing} validates that documented procedures work as expected under realistic conditions.
+        \item Untested recovery plans frequently fail due to overlooked dependencies or procedural errors.
+        \item Regular testing identifies dependencies, knowledge gaps, and process improvements.
+        \item Testing should simulate realistic scenarios including personnel constraints and communication challenges.
+    \end{itemize}
+    
+    \begin{alertblock}{Common Recovery Testing Mistakes}
+        \scriptsize
+        \begin{itemize}
+            \item Testing during low-traffic periods only
+            \item Using the same testing scenario repeatedly
+            \item Notifying all staff in advance (no surprise element)
+            \item Testing individual components without end-to-end validation
+            \item Failing to document and address identified issues
+            \item Not involving business stakeholders in test evaluation
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Tabletop Exercises: Walking Through Disaster Scenarios}
+    \begin{itemize}
+        \item \textbf{Tabletop exercises} are facilitated discussions of emergency response procedures for various scenarios.
+        \item Participants verbally work through their roles and responsibilities without actual system changes.
+        \item Exercises identify gaps in planning, communication, and decision-making processes.
+        \item Regular tabletops create organizational muscle memory for crisis response.
+    \end{itemize}
+    
+    \begin{exampleblock}{Sample Tabletop Exercise Structure}
+        \scriptsize
+        \begin{enumerate}
+            \item Scenario presentation (e.g., "Ransomware has encrypted critical databases")
+            \item Initial response discussion (first 15 minutes)
+            \item Scenario escalation (e.g., "Backup systems also compromised")
+            \item Resource allocation planning
+            \item Communication planning (internal and external)
+            \item Recovery timeline estimation
+            \item Post-incident activities discussion
+            \item Debrief and lessons learned
+        \end{enumerate}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Failover Testing: Verifying Automated Recovery}
+    \begin{itemize}
+        \item \textbf{Failover testing} validates the automatic transition of services to redundant systems after failures.
+        \item Testing should cover both planned failovers (maintenance) and unplanned failures (crashes).
+        \item Complete failover tests involve actually shutting down primary systems to verify true recovery capability.
+        \item Failover testing should include both technical recovery and business process verification.
+    \end{itemize}
+    
+    \begin{block}{Failover Testing Approaches}
+        \scriptsize
+        \begin{tabular}{p{3.5cm}p{6.5cm}}
+            \textbf{Test Type} & \textbf{Description} \\
+            \hline
+            Announced full failover & Planned, monitored transition of all services to backup systems \\
+            Component failover & Testing specific system components while maintaining overall service \\
+            Disaster simulation & Unannounced test with simulated complete failure of primary site \\
+            Failback testing & Validating the return to primary systems after recovery \\
+            Partial failover & Testing subset of services to minimize business impact \\
+        \end{tabular}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Simulation and Stress Testing: Finding Breaking Points}
+    \begin{itemize}
+        \item \textbf{Simulation testing} replicates real-world conditions to evaluate system behavior under specific scenarios.
+        \item \textbf{Stress testing} identifies breaking points by gradually increasing load beyond normal operating parameters.
+        \item Testing should include both sustained load and sudden traffic spikes that occur during recovery.
+        \item Results establish performance baselines and identify capacity improvement needs.
+    \end{itemize}
+    
+    \begin{exampleblock}{Simulation Test Types}
+        \scriptsize
+        \begin{itemize}
+            \item \textbf{Load testing}: Verifies performance under expected peak conditions
+            \item \textbf{Stress testing}: Pushes systems beyond normal capacity to find breaking points
+            \item \textbf{Chaos testing}: Randomly introduces failures to test resilience
+            \item \textbf{Soak testing}: Runs systems at high load for extended periods
+            \item \textbf{Spike testing}: Simulates sudden, extreme increases in usage
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Parallel Processing: Performance and Redundancy}
+    \begin{itemize}
+        \item \textbf{Parallel processing} distributes workloads across multiple computing resources simultaneously.
+        \item Applications designed for parallelism can continue functioning despite partial resource failures.
+        \item Modern microservices architectures enhance resilience through service independence.
+        \item Parallelism improves both performance and availability when properly implemented.
+    \end{itemize}
+    
+    \begin{block}{Parallel Architecture Patterns}
+        \scriptsize
+        \begin{itemize}
+            \item \textbf{Horizontal scaling}: Adding more identical nodes to a system
+            \item \textbf{Workload partitioning}: Dividing work based on data characteristics
+            \item \textbf{Service decomposition}: Breaking applications into independent services
+            \item \textbf{Queue-based processing}: Decoupling producers from consumers
+            \item \textbf{Event-driven architecture}: Using events for asynchronous processing
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Backup Strategies: Beyond Simple Copies}
+    \begin{itemize}
+        \item \textbf{Backup strategy} defines what data is backed up, how frequently, and where it's stored.
+        \item Comprehensive strategies include multiple backup types for different recovery scenarios.
+        \item Backup methods should align with Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO).
+        \item Modern approaches integrate continuous data protection rather than just periodic backups.
+    \end{itemize}
+    
+    \begin{table}
+        \centering
+        \scriptsize
+        \begin{tabular}{p{2.5cm}p{7.5cm}}
+            \toprule
+            \textbf{Backup Type} & \textbf{Description} \\
+            \midrule
+            Full backup & Complete copy of all selected data \\
+            Incremental backup & Only data changed since last backup (any level) \\
+            Differential backup & Only data changed since last full backup \\
+            Synthetic full & Full backup created from existing backups without source access \\
+            Continuous backup & Constant capture of changes (near-zero RPO) \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Onsite vs. Offsite Storage: Risk Trade-offs}
+    \begin{itemize}
+        \item \textbf{Onsite backups} provide fastest restoration times but are vulnerable to site-level disasters.
+        \item \textbf{Offsite backups} protect against site-level incidents but introduce retrieval delays.
+        \item The 3-2-1 backup rule recommends: 3 copies, 2 different media types, 1 copy offsite.
+        \item Modern strategies often include both local copies for speed and remote copies for protection.
+    \end{itemize}
+    
+    \begin{alertblock}{Offsite Storage Considerations}
+        \scriptsize
+        When selecting offsite storage solutions, evaluate:
+        \begin{itemize}
+            \item Physical security of storage facility
+            \item Environmental controls (temperature, humidity)
+            \item Transit security for physical media
+            \item Encryption requirements for data at rest
+            \item Retrieval time guarantees (SLAs)
+            \item Chain of custody documentation
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Backup Frequency and Retention Policies}
+    \begin{itemize}
+        \item \textbf{Backup frequency} defines how often data is backed up and directly impacts potential data loss.
+        \item \textbf{Retention policies} determine how long backups are kept and influence recovery options.
+        \item Tiered retention schemes maintain different retention periods based on backup age.
+        \item Regulatory requirements often mandate minimum retention periods for certain data types.
+    \end{itemize}
+    
+    \begin{exampleblock}{Example Retention Policy}
+        \scriptsize
+        \begin{tabular}{p{3cm}p{3cm}p{4cm}}
+            \textbf{Backup Type} & \textbf{Frequency} & \textbf{Retention Period} \\
+            \hline
+            Daily incremental & Every 6 hours & 2 weeks \\
+            Weekly full & Every Sunday & 1 month \\
+            Monthly full & First of month & 6 months \\
+            Quarterly archive & End of quarter & 7 years \\
+        \end{tabular}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Encryption and Backup Security Considerations}
+    \begin{itemize}
+        \item \textbf{Backup encryption} protects data from unauthorized access if backup media is compromised.
+        \item Encryption should be applied both in transit (during backup) and at rest (stored backups).
+        \item Key management is critical—lost encryption keys render backups useless.
+        \item Access controls should limit who can perform backups, restores, and view backup metadata.
+    \end{itemize}
+    
+    \begin{alertblock}{Encryption Key Management}
+        \scriptsize
+        Poor key management practices that endanger backup security:
+        \begin{itemize}
+            \item Storing encryption keys alongside encrypted backups
+            \item Using a single key for all backups over long periods
+            \item Failing to securely document key recovery procedures
+            \item Inadequate protection of key access credentials
+            \item Not testing key recovery procedures periodically
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Snapshots, Journaling, and Recovery Point Objectives}
+    \begin{itemize}
+        \item \textbf{Snapshots} capture the state of a system at a specific point in time for rapid recovery.
+        \item \textbf{Journaling} records all data changes sequentially, allowing point-in-time recovery.
+        \item \textbf{Recovery Point Objective (RPO)} defines the maximum acceptable data loss measured in time.
+        \item Modern systems often combine multiple technologies to achieve minimum RPO.
+    \end{itemize}
+    
+    \begin{block}{Recovery Technologies Comparison}
+        \scriptsize
+        \begin{itemize}
+            \item \textbf{Snapshots}: Fast creation and restoration, efficient storage, but typically less frequent
+            \item \textbf{Replication}: Continuous or near-continuous data copying to secondary systems
+            \item \textbf{Journaling}: Continuous transaction logging enabling granular recovery points
+            \item \textbf{CDP (Continuous Data Protection)}: Records every change in real-time
+            \item \textbf{Traditional Backups}: Scheduled copies with defined intervals between backups
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Power Infrastructure: The Foundation of Availability}
+    \begin{itemize}
+        \item \textbf{Power infrastructure} forms the foundation of all resilience capabilities.
+        \item Power protection systems prevent damage and data loss during power anomalies.
+        \item Multiple power sources with automatic transfer capabilities provide continuous operation.
+        \item Regular testing of power systems ensures readiness during actual outages.
+    \end{itemize}
+    
+    \begin{table}
+        \scriptsize
+        \centering
+        \begin{tabular}{p{3cm}p{7cm}}
+            \toprule
+            \textbf{Power Component} & \textbf{Function} \\
+            \midrule
+            UPS systems & Provide immediate power during outages and condition power \\
+            Generators & Supply long-term power during extended outages \\
+            Automatic transfer switches & Switch between power sources without interruption \\
+            Power distribution units & Deliver power to equipment with monitoring capabilities \\
+            Surge protectors & Prevent damage from voltage spikes \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\end{document}
