@@ -61,458 +61,459 @@ A microservices architecture increases the number of network connections but all
 \end{frame}
 
 \begin{frame}{The Shared Responsibility Matrix in Cloud Security}
+\begin{itemize}
+\item \textbf{Shared responsibility} means both cloud providers and customers are accountable for different aspects of security.
+\item Cloud providers typically secure the underlying infrastructure, including physical hardware and virtualization layers.
+\item Customers remain responsible for securing their data, applications, access management, and network configurations.
+\item The division of responsibilities varies across different cloud service models (IaaS, PaaS, SaaS). 
+\end{itemize}
+For example, in an IaaS model:
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+\textbf{Component} & \textbf{Provider Resp} & \textbf{Customer Resp} \\
+\midrule
+Physical Security & Full & None \\
+Host Infrastructure & Full & None \\
+Network Controls & Partial & Partial \\
+Application Security & None & Full \\
+Data Protection & None & Full \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Hybrid Cloud: Balancing Control and Flexibility}
+\begin{itemize}
+\item \textbf{Hybrid cloud} environments combine public cloud services with private cloud or on-premises infrastructure.
+\item Security challenges include maintaining consistent policies across disparate environments.
+\item Data transfers between environments create additional points of vulnerability requiring encryption and monitoring.
+\item Identity and access management becomes more complex, requiring unified authentication systems.
+\end{itemize}
+
+\begin{block}{Security Considerations for Hybrid Environments}
+Managing the security boundary between public and private infrastructure is critical, as it becomes a potential weak point in the overall security architecture.
+\end{block}
+\end{frame}
+
+\begin{frame}{Third-Party Vendors: Managing Security in the Supply Chain}
+\begin{itemize}
+\item \textbf{Supply chain security} addresses risks introduced by external vendors and service providers.
+\item Organizations must develop vendor security assessment processes to evaluate third-party security practices.
+\item Contractual agreements should include security requirements, data handling procedures, and breach notification terms.
+\item Regular security audits and reviews of third-party access are essential for maintaining security.
+\end{itemize}
+
+\begin{alertblock}{Warning}
+Major breaches often occur through compromised third-party vendors who have legitimate access to systems and data but weaker security controls.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Infrastructure as Code (IaC): Security Automation and Consistency}
+\begin{itemize}
+\item \textbf{Infrastructure as Code (IaC)} defines and manages infrastructure through machine-readable definition files rather than manual processes.
+\item IaC improves security by ensuring consistent configuration and eliminating human error during deployments.
+\item Security policies can be embedded in templates and automatically verified before deployment.
+\item Version control for infrastructure code enables tracking of changes and facilitates security audits.
+\end{itemize}
+
+\begin{exampleblock}{Example IaC Security Practice}
+\begin{itemize}
+\item Define resources with required security configurations
+\item Include encryption by default for all storage 
+\item Implement least privilege access in infrastructure code
+\item Version control all infrastructure definitions
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Serverless Architecture: Security Without Managing Servers}
+\begin{itemize}
+\item \textbf{Serverless computing} allows developers to build applications without managing server infrastructure.
+\item Security benefits include reduced patching burden and smaller attack surface with no operating system to maintain.
+\item Function execution isolation prevents lateral movement between different parts of the application.
+\item Security challenges include difficult runtime monitoring and dependency vulnerabilities in function packages.
+\end{itemize}
+
+\begin{block}{Serverless Security Focus}
+With serverless, security focus shifts from infrastructure hardening to code security, authentication controls, and API gateway protection.
+\end{block}
+\end{frame}
+
+\begin{frame}{Microservices: Security Challenges in Distributed Applications}
+\begin{itemize}
+\item \textbf{Microservices architecture} breaks applications into small, independently deployable services with specific business functions.
+\item The increased number of network connections between services creates a larger attack surface.
+\item Each microservice can implement different security controls appropriate to its specific risk profile.
+\item Service-to-service authentication becomes critical to prevent unauthorized access between components.
+\end{itemize}
+
+\begin{alertblock}{Security Challenge}
+Tracking and monitoring security events across dozens or hundreds of microservices requires sophisticated observability tools and centralized logging.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Physical Network Isolation: Air-Gapped Systems and Their Limitations}
+\begin{itemize}
+\item \textbf{Air-gapped systems} are physically isolated from unsecured networks, with no direct connection to the internet or other unsecured networks.
+\item Physical isolation provides strong protection against remote attacks and many forms of malware.
+\item The security benefit comes at the cost of operational inconvenience and difficulties in patching and updates.
+\item Even air-gapped systems remain vulnerable to insider threats, firmware attacks, and side-channel attacks.
+\end{itemize}
+
+\begin{exampleblock}{Notable Air-Gap Breaches}
+The Stuxnet malware successfully compromised air-gapped Iranian nuclear facilities in 2010 by spreading through USB drives, demonstrating that no isolation is perfect.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Logical Network Segmentation: Creating Security Boundaries}
+\begin{itemize}
+\item \textbf{Network segmentation} divides a network into multiple sub-networks to improve security and performance.
+\item Segmentation limits the potential blast radius of a breach by containing lateral movement.
+\item Critical systems and sensitive data should be placed in separate security zones with controlled access.
+\item Implementation technologies include VLANs, firewalls, access control lists, and zero-trust network models.
+\end{itemize}
+
+\begin{block}{Segmentation Best Practice}
+\begin{itemize}
+\item Group systems by function, sensitivity, and regulatory requirements
+\item Define clear traffic rules between segments
+\item Implement default-deny policies between segments
+\item Monitor all cross-segment traffic
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Software-Defined Networking (SDN): Programmable Security}
     \begin{itemize}
-    \item \textbf{Shared responsibility} means both cloud providers and customers are accountable for different aspects of security.
-    \item Cloud providers typically secure the underlying infrastructure, including physical hardware and virtualization layers.
-    \item Customers remain responsible for securing their data, applications, access management, and network configurations.
-    \item The division of responsibilities varies across different cloud service models (IaaS, PaaS, SaaS). 
+    \item \textbf{Software-Defined Networking (SDN)} separates the network control plane from the data plane through programming.
+    \item Security benefits include centralized policy management, dynamic network reconfiguration, and enhanced visibility.
+    \item SDN enables automated security responses to detected threats by reconfiguring the network programmatically.
+    \item Micro-segmentation becomes more practical, allowing fine-grained security policies down to individual workloads.
     \end{itemize}
-    For example, in an IaaS model:
+    
+    \begin{block}{SDN Security Components}
+    \begin{itemize}
+    \item \textbf{SDN Controller}: Central security policy enforcement point
+    \item \textbf{Flow Tables}: Define allowed communication patterns
+    \item \textbf{Network Virtualization}: Creates isolated network environments
+    \item \textbf{API-based Control}: Enables security automation
+    \end{itemize}
+    \end{block}
+    \end{frame}
+    
+    \begin{frame}{On-Premises Security: Traditional Controls and Modern Challenges}
+    \begin{itemize}
+    \item \textbf{On-premises architecture} refers to computing resources physically located within an organization's facilities.
+    \item Security advantages include full control over the physical environment and data sovereignty compliance.
+    \item Organizations bear complete responsibility for all security controls, from physical security to application protection.
+    \item Modern challenges include remote work expansion, connecting to cloud services, and maintaining security expertise.
+    \end{itemize}
+    
+    \begin{exampleblock}{On-Premises Security Responsibilities}
+    On-premises environments require organizations to implement and maintain physical access controls, network security, server hardening, backup systems, and disaster recovery planning without the shared responsibility model of cloud services.
+    \end{exampleblock}
+    \end{frame}
+    
+    \begin{frame}{Centralized vs. Decentralized Architectures: Security Trade-offs}
+    \begin{itemize}
+    \item \textbf{Centralized architectures} consolidate resources, control, and security management in a single location or system.
+    \item Centralization benefits include consistent security policy application and simplified monitoring.
+    \item \textbf{Decentralized architectures} distribute resources and control across multiple locations or systems.
+    \item Decentralization improves resilience against single-point failures but complicates security governance.
+    \end{itemize}
+    
     \begin{table}
     \begin{tabular}{lll}
     \toprule
-    \textbf{Component} & \textbf{Provider Resp} & \textbf{Customer Resp} \\
+    \textbf{Aspect} & \textbf{Centralized} & \textbf{Decentralized} \\
     \midrule
-    Physical Security & Full & None \\
-    Host Infrastructure & Full & None \\
-    Network Controls & Partial & Partial \\
-    Application Security & None & Full \\
-    Data Protection & None & Full \\
+    Security Control & Simplified & Complex \\
+    Attack Surface & Concentrated & Distributed \\
+    Single Point of Failure & Yes & No \\
+    Policy Consistency & High & Challenging \\
     \bottomrule
     \end{tabular}
     \end{table}
     \end{frame}
     
-    \begin{frame}{Hybrid Cloud: Balancing Control and Flexibility}
+    \begin{frame}{Containerization: Securing Isolated Application Environments}
     \begin{itemize}
-    \item \textbf{Hybrid cloud} environments combine public cloud services with private cloud or on-premises infrastructure.
-    \item Security challenges include maintaining consistent policies across disparate environments.
-    \item Data transfers between environments create additional points of vulnerability requiring encryption and monitoring.
-    \item Identity and access management becomes more complex, requiring unified authentication systems.
+    \item \textbf{Containerization} packages applications with their dependencies in isolated environments that share the host OS kernel.
+    \item Containers provide process isolation but offer less security separation than virtual machines.
+    \item Container security requires securing the build process, registry, runtime environment, and orchestration platform.
+    \item Immutable container deployment patterns improve security by replacing rather than modifying containers in production.
     \end{itemize}
     
-    \begin{block}{Security Considerations for Hybrid Environments}
-    Managing the security boundary between public and private infrastructure is critical, as it becomes a potential weak point in the overall security architecture.
-    \end{block}
+    \begin{alertblock}{Container Security Best Practices}
+    Never run containers as root, use minimal base images to reduce the attack surface, scan images for vulnerabilities before deployment, and implement strict network policies between containers.
+    \end{alertblock}
     \end{frame}
-    
-    \begin{frame}{Third-Party Vendors: Managing Security in the Supply Chain}
+
+\begin{frame}{Virtualization: Security Implications of Shared Resources}
+\begin{itemize}
+\item \textbf{Virtualization} creates multiple simulated environments from a single physical hardware system.
+\item Security benefits include isolation between virtual machines and the ability to create security sandboxes.
+\item Hypervisors introduce a new security layer that must be protected against attacks and vulnerabilities.
+\item Resource sharing creates potential for side-channel attacks where one VM might extract information from another.
+\end{itemize}
+
+\begin{block}{Virtualization Security Layers}
+\begin{itemize}
+\item \textbf{Host System Security}: Protecting the underlying hardware and OS
+\item \textbf{Hypervisor Security}: Ensuring the virtualization layer is secure
+\item \textbf{VM Security}: Protecting individual virtual machines
+\item \textbf{VM Communication}: Securing network traffic between VMs
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Internet of Things (IoT): Securing Connected Devices}
+\begin{itemize}
+\item \textbf{Internet of Things (IoT)} consists of physical devices embedded with sensors, software, and connectivity.
+\item IoT security challenges include limited computing resources, difficult-to-update firmware, and large-scale deployment.
+\item Many IoT devices lack basic security features like encryption, secure boot, or proper authentication.
+\item The massive number of IoT devices creates an expanded attack surface for networks they connect to.
+\end{itemize}
+
+\begin{alertblock}{IoT Security Risks}
+In 2016, the Mirai botnet compromised over 600,000 IoT devices, primarily security cameras and routers with default credentials, launching one of the largest DDoS attacks ever recorded.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Industrial Control Systems (ICS) and SCADA: Critical Infrastructure Security}
+\begin{itemize}
+\item \textbf{Industrial Control Systems (ICS)} directly interact with physical processes in industries like manufacturing, utilities, and transportation.
+\item \textbf{Supervisory Control and Data Acquisition (SCADA)} systems monitor and control dispersed assets across large geographical areas.
+\item These systems prioritize availability and safety over confidentiality, often requiring 24/7 operation.
+\item Security challenges include legacy components, proprietary protocols, and operational technology/IT convergence.
+\end{itemize}
+
+\begin{exampleblock}{ICS/SCADA Security Approach}
+The Purdue Enterprise Reference Architecture model defines security zones and conduits for industrial networks, establishing clear boundaries between enterprise IT and operational technology environments.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Real-Time Operating Systems (RTOS): Security in Time-Critical Applications}
+\begin{itemize}
+\item \textbf{Real-Time Operating Systems (RTOS)} guarantee specific timing deadlines for processing tasks.
+\item RTOS are used in critical applications like medical devices, automotive systems, and industrial controllers.
+\item Security mechanisms must not interfere with time-critical functions or introduce unpredictable latency.
+\item Many RTOS have limited security features due to resource constraints and legacy code bases.
+\end{itemize}
+
+\begin{block}{RTOS Security Challenges}
+\begin{itemize}
+\item Limited memory for security features
+\item Difficult to patch without recertification
+\item Security vs. performance trade-offs
+\item Often running on specialized hardware
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Embedded Systems: Security Challenges in Limited Environments}
     \begin{itemize}
-    \item \textbf{Supply chain security} addresses risks introduced by external vendors and service providers.
-    \item Organizations must develop vendor security assessment processes to evaluate third-party security practices.
-    \item Contractual agreements should include security requirements, data handling procedures, and breach notification terms.
-    \item Regular security audits and reviews of third-party access are essential for maintaining security.
+    \item \textbf{Embedded systems} are specialized computing systems dedicated to specific functions within larger mechanical or electrical systems.
+    \item Security is constrained by limited processing power, memory, and energy consumption requirements.
+    \item Many embedded systems remain in use for decades, far beyond typical IT security support lifecycles.
+    \item Physical access to embedded devices often provides direct hardware interfaces that bypass software protections.
     \end{itemize}
     
-    \begin{alertblock}{Warning}
-    Major breaches often occur through compromised third-party vendors who have legitimate access to systems and data but weaker security controls.
+    \begin{alertblock}{Embedded Security Concerns}
+    Modern vehicles contain up to 100 embedded systems with varying security levels, creating complex attack surfaces where compromising a non-critical system might provide access to safety-critical systems.
     \end{alertblock}
     \end{frame}
     
-    \begin{frame}{Infrastructure as Code (IaC): Security Automation and Consistency}
+    \begin{frame}{High Availability Architectures: Security During Failover}
     \begin{itemize}
-    \item \textbf{Infrastructure as Code (IaC)} defines and manages infrastructure through machine-readable definition files rather than manual processes.
-    \item IaC improves security by ensuring consistent configuration and eliminating human error during deployments.
-    \item Security policies can be embedded in templates and automatically verified before deployment.
-    \item Version control for infrastructure code enables tracking of changes and facilitates security audits.
+    \item \textbf{High availability} refers to systems designed to operate continuously without failure for extended periods.
+    \item Redundant components and failover mechanisms can introduce security vulnerabilities if not properly secured.
+    \item Synchronization between primary and backup systems creates potential data exposure points.
+    \item Security controls must remain consistent across all redundant systems and during failover events.
     \end{itemize}
     
-    \begin{exampleblock}{Example IaC Security Practice}
+    \begin{block}{High Availability Security Requirements}
     \begin{itemize}
-    \item Define resources with required security configurations
-    \item Include encryption by default for all storage 
-    \item Implement least privilege access in infrastructure code
-    \item Version control all infrastructure definitions
+    \item Secure synchronization channels
+    \item Identical security configurations across all instances
+    \item Security monitoring that survives failover events
+    \item Protection against split-brain scenarios
+    \end{itemize}
+    \end{block}
+    \end{frame}
+    
+    \begin{frame}{Availability vs. Security: Finding the Right Balance}
+    \begin{itemize}
+    \item \textbf{Availability} and \textbf{security} often present competing requirements in system design.
+    \item Excessive security controls can impede system operation and reduce availability through false positives.
+    \item Prioritizing availability without adequate security creates vulnerabilities that can ultimately cause outages.
+    \item Different systems require different balance points based on their specific function and risk profile.
+    \end{itemize}
+    
+    \begin{exampleblock}{Security vs. Availability Examples}
+    A financial trading system might accept sub-second latency from security controls, while a real-time patient monitoring system might require microsecond performance with security designed not to interfere with critical functions.
+    \end{exampleblock}
+    \end{frame}
+    
+    \begin{frame}{Building Resilient Systems: Security During Failures}
+    \begin{itemize}
+    \item \textbf{Resilience} is a system's ability to maintain essential functions during and after adverse events.
+    \item Security incidents should be treated as a type of failure that resilient systems must withstand.
+    \item Secure fail states should be defined for all critical system components.
+    \item Fault isolation prevents security breaches in one component from cascading throughout the system.
+    \end{itemize}
+    
+    \begin{table}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Resilience Principle} & \textbf{Security Implementation} \\
+    \midrule
+    Redundancy & Multiple security layers (defense in depth) \\
+    Isolation & Microsegmentation, least privilege \\
+    Diversity & Varied security tools, avoiding monoculture \\
+    Degradation & Graceful security reduction during stress \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    \end{frame}
+    \begin{frame}{Cost Considerations in Secure Architecture Design}
+        \begin{itemize}
+        \item Security implementations involve direct costs (products, staff) and indirect costs (performance impact, usability).
+        \item Different architecture models shift security costs between capital expenditure and operational expenditure.
+        \item Security investments should be risk-based, with higher spending on protecting the most critical assets.
+        \item \textbf{Return on Security Investment (ROSI)} helps quantify the value of security controls relative to their cost.
+        \end{itemize}
+        
+        \begin{block}{Security Cost Factors}
+        \begin{itemize}
+        \item Implementation costs (hardware, software, integration)
+        \item Operational costs (monitoring, management, updates)
+        \item Training and staffing costs
+        \item Compliance and certification costs
+        \end{itemize}
+        \end{block}
+        \end{frame}
+        
+        \begin{frame}{Responsiveness and Performance Impact of Security Controls}
+        \begin{itemize}
+        \item Security mechanisms inevitably introduce some performance overhead to systems.
+        \item Different architectures have varying capacities to absorb security-related performance impacts.
+        \item End-user experience and application functionality should not be significantly degraded by security controls.
+        \item Performance testing must include security controls to accurately reflect production environments.
+        \end{itemize}
+        
+        \begin{exampleblock}{Security Performance Impacts}
+        \begin{itemize}
+        \item \textbf{Encryption}: 5-15\% CPU overhead for TLS/SSL
+        \item \textbf{Intrusion Prevention}: 10-30\% network throughput reduction
+        \item \textbf{Anti-malware Scanning}: 5-20\% storage I/O impact
+        \item \textbf{Authentication}: Added latency of 0.1-2 seconds per transaction
+        \end{itemize}
+        \end{exampleblock}
+        \end{frame}
+        
+        \begin{frame}{Scalability Challenges in Secure Systems}
+        \begin{itemize}
+        \item \textbf{Scalability} refers to a system's ability to handle growing amounts of work or expand to accommodate growth.
+        \item Security controls must scale proportionally with the systems they protect.
+        \item Centralized security components can become bottlenecks during rapid scaling.
+        \item Different architecture models offer different security scalability characteristics.
+        \end{itemize}
+        
+        \begin{alertblock}{Scalability Security Pitfalls}
+        During rapid scaling events, security is often bypassed or compromised to maintain performance, creating temporary vulnerabilities that attackers can exploit.
+        \end{alertblock}
+        \end{frame}
+        
+        \begin{frame}{Deployment Security: Protecting the Pipeline}
+        \begin{itemize}
+        \item \textbf{Deployment pipelines} automate the process of moving code from development to production environments.
+        \item Secure deployment practices include code signing, artifact verification, and deployment approval workflows.
+        \item Compromised deployment pipelines can introduce malicious code directly into production systems.
+        \item Different architecture models require different deployment security approaches and tools.
+        \end{itemize}
+        
+        \begin{block}{Secure Deployment Process}
+        \begin{enumerate}
+        \item Code security scanning (SAST/DAST)
+        \item Dependency vulnerability checking
+        \item Image/artifact signing and verification
+        \item Immutable deployments
+        \item Post-deployment security validation
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Risk Transference: When to Outsource Security Concerns}
+    \begin{itemize}
+    \item \textbf{Risk transference} shifts security responsibilities to third parties through contracts and services.
+    \item Different architecture choices inherently transfer different security risks to vendors or partners.
+    \item Cloud services, managed security services, and insurance are common risk transference mechanisms.
+    \item Even with transference, organizations retain ultimate accountability for their data and security.
+    \end{itemize}
+    
+    \begin{exampleblock}{Risk Transference Examples}
+    \begin{itemize}
+    \item \textbf{SaaS}: Transfers application security to the provider
+    \item \textbf{Managed SOC}: Transfers monitoring to security provider
+    \item \textbf{Cloud Infrastructure}: Transfers physical security to cloud provider
+    \item \textbf{Cyber Insurance}: Transfers financial impact of breaches
     \end{itemize}
     \end{exampleblock}
     \end{frame}
-
-    \begin{frame}{Serverless Architecture: Security Without Managing Servers}
-        \begin{itemize}
-        \item \textbf{Serverless computing} allows developers to build applications without managing server infrastructure.
-        \item Security benefits include reduced patching burden and smaller attack surface with no operating system to maintain.
-        \item Function execution isolation prevents lateral movement between different parts of the application.
-        \item Security challenges include difficult runtime monitoring and dependency vulnerabilities in function packages.
-        \end{itemize}
-        
-        \begin{block}{Serverless Security Focus}
-        With serverless, security focus shifts from infrastructure hardening to code security, authentication controls, and API gateway protection.
-        \end{block}
-        \end{frame}
-        
-        \begin{frame}{Microservices: Security Challenges in Distributed Applications}
-        \begin{itemize}
-        \item \textbf{Microservices architecture} breaks applications into small, independently deployable services with specific business functions.
-        \item The increased number of network connections between services creates a larger attack surface.
-        \item Each microservice can implement different security controls appropriate to its specific risk profile.
-        \item Service-to-service authentication becomes critical to prevent unauthorized access between components.
-        \end{itemize}
-        
-        \begin{alertblock}{Security Challenge}
-        Tracking and monitoring security events across dozens or hundreds of microservices requires sophisticated observability tools and centralized logging.
-        \end{alertblock}
-        \end{frame}
-        
-        \begin{frame}{Physical Network Isolation: Air-Gapped Systems and Their Limitations}
-        \begin{itemize}
-        \item \textbf{Air-gapped systems} are physically isolated from unsecured networks, with no direct connection to the internet or other unsecured networks.
-        \item Physical isolation provides strong protection against remote attacks and many forms of malware.
-        \item The security benefit comes at the cost of operational inconvenience and difficulties in patching and updates.
-        \item Even air-gapped systems remain vulnerable to insider threats, firmware attacks, and side-channel attacks.
-        \end{itemize}
-        
-        \begin{exampleblock}{Notable Air-Gap Breaches}
-        The Stuxnet malware successfully compromised air-gapped Iranian nuclear facilities in 2010 by spreading through USB drives, demonstrating that no isolation is perfect.
-        \end{exampleblock}
-        \end{frame}
-        
-        \begin{frame}{Logical Network Segmentation: Creating Security Boundaries}
-        \begin{itemize}
-        \item \textbf{Network segmentation} divides a network into multiple sub-networks to improve security and performance.
-        \item Segmentation limits the potential blast radius of a breach by containing lateral movement.
-        \item Critical systems and sensitive data should be placed in separate security zones with controlled access.
-        \item Implementation technologies include VLANs, firewalls, access control lists, and zero-trust network models.
-        \end{itemize}
-        
-        \begin{block}{Segmentation Best Practice}
-        \begin{itemize}
-        \item Group systems by function, sensitivity, and regulatory requirements
-        \item Define clear traffic rules between segments
-        \item Implement default-deny policies between segments
-        \item Monitor all cross-segment traffic
-        \end{itemize}
-        \end{block}
-        \end{frame}
-
-        \begin{frame}{Software-Defined Networking (SDN): Programmable Security}
-            \begin{itemize}
-            \item \textbf{Software-Defined Networking (SDN)} separates the network control plane from the data plane through programming.
-            \item Security benefits include centralized policy management, dynamic network reconfiguration, and enhanced visibility.
-            \item SDN enables automated security responses to detected threats by reconfiguring the network programmatically.
-            \item Micro-segmentation becomes more practical, allowing fine-grained security policies down to individual workloads.
-            \end{itemize}
-            
-            \begin{block}{SDN Security Components}
-            \begin{itemize}
-            \item \textbf{SDN Controller}: Central security policy enforcement point
-            \item \textbf{Flow Tables}: Define allowed communication patterns
-            \item \textbf{Network Virtualization}: Creates isolated network environments
-            \item \textbf{API-based Control}: Enables security automation
-            \end{itemize}
-            \end{block}
-            \end{frame}
-            
-            \begin{frame}{On-Premises Security: Traditional Controls and Modern Challenges}
-            \begin{itemize}
-            \item \textbf{On-premises architecture} refers to computing resources physically located within an organization's facilities.
-            \item Security advantages include full control over the physical environment and data sovereignty compliance.
-            \item Organizations bear complete responsibility for all security controls, from physical security to application protection.
-            \item Modern challenges include remote work expansion, connecting to cloud services, and maintaining security expertise.
-            \end{itemize}
-            
-            \begin{exampleblock}{On-Premises Security Responsibilities}
-            On-premises environments require organizations to implement and maintain physical access controls, network security, server hardening, backup systems, and disaster recovery planning without the shared responsibility model of cloud services.
-            \end{exampleblock}
-            \end{frame}
-            
-            \begin{frame}{Centralized vs. Decentralized Architectures: Security Trade-offs}
-            \begin{itemize}
-            \item \textbf{Centralized architectures} consolidate resources, control, and security management in a single location or system.
-            \item Centralization benefits include consistent security policy application and simplified monitoring.
-            \item \textbf{Decentralized architectures} distribute resources and control across multiple locations or systems.
-            \item Decentralization improves resilience against single-point failures but complicates security governance.
-            \end{itemize}
-            
-            \begin{table}
-            \begin{tabular}{lll}
-            \toprule
-            \textbf{Aspect} & \textbf{Centralized} & \textbf{Decentralized} \\
-            \midrule
-            Security Control & Simplified & Complex \\
-            Attack Surface & Concentrated & Distributed \\
-            Single Point of Failure & Yes & No \\
-            Policy Consistency & High & Challenging \\
-            \bottomrule
-            \end{tabular}
-            \end{table}
-            \end{frame}
-            
-            \begin{frame}{Containerization: Securing Isolated Application Environments}
-            \begin{itemize}
-            \item \textbf{Containerization} packages applications with their dependencies in isolated environments that share the host OS kernel.
-            \item Containers provide process isolation but offer less security separation than virtual machines.
-            \item Container security requires securing the build process, registry, runtime environment, and orchestration platform.
-            \item Immutable container deployment patterns improve security by replacing rather than modifying containers in production.
-            \end{itemize}
-            
-            \begin{alertblock}{Container Security Best Practices}
-            Never run containers as root, use minimal base images to reduce the attack surface, scan images for vulnerabilities before deployment, and implement strict network policies between containers.
-            \end{alertblock}
-            \end{frame}
-
-    \begin{frame}{Virtualization: Security Implications of Shared Resources}
-        \begin{itemize}
-        \item \textbf{Virtualization} creates multiple simulated environments from a single physical hardware system.
-        \item Security benefits include isolation between virtual machines and the ability to create security sandboxes.
-        \item Hypervisors introduce a new security layer that must be protected against attacks and vulnerabilities.
-        \item Resource sharing creates potential for side-channel attacks where one VM might extract information from another.
-        \end{itemize}
-        
-        \begin{block}{Virtualization Security Layers}
-        \begin{itemize}
-        \item \textbf{Host System Security}: Protecting the underlying hardware and OS
-        \item \textbf{Hypervisor Security}: Ensuring the virtualization layer is secure
-        \item \textbf{VM Security}: Protecting individual virtual machines
-        \item \textbf{VM Communication}: Securing network traffic between VMs
-        \end{itemize}
-        \end{block}
-        \end{frame}
-        
-        \begin{frame}{Internet of Things (IoT): Securing Connected Devices}
-        \begin{itemize}
-        \item \textbf{Internet of Things (IoT)} consists of physical devices embedded with sensors, software, and connectivity.
-        \item IoT security challenges include limited computing resources, difficult-to-update firmware, and large-scale deployment.
-        \item Many IoT devices lack basic security features like encryption, secure boot, or proper authentication.
-        \item The massive number of IoT devices creates an expanded attack surface for networks they connect to.
-        \end{itemize}
-        
-        \begin{alertblock}{IoT Security Risks}
-        In 2016, the Mirai botnet compromised over 600,000 IoT devices, primarily security cameras and routers with default credentials, launching one of the largest DDoS attacks ever recorded.
-        \end{alertblock}
-        \end{frame}
-        
-        \begin{frame}{Industrial Control Systems (ICS) and SCADA: Critical Infrastructure Security}
-        \begin{itemize}
-        \item \textbf{Industrial Control Systems (ICS)} directly interact with physical processes in industries like manufacturing, utilities, and transportation.
-        \item \textbf{Supervisory Control and Data Acquisition (SCADA)} systems monitor and control dispersed assets across large geographical areas.
-        \item These systems prioritize availability and safety over confidentiality, often requiring 24/7 operation.
-        \item Security challenges include legacy components, proprietary protocols, and operational technology/IT convergence.
-        \end{itemize}
-        
-        \begin{exampleblock}{ICS/SCADA Security Approach}
-        The Purdue Enterprise Reference Architecture model defines security zones and conduits for industrial networks, establishing clear boundaries between enterprise IT and operational technology environments.
-        \end{exampleblock}
-        \end{frame}
-        
-        \begin{frame}{Real-Time Operating Systems (RTOS): Security in Time-Critical Applications}
-        \begin{itemize}
-        \item \textbf{Real-Time Operating Systems (RTOS)} guarantee specific timing deadlines for processing tasks.
-        \item RTOS are used in critical applications like medical devices, automotive systems, and industrial controllers.
-        \item Security mechanisms must not interfere with time-critical functions or introduce unpredictable latency.
-        \item Many RTOS have limited security features due to resource constraints and legacy code bases.
-        \end{itemize}
-        
-        \begin{block}{RTOS Security Challenges}
-        \begin{itemize}
-        \item Limited memory for security features
-        \item Difficult to patch without recertification
-        \item Security vs. performance trade-offs
-        \item Often running on specialized hardware
-        \end{itemize}
-        \end{block}
-        \end{frame}
-
-        \begin{frame}{Embedded Systems: Security Challenges in Limited Environments}
-            \begin{itemize}
-            \item \textbf{Embedded systems} are specialized computing systems dedicated to specific functions within larger mechanical or electrical systems.
-            \item Security is constrained by limited processing power, memory, and energy consumption requirements.
-            \item Many embedded systems remain in use for decades, far beyond typical IT security support lifecycles.
-            \item Physical access to embedded devices often provides direct hardware interfaces that bypass software protections.
-            \end{itemize}
-            
-            \begin{alertblock}{Embedded Security Concerns}
-            Modern vehicles contain up to 100 embedded systems with varying security levels, creating complex attack surfaces where compromising a non-critical system might provide access to safety-critical systems.
-            \end{alertblock}
-            \end{frame}
-            
-            \begin{frame}{High Availability Architectures: Security During Failover}
-            \begin{itemize}
-            \item \textbf{High availability} refers to systems designed to operate continuously without failure for extended periods.
-            \item Redundant components and failover mechanisms can introduce security vulnerabilities if not properly secured.
-            \item Synchronization between primary and backup systems creates potential data exposure points.
-            \item Security controls must remain consistent across all redundant systems and during failover events.
-            \end{itemize}
-            
-            \begin{block}{High Availability Security Requirements}
-            \begin{itemize}
-            \item Secure synchronization channels
-            \item Identical security configurations across all instances
-            \item Security monitoring that survives failover events
-            \item Protection against split-brain scenarios
-            \end{itemize}
-            \end{block}
-            \end{frame}
-            
-            \begin{frame}{Availability vs. Security: Finding the Right Balance}
-            \begin{itemize}
-            \item \textbf{Availability} and \textbf{security} often present competing requirements in system design.
-            \item Excessive security controls can impede system operation and reduce availability through false positives.
-            \item Prioritizing availability without adequate security creates vulnerabilities that can ultimately cause outages.
-            \item Different systems require different balance points based on their specific function and risk profile.
-            \end{itemize}
-            
-            \begin{exampleblock}{Security vs. Availability Examples}
-            A financial trading system might accept sub-second latency from security controls, while a real-time patient monitoring system might require microsecond performance with security designed not to interfere with critical functions.
-            \end{exampleblock}
-            \end{frame}
-            
-            \begin{frame}{Building Resilient Systems: Security During Failures}
-            \begin{itemize}
-            \item \textbf{Resilience} is a system's ability to maintain essential functions during and after adverse events.
-            \item Security incidents should be treated as a type of failure that resilient systems must withstand.
-            \item Secure fail states should be defined for all critical system components.
-            \item Fault isolation prevents security breaches in one component from cascading throughout the system.
-            \end{itemize}
-            
-            \begin{table}
-            \begin{tabular}{ll}
-            \toprule
-            \textbf{Resilience Principle} & \textbf{Security Implementation} \\
-            \midrule
-            Redundancy & Multiple security layers (defense in depth) \\
-            Isolation & Microsegmentation, least privilege \\
-            Diversity & Varied security tools, avoiding monoculture \\
-            Degradation & Graceful security reduction during stress \\
-            \bottomrule
-            \end{tabular}
-            \end{table}
-            \end{frame}
-            \begin{frame}{Cost Considerations in Secure Architecture Design}
-                \begin{itemize}
-                \item Security implementations involve direct costs (products, staff) and indirect costs (performance impact, usability).
-                \item Different architecture models shift security costs between capital expenditure and operational expenditure.
-                \item Security investments should be risk-based, with higher spending on protecting the most critical assets.
-                \item \textbf{Return on Security Investment (ROSI)} helps quantify the value of security controls relative to their cost.
-                \end{itemize}
-                
-                \begin{block}{Security Cost Factors}
-                \begin{itemize}
-                \item Implementation costs (hardware, software, integration)
-                \item Operational costs (monitoring, management, updates)
-                \item Training and staffing costs
-                \item Compliance and certification costs
-                \end{itemize}
-                \end{block}
-                \end{frame}
-                
-                \begin{frame}{Responsiveness and Performance Impact of Security Controls}
-                \begin{itemize}
-                \item Security mechanisms inevitably introduce some performance overhead to systems.
-                \item Different architectures have varying capacities to absorb security-related performance impacts.
-                \item End-user experience and application functionality should not be significantly degraded by security controls.
-                \item Performance testing must include security controls to accurately reflect production environments.
-                \end{itemize}
-                
-                \begin{exampleblock}{Security Performance Impacts}
-                \begin{itemize}
-                \item \textbf{Encryption}: 5-15\% CPU overhead for TLS/SSL
-                \item \textbf{Intrusion Prevention}: 10-30\% network throughput reduction
-                \item \textbf{Anti-malware Scanning}: 5-20\% storage I/O impact
-                \item \textbf{Authentication}: Added latency of 0.1-2 seconds per transaction
-                \end{itemize}
-                \end{exampleblock}
-                \end{frame}
-                
-                \begin{frame}{Scalability Challenges in Secure Systems}
-                \begin{itemize}
-                \item \textbf{Scalability} refers to a system's ability to handle growing amounts of work or expand to accommodate growth.
-                \item Security controls must scale proportionally with the systems they protect.
-                \item Centralized security components can become bottlenecks during rapid scaling.
-                \item Different architecture models offer different security scalability characteristics.
-                \end{itemize}
-                
-                \begin{alertblock}{Scalability Security Pitfalls}
-                During rapid scaling events, security is often bypassed or compromised to maintain performance, creating temporary vulnerabilities that attackers can exploit.
-                \end{alertblock}
-                \end{frame}
-                
-                \begin{frame}{Deployment Security: Protecting the Pipeline}
-                \begin{itemize}
-                \item \textbf{Deployment pipelines} automate the process of moving code from development to production environments.
-                \item Secure deployment practices include code signing, artifact verification, and deployment approval workflows.
-                \item Compromised deployment pipelines can introduce malicious code directly into production systems.
-                \item Different architecture models require different deployment security approaches and tools.
-                \end{itemize}
-                
-                \begin{block}{Secure Deployment Process}
-                \begin{enumerate}
-                \item Code security scanning (SAST/DAST)
-                \item Dependency vulnerability checking
-                \item Image/artifact signing and verification
-                \item Immutable deployments
-                \item Post-deployment security validation
-        \end{enumerate}
-        \end{block}
-        \end{frame}
-
-        \begin{frame}{Risk Transference: When to Outsource Security Concerns}
-            \begin{itemize}
-            \item \textbf{Risk transference} shifts security responsibilities to third parties through contracts and services.
-            \item Different architecture choices inherently transfer different security risks to vendors or partners.
-            \item Cloud services, managed security services, and insurance are common risk transference mechanisms.
-            \item Even with transference, organizations retain ultimate accountability for their data and security.
-            \end{itemize}
-            
-            \begin{exampleblock}{Risk Transference Examples}
-            \begin{itemize}
-            \item \textbf{SaaS}: Transfers application security to the provider
-            \item \textbf{Managed SOC}: Transfers monitoring to security provider
-            \item \textbf{Cloud Infrastructure}: Transfers physical security to cloud provider
-            \item \textbf{Cyber Insurance}: Transfers financial impact of breaches
-            \end{itemize}
-            \end{exampleblock}
-            \end{frame}
-            
-            \begin{frame}{Disaster Recovery: Securing the Path to Restoration}
-            \begin{itemize}
-            \item \textbf{Disaster recovery} processes must maintain security controls during system restoration.
-            \item Backup systems often contain complete copies of sensitive data requiring strong encryption and access controls.
-            \item Recovery procedures themselves can be targeted by attackers aware of temporarily reduced security.
-            \item Different architectures offer varying levels of security during recovery operations.
-            \end{itemize}
-            
-            \begin{alertblock}{Recovery Security Risks}
-            Emergency access credentials used during disaster recovery often bypass normal security controls and may be stored with lower protection, creating high-value targets for attackers.
-            \end{alertblock}
-            \end{frame}
-            
-            \begin{frame}{Patch Management Across Different Architectures}
-            \begin{itemize}
-            \item \textbf{Patch management} is the process of acquiring, testing, and installing code updates to systems.
-            \item Architecture choices significantly impact the complexity, risk, and efficiency of patching processes.
-            \item Cloud and containerized environments enable more agile patching through immutable infrastructure patterns.
-            \item Traditional on-premises systems typically require more complex patch testing and deployment procedures.
-            \end{itemize}
-            
-            \begin{table}
-            \begin{tabular}{lll}
-            \toprule
-            \textbf{Architecture} & \textbf{Patch Approach} & \textbf{Security Impact} \\
-            \midrule
-            Cloud Native & Redeploy new instances & Low downtime, high agility \\
-            Containers & Replace container images & Minimal service disruption \\
-            Virtual Machines & Traditional patching & Moderate risk, testing needed \\
-            Bare Metal & Traditional patching & Highest risk, complex testing \\
-            \bottomrule
-            \end{tabular}
-            \end{table}
-            \end{frame}
-            
-            \begin{frame}{Conclusion: Creating a Balanced Security Architecture Strategy}
-            \begin{itemize}
-            \item Security architecture decisions should align with business goals, risk tolerance, and operational requirements.
-            \item No single architecture model is inherently more secure; each presents different security trade-offs.
-            \item \textbf{Defense in depth} principles should be applied across all architectural choices.
-            \item As technology evolves, security architecture must continuously adapt to address emerging threats.
-            \end{itemize}
-            
-            \begin{block}{Key Takeaways}
-            \begin{itemize}
-            \item Consider security implications early in architecture decisions
-            \item Match security controls to the specific risks of each architecture
-            \item Balance security, cost, performance, and operational requirements
-            \item Remember that architecture security is an ongoing process, not a one-time decision
-            \end{itemize}
-            \end{block}
-            \end{frame}
+    
+    \begin{frame}{Disaster Recovery: Securing the Path to Restoration}
+    \begin{itemize}
+    \item \textbf{Disaster recovery} processes must maintain security controls during system restoration.
+    \item Backup systems often contain complete copies of sensitive data requiring strong encryption and access controls.
+    \item Recovery procedures themselves can be targeted by attackers aware of temporarily reduced security.
+    \item Different architectures offer varying levels of security during recovery operations.
+    \end{itemize}
+    
+    \begin{alertblock}{Recovery Security Risks}
+    Emergency access credentials used during disaster recovery often bypass normal security controls and may be stored with lower protection, creating high-value targets for attackers.
+    \end{alertblock}
+    \end{frame}
+    
+    \begin{frame}{Patch Management Across Different Architectures}
+    \begin{itemize}
+    \item \textbf{Patch management} is the process of acquiring, testing, and installing code updates to systems.
+    \item Architecture choices significantly impact the complexity, risk, and efficiency of patching processes.
+    \item Cloud and containerized environments enable more agile patching through immutable infrastructure patterns.
+    \item Traditional on-premises systems typically require more complex patch testing and deployment procedures.
+    \end{itemize}
+    
+    \begin{table}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{Architecture} & \textbf{Patch Approach} & \textbf{Security Impact} \\
+    \midrule
+    Cloud Native & Redeploy new instances & Low downtime, high agility \\
+    Containers & Replace container images & Minimal service disruption \\
+    Virtual Machines & Traditional patching & Moderate risk, testing needed \\
+    Bare Metal & Traditional patching & Highest risk, complex testing \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    \end{frame}
+    
+    \begin{frame}{Conclusion: Creating a Balanced Security Architecture Strategy}
+    \begin{itemize}
+    \item Security architecture decisions should align with business goals, risk tolerance, and operational requirements.
+    \item No single architecture model is inherently more secure; each presents different security trade-offs.
+    \item \textbf{Defense in depth} principles should be applied across all architectural choices.
+    \item As technology evolves, security architecture must continuously adapt to address emerging threats.
+    \end{itemize}
+    
+    \begin{block}{Key Takeaways}
+    \begin{itemize}
+    \item Consider security implications early in architecture decisions
+    \item Match security controls to the specific risks of each architecture
+    \item Balance security, cost, performance, and operational requirements
+    \item Remember that architecture security is an ongoing process, not a one-time decision
+    \end{itemize}
+    \end{block}
+    \end{frame}
+    
 \end{document}
