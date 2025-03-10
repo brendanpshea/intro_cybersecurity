@@ -192,6 +192,20 @@ Improper handling of legal and financial information can lead to regulatory viol
 \end{frame}
 
 \begin{frame}
+    \frametitle{Example: Data Classification in Action}
+    \begin{itemize}
+        \item Peter's healthcare company classified patient records into four categories: Public, Internal, Confidential, and Restricted.
+        \item Public data: Clinic locations, hours of operation, general health pamphlets.
+        \item Confidential data: Patient diagnoses, treatment plans, medication lists.
+        \item Restricted data: HIV status, mental health records, genetic testing results.
+    \end{itemize}
+    
+    \begin{exampleblock}{Classification Impact}
+    After implementing this system, Peter's company experienced 70\% fewer data incidents. When a breach occurred, its impact was limited because restricted data was isolated on systems with enhanced security controls.
+    \end{exampleblock}
+    \end{frame}
+
+\begin{frame}
 \frametitle{Sensitive Data: Identification and Handling Procedures}
 \begin{itemize}
 \item \textbf{Sensitive data} contains information that could potentially harm individuals or organizations if improperly disclosed.
@@ -382,6 +396,21 @@ Privilege escalation & Application sandboxing \\
 \end{block}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Example: Data Sovereignty Challenge}
+    \begin{itemize}
+        \item Scenario: Barbara's cloud software company serves customers across Europe, Asia, and North America.
+        \item Challenge: Customer in Germany requires all their data to remain within EU borders to comply with GDPR.
+        \item Technical solution: Barbara configured EU-specific storage buckets with geographic restriction rules.
+        \item Contract solution: Service Level Agreement specifying all data storage locations and cross-border transfer restrictions.
+    \end{itemize}
+    
+    \begin{alertblock}{Implementation Outcome}
+    When audited by EU regulators, Barbara's company demonstrated complete data isolation for EU customers. The company avoided potential GDPR penalties of up to 4\% of annual global turnover or €20 million.
+    \end{alertblock}
+    \end{frame}
+
 \begin{frame}
 \frametitle{Geolocation Considerations in Data Protection}
 \begin{itemize}
@@ -457,6 +486,31 @@ Homomorphic & Computation on encrypted data & Privacy-preserving analytics \\
 \end{block}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Example: Hashing for Password Protection}
+    \begin{itemize}
+        \item Natasha's security team implemented proper password hashing for a user authentication system.
+        \item Original approach stored passwords using simple MD5 hashing (insecure and vulnerable).
+        \item New implementation uses bcrypt with salting to protect against rainbow table attacks.
+        \item Each user's password has a unique salt value to prevent identical passwords from having identical hashes.
+    \end{itemize}
+    
+    \begin{exampleblock}{Concrete Example}
+    Password: "Avengers2023!", Salt: "randomSaltValue"
+    
+    \smallskip
+    MD5 hash (insecure): \\ 
+    5f4dcc3b5aa765d61d8327deb882cf99. No salt stored.
+    
+    \smallskip
+    bcrypt hash with salt (secure): \\
+    \$2a\$10\$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy. Salt stored with hash.
+    \end{exampleblock}
+    \end{frame}
+    
+
+
 \begin{frame}
 \frametitle{Data Masking: Concealing Sensitive Information}
 \begin{itemize}
@@ -472,6 +526,34 @@ A credit card number 4532-7891-2345-6789 might be masked as XXXX-XXXX-XXXX-6789,
 \end{frame}
 
 \begin{frame}
+    \frametitle{Example: Data Masking in Development}
+    \begin{itemize}
+        \item Diana's team needed to test new healthcare software features using realistic data.
+        \item Using actual patient data would violate privacy regulations and expose sensitive information.
+        \item Solution: Implemented data masking to transform production data while preserving its format and relationships.
+        \item Developers could test with realistic data without access to actual patient information.
+    \end{itemize}
+    
+    \begin{table}
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Original Data} & \textbf{Masked Data} \\
+    \hline
+    Name: Clark Kent & Name: XXXX XXXX \\
+    \hline
+    SSN: 123-45-6789 & SSN: XXX-XX-6789 \\
+    \hline
+    DOB: 05/28/1985 & DOB: 05/XX/1985 \\
+    \hline
+    Diagnosis: Hypertension & Diagnosis: [CONDITION] \\
+    \hline
+    Medication: Lisinopril 10mg & Medication: [MEDICATION] [DOSE] \\
+    \hline
+    \end{tabular}
+    \end{table}
+    \end{frame}
+
+\begin{frame}
 \frametitle{Tokenization: Secure Data Representation}
 \begin{itemize}
     \item \textbf{Tokenization} replaces sensitive data with non-sensitive placeholder values that reference the original data stored securely.
@@ -484,6 +566,29 @@ A credit card number 4532-7891-2345-6789 might be masked as XXXX-XXXX-XXXX-6789,
 Tokenization differs from encryption in that there is no algorithm or key that can convert the token back to the original value – the relationship exists only in a separately secured lookup table.
 \end{alertblock}
 \end{frame}
+
+
+\begin{frame}
+    \frametitle{Example: Tokenization vs. Encryption}
+    Both tokenization and encryption are used to protect sensitive data, but they do so in different ways. 
+    Here’s a comparison of how each method would handle the same data:
+    \vspace{.5cm}
+
+    \scriptsize
+    \begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+    \hline
+    \textbf{Original Data} & \textbf{Encrypted} & \textbf{Tokenized} \\
+    \hline
+    Credit Card: \\4532-7891-2345-6789 & A7F9R0... (cipher text that can be decrypted with key) & XXXX-XXXX-XXXX-6789 (token with no mathematical relation) \\
+    \hline
+    Customer Address: \\123 Hero Lane, Gotham & B8D2E5... (reversible with decryption key) & 74-***-** (irreversible token with lookup table) \\
+    \hline
+    Purchase History: \\Items, dates, amounts & Encrypted database with authorized access & Anonymized tokens for analytics while protecting identity \\
+    \hline
+    \end{tabular}
+    
+    \end{frame}
+
 
 \begin{frame}
 \frametitle{Obfuscation: Making Data Difficult to Understand}
@@ -543,6 +648,35 @@ Noise addition & Add irrelevant information to confuse analysis \\
             \item Review and update regularly
         \end{enumerate}
     \end{block}
+    \end{frame}
+
+
+    
+\begin{frame}
+    \frametitle{Example: Role-Based Access Control Implementation}
+    \begin{itemize}
+        \item Tony's manufacturing company implemented RBAC to protect intellectual property and operational data.
+        \item System defines roles rather than individual permissions: Engineer, Manager, HR, Finance, Contractor.
+        \item Example: Process formulas are accessible to Engineers but not Contractors.
+        \item Regular permission audits found and remediated 23 instances of excessive access.
+    \end{itemize}
+    
+    \scriptsize
+    \begin{table}
+    \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \textbf{Data Type} & \textbf{Engineer} & \textbf{Manager} & \textbf{HR} & \textbf{Contractor} \\
+    \hline
+    Product Designs & Full & Read & None & Limited \\
+    \hline
+    Process Formulas & Full & Read & None & None \\
+    \hline
+    Employee Records & None & Limited & Full & None \\
+    \hline
+    Financial Data & None & Read & Limited & None \\
+    \hline
+    \end{tabular}
+    \end{table}
     \end{frame}
     
     \begin{frame}
