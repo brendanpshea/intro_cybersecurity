@@ -1,0 +1,559 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Applying Security Techniques to Computing Resources}
+\author{Security Fundamentals Course}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction: Securing Computing Resources in the Modern World}
+    
+    \begin{itemize}
+        \item Computing resources face continuous and evolving threats in today's interconnected environment.
+        \item Security must be integrated into every aspect of information technology, not added as an afterthought.
+        \item Effective security requires a balanced approach that addresses technical, administrative, and physical controls.
+        \item This lecture covers fundamental security techniques applicable across various computing environments.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Challenge}
+        Organizations must balance security needs with usability, performance, and cost constraints while addressing an ever-expanding threat landscape.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Security Fundamentals: Why Establish Secure Baselines?}
+    
+    \begin{itemize}
+        \item \textbf{Secure baselines} provide a consistent, documented starting point for deploying secure systems.
+        \item Baselines ensure that security is applied systematically rather than haphazardly across an organization.
+        \item They establish a measurable standard against which compliance can be regularly verified.
+        \item Baselines reduce attack surface and minimize common configuration vulnerabilities.
+    \end{itemize}
+    
+    \begin{block}{Benefits of Secure Baselines}
+        \begin{itemize}
+            \item Predictable security posture
+            \item Easier troubleshooting
+            \item Streamlined auditing
+            \item Simplified compliance
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Establishing Secure Baselines: Key Principles}
+    
+    \begin{itemize}
+        \item Begin by identifying critical security requirements and compliance standards relevant to your organization.
+        \item \textbf{Principle of least privilege} ensures users and systems have only the access necessary to perform their functions.
+        \item Document all configuration decisions, including rationale and exceptions to standard practice.
+        \item Collaborate across security, operations, and business units to develop realistic, implementable baselines.
+    \end{itemize}
+    
+    \begin{exampleblock}{Example Baseline Components}
+        System hardening specifications, approved software lists, required security controls, patch management requirements, and authentication standards.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deploying Secure Baselines: Implementation Strategies}
+    
+    \begin{itemize}
+        \item Create a staged deployment plan with testing phases to identify potential compatibility issues.
+        \item Utilize automation tools to ensure consistent application of baseline configurations.
+        \item Establish verification procedures to confirm that systems meet baseline requirements.
+        \item Document exceptions with formal risk assessment and management approval.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Deployment Method} & \textbf{Best Use Case} \\
+            \hline
+            Golden Images & New system deployment \\
+            Configuration Management & Existing system maintenance \\
+            Group Policy & Windows environment control \\
+            Scripted Configuration & Cross-platform standardization \\
+            \hline
+        \end{tabular}
+        \caption{Common Baseline Deployment Methods}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Maintaining Secure Baselines: Ongoing Requirements}
+    
+    \begin{itemize}
+        \item Regularly review baselines to ensure they address current threats and organizational needs.
+        \item \textbf{Configuration drift} occurs when systems gradually deviate from their secure baseline state.
+        \item Implement continuous monitoring to detect unauthorized changes or configuration drift.
+        \item Establish a formal change management process for baseline updates to maintain security and stability.
+    \end{itemize}
+    
+    \begin{block}{The Baseline Lifecycle}
+        Create → Deploy → Monitor → Update → Redeploy → Verify → Monitor
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hardening Techniques: Overview and Importance}
+    
+    \begin{itemize}
+        \item \textbf{System hardening} refers to the process of securing a system by reducing its attack surface.
+        \item Hardening involves removing unnecessary software, disabling unneeded services, and applying secure configurations.
+        \item Different types of systems require specialized hardening techniques based on their function and exposure.
+        \item Hardening should be applied in layers as part of a defense-in-depth security strategy.
+    \end{itemize}
+    
+    \begin{alertblock}{Critical Hardening Categories}
+        Operating system hardening, network hardening, application hardening, database hardening, and physical hardening all work together to protect systems.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Mobile Device Hardening: Common Vulnerabilities \& Solutions}
+    
+    \begin{itemize}
+        \item Mobile devices face unique security challenges due to their portability, connectivity options, and diverse app ecosystems.
+        \item \textbf{Mobile hardening} includes enforcing strong authentication, encryption, and remote wipe capabilities.
+        \item Limit application installations to trusted sources and implement application vetting procedures.
+        \item Configure automatic updates and establish secure connectivity requirements.
+    \end{itemize}
+    
+    \begin{itemize}
+        \item[] \textbf{Key Mobile Hardening Controls:}
+        \begin{itemize}
+            \item Screen locks with biometrics or strong passcodes
+            \item Full-device encryption
+            \item OS and app update enforcement
+            \item Controlled app permissions
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Workstation Hardening: Protecting the User Environment}
+    
+    \begin{itemize}
+        \item Workstations are primary targets for attackers as they are direct user interfaces to organizational resources.
+        \item Implement \textbf{application whitelisting} to prevent execution of unauthorized programs on workstations.
+        \item Restrict administrative privileges and apply the principle of least privilege for user accounts.
+        \item Configure host-based firewalls and enable disk encryption to protect data at rest.
+    \end{itemize}
+    
+    \begin{exampleblock}{Example: Windows 11 Hardening}
+        Use AppLocker for application control, BitLocker for disk encryption, Windows Defender for malware protection, and Group Policy to enforce secure configurations.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Network Hardware Security: Hardening Switches \& Routers}
+    
+    \begin{itemize}
+        \item Network devices manage the flow of all organizational data and require specialized hardening techniques.
+        \item Disable unnecessary services and protocols on network devices to reduce attack surface.
+        \item Implement \textbf{access control lists (ACLs)} to filter traffic based on security policies.
+        \item Secure the management interfaces with strong authentication and encrypted connections.
+    \end{itemize}
+    
+    \begin{block}{Essential Switch Hardening Steps}
+        \begin{enumerate}
+            \item Disable unused ports
+            \item Implement port security
+            \item Secure spanning tree protocol
+            \item Configure VLAN segregation
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cloud Infrastructure Hardening: Securing Virtual Environments}
+    
+    \begin{itemize}
+        \item Cloud environments introduce shared responsibility models where security duties are split between providers and customers.
+        \item Apply \textbf{infrastructure as code (IaC)} principles to ensure consistent, secure deployments.
+        \item Implement strong identity and access management with multi-factor authentication for cloud resources.
+        \item Monitor cloud configurations for drift and unauthorized changes using cloud security posture management tools.
+    \end{itemize}
+    
+    \begin{alertblock}{Cloud Security Misconception}
+        Cloud providers secure the infrastructure, but customers remain responsible for securing their data, access controls, and application configurations.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Server Hardening: Best Practices and Critical Controls}
+    
+    \begin{itemize}
+        \item Servers host critical applications and data, making them high-value targets requiring robust protection.
+        \item Install only necessary components and remove or disable unused services, roles, and features.
+        \item Implement \textbf{file integrity monitoring (FIM)} to detect unauthorized modifications to critical system files.
+        \item Apply regular patches and updates through a formal testing and deployment process.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Server Type} & \textbf{Special Hardening Considerations} \\
+            \hline
+            Web Servers & Web application firewalls, TLS configuration \\
+            Database Servers & Query restrictions, data encryption \\
+            Email Servers & Content filtering, anti-spoofing \\
+            Domain Controllers & Privileged access management \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{ICS/SCADA Security: Protecting Critical Infrastructure}
+    
+    \begin{itemize}
+        \item \textbf{Industrial Control Systems (ICS)} and \textbf{SCADA} environments control physical processes and critical infrastructure.
+        \item These systems often use specialized protocols and legacy components with unique security requirements.
+        \item Implement network segmentation to isolate ICS/SCADA networks from corporate IT networks.
+        \item Apply security patches cautiously with extensive testing due to potential operational impacts.
+    \end{itemize}
+    
+    \begin{block}{ICS/SCADA Security Challenges}
+        Long lifecycles (20+ years), real-time requirements, proprietary protocols, and physical safety implications create unique security considerations.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Embedded Systems \& RTOS Hardening: Special Considerations}
+    
+    \begin{itemize}
+        \item \textbf{Embedded systems} are specialized computing devices with dedicated functions built into larger mechanical or electrical systems.
+        \item \textbf{Real-Time Operating Systems (RTOS)} have strict timing requirements that security measures must not disrupt.
+        \item Resource constraints (memory, processing power) limit the security mechanisms that can be implemented.
+        \item Secure the boot process to prevent unauthorized firmware modifications.
+    \end{itemize}
+    
+    \begin{alertblock}{Security vs. Performance Trade-offs}
+        Security controls for embedded systems must be carefully balanced against performance requirements, especially in time-critical applications.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{IoT Device Security: Challenges and Solutions}
+    
+    \begin{itemize}
+        \item \textbf{Internet of Things (IoT)} devices often combine limited computing resources with network connectivity.
+        \item Many IoT devices lack basic security features like strong authentication or encryption capabilities.
+        \item Default credentials present a major vulnerability—always change manufacturer passwords.
+        \item Network segmentation is critical to contain potential compromises of vulnerable IoT devices.
+    \end{itemize}
+    
+    \begin{itemize}
+        \item[] \textbf{IoT Security Best Practices:}
+        \begin{itemize}
+            \item Maintain an inventory of all connected devices
+            \item Implement dedicated IoT networks
+            \item Disable unnecessary features
+            \item Apply firmware updates regularly
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wireless Device Security: The Foundation of Mobile Computing}
+    
+    \begin{itemize}
+        \item Wireless networks extend connectivity beyond physical boundaries, creating additional attack vectors.
+        \item Implement \textbf{defense in depth} with multiple security layers for wireless environments.
+        \item Secure both the wireless infrastructure (access points, controllers) and client devices.
+        \item Regular wireless scanning helps identify unauthorized access points and potential attacks.
+    \end{itemize}
+    
+    \begin{exampleblock}{Wireless Attack Types}
+        Rogue access points, evil twin attacks, deauthentication attacks, and wireless packet sniffing represent common threats to wireless networks.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Site Surveys: Mapping Your Wireless Environment}
+    
+    \begin{itemize}
+        \item \textbf{Site surveys} are methodical assessments of wireless environments to optimize coverage and security.
+        \item Physical site surveys identify potential signal obstructions, interference sources, and optimal access point locations.
+        \item Predictive site surveys use software modeling to simulate wireless coverage before hardware deployment.
+        \item Post-implementation validation surveys confirm that the deployed wireless network meets design requirements.
+    \end{itemize}
+    
+    \begin{block}{Site Survey Components}
+        Signal strength measurements, interference detection, channel utilization analysis, and coverage overlap assessment.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Heat Maps: Visual Analysis of Wireless Coverage}
+    
+    \begin{itemize}
+        \item \textbf{Heat maps} provide color-coded visualizations of wireless signal strength throughout a physical space.
+        \item They help identify coverage gaps, areas of signal overlap, and potential interference zones.
+        \item Heat maps support capacity planning by showing high-density usage areas that may require additional access points.
+        \item Regular heat map analysis helps detect unauthorized access points and potential security threats.
+    \end{itemize}
+    
+    \begin{figure}
+        \centering
+        \framebox{\parbox{0.8\textwidth}{
+            [This is where a sample heat map image would be displayed, showing different signal strengths represented by color variations]
+        }}
+        \caption{Example Wireless Heat Map Showing Signal Coverage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Mobile Device Management (MDM): Controlling the Mobile Ecosystem}
+    
+    \begin{itemize}
+        \item \textbf{Mobile Device Management (MDM)} provides centralized control over mobile devices in an organization.
+        \item MDM enables remote configuration, policy enforcement, application management, and security monitoring.
+        \item Core MDM capabilities include device enrollment, inventory management, and compliance verification.
+        \item Advanced MDM solutions incorporate mobile application management and content management features.
+    \end{itemize}
+    
+    \begin{alertblock}{MDM Security Capabilities}
+        Remote lock and wipe, encryption enforcement, application blacklisting/whitelisting, jailbreak/root detection, and certificate management.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{BYOD vs. COPE vs. CYOD: Selecting the Right Deployment Model}
+    
+    \begin{itemize}
+        \item \textbf{Bring Your Own Device (BYOD)} allows employees to use personal devices for work, reducing hardware costs but increasing security challenges.
+        \item \textbf{Corporate-Owned, Personally Enabled (COPE)} provides organization-owned devices with limited personal use allowed.
+        \item \textbf{Choose Your Own Device (CYOD)} lets employees select from approved device options that are then purchased by the organization.
+        \item Each model represents different balances between user satisfaction, cost, and security control.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \textbf{Factor} & \textbf{BYOD} & \textbf{COPE} & \textbf{CYOD} \\
+            \hline
+            Cost to Organization & Low & High & Medium \\
+            User Satisfaction & High & Medium & High \\
+            Security Control & Low & High & High \\
+            Support Complexity & High & Low & Medium \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Mobile Connection Methods: Cellular, Wi-Fi \& Bluetooth Security}
+    
+    \begin{itemize}
+        \item Mobile devices typically support multiple connection methods, each with distinct security considerations.
+        \item \textbf{Cellular connections} use carrier-managed infrastructure with built-in encryption but vary in security by generation (3G/4G/5G).
+        \item \textbf{Wi-Fi connections} offer higher bandwidth but require careful security configuration to prevent eavesdropping.
+        \item \textbf{Bluetooth} enables short-range device communications but has historically suffered from numerous security vulnerabilities.
+    \end{itemize}
+    
+    \begin{block}{Securing Mobile Connections}
+        Use VPNs for sensitive communications, disable auto-connect features for Wi-Fi and Bluetooth, and implement connection policies through MDM.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wi-Fi Protected Access 3 (WPA3): Features and Implementation}
+    
+    \begin{itemize}
+        \item \textbf{WPA3} is the latest Wi-Fi security protocol that addresses vulnerabilities in previous standards like WPA2.
+        \item WPA3 implements \textbf{Simultaneous Authentication of Equals (SAE)} to replace the vulnerable Pre-Shared Key (PSK) method.
+        \item Forward secrecy in WPA3 ensures that captured data cannot be decrypted even if the password is compromised later.
+        \item WPA3-Enterprise adds 192-bit security mode for organizations requiring higher security levels.
+    \end{itemize}
+    
+    \begin{alertblock}{WPA2 vs. WPA3 Key Improvements}
+        Protection against offline dictionary attacks, improved protection for weak passwords, and simplified secure configuration for devices without displays.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AAA/Remote Authentication Dial-In User Service (RADIUS): Authentication, Authorization, and Accounting}
+    
+    \begin{itemize}
+        \item \textbf{AAA} framework provides Authentication (identity verification), Authorization (access control), and Accounting (usage tracking).
+        \item \textbf{RADIUS} is a network protocol that implements the AAA framework, particularly for network access authentication.
+        \item RADIUS centralizes authentication for network devices, wireless networks, and VPN connections.
+        \item Integration with directory services like Active Directory enables consistent identity management.
+    \end{itemize}
+    
+    \begin{figure}
+        \centering
+        \scriptsize
+        \begin{tabular}{c}
+            User → Access Device (Authenticator) → RADIUS Server → Directory Service \\
+            ↑ \\
+            Authentication Result Flow \\
+        \end{tabular}
+        \caption{Simplified RADIUS Authentication Flow}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cryptographic Protocols: Ensuring Data Privacy in Transit}
+    
+    \begin{itemize}
+        \item \textbf{Cryptographic protocols} establish secure communications channels over potentially insecure networks.
+        \item \textbf{Transport Layer Security (TLS)} secures web traffic, email, and many other application protocols.
+        \item \textbf{Internet Protocol Security (IPsec)} provides security at the network layer for VPN implementations.
+        \item Wireless networks use specific protocols like CCMP (Counter Mode CBC-MAC Protocol) for WPA2/WPA3 encryption.
+    \end{itemize}
+    
+    \begin{exampleblock}{Key Protocol Selection Factors}
+        Consider performance requirements, compliance standards, supported algorithms, key management capabilities, and compatibility with existing systems.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Authentication Protocols: Verifying Identity Securely}
+    
+    \begin{itemize}
+        \item \textbf{Authentication protocols} standardize the process of verifying claimed identities across systems.
+        \item \textbf{LDAP} (Lightweight Directory Access Protocol) provides directory services for storing and retrieving identity information.
+        \item \textbf{Kerberos} uses ticket-based authentication to verify identities without transmitting passwords.
+        \item \textbf{SAML} and \textbf{OAuth} enable single sign-on and delegated authorization across different systems.
+    \end{itemize}
+    
+    \begin{block}{Multi-Factor Authentication (MFA)}
+        Combines two or more authentication factors: something you know (password), something you have (token), and something you are (biometric).
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Application Security: The First Line of Defense}
+    
+    \begin{itemize}
+        \item Applications are primary attack targets because they often have direct access to sensitive data.
+        \item \textbf{Application security} involves building security into applications from the design phase through deployment and maintenance.
+        \item Secure software development lifecycle (SSDLC) integrates security activities throughout development.
+        \item Defense-in-depth for applications includes input validation, authentication, authorization, and error handling.
+    \end{itemize}
+    
+    \begin{alertblock}{Common Application Vulnerabilities}
+        Injection attacks, broken authentication, sensitive data exposure, XML external entities, broken access control, security misconfigurations, and cross-site scripting (XSS).
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Input Validation: Preventing Injection Attacks}
+    
+    \begin{itemize}
+        \item \textbf{Input validation} ensures that application data meets expected formats and constraints before processing.
+        \item Server-side validation is critical—client-side validation can be easily bypassed by attackers.
+        \item Implement both "allow list" (explicitly approve valid input) and "deny list" (reject known bad input) approaches.
+        \item Proper input validation helps prevent SQL injection, command injection, and cross-site scripting attacks.
+    \end{itemize}
+    
+    \begin{exampleblock}{Input Validation Techniques}
+        Data type checking, range validation, format validation, length restrictions, and parameterized queries for database operations.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Secure Cookies: Protecting Session Data}
+    
+    \begin{itemize}
+        \item \textbf{Cookies} store session information and user preferences in web applications.
+        \item \textbf{Secure cookies} are transmitted only over encrypted HTTPS connections to prevent interception.
+        \item The HttpOnly flag prevents JavaScript access to cookies, protecting against cross-site scripting attacks.
+        \item SameSite attribute restricts cookie transmission to same-site requests, preventing cross-site request forgery.
+    \end{itemize}
+    
+    \begin{table}
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Cookie Attribute} & \textbf{Security Function} \\
+            \hline
+            Secure & Transmission over HTTPS only \\
+            HttpOnly & Blocks JavaScript access \\
+            SameSite & Controls cross-origin behavior \\
+            Expires/Max-Age & Limits cookie lifetime \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Static Code Analysis: Finding Vulnerabilities Before Deployment}
+    
+    \begin{itemize}
+        \item \textbf{Static code analysis} examines source code without executing it to identify potential security vulnerabilities.
+        \item Static analysis tools can detect issues like buffer overflows, SQL injection, and insecure cryptographic implementations.
+        \item Analysis should be integrated into the development pipeline for early detection and remediation.
+        \item False positives require human review to determine actual security impact and appropriate response.
+    \end{itemize}
+    
+    \begin{block}{Static Analysis Benefits}
+        Scales to large codebases, finds vulnerabilities early in development, enforces coding standards, and provides consistent application of security rules.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Code Signing: Ensuring Software Integrity}
+    
+    \begin{itemize}
+        \item \textbf{Code signing} uses digital signatures to verify the authenticity and integrity of software.
+        \item Signed applications provide assurance that code has not been modified since it was signed by the developer.
+        \item Code signing relies on public key infrastructure (PKI) and trusted certificate authorities.
+        \item Operating systems and browsers use code signatures to verify application trustworthiness.
+    \end{itemize}
+    
+    \begin{alertblock}{Code Signing Process}
+        \begin{enumerate}
+            \item Developer obtains a code signing certificate from a trusted authority
+            \item Developer creates a cryptographic hash of the software
+            \item Hash is encrypted with the developer's private key
+            \item Signature is verified using the developer's public key
+        \end{enumerate}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sandboxing: Isolating Applications for Security}
+    
+    \begin{itemize}
+        \item \textbf{Sandboxing} creates isolated environments where applications can run with limited access to system resources.
+        \item Sandboxes contain potential damage from malicious or vulnerable applications by restricting their capabilities.
+        \item Modern web browsers sandbox each tab to prevent malicious websites from affecting the system or other tabs.
+        \item Containerization technologies like Docker implement sandbox-like isolation for applications.
+    \end{itemize}
+    
+    \begin{exampleblock}{Sandbox Implementation Methods}
+        Virtual machines, containers, application virtualization, browser sandboxes, and operating system security features like seccomp on Linux.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion: Building a Comprehensive Security Strategy}
+    
+    \begin{itemize}
+        \item Security must be approached holistically, considering all computing resources and their interconnections.
+        \item Defense in depth implements multiple security layers to protect against various threats and attack vectors.
+        \item Balance security requirements with operational needs, user experience, and resource constraints.
+        \item Effective security requires ongoing vigilance: regularly review, test, and update security controls as threats evolve.
+    \end{itemize}
+    
+    \begin{alertblock}{Key Takeaway}
+        Security is not a product but a process—it requires continuous improvement, adaptation to new threats, and integration into all aspects of computing resource management.
+    \end{alertblock}
+\end{frame}
+
+
+\end{document}
