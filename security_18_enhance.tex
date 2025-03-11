@@ -16,10 +16,10 @@
 
 \begin{frame}{Understanding Enterprise Security: Protecting Digital Assets}
 \begin{itemize}
-    \item \textbf{Enterprise security} is the comprehensive protection of an organization's digital and physical assets from threats.
-    \item Organizations face increasing threats from malware, hackers, insider threats, and social engineering attacks.
-    \item Security breaches can result in financial loss, reputational damage, and legal consequences.
-    \item An effective security strategy requires multiple layers of protection working together.
+\item \textbf{Enterprise security} is the comprehensive protection of an organization's digital and physical assets from threats.
+\item Organizations face increasing threats from malware, hackers, insider threats, and social engineering attacks.
+\item Security breaches can result in financial loss, reputational damage, and legal consequences.
+\item An effective security strategy requires multiple layers of protection working together.
 \end{itemize}
 
 \begin{block}{Key Question}
@@ -29,10 +29,10 @@ How can we modify existing enterprise capabilities to create a stronger security
 
 \begin{frame}{Security Mindset: Thinking Like Both Defender and Attacker}
 \begin{itemize}
-    \item Effective security requires understanding how attackers identify and exploit vulnerabilities.
-    \item \textbf{Defense in depth} means implementing multiple security controls to protect a single asset.
-    \item Security is a continuous process of assessment, implementation, monitoring, and improvement.
-    \item The goal is not perfect security, but rather appropriate risk management based on threat models.
+\item Effective security requires understanding how attackers identify and exploit vulnerabilities.
+\item \textbf{Defense in depth} means implementing multiple security controls to protect a single asset.
+\item Security is a continuous process of assessment, implementation, monitoring, and improvement.
+\item The goal is not perfect security, but rather appropriate risk management based on threat models.
 \end{itemize}
 
 \begin{alertblock}{Important Concept}
@@ -42,578 +42,578 @@ The security mindset involves constantly asking: "What could go wrong?" and "How
 
 \begin{frame}{Key Security Principles: CIA Triad and Defense in Depth}
 \begin{itemize}
-    \item The \textbf{CIA triad} defines the three core goals of information security: Confidentiality, Integrity, and Availability.
-    \item \textbf{Confidentiality} ensures that information is accessible only to those authorized to have access.
-    \item \textbf{Integrity} maintains and assures the accuracy and consistency of data over its entire lifecycle.
-    \item \textbf{Availability} ensures that information is accessible when needed by authorized users.
+\item The \textbf{CIA triad} defines the three core goals of information security: Confidentiality, Integrity, and Availability.
+\item \textbf{Confidentiality} ensures that information is accessible only to those authorized to have access.
+\item \textbf{Integrity} maintains and assures the accuracy and consistency of data over its entire lifecycle.
+\item \textbf{Availability} ensures that information is accessible when needed by authorized users.
 \end{itemize}
 
 \begin{alertblock}{Defense in Depth Layers}
 \begin{enumerate}
-    \item Physical security (barriers, locks, guards)
-    \item Network security (firewalls, IDS/IPS, VPNs)
-    \item System security (OS hardening, patching)
-    \item Application security (secure coding, authentication)
-    \item Data security (encryption, access controls)
+\item Physical security (barriers, locks, guards)
+\item Network security (firewalls, IDS/IPS, VPNs)
+\item System security (OS hardening, patching)
+\item Application security (secure coding, authentication)
+\item Data security (encryption, access controls)
 \end{enumerate}
 \end{alertblock}
 \end{frame}
 
 \begin{frame}{Firewalls: Your First Line of Defense}
-    \begin{itemize}
-        \item A \textbf{firewall} is a network security device that monitors and filters incoming and outgoing network traffic.
-        \item Firewalls operate at different layers of the OSI model, with packet filtering at layer 3 and application filtering at layer 7.
-        \item Modern firewalls can inspect traffic contents to identify and block specific threats (deep packet inspection).
-        \item Firewalls create boundaries between trusted and untrusted networks to control information flow.
-    \end{itemize}
-    
-    \begin{table}
-    \begin{tabular}{lll}
-    \textbf{Firewall Type} & \textbf{OSI Layer} & \textbf{Primary Function} \\
-    Packet Filter & 3-4 & Basic traffic filtering \\
-    Stateful & 3-4 & Connection tracking \\
-    Application & 7 & Content analysis \\
-    Next-Generation & 3-7 & Integrated security \\
-    \end{tabular}
-    \end{table}
-    \end{frame}
-    
-    \begin{frame}{Understanding Ports and Protocols: The Language of Network Traffic}
-    \begin{itemize}
-        \item \textbf{Ports} are logical endpoints that identify specific services on a networked device (ranging from 0-65535).
-        \item \textbf{Protocols} define the rules and formats for exchanging data between networked devices.
-        \item Common protocols include TCP (connection-oriented), UDP (connectionless), HTTP (web), and HTTPS (secure web).
-        \item Security requires knowing which ports and protocols should be allowed and which should be blocked.
-    \end{itemize}
-    
-    \begin{exampleblock}{Common Secure vs. Insecure Protocols}
-    \begin{tabular}{ll}
-    \textbf{Insecure} & \textbf{Secure Alternative} \\
-    HTTP (80) & HTTPS (443) \\
-    Telnet (23) & SSH (22) \\
-    FTP (21) & SFTP (22) \\
-    SMTP (25) & SMTPS (465) \\
-    \end{tabular}
-    \end{exampleblock}
-    \end{frame}
+\begin{itemize}
+\item A \textbf{firewall} is a network security device that monitors and filters incoming and outgoing network traffic.
+\item Firewalls operate at different layers of the OSI model, with packet filtering at layer 3 and application filtering at layer 7.
+\item Modern firewalls can inspect traffic contents to identify and block specific threats (deep packet inspection).
+\item Firewalls create boundaries between trusted and untrusted networks to control information flow.
+\end{itemize}
 
-    \begin{frame}{Firewall Configuration: Dunder Mifflin Paper Company}
-        \begin{itemize}
-            \item Dunder Mifflin needs to protect its customer database and sales records while allowing employees to access resources.
-            \item The IT department (led reluctantly by Dwight) implements a firewall separating the sales network from the warehouse network.
-            \item Specific firewall rules allow salespeople to access the CRM system, but prevent unauthorized access to HR records.
-            \item After Michael accidentally emails a client list to a competitor, outbound data filtering rules are added to prevent similar incidents.
-        \end{itemize}
-        
-        \begin{alertblock}{Dunder Mifflin's Firewall Rules}
-        \begin{itemize}
-            \item Allow sales staff access to CRM from 8am-7pm only
-            \item Block social media except during lunch hours (Ryan repeatedly bypasses this)
-            \item Restrict access to accounting servers to accounting department IPs
-            \item Block all traffic from Staples and Office Depot IP ranges (Michael's request)
-        \end{itemize}
-        \end{alertblock}
-        \end{frame}
-    
-    \begin{frame}{Screened Subnets: Creating Security Zones in Your Network}
-    \begin{itemize}
-        \item A \textbf{screened subnet} (also called DMZ) is a network segment that acts as a buffer zone between trusted and untrusted networks.
-        \item Servers that need external access (web, email, DNS) are placed in the DMZ to limit exposure.
-        \item Multiple firewalls create boundaries between the internet, DMZ, and internal network.
-        \item This architecture contains breaches, preventing direct access to internal resources if DMZ systems are compromised.
-    \end{itemize}
-    
-    \begin{block}{Zone-Based Security Model}
-    The network is divided into security zones (Internet, DMZ, Internal) with distinct trust levels, and traffic between zones is tightly controlled by firewall policies.
-    \end{block}
-    \end{frame}
-    
-    \begin{frame}{Writing Effective Firewall Rules: Best Practices}
-    \begin{itemize}
-        \item \textbf{Firewall rules} define what traffic is allowed or denied based on source, destination, and service.
-        \item Rules should follow the principle of least privilege, allowing only necessary traffic.
-        \item Rule order matters—most firewalls process rules sequentially until a match is found.
-        \item Regular rule review and cleanup prevents rule bloat and potential security gaps.
-    \end{itemize}
-    
-    \begin{exampleblock}{Example Rule Logic}
-    "Allow HTTP and HTTPS traffic from the internal network to the web server, but deny all other traffic to that server."
-    \end{exampleblock}
-    \end{frame}
-    
-    \begin{frame}{Access Control Lists (ACLs): Who Gets In and Who Doesn't}
-    \begin{itemize}
-        \item \textbf{Access Control Lists (ACLs)} are ordered sets of rules that determine which traffic is permitted or denied.
-        \item ACLs filter traffic based on various criteria like IP addresses, ports, protocols, and traffic direction.
-        \item Standard ACLs filter based on source address only, while extended ACLs can filter on multiple criteria.
-        \item Well-designed ACLs balance security requirements with operational needs of the organization.
-    \end{itemize}
-    
-    \begin{block}{ACL Best Practices}
-    Create specific rather than general rules, place most frequently matched rules first (when possible), and document the purpose of each rule.
-    \end{block}
-    \end{frame}
+\begin{table}
+\begin{tabular}{lll}
+\textbf{Firewall Type} & \textbf{OSI Layer} & \textbf{Primary Function} \\
+Packet Filter & 3-4 & Basic traffic filtering \\
+Stateful & 3-4 & Connection tracking \\
+Application & 7 & Content analysis \\
+Next-Generation & 3-7 & Integrated security \\
+\end{tabular}
+\end{table}
+\end{frame}
 
-    \begin{frame}{IDS vs. IPS: Detection and Active Response}
-        \begin{itemize}
-            \item An \textbf{Intrusion Detection System (IDS)} monitors network traffic for suspicious activity and alerts security teams.
-            \item An \textbf{Intrusion Prevention System (IPS)} actively blocks detected threats in addition to alerting.
-            \item Both systems can be network-based (monitoring traffic) or host-based (monitoring system activities).
-            \item Modern solutions often combine IDS/IPS functionality with other security controls into unified platforms.
-        \end{itemize}
-        
-        \begin{tabular}{lll}
-        \textbf{Feature} & \textbf{IDS} & \textbf{IPS} \\
-        \hline
-        Placement & Mirror/Span Port & Inline \\
-        Response & Passive (Alerts) & Active (Blocks) \\
-        Latency & Low Impact & Potential Impact \\
-        False Positive Risk & Detection Only & Potential Disruption \\
-        \end{tabular}
-        \end{frame}
-        
-        \begin{frame}{Tracking Attack Trends: Staying Ahead of Threats}
-        \begin{itemize}
-            \item \textbf{Attack trends} are patterns in cyber attacks over time, showing evolving tactics and targets.
-            \item Understanding trends helps organizations prioritize security resources and controls.
-            \item Threat intelligence feeds provide information about emerging threats and attack methodologies.
-            \item IDS/IPS systems must be regularly updated to detect the latest attack patterns.
-        \end{itemize}
-        
-        \begin{alertblock}{Recent Attack Trends}
-        Ransomware attacks, supply chain compromises, zero-day exploits, and credential-based attacks have seen significant increases in recent years.
-        \end{alertblock}
-        \end{frame}
-        
-        \begin{frame}{Signature-Based Detection: Recognizing Known Threats}
-        \begin{itemize}
-            \item \textbf{Signature-based detection} identifies threats by matching traffic patterns against a database of known attack signatures.
-            \item Signatures can include specific byte sequences, known malicious IP addresses, or suspicious packet structures.
-            \item This detection method is very effective against known threats but cannot detect novel attacks (zero-days).
-            \item Regular signature updates are essential to maintain protection against new threats.
-        \end{itemize}
-        
-        \begin{block}{Beyond Signatures}
-        \begin{itemize}
-            \item \textbf{Anomaly detection}: Identifies deviations from normal behavior
-            \item \textbf{Heuristic analysis}: Uses rules and algorithms to detect suspicious behavior
-            \item \textbf{Behavioral analysis}: Learns normal patterns and flags exceptions
-        \end{itemize}
-        \end{block}
-        \end{frame}
+\begin{frame}{Understanding Ports and Protocols: The Language of Network Traffic}
+\begin{itemize}
+\item \textbf{Ports} are logical endpoints that identify specific services on a networked device (ranging from 0-65535).
+\item \textbf{Protocols} define the rules and formats for exchanging data between networked devices.
+\item Common protocols include TCP (connection-oriented), UDP (connectionless), HTTP (web), and HTTPS (secure web).
+\item Security requires knowing which ports and protocols should be allowed and which should be blocked.
+\end{itemize}
 
-        \begin{frame}{IDS Implementation: Pawnee Parks Department}
-            \begin{itemize}
-                \item The Pawnee Parks Department installs an IDS after Ron discovers unauthorized access to park planning documents.
-                \item The system monitors network traffic for suspicious patterns that might indicate unauthorized access attempts.
-                \item When April accidentally runs a port scan while trying to install a game, the IDS alerts the IT department.
-                \item Leslie requests regular reports on detected threats to demonstrate the department's commitment to cybersecurity.
-            \end{itemize}
-            
-            \begin{exampleblock}{Recent IDS Alert: "Gryzzl" Data Mining Attempt}
-            The Pawnee Parks Department IDS detected unusual scanning activity from IP addresses belonging to Gryzzl, a tech company interested in Pawnee real estate data. The scanning targeted citizen records databases, attempting to access personal information about residents near potential development sites.
-            \end{exampleblock}
-            \end{frame}
-        
-        \begin{frame}{Web Filtering Approaches: Agent-Based vs. Centralized Proxy}
-        \begin{itemize}
-            \item \textbf{Web filtering} technologies restrict access to websites based on content, security risk, or organizational policies.
-            \item \textbf{Agent-based filtering} installs software on individual devices to enforce browsing policies locally.
-            \item \textbf{Centralized proxy filtering} routes all web traffic through a proxy server that applies filtering policies.
-            \item Each approach has trade-offs in terms of management complexity, effectiveness for remote users, and performance impact.
-        \end{itemize}
-        
-        \begin{exampleblock}{Comparison of Approaches}
-        \begin{itemize}
-            \item \textbf{Agent-Based}: Better for mobile/remote users; challenging to maintain across diverse devices
-            \item \textbf{Centralized Proxy}: Easier central management; potential single point of failure
-            \item \textbf{Hybrid}: Combines both approaches for comprehensive coverage
-        \end{itemize}
-        \end{exampleblock}
-        \end{frame}
+\begin{exampleblock}{Common Secure vs. Insecure Protocols}
+\begin{tabular}{ll}
+\textbf{Insecure} & \textbf{Secure Alternative} \\
+HTTP (80) & HTTPS (443) \\
+Telnet (23) & SSH (22) \\
+FTP (21) & SFTP (22) \\
+SMTP (25) & SMTPS (465) \\
+\end{tabular}
+\end{exampleblock}
+\end{frame}
 
-        \begin{frame}{URL Scanning and Content Categorization: What's Safe and What's Not}
-            \begin{itemize}
-                \item \textbf{URL scanning} examines web addresses to identify potentially malicious websites before connection.
-                \item \textbf{Content categorization} classifies websites into categories (e.g., social media, gambling, news) for policy enforcement.
-                \item Dynamic categorization updates continuously as new websites emerge and existing ones change.
-                \item Organizations create web access policies based on these categories to align with business needs and security requirements.
-            \end{itemize}
-            
-            \begin{block}{Common Content Categories}
-            Business, Education, Entertainment, Finance, Gambling, Games, Government, Health, News, Shopping, Social Media, Sports, Technology, Travel, Weapons
-            \end{block}
-            \end{frame}
-            
-            \begin{frame}{Block Rules and Reputation Systems: Making Smart Filtering Decisions}
-            \begin{itemize}
-                \item \textbf{Block rules} define which web content is prohibited based on categories, keywords, or specific URLs.
-                \item \textbf{Reputation systems} score websites based on historical behavior, ownership, age, and security incidents.
-                \item Low-reputation sites are more likely to contain malware or engage in phishing even if their content seems legitimate.
-                \item Effective filtering combines multiple technologies: categorization, reputation, and real-time content analysis.
-            \end{itemize}
-            
-            \begin{alertblock}{Warning Signs of Malicious Websites}
-            Recently registered domains, misspelled brand names, unusual TLDs, sites requesting excessive permissions, and poor reputation scores are common indicators of potentially malicious websites.
-            \end{alertblock}
-            \end{frame}
-            
-            \begin{frame}{Hardening the OS: Removing Unnecessary Services}
-            \begin{itemize}
-                \item \textbf{OS hardening} is the process of securing an operating system by reducing its attack surface.
-                \item Unnecessary services, applications, and features provide potential entry points for attackers.
-                \item Each running service increases the number of potential vulnerabilities in a system.
-                \item Minimizing installed components and disabling unused services follows the principle of least functionality.
-            \end{itemize}
-            
-            \begin{exampleblock}{OS Hardening Checklist}
-            \begin{itemize}
-                \item Remove or disable unnecessary services and applications
-                \item Apply all security patches and updates
-                \item Configure strong authentication mechanisms
-                \item Implement the principle of least privilege for accounts
-                \item Set up system logging and monitoring
-            \end{itemize}
-            \end{exampleblock}
-            \end{frame}
-            
-            \begin{frame}{Group Policy: Centralized Configuration Management}
-            \begin{itemize}
-                \item \textbf{Group Policy} is a Windows feature that provides centralized configuration management for users and computers.
-                \item Administrators can define security settings once and apply them across the organization.
-                \item Policies can enforce password requirements, software restrictions, security configurations, and access controls.
-                \item Group Policy Objects (GPOs) are applied hierarchically through Active Directory organizational units.
-            \end{itemize}
-            
-            \begin{block}{Key Security Policies to Implement}
-            \begin{itemize}
-                \item Account lockout after failed login attempts
-                \item Password complexity and aging requirements
-                \item Application execution controls (AppLocker)
-                \item Endpoint firewall configuration
-                \item User rights assignments
-            \end{itemize}
-            \end{block}
-            \end{frame}
+\begin{frame}{Firewall Configuration: Dunder Mifflin Paper Company}
+\begin{itemize}
+\item Dunder Mifflin needs to protect its customer database and sales records while allowing employees to access resources.
+\item The IT department (led reluctantly by Dwight) implements a firewall separating the sales network from the warehouse network.
+\item Specific firewall rules allow salespeople to access the CRM system, but prevent unauthorized access to HR records.
+\item After Michael accidentally emails a client list to a competitor, outbound data filtering rules are added to prevent similar incidents.
+\end{itemize}
 
-            \begin{frame}{SELinux: Mandatory Access Controls for Linux Systems}
-                \begin{itemize}
-                    \item \textbf{SELinux} (Security-Enhanced Linux) is a security architecture that implements mandatory access controls in Linux.
-                    \item Traditional discretionary access controls rely solely on file permissions and ownership.
-                    \item SELinux adds context-based controls where access depends on the security context of processes and resources.
-                    \item This provides protection against privilege escalation attacks and restricts what compromised applications can access.
-                \end{itemize}
-                
-                \begin{alertblock}{SELinux Modes}
-                \begin{itemize}
-                    \item \textbf{Enforcing}: All violations are denied and logged
-                    \item \textbf{Permissive}: Violations are allowed but logged (testing mode)
-                    \item \textbf{Disabled}: No SELinux protection (not recommended)
-                \end{itemize}
-                \end{alertblock}
-                \end{frame}
-                
-                \begin{frame}{Choosing Secure Protocols: Beyond the Basics}
-                \begin{itemize}
-                    \item \textbf{Secure protocols} protect data confidentiality, integrity, and authenticity during transmission.
-                    \item Choosing the right protocols requires understanding security requirements and implementation constraints.
-                    \item Older protocols often contain vulnerabilities that have been addressed in newer versions.
-                    \item Regular protocol audits ensure deprecated or vulnerable protocols are phased out of the environment.
-                \end{itemize}
-                
-                \begin{tabular}{ll}
-                \textbf{Insecure Protocol} & \textbf{Secure Alternative} \\
-                \hline
-                HTTP & HTTPS (HTTP + TLS) \\
-                FTP & SFTP (SSH File Transfer) \\
-                Telnet & SSH (Secure Shell) \\
-                SNMPv1/v2 & SNMPv3 with authentication \\
-                SMBv1 & SMBv3 with encryption \\
-                SSL/TLS 1.0/1.1 & TLS 1.2 or 1.3 \\
-                \end{tabular}
-                \end{frame}
-                
-                \begin{frame}{Port Selection Strategy: Balancing Security and Functionality}
-                \begin{itemize}
-                    \item \textbf{Port selection} involves choosing which network ports to use for various services and applications.
-                    \item Default ports are well-known and easily targeted (HTTP on 80, SSH on 22, etc.).
-                    \item Non-standard ports can provide a layer of obscurity but don't offer true security by themselves.
-                    \item The principle of least privilege suggests only necessary ports should be opened in the firewall.
-                \end{itemize}
-                
-                \begin{block}{Port Security Considerations}
-                \begin{itemize}
-                    \item Standard ports are easier to use but more obvious targets
-                    \item Non-standard ports may confuse legitimate users
-                    \item Port obfuscation is not a substitute for proper security
-                    \item Always combine port strategy with other security controls
-                \end{itemize}
-                \end{block}
-                \end{frame}
-                
-                \begin{frame}{Transport Methods: Ensuring Data Integrity in Transit}
-                \begin{itemize}
-                    \item \textbf{Transport security} protects data as it moves between systems across potentially untrusted networks.
-                    \item \textbf{TLS} (Transport Layer Security) provides encryption, integrity checks, and authentication for applications.
-                    \item \textbf{VPNs} (Virtual Private Networks) create secure tunnels for transmitting data across public networks.
-                    \item The security of transport methods depends on proper implementation, configuration, and up-to-date cryptographic libraries.
-                \end{itemize}
-                
-                \begin{exampleblock}{TLS Handshake Process}
-                1. Client initiates connection and sends supported cipher suites\\
-                2. Server selects cipher suite and sends certificate\\
-                3. Client verifies certificate and generates session key\\
-                4. Both sides confirm secure connection established\\
-                5. Encrypted data transmission begins
-                \end{exampleblock}
-                \end{frame}
+\begin{alertblock}{Dunder Mifflin's Firewall Rules}
+\begin{itemize}
+\item Allow sales staff access to CRM from 8am-7pm only
+\item Block social media except during lunch hours (Ryan repeatedly bypasses this)
+\item Restrict access to accounting servers to accounting department IPs
+\item Block all traffic from Staples and Office Depot IP ranges (Michael's request)
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Screened Subnets: Creating Security Zones in Your Network}
+\begin{itemize}
+\item A \textbf{screened subnet} (also called DMZ) is a network segment that acts as a buffer zone between trusted and untrusted networks.
+\item Servers that need external access (web, email, DNS) are placed in the DMZ to limit exposure.
+\item Multiple firewalls create boundaries between the internet, DMZ, and internal network.
+\item This architecture contains breaches, preventing direct access to internal resources if DMZ systems are compromised.
+\end{itemize}
+
+\begin{block}{Zone-Based Security Model}
+The network is divided into security zones (Internet, DMZ, Internal) with distinct trust levels, and traffic between zones is tightly controlled by firewall policies.
+\end{block}
+\end{frame}
+
+\begin{frame}{Writing Effective Firewall Rules: Best Practices}
+\begin{itemize}
+\item \textbf{Firewall rules} define what traffic is allowed or denied based on source, destination, and service.
+\item Rules should follow the principle of least privilege, allowing only necessary traffic.
+\item Rule order matters—most firewalls process rules sequentially until a match is found.
+\item Regular rule review and cleanup prevents rule bloat and potential security gaps.
+\end{itemize}
+
+\begin{exampleblock}{Example Rule Logic}
+"Allow HTTP and HTTPS traffic from the internal network to the web server, but deny all other traffic to that server."
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Access Control Lists (ACLs): Who Gets In and Who Doesn't}
+\begin{itemize}
+\item \textbf{Access Control Lists (ACLs)} are ordered sets of rules that determine which traffic is permitted or denied.
+\item ACLs filter traffic based on various criteria like IP addresses, ports, protocols, and traffic direction.
+\item Standard ACLs filter based on source address only, while extended ACLs can filter on multiple criteria.
+\item Well-designed ACLs balance security requirements with operational needs of the organization.
+\end{itemize}
+
+\begin{block}{ACL Best Practices}
+Create specific rather than general rules, place most frequently matched rules first (when possible), and document the purpose of each rule.
+\end{block}
+\end{frame}
+
+\begin{frame}{IDS vs. IPS: Detection and Active Response}
+\begin{itemize}
+\item An \textbf{Intrusion Detection System (IDS)} monitors network traffic for suspicious activity and alerts security teams.
+\item An \textbf{Intrusion Prevention System (IPS)} actively blocks detected threats in addition to alerting.
+\item Both systems can be network-based (monitoring traffic) or host-based (monitoring system activities).
+\item Modern solutions often combine IDS/IPS functionality with other security controls into unified platforms.
+\end{itemize}
+
+\begin{tabular}{lll}
+\textbf{Feature} & \textbf{IDS} & \textbf{IPS} \\
+\hline
+Placement & Mirror/Span Port & Inline \\
+Response & Passive (Alerts) & Active (Blocks) \\
+Latency & Low Impact & Potential Impact \\
+False Positive Risk & Detection Only & Potential Disruption \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Tracking Attack Trends: Staying Ahead of Threats}
+\begin{itemize}
+\item \textbf{Attack trends} are patterns in cyber attacks over time, showing evolving tactics and targets.
+\item Understanding trends helps organizations prioritize security resources and controls.
+\item Threat intelligence feeds provide information about emerging threats and attack methodologies.
+\item IDS/IPS systems must be regularly updated to detect the latest attack patterns.
+\end{itemize}
+
+\begin{alertblock}{Recent Attack Trends}
+Ransomware attacks, supply chain compromises, zero-day exploits, and credential-based attacks have seen significant increases in recent years.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Signature-Based Detection: Recognizing Known Threats}
+\begin{itemize}
+\item \textbf{Signature-based detection} identifies threats by matching traffic patterns against a database of known attack signatures.
+\item Signatures can include specific byte sequences, known malicious IP addresses, or suspicious packet structures.
+\item This detection method is very effective against known threats but cannot detect novel attacks (zero-days).
+\item Regular signature updates are essential to maintain protection against new threats.
+\end{itemize}
+
+\begin{block}{Beyond Signatures}
+\begin{itemize}
+\item \textbf{Anomaly detection}: Identifies deviations from normal behavior
+\item \textbf{Heuristic analysis}: Uses rules and algorithms to detect suspicious behavior
+\item \textbf{Behavioral analysis}: Learns normal patterns and flags exceptions
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{IDS Implementation: Pawnee Parks Department}
+\begin{itemize}
+\item The Pawnee Parks Department installs an IDS after Ron discovers unauthorized access to park planning documents.
+\item The system monitors network traffic for suspicious patterns that might indicate unauthorized access attempts.
+\item When April accidentally runs a port scan while trying to install a game, the IDS alerts the IT department.
+\item Leslie requests regular reports on detected threats to demonstrate the department's commitment to cybersecurity.
+\end{itemize}
+
+\begin{exampleblock}{Recent IDS Alert: "Gryzzl" Data Mining Attempt}
+The Pawnee Parks Department IDS detected unusual scanning activity from IP addresses belonging to Gryzzl, a tech company interested in Pawnee real estate data. The scanning targeted citizen records databases, attempting to access personal information about residents near potential development sites.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Web Filtering Approaches: Agent-Based vs. Centralized Proxy}
+\begin{itemize}
+\item \textbf{Web filtering} technologies restrict access to websites based on content, security risk, or organizational policies.
+\item \textbf{Agent-based filtering} installs software on individual devices to enforce browsing policies locally.
+\item \textbf{Centralized proxy filtering} routes all web traffic through a proxy server that applies filtering policies.
+\item Each approach has trade-offs in terms of management complexity, effectiveness for remote users, and performance impact.
+\end{itemize}
+
+\begin{exampleblock}{Comparison of Approaches}
+\begin{itemize}
+\item \textbf{Agent-Based}: Better for mobile/remote users; challenging to maintain across diverse devices
+\item \textbf{Centralized Proxy}: Easier central management; potential single point of failure
+\item \textbf{Hybrid}: Combines both approaches for comprehensive coverage
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{URL Scanning and Content Categorization: What's Safe and What's Not}
+\begin{itemize}
+\item \textbf{URL scanning} examines web addresses to identify potentially malicious websites before connection.
+\item \textbf{Content categorization} classifies websites into categories (e.g., social media, gambling, news) for policy enforcement.
+\item Dynamic categorization updates continuously as new websites emerge and existing ones change.
+\item Organizations create web access policies based on these categories to align with business needs and security requirements.
+\end{itemize}
+
+\begin{block}{Common Content Categories}
+Business, Education, Entertainment, Finance, Gambling, Games, Government, Health, News, Shopping, Social Media, Sports, Technology, Travel, Weapons
+\end{block}
+\end{frame}
+
+\begin{frame}{Block Rules and Reputation Systems: Making Smart Filtering Decisions}
+\begin{itemize}
+\item \textbf{Block rules} define which web content is prohibited based on categories, keywords, or specific URLs.
+\item \textbf{Reputation systems} score websites based on historical behavior, ownership, age, and security incidents.
+\item Low-reputation sites are more likely to contain malware or engage in phishing even if their content seems legitimate.
+\item Effective filtering combines multiple technologies: categorization, reputation, and real-time content analysis.
+\end{itemize}
+
+\begin{alertblock}{Warning Signs of Malicious Websites}
+Recently registered domains, misspelled brand names, unusual TLDs, sites requesting excessive permissions, and poor reputation scores are common indicators of potentially malicious websites.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Hardening the OS: Removing Unnecessary Services}
+\begin{itemize}
+\item \textbf{OS hardening} is the process of securing an operating system by reducing its attack surface.
+\item Unnecessary services, applications, and features provide potential entry points for attackers.
+\item Each running service increases the number of potential vulnerabilities in a system.
+\item Minimizing installed components and disabling unused services follows the principle of least functionality.
+\end{itemize}
+
+\begin{exampleblock}{OS Hardening Checklist}
+\begin{itemize}
+\item Remove or disable unnecessary services and applications
+\item Apply all security patches and updates
+\item Configure strong authentication mechanisms
+\item Implement the principle of least privilege for accounts
+\item Set up system logging and monitoring
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Group Policy: Centralized Configuration Management}
+\begin{itemize}
+\item \textbf{Group Policy} is a Windows feature that provides centralized configuration management for users and computers.
+\item Administrators can define security settings once and apply them across the organization.
+\item Policies can enforce password requirements, software restrictions, security configurations, and access controls.
+\item Group Policy Objects (GPOs) are applied hierarchically through Active Directory organizational units.
+\end{itemize}
+
+\begin{block}{Key Security Policies to Implement}
+\begin{itemize}
+\item Account lockout after failed login attempts
+\item Password complexity and aging requirements
+\item Application execution controls (AppLocker)
+\item Endpoint firewall configuration
+\item User rights assignments
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{SELinux: Mandatory Access Controls for Linux Systems}
+\begin{itemize}
+\item \textbf{SELinux} (Security-Enhanced Linux) is a security architecture that implements mandatory access controls in Linux.
+\item Traditional discretionary access controls rely solely on file permissions and ownership.
+\item SELinux adds context-based controls where access depends on the security context of processes and resources.
+\item This provides protection against privilege escalation attacks and restricts what compromised applications can access.
+\end{itemize}
+
+\begin{alertblock}{SELinux Modes}
+\begin{itemize}
+\item \textbf{Enforcing}: All violations are denied and logged
+\item \textbf{Permissive}: Violations are allowed but logged (testing mode)
+\item \textbf{Disabled}: No SELinux protection (not recommended)
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Choosing Secure Protocols: Beyond the Basics}
+\begin{itemize}
+\item \textbf{Secure protocols} protect data confidentiality, integrity, and authenticity during transmission.
+\item Choosing the right protocols requires understanding security requirements and implementation constraints.
+\item Older protocols often contain vulnerabilities that have been addressed in newer versions.
+\item Regular protocol audits ensure deprecated or vulnerable protocols are phased out of the environment.
+\end{itemize}
+
+\begin{tabular}{ll}
+\textbf{Insecure Protocol} & \textbf{Secure Alternative} \\
+\hline
+HTTP & HTTPS (HTTP + TLS) \\
+FTP & SFTP (SSH File Transfer) \\
+Telnet & SSH (Secure Shell) \\
+SNMPv1/v2 & SNMPv3 with authentication \\
+SMBv1 & SMBv3 with encryption \\
+SSL/TLS 1.0/1.1 & TLS 1.2 or 1.3 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Port Selection Strategy: Balancing Security and Functionality}
+\begin{itemize}
+\item \textbf{Port selection} involves choosing which network ports to use for various services and applications.
+\item Default ports are well-known and easily targeted (HTTP on 80, SSH on 22, etc.).
+\item Non-standard ports can provide a layer of obscurity but don't offer true security by themselves.
+\item The principle of least privilege suggests only necessary ports should be opened in the firewall.
+\end{itemize}
+
+\begin{block}{Port Security Considerations}
+\begin{itemize}
+\item Standard ports are easier to use but more obvious targets
+\item Non-standard ports may confuse legitimate users
+\item Port obfuscation is not a substitute for proper security
+\item Always combine port strategy with other security controls
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Transport Methods: Ensuring Data Integrity in Transit}
+\begin{itemize}
+\item \textbf{Transport security} protects data as it moves between systems across potentially untrusted networks.
+\item \textbf{TLS} (Transport Layer Security) provides encryption, integrity checks, and authentication for applications.
+\item \textbf{VPNs} (Virtual Private Networks) create secure tunnels for transmitting data across public networks.
+\item The security of transport methods depends on proper implementation, configuration, and up-to-date cryptographic libraries.
+\end{itemize}
+
+\begin{exampleblock}{TLS Handshake Process}
+1. Client initiates connection and sends supported cipher suites\\
+2. Server selects cipher suite and sends certificate\\
+3. Client verifies certificate and generates session key\\
+4. Both sides confirm secure connection established\\
+5. Encrypted data transmission begins
+\end{exampleblock}
+\end{frame}
 
 
-                \begin{frame}{DNS Filtering: Blocking Malicious Domains}
-                    \begin{itemize}
-                        \item \textbf{DNS filtering} inspects and controls DNS queries to prevent connections to malicious or unauthorized domains.
-                        \item When a user attempts to visit a blocked domain, the DNS resolver returns an alternative response instead of the real IP address.
-                        \item This technology can block malware command and control servers, phishing sites, and policy-restricted content.
-                        \item DNS filtering provides an additional security layer that works regardless of which browser or application is used.
-                    \end{itemize}
-                    
-                    \begin{alertblock}{DNS Security Benefits}
-                    DNS filtering catches threats early in the connection process, before any malicious content is downloaded or credentials are submitted to phishing sites.
-                    \end{alertblock}
-                    \end{frame}
-                    
-                    \begin{frame}{Email Security Framework: SPF, DKIM, and DMARC}
-                    \begin{itemize}
-                        \item \textbf{SPF} (Sender Policy Framework) verifies that email servers are authorized to send mail for your domain.
-                        \item \textbf{DKIM} (DomainKeys Identified Mail) adds a digital signature to verify email hasn't been tampered with in transit.
-                        \item \textbf{DMARC} (Domain-based Message Authentication, Reporting \& Conformance) ties SPF and DKIM together with policy enforcement.
-                        \item These technologies work together to prevent email spoofing and provide visibility into email authentication failures.
-                    \end{itemize}
-                    
-                    \begin{block}{DMARC Policy Options}
-                    \begin{itemize}
-                        \item \textbf{None (p=none)}: Monitor mode without enforcement
-                        \item \textbf{Quarantine (p=quarantine)}: Mark suspicious emails as spam
-                        \item \textbf{Reject (p=reject)}: Block non-compliant emails entirely
-                    \end{itemize}
-                    \end{block}
-                    \end{frame}
-                    
-                    \begin{frame}{Email Gateways: Your Mail Room Security Guards}
-                    \begin{itemize}
-                        \item An \textbf{email security gateway} inspects all incoming and outgoing messages for threats and policy violations.
-                        \item Modern gateways use multiple detection techniques: signature matching, URL filtering, sandboxing, and behavior analysis.
-                        \item Content filtering capabilities can identify and block sensitive information from leaving the organization.
-                        \item Email remains the primary attack vector for most organizations, making gateway protection critical.
-                    \end{itemize}
-                    
-                    \begin{exampleblock}{Email Gateway Protection Features}
-                    \begin{itemize}
-                        \item Anti-spam and anti-phishing protection
-                        \item Malware and suspicious attachment scanning
-                        \item URL filtering and time-of-click analysis
-                        \item Data loss prevention for outbound mail
-                        \item Email encryption capabilities
-                    \end{itemize}
-                    \end{exampleblock}
-                    \end{frame}
+\begin{frame}{DNS Filtering: Blocking Malicious Domains}
+\begin{itemize}
+\item \textbf{DNS filtering} inspects and controls DNS queries to prevent connections to malicious or unauthorized domains.
+\item When a user attempts to visit a blocked domain, the DNS resolver returns an alternative response instead of the real IP address.
+\item This technology can block malware command and control servers, phishing sites, and policy-restricted content.
+\item DNS filtering provides an additional security layer that works regardless of which browser or application is used.
+\end{itemize}
 
-                    
+\begin{alertblock}{DNS Security Benefits}
+DNS filtering catches threats early in the connection process, before any malicious content is downloaded or credentials are submitted to phishing sites.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Email Security Framework: SPF, DKIM, and DMARC}
+\begin{itemize}
+\item \textbf{SPF} (Sender Policy Framework) verifies that email servers are authorized to send mail for your domain.
+\item \textbf{DKIM} (DomainKeys Identified Mail) adds a digital signature to verify email hasn't been tampered with in transit.
+\item \textbf{DMARC} (Domain-based Message Authentication, Reporting \& Conformance) ties SPF and DKIM together with policy enforcement.
+\item These technologies work together to prevent email spoofing and provide visibility into email authentication failures.
+\end{itemize}
+
+\begin{block}{DMARC Policy Options}
+\begin{itemize}
+\item \textbf{None (p=none)}: Monitor mode without enforcement
+\item \textbf{Quarantine (p=quarantine)}: Mark suspicious emails as spam
+\item \textbf{Reject (p=reject)}: Block non-compliant emails entirely
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Email Gateways: Your Mail Room Security Guards}
+\begin{itemize}
+\item An \textbf{email security gateway} inspects all incoming and outgoing messages for threats and policy violations.
+\item Modern gateways use multiple detection techniques: signature matching, URL filtering, sandboxing, and behavior analysis.
+\item Content filtering capabilities can identify and block sensitive information from leaving the organization.
+\item Email remains the primary attack vector for most organizations, making gateway protection critical.
+\end{itemize}
+
+\begin{exampleblock}{Email Gateway Protection Features}
+\begin{itemize}
+\item Anti-spam and anti-phishing protection
+\item Malware and suspicious attachment scanning
+\item URL filtering and time-of-click analysis
+\item Data loss prevention for outbound mail
+\item Email encryption capabilities
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
 \begin{frame}{Email Security: Springfield Nuclear Power Plant}
-    \begin{itemize}
-        \item Springfield Nuclear Power Plant struggles with phishing attacks targeting employees with lower security awareness (primarily Homer).
-        \item After an incident where Homer clicked a "Free Donuts" phishing email, Mr. Burns authorizes implementation of SPF, DKIM, and DMARC.
-        \item Email gateway filtering now quarantines suspicious attachments and links before they reach employee inboxes.
-        \item Security awareness training is conducted monthly, with special remedial sessions for repeat offenders (still primarily Homer).
-    \end{itemize}
-    
-    \begin{block}{Springfield Nuclear Email Policy Implementation}
-        \scriptsize
-    \begin{tabular}{ll}
-    \textbf{Before Controls} & \textbf{After Controls} \\
-    \hline
-    12 successful phishing attacks & 0 successful phishing attacks \\
-    3 malware infections via email & Email attachments scanned and sandboxed \\
-    Reactor schematics leaked & DLP blocks sensitive document transmission \\
-    No email authentication & SPF, DKIM, and DMARC enforced \\
-    \end{tabular}
-    \end{block}
+\begin{itemize}
+\item Springfield Nuclear Power Plant struggles with phishing attacks targeting employees with lower security awareness (primarily Homer).
+\item After an incident where Homer clicked a "Free Donuts" phishing email, Mr. Burns authorizes implementation of SPF, DKIM, and DMARC.
+\item Email gateway filtering now quarantines suspicious attachments and links before they reach employee inboxes.
+\item Security awareness training is conducted monthly, with special remedial sessions for repeat offenders (still primarily Homer).
+\end{itemize}
+
+\begin{block}{Springfield Nuclear Email Policy Implementation}
+\scriptsize
+\begin{tabular}{ll}
+\textbf{Before Controls} & \textbf{After Controls} \\
+\hline
+12 successful phishing attacks & 0 successful phishing attacks \\
+3 malware infections via email & Email attachments scanned and sandboxed \\
+Reactor schematics leaked & DLP blocks sensitive document transmission \\
+No email authentication & SPF, DKIM, and DMARC enforced \\
+\end{tabular}
+\end{block}
 
 \end{frame}
-                    
-                    \begin{frame}{File Integrity Monitoring: Detecting Unauthorized Changes}
-                    \begin{itemize}
-                        \item \textbf{File Integrity Monitoring (FIM)} detects and reports unauthorized modifications to critical system and application files.
-                        \item FIM creates cryptographic hashes of files in their known-good state to serve as a baseline.
-                        \item Regular scans compare current file hashes against the baseline to identify changes.
-                        \item This technology helps detect malware persistence, backdoors, and unauthorized configuration changes.
-                    \end{itemize}
-                    
-                    \begin{alertblock}{Critical Files to Monitor}
-                    \begin{itemize}
-                        \item Operating system files and libraries
-                        \item Application executables and configurations
-                        \item Web server content files
-                        \item Database schema and stored procedures
-                        \item Authentication and access control files
-                    \end{itemize}
-                    \end{alertblock}
-                    \end{frame}
 
-                    \begin{frame}{Data Loss Prevention (DLP): Stopping Information Leaks}
-                        \begin{itemize}
-                            \item \textbf{Data Loss Prevention (DLP)} systems identify, monitor, and protect sensitive data in use, in motion, and at rest.
-                            \item DLP can detect and block the unauthorized transmission of sensitive information via email, web uploads, or removable media.
-                            \item Content analysis capabilities recognize sensitive data patterns like credit card numbers, social security numbers, and classified documents.
-                            \item Effective DLP requires clear data classification standards and policies for handling sensitive information.
-                        \end{itemize}
-                        
-                        \begin{block}{DLP Implementation Areas}
-                        \begin{itemize}
-                            \item \textbf{Network DLP}: Monitors data in transit across the network
-                            \item \textbf{Endpoint DLP}: Monitors data use on workstations and laptops
-                            \item \textbf{Storage DLP}: Scans stored data for policy violations
-                            \item \textbf{Cloud DLP}: Extends protection to cloud storage and applications
-                        \end{itemize}
-                        \end{block}
-                        \end{frame}
-                        
-                        \begin{frame}{Network Access Control: Verifying Before Connecting}
-                        \begin{itemize}
-                            \item \textbf{Network Access Control (NAC)} enforces security policies when devices attempt to connect to the network.
-                            \item NAC systems perform health checks to verify devices meet security requirements (patches, antivirus, configurations).
-                            \item Non-compliant devices can be quarantined, given limited access, or denied connection entirely.
-                            \item NAC helps defend against unauthorized devices and ensures connected systems meet security standards.
-                        \end{itemize}
-                        
-                        \begin{exampleblock}{NAC Assessment Checks}
-                        \begin{itemize}
-                            \item Operating system patch level
-                            \item Antivirus/endpoint protection status
-                            \item Required security agents presence
-                            \item Device ownership and registration
-                            \item User authentication and authorization
-                        \end{itemize}
-                        \end{exampleblock}
-                        \end{frame}
-                        
-                        \begin{frame}{EDR and XDR: Endpoint Detection and Response Systems}
-                        \begin{itemize}
-                            \item \textbf{Endpoint Detection and Response (EDR)} continuously monitors endpoints for suspicious activities.
-                            \item EDR systems collect detailed telemetry, enabling security teams to identify, investigate, and respond to threats.
-                            \item \textbf{Extended Detection and Response (XDR)} expands EDR capabilities across multiple security layers.
-                            \item XDR integrates data from endpoints, networks, email, cloud workloads, and other security tools for comprehensive visibility.
-                        \end{itemize}
-                        
-                        \begin{alertblock}{Key EDR/XDR Capabilities}
-                        \begin{itemize}
-                            \item Real-time monitoring and threat detection
-                            \item Automated response actions
-                            \item Root cause analysis
-                            \item Threat hunting capabilities
-                            \item Forensic evidence collection
-                        \end{itemize}
-                        \end{alertblock}
-                        \end{frame}
-                        
-                        \begin{frame}{User Behavior Analytics: Spotting the Insider Threat}
-                        \begin{itemize}
-                            \item \textbf{User Behavior Analytics (UBA)} establishes baseline patterns of normal user behavior and detects anomalies.
-                            \item UBA can identify potential insider threats, compromised accounts, and privilege abuse that traditional security tools might miss.
-                            \item Machine learning algorithms continuously analyze user actions to improve detection accuracy over time.
-                            \item Behavioral indicators include unusual login times, access to sensitive data, volume of data transfers, and application usage.
-                        \end{itemize}
-                        
-                        \begin{block}{UBA Detection Examples}
-                        \begin{itemize}
-                            \item An account accessing unusually large numbers of files
-                            \item Login attempts from unusual geographic locations
-                            \item Accessing systems outside normal working hours
-                            \item Sudden changes in regular access patterns
-                            \item Elevated privilege usage without proper authorization
-                        \end{itemize}
-                        \end{block}
-                        \end{frame}
+\begin{frame}{File Integrity Monitoring: Detecting Unauthorized Changes}
+\begin{itemize}
+\item \textbf{File Integrity Monitoring (FIM)} detects and reports unauthorized modifications to critical system and application files.
+\item FIM creates cryptographic hashes of files in their known-good state to serve as a baseline.
+\item Regular scans compare current file hashes against the baseline to identify changes.
+\item This technology helps detect malware persistence, backdoors, and unauthorized configuration changes.
+\end{itemize}
+
+\begin{alertblock}{Critical Files to Monitor}
+\begin{itemize}
+\item Operating system files and libraries
+\item Application executables and configurations
+\item Web server content files
+\item Database schema and stored procedures
+\item Authentication and access control files
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Data Loss Prevention (DLP): Stopping Information Leaks}
+\begin{itemize}
+\item \textbf{Data Loss Prevention (DLP)} systems identify, monitor, and protect sensitive data in use, in motion, and at rest.
+\item DLP can detect and block the unauthorized transmission of sensitive information via email, web uploads, or removable media.
+\item Content analysis capabilities recognize sensitive data patterns like credit card numbers, social security numbers, and classified documents.
+\item Effective DLP requires clear data classification standards and policies for handling sensitive information.
+\end{itemize}
+
+\begin{block}{DLP Implementation Areas}
+\begin{itemize}
+\item \textbf{Network DLP}: Monitors data in transit across the network
+\item \textbf{Endpoint DLP}: Monitors data use on workstations and laptops
+\item \textbf{Storage DLP}: Scans stored data for policy violations
+\item \textbf{Cloud DLP}: Extends protection to cloud storage and applications
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Network Access Control: Verifying Before Connecting}
+\begin{itemize}
+\item \textbf{Network Access Control (NAC)} enforces security policies when devices attempt to connect to the network.
+\item NAC systems perform health checks to verify devices meet security requirements (patches, antivirus, configurations).
+\item Non-compliant devices can be quarantined, given limited access, or denied connection entirely.
+\item NAC helps defend against unauthorized devices and ensures connected systems meet security standards.
+\end{itemize}
+
+\begin{exampleblock}{NAC Assessment Checks}
+\begin{itemize}
+\item Operating system patch level
+\item Antivirus/endpoint protection status
+\item Required security agents presence
+\item Device ownership and registration
+\item User authentication and authorization
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{EDR and XDR: Endpoint Detection and Response Systems}
+\begin{itemize}
+\item \textbf{Endpoint Detection and Response (EDR)} continuously monitors endpoints for suspicious activities.
+\item EDR systems collect detailed telemetry, enabling security teams to identify, investigate, and respond to threats.
+\item \textbf{Extended Detection and Response (XDR)} expands EDR capabilities across multiple security layers.
+\item XDR integrates data from endpoints, networks, email, cloud workloads, and other security tools for comprehensive visibility.
+\end{itemize}
+
+\begin{alertblock}{Key EDR/XDR Capabilities}
+\begin{itemize}
+\item Real-time monitoring and threat detection
+\item Automated response actions
+\item Root cause analysis
+\item Threat hunting capabilities
+\item Forensic evidence collection
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{User Behavior Analytics: Spotting the Insider Threat}
+\begin{itemize}
+\item \textbf{User Behavior Analytics (UBA)} establishes baseline patterns of normal user behavior and detects anomalies.
+\item UBA can identify potential insider threats, compromised accounts, and privilege abuse that traditional security tools might miss.
+\item Machine learning algorithms continuously analyze user actions to improve detection accuracy over time.
+\item Behavioral indicators include unusual login times, access to sensitive data, volume of data transfers, and application usage.
+\end{itemize}
+
+\begin{block}{UBA Detection Examples}
+\begin{itemize}
+\item An account accessing unusually large numbers of files
+\item Login attempts from unusual geographic locations
+\item Accessing systems outside normal working hours
+\item Sudden changes in regular access patterns
+\item Elevated privilege usage without proper authorization
+\end{itemize}
+\end{block}
+\end{frame}
 
 
-                        \begin{frame}{Security Assessment: Finding Your Vulnerabilities}
-                            \begin{itemize}
-                                \item A \textbf{security assessment} identifies weaknesses in existing systems, networks, and processes.
-                                \item Assessments can include vulnerability scanning, penetration testing, configuration reviews, and gap analysis.
-                                \item Regular assessments provide a realistic view of security posture and help prioritize remediation efforts.
-                                \item The assessment process should align with business objectives and regulatory requirements.
-                            \end{itemize}
-                            
-                            \begin{exampleblock}{Assessment Types}
-                            \begin{itemize}
-                                \item \textbf{Vulnerability Assessment}: Identifies and catalogs vulnerabilities
-                                \item \textbf{Penetration Testing}: Actively exploits vulnerabilities to demonstrate impact
-                                \item \textbf{Red Team Exercise}: Simulates advanced adversaries with specific objectives
-                                \item \textbf{Architecture Review}: Evaluates security design against best practices
-                            \end{itemize}
-                            \end{exampleblock}
-                            \end{frame}
-                            
-                            \begin{frame}{Implementing Security Controls: A Phased Approach}
-                            \begin{itemize}
-                                \item Security implementation should follow a phased approach to minimize disruption and allow proper testing.
-                                \item \textbf{Quick wins} address the most critical vulnerabilities with relatively low effort and impact.
-                                \item More complex controls should be implemented in test environments before full deployment.
-                                \item Effective implementation requires collaboration between security, IT operations, and business stakeholders.
-                            \end{itemize}
-                            
-                            \begin{block}{Implementation Phases}
-                            \begin{enumerate}
-                                \item \textbf{Planning}: Define requirements, scope, and success criteria
-                                \item \textbf{Design}: Create detailed technical specifications
-                                \item \textbf{Testing}: Validate in non-production environment
-                                \item \textbf{Deployment}: Implement in production with rollback plan
-                                \item \textbf{Evaluation}: Assess effectiveness and impact
-                            \end{enumerate}
-                            \end{block}
-                            \end{frame}
-                            
-                            \begin{frame}{Measuring Security Effectiveness: Beyond Compliance}
-                            \begin{itemize}
-                                \item \textbf{Security metrics} provide quantifiable measures of security program effectiveness.
-                                \item Good metrics align with business objectives and provide actionable insights for improvement.
-                                \item Compliance-focused metrics ensure regulatory requirements are met, but don't guarantee security.
-                                \item A balanced scorecard approach includes technical, operational, and business impact measurements.
-                            \end{itemize}
-                            
-                            \begin{alertblock}{Key Security Metrics}
-                            \begin{itemize}
-                                \item Mean time to detect (MTTD) security incidents
-                                \item Mean time to respond (MTTR) to incidents
-                                \item Vulnerability remediation rate and aging
-                                \item Security control coverage and effectiveness
-                                \item Security awareness training completion rates
-                            \end{itemize}
-                            \end{alertblock}
-                            \end{frame}
-                            
-                            \begin{frame}{Building a Security-First Culture: Making Security Everyone's Responsibility}
-                            \begin{itemize}
-                                \item Technical controls alone cannot secure an organization without user awareness and cooperation.
-                                \item A \textbf{security-first culture} integrates security considerations into every business process and decision.
-                                \item Leadership must visibly support security initiatives and lead by example.
-                                \item Regular training, clear policies, and open communication about threats foster security awareness.
-                            \end{itemize}
-                            
-                            \begin{block}{Elements of a Strong Security Culture}
-                            \begin{itemize}
-                                \item \textbf{Training}: Regular, relevant, and engaging security education
-                                \item \textbf{Accountability}: Clear responsibilities for security at all levels
-                                \item \textbf{Communication}: Open discussion of security issues without blame
-                                \item \textbf{Incentives}: Recognition for good security practices
-                                \item \textbf{Integration}: Security built into business processes, not added on
-                            \end{itemize}
-                            \end{block}
-                            
-                            \begin{center}
-                            \Large Thank you!\\
-                            \normalsize Questions?
-                            \end{center}
-                            \end{frame}
+\begin{frame}{Security Assessment: Finding Your Vulnerabilities}
+\begin{itemize}
+    \item A \textbf{security assessment} identifies weaknesses in existing systems, networks, and processes.
+    \item Assessments can include vulnerability scanning, penetration testing, configuration reviews, and gap analysis.
+    \item Regular assessments provide a realistic view of security posture and help prioritize remediation efforts.
+    \item The assessment process should align with business objectives and regulatory requirements.
+\end{itemize}
+
+\begin{exampleblock}{Assessment Types}
+\begin{itemize}
+    \item \textbf{Vulnerability Assessment}: Identifies and catalogs vulnerabilities
+    \item \textbf{Penetration Testing}: Actively exploits vulnerabilities to demonstrate impact
+    \item \textbf{Red Team Exercise}: Simulates advanced adversaries with specific objectives
+    \item \textbf{Architecture Review}: Evaluates security design against best practices
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Implementing Security Controls: A Phased Approach}
+\begin{itemize}
+    \item Security implementation should follow a phased approach to minimize disruption and allow proper testing.
+    \item \textbf{Quick wins} address the most critical vulnerabilities with relatively low effort and impact.
+    \item More complex controls should be implemented in test environments before full deployment.
+    \item Effective implementation requires collaboration between security, IT operations, and business stakeholders.
+\end{itemize}
+
+\begin{block}{Implementation Phases}
+\begin{enumerate}
+    \item \textbf{Planning}: Define requirements, scope, and success criteria
+    \item \textbf{Design}: Create detailed technical specifications
+    \item \textbf{Testing}: Validate in non-production environment
+    \item \textbf{Deployment}: Implement in production with rollback plan
+    \item \textbf{Evaluation}: Assess effectiveness and impact
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Measuring Security Effectiveness: Beyond Compliance}
+\begin{itemize}
+    \item \textbf{Security metrics} provide quantifiable measures of security program effectiveness.
+    \item Good metrics align with business objectives and provide actionable insights for improvement.
+    \item Compliance-focused metrics ensure regulatory requirements are met, but don't guarantee security.
+    \item A balanced scorecard approach includes technical, operational, and business impact measurements.
+\end{itemize}
+
+\begin{alertblock}{Key Security Metrics}
+\begin{itemize}
+    \item Mean time to detect (MTTD) security incidents
+    \item Mean time to respond (MTTR) to incidents
+    \item Vulnerability remediation rate and aging
+    \item Security control coverage and effectiveness
+    \item Security awareness training completion rates
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Building a Security-First Culture: Making Security Everyone's Responsibility}
+\begin{itemize}
+    \item Technical controls alone cannot secure an organization without user awareness and cooperation.
+    \item A \textbf{security-first culture} integrates security considerations into every business process and decision.
+    \item Leadership must visibly support security initiatives and lead by example.
+    \item Regular training, clear policies, and open communication about threats foster security awareness.
+\end{itemize}
+
+\begin{block}{Elements of a Strong Security Culture}
+\begin{itemize}
+    \item \textbf{Training}: Regular, relevant, and engaging security education
+    \item \textbf{Accountability}: Clear responsibilities for security at all levels
+    \item \textbf{Communication}: Open discussion of security issues without blame
+    \item \textbf{Incentives}: Recognition for good security practices
+    \item \textbf{Integration}: Security built into business processes, not added on
+\end{itemize}
+\end{block}
+
+\begin{center}
+\Large Thank you!\\
+\normalsize Questions?
+\end{center}
+\end{frame}
 
 \end{document}
