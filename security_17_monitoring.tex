@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 \title{Security Alerting and Monitoring}
 \subtitle{Concepts, Tools, and Best Practices}
@@ -36,7 +37,7 @@ Security monitoring is not a one-time setup but a continuous process that requir
 \begin{itemize}
 \item We will explore the fundamental components of security monitoring infrastructure.
 \item You will learn how to implement effective security alerting mechanisms that balance sensitivity with precision.
-\item The lesson covers both technical tools and organizational processes needed for security operations.
+\item This leson covers both technical tools and organizational processes needed for security operations.
 \item By the end, you'll understand how to build and maintain a comprehensive security monitoring program.
 \end{itemize}
 
@@ -163,6 +164,8 @@ Always prioritize monitoring for account creation, privilege changes, security p
 A sudden increase in outbound traffic during non-business hours from a server with no scheduled maintenance or backup activities warrants immediate investigation, as it may indicate data exfiltration.
 \end{exampleblock}
 \end{frame}
+
+
 \begin{frame}
 \frametitle{Log Aggregation: Centralizing Security Data}
 \begin{itemize}
@@ -173,6 +176,7 @@ A sudden increase in outbound traffic during non-business hours from a server wi
 \end{itemize}
 
 \begin{block}{Log Aggregation Benefits}
+\scriptsize
 \begin{itemize}
 \item Faster incident detection and investigation
 \item Improved correlation of related events
@@ -218,6 +222,7 @@ A sudden increase in outbound traffic during non-business hours from a server wi
 \end{itemize}
 
 \begin{alertblock}{Alert Design Principles}
+\scriptsize
 Every alert should answer: What happened? Where did it happen? When did it happen? What is the potential impact? What action should be taken?
 \end{alertblock}
 \end{frame}
@@ -231,8 +236,8 @@ Every alert should answer: What happened? Where did it happen? When did it happe
 \item Standardized alert format ensures consistent interpretation and response.
 \end{itemize}
 
-\scriptsize
 \begin{columns}[T]
+\scriptsize
 \begin{column}{0.48\textwidth}
 \textbf{Poor Alert:}
 
@@ -261,6 +266,7 @@ Action: Block IPs and verify account status
 \end{itemize}
 
 \begin{block}{Scanning Types}
+\scriptsize
 \begin{itemize}
 \item \textbf{Vulnerability scanning}: Identifies known security weaknesses
 \item \textbf{Configuration scanning}: Validates security settings against baselines
@@ -305,6 +311,7 @@ Compliance & Auditors & Control effectiveness, policy adherence \\
 \end{itemize}
 
 \begin{exampleblock}{Common Retention Requirements}
+\scriptsize
 Financial institutions often must retain security logs for 7 years under various regulations, while healthcare organizations following HIPAA typically maintain security records for 6 years from creation or last effective date.
 \end{exampleblock}
 \end{frame}
@@ -331,165 +338,298 @@ Financial institutions often must retain security logs for 7 years under various
 
 
 \begin{frame}
-\frametitle{Remediation Strategies: Fixing Security Issues}
+\frametitle{Alert Tuning: Reducing False Positives}
 \begin{itemize}
-\item \textbf{Remediation} is the process of correcting security issues identified through monitoring and alerts.
-\item Effective remediation addresses not just symptoms but root causes to prevent recurrence.
-\item Prioritization ensures critical vulnerabilities affecting high-value assets are fixed first.
-\item Documentation of remediation actions creates an audit trail and knowledge base for similar future incidents.
+\item \textbf{Alert tuning} is the ongoing refinement of detection rules to improve accuracy and relevance.
+\item False positives waste analyst time and contribute to alert fatigue, reducing overall security effectiveness.
+\item Tuning requires balancing sensitivity (not missing threats) with precision (avoiding false alarms).
+\item Keep a record of tuning changes to maintain awareness of detection coverage and potential blind spots.
 \end{itemize}
 
-\begin{block}{Remediation Approaches}
+\begin{block}{Alert Tuning Approaches}
+\scriptsize
 \begin{itemize}
-\item \textbf{Patching}: Applying software updates to fix known vulnerabilities
-\item \textbf{Configuration changes}: Adjusting settings to enhance security
-\item \textbf{Compensating controls}: Implementing alternative safeguards when direct fixes aren't possible
-\item \textbf{Security hardening}: Removing unnecessary services and strengthening defenses
+\item \textbf{Thresholding}: Adjusting when alerts trigger based on frequency or magnitude
+\item \textbf{Contextual filtering}: Adding business context to reduce noise (e.g., maintenance windows)
+\item \textbf{Whitelisting}: Explicitly excluding known-good activities from generating alerts
+\item \textbf{Correlation rules}: Requiring multiple conditions before alerting
 \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{Validation: Ensuring Threats Are Truly Resolved}
+\frametitle{Security Content Automation Protocol (SCAP): Standards-Based Security}
 \begin{itemize}
-\item \textbf{Validation} confirms that remediation efforts have successfully resolved security issues.
-\item Re-testing after remediation verifies that vulnerabilities are actually fixed, not just superficially addressed.
-\item Regression testing ensures that security fixes don't introduce new problems or vulnerabilities.
-\item Continuous monitoring after remediation watches for any signs of recurring issues or persistent threats.
+\item \textbf{SCAP} is a suite of specifications that standardize the format and nomenclature of security information.
+\item SCAP enables automated vulnerability management, measurement, and policy compliance checking.
+\item The protocol facilitates interoperability between security tools from different vendors.
+\item SCAP components include vulnerability naming (CVE), configuration checklists (XCCDF), and scoring (CVSS).
 \end{itemize}
 
-\begin{exampleblock}{Validation Methods}
-For a patched web application vulnerability, validation might include: re-scanning with vulnerability scanners, manual penetration testing of the specific vulnerability, reviewing application logs for exploit attempts, and monitoring for unexpected behavior.
-\end{exampleblock}
-\end{frame}
-
-\begin{frame}
-\frametitle{Quarantine Procedures: Isolating Compromised Assets}
+\begin{alertblock}{Key SCAP Components}
+\scriptsize
 \begin{itemize}
-\item \textbf{Quarantine} is the isolation of compromised systems to prevent lateral movement and damage spread.
-\item Network segmentation enables quick isolation of affected systems while maintaining business operations.
-\item Automated quarantine can trigger based on specific high-confidence alerts for immediate containment.
-\item The level of isolation should be proportional to the threat severity and confidence level.
+\item \textbf{Common Vulnerabilities and Exposures (CVE)}: Standard identifiers for known vulnerabilities
+\item \textbf{Common Configuration Enumeration (CCE)}: Identifiers for system configuration issues
+\item \textbf{Common Platform Enumeration (CPE)}: Standard naming of platforms and products
+\item \textbf{Common Vulnerability Scoring System (CVSS)}: Standardized severity scoring
 \end{itemize}
-
-\begin{alertblock}{Quarantine Considerations}
-When quarantining systems, always consider business impact versus security risk, maintain forensic integrity, document all actions taken, and establish clear criteria for releasing systems from quarantine.
 \end{alertblock}
 \end{frame}
 
 \begin{frame}
-\frametitle{EXAMPLE: Quarantine Workflow for Malware Detection}
+\frametitle{Security Benchmarks: Establishing Baselines}
 \begin{itemize}
-\item This workflow shows the decision process and actions when malware is detected on a corporate system.
-\item The initial alert triggers an escalating response based on confirmation and risk assessment.
-\item Note the balance between security needs and business continuity considerations.
-\item Communication steps ensure all stakeholders remain informed throughout the process.
+\item \textbf{Security benchmarks} are consensus-based configuration guidelines for securing systems and software.
+\item Benchmarks provide a baseline security standard against which systems can be measured and hardened.
+\item Organizations like CIS (Center for Internet Security) maintain benchmarks for various operating systems and applications.
+\item Automated tools can check systems against benchmarks to identify security configuration gaps.
 \end{itemize}
 
-\begin{block}{Quarantine Decision Flow for Malware Incidents}
+\begin{exampleblock}{Benchmark Example: Password Policy}
 \scriptsize
-\begin{enumerate}
-\item Malware Alert Received
-\item Initial Assessment Conducted
-\item If Confirmed Threat: Proceed to Risk Assessment
-\item If High/Critical Risk: Implement Network Isolation
-\item Conduct Forensic Evidence Capture
-\item Perform Remediation
-\item Validate Effectiveness
-\item Return System to Service
-\end{enumerate}
-\end{block}
+A benchmark might specify:
+\begin{itemize}
+\item Minimum password length: 12 characters
+\item Complexity requirements: Upper/lowercase, numbers, symbols
+\item Maximum age: 90 days
+\item Account lockout: 5 failed attempts
+\end{itemize}
+\end{exampleblock}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Alert Tuning: Reducing False Positives}
+\frametitle{Agent vs. Agentless Monitoring: Pros and Cons}
+\begin{itemize}
+\item \textbf{Agent-based monitoring} installs software directly on monitored systems to collect and report security data.
+\item \textbf{Agentless monitoring} gathers information remotely without requiring software installation on target systems.
+\item The choice between approaches depends on security requirements, performance impact, and deployment complexity.
+\item Many organizations use a hybrid approach, applying each method where it makes the most sense.
+\end{itemize}
+
+\begin{table}
+\scriptsize
+\begin{tabular}{lll}
+\toprule
+\textbf{Factor} & \textbf{Agent-Based} & \textbf{Agentless} \\
+\midrule
+Visibility & Deep system access & Limited to exposed interfaces \\
+Performance & Local resource usage & Network bandwidth usage \\
+Deployment & Installation required & Simpler deployment \\
+Maintenance & Regular updates needed & Minimal maintenance \\
+Coverage & Works offline & Requires network connectivity \\
+\bottomrule
+\end{tabular}
+\caption{Agent vs. Agentless Comparison}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Security Information and Event Management (SIEM): Comprehensive Monitoring}
+\begin{itemize}
+\item \textbf{SIEM} systems collect, normalize, analyze, and correlate security data from across the enterprise.
+\item SIEM platforms combine security information management (SIM) with security event management (SEM).
+\item Modern SIEM solutions incorporate threat intelligence to identify sophisticated attacks and advanced threats.
+\item Key capabilities include real-time monitoring, incident management, and compliance reporting.
+\end{itemize}
+
+\begin{block}{Core SIEM Functions}
+    \scriptsize
+\begin{itemize}
+\item \textbf{Data aggregation}: Collecting security data from diverse sources
+\item \textbf{Correlation}: Connecting related events to identify attack patterns
+\item \textbf{Alerting}: Notifying security teams of suspicious activities
+\item \textbf{Dashboards}: Visualizing security status and trends
+\item \textbf{Compliance}: Automating regulatory reporting requirements
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{EXAMPLE: SIEM Dashboard Analysis and Interpretation}
     \begin{itemize}
-    \item \textbf{Alert tuning} is the ongoing refinement of detection rules to improve accuracy and relevance.
-    \item False positives waste analyst time and contribute to alert fatigue, reducing overall security effectiveness.
-    \item Tuning requires balancing sensitivity (not missing threats) with precision (avoiding false alarms).
-    \item Keep a record of tuning changes to maintain awareness of detection coverage and potential blind spots.
+    \item SIEM dashboards present security information visually for rapid understanding and action.
+    \item This example dashboard highlights key security metrics that security teams monitor daily.
+    \item Correlation across different metrics often reveals security incidents that individual alerts might miss.
+    \item Trend analysis helps distinguish between normal variations and genuine security concerns.
     \end{itemize}
     
-    \begin{block}{Alert Tuning Approaches}
+    \begin{exampleblock}{SIEM Dashboard Metrics}
+    \small
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Metric Category} & \textbf{Key Information} \\
+    \midrule
+    Threats by Source & Internal (27\%), External (73\%) \\
+    Alert Priority Distribution & Critical (12), High (47), Medium (156), Low (238) \\
+    Top Attack Vectors & Phishing, Credential Abuse, Malware, Web Attacks \\
+    System Coverage & 98\% of critical assets, 87\% of all assets monitored \\
+    \bottomrule
+    \end{tabular}
+    \end{exampleblock}
+    \end{frame}
+
+
+\begin{frame}
+\frametitle{Antivirus Integration with Monitoring Systems}
+\begin{itemize}
+\item \textbf{Antivirus (AV) solutions} detect and block malicious software using signatures and behavioral analysis.
+\item Modern endpoint protection platforms (EPP) extend beyond traditional AV to include additional security controls.
+\item Integration with monitoring systems allows centralized visibility into malware detections across the enterprise.
+\item Correlating AV alerts with other security data helps identify sophisticated attacks that use malware components.
+\end{itemize}
+
+\begin{alertblock}{Beyond Traditional Antivirus}
     \scriptsize
+Modern endpoint security has evolved beyond signature-based detection to include behavior monitoring, exploit prevention, machine learning, sandboxing, and rollback capabilities to better detect and respond to advanced threats.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Data Loss Prevention (DLP): Protecting Sensitive Information}
+\begin{itemize}
+\item \textbf{Data Loss Prevention (DLP)} systems monitor, detect, and block sensitive data from leaving the organization.
+\item DLP solutions classify data based on content, context, and defined policies to prevent unauthorized disclosure.
+\item Monitoring points include network traffic, endpoints, email, cloud services, and storage systems.
+\item DLP generates alerts when sensitive data appears in unauthorized locations or is being transmitted insecurely.
+\end{itemize}
+
+\begin{exampleblock}{DLP Use Cases}
+    \scriptsize
+\begin{itemize}
+\item Preventing employees from emailing sensitive customer records
+\item Blocking unauthorized transfers of intellectual property to external devices
+\item Detecting unencrypted transmission of regulated data (PII, PHI, PCI)
+\item Alerting when classified documents are stored in unapproved cloud services
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{SNMP Traps: Network Device Monitoring}
     \begin{itemize}
-    \item \textbf{Thresholding}: Adjusting when alerts trigger based on frequency or magnitude
-    \item \textbf{Contextual filtering}: Adding business context to reduce noise (e.g., maintenance windows)
-    \item \textbf{Whitelisting}: Explicitly excluding known-good activities from generating alerts
-    \item \textbf{Correlation rules}: Requiring multiple conditions before alerting
+    \item \textbf{Simple Network Management Protocol (SNMP) traps} are alerts sent from network devices to management systems.
+    \item Traps provide real-time notification of significant events like interface status changes or threshold violations.
+    \item Security-relevant SNMP traps include authentication failures, configuration changes, and hardware failures.
+    \item SNMP monitoring helps detect physical layer attacks and infrastructure issues that impact security.
+    \end{itemize}
+    
+    \begin{block}{Common Security-Relevant SNMP Traps}
+        \scriptsize
+    \begin{itemize}
+    \item \textbf{coldStart}: Device has reinitialized (potential unauthorized reboot)
+    \item \textbf{warmStart}: Device has reloaded without configuration change
+    \item \textbf{linkDown/linkUp}: Network interface status changes
+    \item \textbf{authenticationFailure}: Invalid SNMP community string attempts
+    \item \textbf{egpNeighborLoss}: Routing peer relationship changes
     \end{itemize}
     \end{block}
     \end{frame}
     
     \begin{frame}
-    \frametitle{Security Content Automation Protocol (SCAP): Standards-Based Security}
+    \frametitle{NetFlow Analysis: Detecting Unusual Traffic Patterns}
     \begin{itemize}
-    \item \textbf{SCAP} is a suite of specifications that standardize the format and nomenclature of security information.
-    \item SCAP enables automated vulnerability management, measurement, and policy compliance checking.
-    \item The protocol facilitates interoperability between security tools from different vendors.
-    \item SCAP components include vulnerability naming (CVE), configuration checklists (XCCDF), and scoring (CVSS).
+    \item \textbf{NetFlow} is a network protocol that collects IP traffic information and monitors network flow.
+    \item NetFlow data provides visibility into "who is talking to whom" without capturing actual packet contents.
+    \item Analyzing flow data helps identify anomalous communication patterns indicative of data exfiltration or C2 traffic.
+    \item NetFlow monitoring requires less bandwidth and storage than full packet capture while providing valuable security insights.
     \end{itemize}
     
-    \begin{alertblock}{Key SCAP Components}
-    \scriptsize
+    \begin{alertblock}{NetFlow Security Applications}
+        \scriptsize
+    NetFlow analysis can detect data exfiltration (unusual outbound transfers), command and control communications (regular beaconing to unusual destinations), internal reconnaissance (port scanning), and denial of service attacks (traffic spikes).
+    \end{alertblock}
+    \end{frame}
+
+    
+\begin{frame}[fragile]
+    \frametitle{NetFlow Analysis: Sample Command and Data}
     \begin{itemize}
-    \item \textbf{Common Vulnerabilities and Exposures (CVE)}: Standard identifiers for known vulnerabilities
-    \item \textbf{Common Configuration Enumeration (CCE)}: Identifiers for system configuration issues
-    \item \textbf{Common Platform Enumeration (CPE)}: Standard naming of platforms and products
-    \item \textbf{Common Vulnerability Scoring System (CVSS)}: Standardized severity scoring
+    \item Analyzing NetFlow data with nfdump to identify unusual outbound transfers:
     \end{itemize}
+    
+    \tiny
+    \begin{semiverbatim}
+    $ nfdump -R /var/netflow/data -o extended -s dstip/bytes \\
+      'src net 10.0.0.0/8 and dst net not 10.0.0.0/8 and bytes > 10000000'
+    
+    Date flow start       Duration Proto   Src IP:Port      Dst IP:Port      Bytes
+    2025-03-11 02:14:45   1823.5   TCP     10.5.4.23:49321  185.142.56.34:443   1.4G
+    2025-03-11 02:17:12   1738.1   TCP     10.5.4.23:49325  185.142.56.34:443   1.1G
+    2025-03-11 03:42:18    914.2   TCP     10.3.2.56:51432  91.213.89.75:22    478.5M
+    \end{semiverbatim}
+    
+    \scriptsize
+    \begin{alertblock}{Suspicious Activity}
+    Large data transfers to unusual destinations during off-hours require immediate investigation as potential data exfiltration.
     \end{alertblock}
     \end{frame}
     
     \begin{frame}
-    \frametitle{Security Benchmarks: Establishing Baselines}
+    \frametitle{Vulnerability Scanning: Finding Weaknesses Before Attackers}
     \begin{itemize}
-    \item \textbf{Security benchmarks} are consensus-based configuration guidelines for securing systems and software.
-    \item Benchmarks provide a baseline security standard against which systems can be measured and hardened.
-    \item Organizations like CIS (Center for Internet Security) maintain benchmarks for various operating systems and applications.
-    \item Automated tools can check systems against benchmarks to identify security configuration gaps.
+    \item \textbf{Vulnerability scanning} systematically checks systems for known security weaknesses.
+    \item Regular scans provide visibility into the organization's security posture and potential exposure to attacks.
+    \item Scan results should be prioritized based on vulnerability severity, asset value, and exploitability.
+    \item Continuous vulnerability management integrates scanning, prioritization, remediation, and verification.
     \end{itemize}
     
-    \begin{exampleblock}{Benchmark Example: Password Policy}
+    \begin{exampleblock}{Types of Vulnerability Scanners}
         \scriptsize
-    A benchmark might specify:
     \begin{itemize}
-    \item Minimum password length: 12 characters
-    \item Complexity requirements: Upper/lowercase, numbers, symbols
-    \item Maximum age: 90 days
-    \item Account lockout: 5 failed attempts
+    \item \textbf{Network scanners}: Identify open ports, services, and network-level vulnerabilities
+    \item \textbf{Web application scanners}: Test for OWASP Top 10 vulnerabilities like SQL injection
+    \item \textbf{Database scanners}: Check for database-specific misconfigurations
+    \item \textbf{Cloud configuration scanners}: Identify insecure cloud service settings
     \end{itemize}
     \end{exampleblock}
     \end{frame}
+
+    \begin{frame}[fragile]
+        \frametitle{Vulnerability Scanner: Sample Output}
+        \begin{itemize}
+        \item Vulnerability scanners provide detailed findings for each identified issue:
+        \end{itemize}
+        
+        \tiny
+        \begin{semiverbatim}
+        Finding: CVE-2024-8901
+        Host: web-server-04.example.com (10.10.14.22)
+        Severity: CRITICAL (CVSS: 9.8)
+        Description: Remote code execution vulnerability in 
+                    Apache Tomcat 8.5.x < 8.5.97
+        Recommendation: Update to Tomcat 8.5.97 or later
+        Evidence: Server header reveals Tomcat 8.5.82
+        Exploitability: Public exploit available
+        References: https://nvd.nist.gov/vuln/detail/CVE-2024-8901
+        \end{semiverbatim}
+        
+        \scriptsize
+        \begin{alertblock}{Important}
+        Critical vulnerabilities with public exploits should be remediated within 24 hours according to our security policy.
+        \end{alertblock}
+        \end{frame}
     
     \begin{frame}
-    \frametitle{Agent vs. Agentless Monitoring: Pros and Cons}
+    \frametitle{Conclusion: Building a Comprehensive Security Monitoring Strategy}
     \begin{itemize}
-    \item \textbf{Agent-based monitoring} installs software directly on monitored systems to collect and report security data.
-    \item \textbf{Agentless monitoring} gathers information remotely without requiring software installation on target systems.
-    \item The choice between approaches depends on security requirements, performance impact, and deployment complexity.
-    \item Many organizations use a hybrid approach, applying each method where it makes the most sense.
+    \item Effective security monitoring requires a layered approach integrating multiple tools and techniques.
+    \item People, process, and technology must work together to create a resilient security monitoring program.
+    \item Start with high-value assets and critical systems, then expand monitoring coverage methodically.
+    \item Continuous improvement through testing, tuning, and adaptation is essential as threats evolve.
     \end{itemize}
     
-    \begin{table}
-    \begin{tabular}{lll}
-    \scriptsize
-    \toprule
-    \textbf{Factor} & \textbf{Agent-Based} & \textbf{Agentless} \\
-    \midrule
-    Visibility & Deep system access & Limited to exposed interfaces \\
-    Performance & Local resource usage & Network bandwidth usage \\
-    Deployment & Installation required & Simpler deployment \\
-    Maintenance & Regular updates needed & Minimal maintenance \\
-    Coverage & Works offline & Requires network connectivity \\
-    \bottomrule
-    \end{tabular}
-    \caption{Agent vs. Agentless Comparison}
-    \end{table}
+    \begin{tikzpicture}
+    \draw[thick] (0,0) circle (1.5cm);
+    \draw[thick] (0,0) circle (1cm);
+    \draw[thick] (0,0) circle (0.5cm);
+    \node at (0,0) {Data};
+    \node at (0,1.25) {Tools};
+    \node at (0,1.75) {People};
+    \end{tikzpicture}
     \end{frame}
-
-    
-
 
 
 \end{document}
